@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 480:
+/***/ 734:
 /***/ (() => {
 
 (function ($) {
@@ -36,7 +36,7 @@
 
 /***/ }),
 
-/***/ 498:
+/***/ 211:
 /***/ (() => {
 
 (function ($) {
@@ -99,7 +99,7 @@
 
 /***/ }),
 
-/***/ 240:
+/***/ 327:
 /***/ (() => {
 
 (function ($) {
@@ -142,7 +142,7 @@
 
 /***/ }),
 
-/***/ 497:
+/***/ 259:
 /***/ (() => {
 
 (function ($) {
@@ -252,12 +252,12 @@
 
 /***/ }),
 
-/***/ 377:
+/***/ 305:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   w: () => (/* binding */ SwiperBase)
+/* harmony export */   Y: () => (/* binding */ SwiperBase)
 /* harmony export */ });
 /* unused harmony export isEditMode */
 
@@ -530,7 +530,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 44:
+/***/ 340:
 /***/ (() => {
 
 (function ($) {
@@ -762,7 +762,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 848:
+/***/ 107:
 /***/ (() => {
 
 (function ($) {
@@ -817,7 +817,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 770:
+/***/ 45:
 /***/ (() => {
 
 (function ($){
@@ -848,18 +848,24 @@ class SwiperBase{
                 that.contentBoxSize();
                 if(data != null){
                     const element = wrapper.querySelector('.eae-cp-canvas-wrapper');
-                    const waypoint = new Waypoint({
-                        element: element,
-                        handler: function (direction) {
-                            if( direction == 'down'){
-                                if(!element.classList.contains("trigger")){
-                                    element.classList.add('trigger');
+                    const observerOptions = {
+                        root: null, // Observe relative to the viewport
+                        rootMargin: '0px 0px -30% 0px', // Margin around the root
+                      };
+                
+                      const observerCallback = (entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const wrapper = entry.target;
+                                if(!wrapper.classList.contains("trigger")){
+                                    wrapper.classList.add('trigger');
                                     that.getTrack(wrapper,data);
                                 }
                             }
-                        },
-                        offset:'80%',
-                    });
+                        });
+                      };
+                      const observer = new IntersectionObserver(observerCallback, observerOptions);
+                      observer.observe(element);
                 }
             },
             onElementChange: function onElementChange(propertyName) {
@@ -1162,14 +1168,14 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 15:
+/***/ 234:
 /***/ (() => {
 
 
 
 /***/ }),
 
-/***/ 465:
+/***/ 289:
 /***/ (() => {
 
 "use strict";
@@ -1181,13 +1187,9 @@ class SwiperBase{
         const wrapper = element.querySelector('.eae-device-video-outer-wrapper'); 
         const oriWrapper = element.querySelector('.orientation i');  
         const deviceWrapper=element.querySelector('.eae-wrapper');  
-       
-        
-
-     
+            
         var imageCheckElement = element.querySelector('.device-content');
         if(imageCheckElement.hasAttribute("data-settings")){
-
             var imageElement = $scope.find(".device-content");
             var imageVertical = imageElement.find(".device-img-content");
             var imagedataElement = imageElement.data("settings");
@@ -1263,7 +1265,6 @@ class SwiperBase{
                     renderer: "svg",
                     loop: lottie_data.loop,
                 });
-
                 if (lottie_data.reverse == true) {
                     eae_animation.setDirection(-1);
                 }
@@ -1272,7 +1273,6 @@ class SwiperBase{
 
         if(oriWrapper != undefined || oriWrapper != null){
             oriWrapper.addEventListener('click', function(e){ 
-                   
                     oriFunction(oriWrapper,deviceWrapper); 
             })
             function oriFunction(ele,deviceWrapper){
@@ -1294,18 +1294,26 @@ class SwiperBase{
             
             if(is_autoplay == '1'){
                 if(!elementorFrontend.isEditMode()){
-                    var eae_video_waypoint = new Waypoint({
-                        element: wrapper,
-                        handler : function (  ) {
-                                labnolIframe(wrapper);
-                        },
-                        offset : 'bottom-in-view'
-                    });
+                    const observerOptions = {
+                        root: null, // Observe relative to the viewport
+                        rootMargin: '0px 0px -300px 0px', // Margin around the root
+                      };
+                
+                      const observerCallback = (entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const element = entry.target;
+                            labnolIframe(element, 'autoplay');
+                            }
+                        });
+                      };
+                      const observer = new IntersectionObserver(observerCallback, observerOptions);
+                      observer.observe(wrapper);
                 }    
             }
         }
 
-        function labnolIframe(ele) {
+        function labnolIframe(ele, demo = 'null') {
             let videoType = ele.getAttribute('data-video-type');
             let videoPlayerEle = ele.querySelector('.eae-device-video-play');        
             let src = '';
@@ -1368,7 +1376,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 389:
+/***/ 482:
 /***/ (() => {
 
 (function ($) {
@@ -1458,7 +1466,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 976:
+/***/ 867:
 /***/ (() => {
 
 (function ($) {
@@ -1551,11 +1559,11 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 30:
+/***/ 839:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(377);
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(305);
 
 ( function ($){
 
@@ -1591,7 +1599,7 @@ class SwiperBase{
                     if(wrapper.classList.contains('eae-rw-swiper')){
                         const outer_wrapper = scope.find('.eae-swiper-outer-wrapper');
                         const swiper_settings = outer_wrapper.data('swiper-settings');
-                        new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .w(swiper_settings, eid, scope);
+                        new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .Y(swiper_settings, eid, scope);
                     }
     
                     that.getLottie(wrapper);
@@ -1626,7 +1634,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 301:
+/***/ 404:
 /***/ (() => {
 
 (function ($) {
@@ -1724,7 +1732,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 814:
+/***/ 361:
 /***/ (() => {
 
 
@@ -1969,7 +1977,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 815:
+/***/ 537:
 /***/ (() => {
 
 (function ($) {
@@ -2059,7 +2067,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 951:
+/***/ 210:
 /***/ (() => {
 
 (function ($) {
@@ -2097,7 +2105,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 220:
+/***/ 898:
 /***/ (() => {
 
 (function ($){
@@ -2269,11 +2277,11 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 284:
+/***/ 862:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(377);
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(305);
 
 (function ($) {
 	
@@ -2380,7 +2388,7 @@ class SwiperBase{
 				const widget_id = this.$element.data('id');
 				const { swiper_wrapper } = this.getDefaultElements();
 				const swiper_settings = swiper_wrapper.data('swiper-settings');
-				new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .w(swiper_settings, widget_id);
+				new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .Y(swiper_settings, widget_id);
 
 			},
 			runLightbox: function runLightbox() {
@@ -2426,7 +2434,7 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 195:
+/***/ 994:
 /***/ (() => {
 
 (function ($){
@@ -2913,11 +2921,11 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 525:
+/***/ 784:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(377);
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(305);
 
 (function ($) {
 
@@ -2927,7 +2935,7 @@ class SwiperBase{
             const wid = $scope.data('id');
             const outer_wrapper = $scope.find('.eae-tm-swiper-container');
 			const swiper_settings = outer_wrapper.data('swiper-settings');
-            new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .w( swiper_settings, wid, $scope );
+            new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .Y( swiper_settings, wid, $scope );
 
         }
     }
@@ -2942,11 +2950,11 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 602:
+/***/ 793:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(377);
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(305);
 
 (function ($) {
     $(window).on('elementor/frontend/init', function () {
@@ -2984,7 +2992,7 @@ class SwiperBase{
                     if(wrapper.classList.contains('eae-testimonial-slider')){
                         const outer_wrapper = scope.find('.eae-swiper-outer-wrapper');
                         const swiper_settings = outer_wrapper.data('swiper-settings');
-                        new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .w(swiper_settings, eid, scope);
+                        new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .Y(swiper_settings, eid, scope);
                     }  
                     window.addEventListener("resize", function(){
                         const currentWindowWidth = this.window.innerWidth;
@@ -3012,14 +3020,18 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 986:
+/***/ 393:
 /***/ (() => {
 
 (function ($) {
+    let lastScrollTop = 0;
+    let elementPagePosition = 0;
 	const EAEVideoBox = function ($scope) {
 		const eId = $scope.attr('data-id');
 		const element = document.querySelector('.elementor-element-' + eId);
-        const wrapper = element.querySelector('.eae-video-outer-wrapper');      
+        const wrapper = element.querySelector('.eae-video-outer-wrapper'); 
+        elementPagePosition = wrapper.getBoundingClientRect().top + window.scrollY;
+        let lastScrollTop = 0;     
         // check is it elementor editor
 
         if(wrapper != null){
@@ -3039,38 +3051,28 @@ class SwiperBase{
             }
             var isLottiePanle = element.querySelector('.eae-lottie-animation');
             if(stickyVideo == 'yes'){
-            let previewSticky =   wrapper.getAttribute('data-preview-sticky');
-            if((elementorFrontend.isEditMode() && previewSticky == 'yes') || !elementorFrontend.isEditMode()){
-                var eae_waypoint = new Waypoint({
-                    element: wrapper,
-                    handler : function ( direction ) {
-                        if(direction == 'down'){
-                            wrapper.classList.remove('eae-sticky-hide');
-                            wrapper.classList.add('eae-sticky-apply');
-                            if(wrapper.querySelector('.eae-video-display-details') != null){
-                             wrapper.querySelector('.eae-video-display-details').style.display = 'block';
-                            }
-                        }else{
-                            wrapper.classList.remove('eae-sticky-apply');
-                            wrapper.classList.add('eae-sticky-hide');
-                            if(wrapper.querySelector('.eae-video-display-details') != null){
-                                wrapper.querySelector('.eae-video-display-details').style.display = 'none';
-                            }
+                let previewSticky =   wrapper.getAttribute('data-preview-sticky');
+                if((elementorFrontend.isEditMode() && previewSticky == 'yes') || !elementorFrontend.isEditMode()){
+                    makeStickyVideo(wrapper);
+                    document.addEventListener('scroll', () => {
+                        if (window.requestAnimationFrame) {
+                          window.requestAnimationFrame(() => {
+                            makeStickyVideo(wrapper);
+                          });
+                        } else {
+                            makeStickyVideo(wrapper);
                         }
-                    }
-                });
+                    });
     
-                const closeButton = wrapper.querySelector('.eae-video-sticky-close');
-                if(closeButton != null){
-                    closeButton.addEventListener('click', function(e){
-                            e.stopPropagation();
-                            wrapper.classList.remove('eae-sticky-apply');
-                            wrapper.classList.add('eae-sticky-hide');
-                    }); 
-                }
-            }                
-                
-                  
+                    const closeButton = wrapper.querySelector('.eae-video-sticky-close');
+                    if(closeButton != null){
+                        closeButton.addEventListener('click', function(e){
+                                e.stopPropagation();
+                                wrapper.classList.remove('eae-sticky-apply');
+                                wrapper.classList.add('eae-sticky-hide');
+                        }); 
+                    }
+                }                     
             }
             
             if (isLottiePanle != null) {
@@ -3158,7 +3160,29 @@ class SwiperBase{
                 
             }
         }
+
+       
 	}
+
+    function makeStickyVideo(ele){
+        let elementCurrentPositin = ele.getBoundingClientRect().top;
+        let currentScrollPosition = window.scrollY;
+        if(window.scrollY + 150 >= elementPagePosition){
+            ele.classList.remove('eae-sticky-hide');
+            ele.classList.add('eae-sticky-apply');
+            if(ele.querySelector('.eae-video-display-details') != null){
+                ele.querySelector('.eae-video-display-details').style.display = 'block';
+            }
+        }else{
+            ele.classList.remove('eae-sticky-apply');
+            ele.classList.add('eae-sticky-hide');
+            if(ele.querySelector('.eae-video-display-details') != null){
+                ele.querySelector('.eae-video-display-details').style.display = 'none';
+            }
+        }
+        
+        lastScrollTop = currentScrollPosition <= 0 ? 0 : currentScrollPosition;
+    }
 
     function labnolIframe(ele) {
         let videoType = ele.getAttribute('data-video-type');
@@ -3229,11 +3253,11 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 682:
+/***/ 322:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(377);
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(305);
 
 (function ($) {
 
@@ -3453,7 +3477,7 @@ class SwiperBase{
                 const wid = $scope.data('id');
                 const outer_wrapper = $scope.find('.eae-swiper-outer-wrapper');
                 const swiper_settings = outer_wrapper.data('swiper-settings');
-                new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .w(swiper_settings, wid);
+                new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .Y(swiper_settings, wid);
             }
         }
 
@@ -3626,11 +3650,11 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 806:
+/***/ 82:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(377);
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(305);
 
 (function ($) {
     $(window).on('elementor/frontend/init', function () {
@@ -3666,7 +3690,7 @@ class SwiperBase{
                     if(wrapper.classList.contains('eae-wp-slider')){
                         const outer_wrapper = scope.find('.eae-swiper-outer-wrapper');
                         const swiper_settings = outer_wrapper.data('swiper-settings');
-                        new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .w(swiper_settings, eid, scope);
+                        new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .Y(swiper_settings, eid, scope);
                     }  
                     
                     window.addEventListener("resize", function(){
@@ -3713,11 +3737,11 @@ class SwiperBase{
 
 /***/ }),
 
-/***/ 123:
+/***/ 870:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(377);
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(305);
 
 (function ($) {
     $(window).on('elementor/frontend/init', function () {
@@ -3765,7 +3789,7 @@ class SwiperBase{
                     if(wrapper.classList.contains('eae-wp-slider')){
                         const outer_wrapper = scope.find('.eae-swiper-outer-wrapper');
                         const swiper_settings = outer_wrapper.data('swiper-settings');
-                        new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .w(swiper_settings, eid, scope);
+                        new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .Y(swiper_settings, eid, scope);
                     }  
 
                     let buyNowBtn = wrapper.querySelectorAll('.eae-wp-buy-now');
@@ -3866,32 +3890,32 @@ class SwiperBase{
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	__webpack_require__(377);
-/******/ 	__webpack_require__(480);
-/******/ 	__webpack_require__(498);
-/******/ 	__webpack_require__(240);
-/******/ 	__webpack_require__(497);
-/******/ 	__webpack_require__(44);
-/******/ 	__webpack_require__(848);
-/******/ 	__webpack_require__(770);
-/******/ 	__webpack_require__(15);
-/******/ 	__webpack_require__(465);
-/******/ 	__webpack_require__(389);
-/******/ 	__webpack_require__(976);
-/******/ 	__webpack_require__(30);
-/******/ 	__webpack_require__(301);
-/******/ 	__webpack_require__(814);
-/******/ 	__webpack_require__(815);
-/******/ 	__webpack_require__(951);
-/******/ 	__webpack_require__(220);
-/******/ 	__webpack_require__(284);
-/******/ 	__webpack_require__(195);
-/******/ 	__webpack_require__(525);
-/******/ 	__webpack_require__(602);
-/******/ 	__webpack_require__(986);
-/******/ 	__webpack_require__(682);
-/******/ 	__webpack_require__(806);
-/******/ 	var __webpack_exports__ = __webpack_require__(123);
+/******/ 	__webpack_require__(305);
+/******/ 	__webpack_require__(734);
+/******/ 	__webpack_require__(211);
+/******/ 	__webpack_require__(327);
+/******/ 	__webpack_require__(259);
+/******/ 	__webpack_require__(340);
+/******/ 	__webpack_require__(107);
+/******/ 	__webpack_require__(45);
+/******/ 	__webpack_require__(234);
+/******/ 	__webpack_require__(289);
+/******/ 	__webpack_require__(482);
+/******/ 	__webpack_require__(867);
+/******/ 	__webpack_require__(839);
+/******/ 	__webpack_require__(404);
+/******/ 	__webpack_require__(361);
+/******/ 	__webpack_require__(537);
+/******/ 	__webpack_require__(210);
+/******/ 	__webpack_require__(898);
+/******/ 	__webpack_require__(862);
+/******/ 	__webpack_require__(994);
+/******/ 	__webpack_require__(784);
+/******/ 	__webpack_require__(793);
+/******/ 	__webpack_require__(393);
+/******/ 	__webpack_require__(322);
+/******/ 	__webpack_require__(82);
+/******/ 	var __webpack_exports__ = __webpack_require__(870);
 /******/ 	
 /******/ })()
 ;

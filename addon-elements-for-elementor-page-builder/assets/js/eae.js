@@ -3810,7 +3810,9 @@ var popupInstance = [];
       if(swiper_data.direction != 'null' && swiper_data.effect == 'slide'){
         swiper['direction'] = swiper_data.direction
       }
-      if ("undefined" === typeof Swiper) {
+      if (jQuery(swiperContainer) !== null && jQuery(swiperContainer).length === 0){
+			return;
+		}
         const asyncSwiper = elementorFrontend.utils.swiper;       
         new asyncSwiper( jQuery( swiperContainer ), swiper).then((newSwiperInstance) => {
           let mswiper = newSwiperInstance;   
@@ -3823,7 +3825,7 @@ var popupInstance = [];
             });
           }
         });
-      }  
+      
     }
 
     
@@ -3831,6 +3833,11 @@ var popupInstance = [];
     
    
 const EAERadialChart = function($scope){
+  let chartInstance = null;
+  $wid = $scope.data('id');
+  const chatWrapper = document.querySelector('.elementor-element-' + $wid);
+  const pieChart = chatWrapper.querySelector('.eae-radial-chart');
+  const chartSettings = chatWrapper.querySelector('.eae-radial-chart-container').dataset.chart;
   const Chart_Wrapper = $scope.find(".eae-radial-chart-container");
   const pie_chart = $scope.find(".eae-radial-chart");    
   let settings = Chart_Wrapper.data("chart");
@@ -3839,20 +3846,25 @@ const EAERadialChart = function($scope){
       return `${value}%`;
     } 
   }
-  pie_chart.each(function (index,value){      
-    var waypoint =new Waypoint({
-      element:value,
-      handler: function (direction) {
-              if (direction == "down") {
-                if(!value.classList.contains("trigger")){
-                  value.classList.add("trigger");
-                  new Chart(pie_chart, settings);
-                }                
-              } 
-            },
-            offset: "bottom-in-view"
-        }) 
-    })
+
+  const observerOptions = {
+    root: null, // Observe relative to the viewport
+    rootMargin: '0px 0px -300px 0px', // Margin around the root
+  };
+
+  const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const element = entry.target;
+            element.classList.add("trigger");
+            if(chartInstance == null){  
+              chartInstance = new Chart(pie_chart, settings);
+            }
+        }
+    });
+  };
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  observer.observe(pieChart);
 }
 
 const EAECouponCode = function($scope){

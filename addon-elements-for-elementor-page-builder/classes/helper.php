@@ -1747,6 +1747,7 @@ class Helper {
 				],
 			],
 			'post_type'      => 'elementor_library',
+			'post_status'    => 'publish',
 			'posts_per_page' => -1,
 		];
 		$query = new \WP_Query( $args );
@@ -1772,6 +1773,7 @@ class Helper {
 			'post_type'      => 'ae_global_templates',
 			'meta_key'       => 'ae_render_mode',
 			'meta_value'     => 'block_layout',
+			'post_status'    => 'publish',
 			'posts_per_page' => -1,
 			'post__not_in'   => $ae_id,
 		];

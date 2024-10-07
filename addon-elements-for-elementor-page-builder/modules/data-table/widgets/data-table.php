@@ -2988,15 +2988,19 @@ class DataTable extends EAE_Widget_Base {
 
 			<?php
 			/* Render template */ if ( $data['body_text_type'] === 'template' ) :
-
+				$template = 0;
 				if ( $data['eae_template_type'] === 'saved_section' && ! empty( $data['table_saved_sections'] ) ) :
-					echo Plugin::$instance->frontend->get_builder_content( intval( $data['table_saved_sections'] ), true );
+					$template = $data['table_saved_sections'];
 				endif;
 				if ( $data['eae_template_type'] === 'saved_page' && ! empty( $data['table_saved_pages'] ) ) :
-					echo Plugin::$instance->frontend->get_builder_content( intval( $data['table_saved_pages'] ), true );
+					$template = $data['table_saved_pages'];
 				endif;
 				if ( $data['eae_template_type'] === 'ae_template' && ! empty( $data['table_ae_templates'] ) ) :
-					echo Plugin::$instance->frontend->get_builder_content( intval( $data['table_ae_templates'] ), true );
+					$template = $data['table_ae_templates'];
+				endif;
+				
+				if( get_post_status( intval( $template ) ) === 'publish' ) :
+					echo Plugin::$instance->frontend->get_builder_content( intval( $template ), true );
 				endif;
 
 			endif;

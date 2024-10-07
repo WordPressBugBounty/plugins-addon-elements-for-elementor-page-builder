@@ -1412,7 +1412,9 @@ class FilterableGallery extends EAE_Widget_Base {
 						if ( ! empty( $images ) ) {
 							$filter_label = Helper::eae_wp_kses( $filter_group['eae_filter_label']);
 							$filter_name  = strtolower( Helper::eae_wp_kses($filter_group['eae_filter_label']) );
-							$filter_name  = str_replace( ' ', '-', $filter_name );
+							$filter_name  = str_replace( ' ', '-', $filter_name ); // Replaces all spaces with hyphens.
+							$filter_name  = preg_replace('/[^A-Za-z0-9\-]/', '', $filter_name); // Removes special chars. 
+							$filter_name  = preg_replace('/-+/', '-', $filter_name); // Replaces multiple hyphens with single one.
 							$this->add_render_attribute( 'filter-item-' . $filter_group['_id'], 'class', ['eae-filter-label' ] );
 							$this->add_render_attribute( 'filter-item-' . $filter_group['_id'], 'href', '#' );
 							$this->add_render_attribute( 'filter-item-' . $filter_group['_id'], 'data-filter-name', $filter_name );
@@ -1431,7 +1433,9 @@ class FilterableGallery extends EAE_Widget_Base {
 						$images = $demo_images;
 					}
 					$filter_name = strtolower( $filter_group['eae_filter_label'] );
-					$filter_name = str_replace( ' ', '-', $filter_name );
+					$filter_name = str_replace( ' ', '-', $filter_name ); // Replaces all spaces with hyphens.
+					$filter_name = preg_replace('/[^A-Za-z0-9\-]/', '', $filter_name); // Removes special chars. 
+					$filter_name = preg_replace('/-+/', '-', $filter_name); // Replaces multiple hyphens with single one.
 					$this->add_render_attribute( 'gallery-item-' . $filter_group['_id'], 'class', 'eae-gallery-item' );
 					$this->add_render_attribute( 'gallery-item-' . $filter_group['_id'], 'class', $filter_name );
 					if ( $settings['hover_tilt'] === 'yes' ) {

@@ -450,7 +450,7 @@ class Plugin {
 		wp_register_script( 'pinit', '//assets.pinterest.com/js/pinit.js', [], '1.0', true );
 
 		wp_register_script( 'eae-stickyanything', EAE_URL . 'assets/js/stickyanything.js', [ 'jquery' ], '1.1.2', true );
-
+		
 		$localize_data = [
 			'plugin_url' => EAE_URL,
 		];

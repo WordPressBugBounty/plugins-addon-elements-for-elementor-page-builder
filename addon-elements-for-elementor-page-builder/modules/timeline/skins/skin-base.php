@@ -1346,18 +1346,22 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			// if ( $item['item_link']['nofollow'] ) {
 			// 	$this->parent->add_render_attribute( $item['_id'] . '-link-attributes', 'rel', 'nofollow' );
 			// }
-
 			?>
 
 			<?php
+			$image_align = '';
 			if ( $settings['_skin'] === 'skin2' ) {
-				if ( $item['image_align'] !== '' ) {
-					$image_align = $item['image_align'];
-				} else {
-					$image_align = 'row';
+				if(isset($item['image_align'])){
+					if ( $item['image_align'] !== '' ) {
+						$image_align = $item['image_align'];
+					} else {
+						$image_align = 'row';
+					}
 				}
 			} else {
-				$image_align = $item['image_align'];
+				if(isset($item['image_align'])){
+					$image_align = $item['image_align'];
+				}
 			}
 			?>
 			<div id="<?php echo esc_attr($item['_id']); ?>" class="eae-timeline-item elementor-repeater-item-<?php echo esc_attr($item['_id']); ?> custom-image-style-<?php echo esc_attr($item['tl_custom_image_style']); ?> image-position-<?php echo esc_attr($image_align); ?>">

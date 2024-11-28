@@ -3,8 +3,8 @@ Contributors: wpvibes, hardiksharma, satishprajapati, webtechpooja, priyanshii5,
 Tags: elementor, addons, elements, elementor addon, elementor widget, page-builder, WordPress page builder, elementor extensions, elementor page builder
 Requires at least: 5.0
 Requires PHP: 7.0
-Tested up to: 6.6
-Stable tag: 1.13.9
+Tested up to: 6.7
+Stable tag: 1.13.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,13 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 8. Elementor addon widgets section
 
 == Changelog ==
+
+= 1.13.10 =
+* Enhancement : Added Support for Loop in Modal Popup
+* Fixed : Issue with icons in Timeline Widget
+* Fixed : Elementor 3.25 compatibility added
+* Fixed : Minor code structure enhancements
+
 = 1.13.9 =
 * Fixed : Carousel issue resolved in Content Ticker
 * Fixed : Issue when filters has special character in Filterable Gallery

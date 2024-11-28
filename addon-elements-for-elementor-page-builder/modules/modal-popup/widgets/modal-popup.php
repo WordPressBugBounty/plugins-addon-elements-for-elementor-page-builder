@@ -176,6 +176,17 @@ class ModalPopup extends EAE_Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'support_loop',
+			[
+				'label' 	=> __( 'Support Loop', 'wts_eae' ),
+				'type'		=> Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Yes', 'wts-eae' ),
+				'label_off'    => __( 'No', 'wts-eae' ),
+				'return_value' => 'yes',
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -1047,7 +1058,7 @@ class ModalPopup extends EAE_Widget_Base {
 	protected function render() {
 		$settings  = $this->get_settings_for_display();
 		$data      = $this->get_data();
-		$id        = wp_rand( 10, 2147483647 );
+		$id        = 'eae-pupup-item-' . wp_rand( 10, 2147483647 );
 		$close_btn = $settings['btn_in_out'] === 'yes' ? 'true' : 'false';
 		$icon_migrated           = isset( $settings['__fa4_migrated']['button_icon_new'] );
 		$icon_is_new             = empty( $settings['button_icon'] );
@@ -1072,7 +1083,13 @@ class ModalPopup extends EAE_Widget_Base {
 		$this->add_render_attribute( 'eae-popup-wrapper', 'data-close-button-type', $close_button_type );
 		$this->add_render_attribute( 'eae-popup-wrapper', 'data-close-btn', $close_button );
 		$this->add_render_attribute( 'eae-popup-wrapper', 'data-close-in-out', $close_btn );
-		$this->add_render_attribute( 'eae-popup-wrapper', 'data-effect', $effect );		
+		$this->add_render_attribute( 'eae-popup-wrapper', 'data-effect', $effect );	
+		if($settings['support_loop'] == 'yes' ){
+			global $post;
+			global $wp_query;
+			$old_queried_object = $wp_query->queried_object;
+			$wp_query->queried_object = $post;
+		}
 		?>
 		<div <?php echo $this->get_render_attribute_string('eae-popup-wrapper');?>>
 			<a class="eae-popup-link icon-position-<?php echo esc_attr($settings['icon_position']); ?>"
@@ -1185,5 +1202,8 @@ class ModalPopup extends EAE_Widget_Base {
 			</div>
 		</div>
 		<?php
+		if($settings['support_loop'] == 'yes' ){
+			$wp_query->queried_object = $old_queried_object;
+		}
 	}
 }

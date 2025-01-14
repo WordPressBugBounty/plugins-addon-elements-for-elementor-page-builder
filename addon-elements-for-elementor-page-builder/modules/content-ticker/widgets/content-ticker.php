@@ -35,6 +35,10 @@ class ContentTicker extends EAE_Widget_Base{
 		return [ 'wts-eae' ];
 	}
 
+	public function get_style_depends() {
+		return [ 'swiper' ];
+	}
+
     protected function register_controls() {
 
     // For controls 

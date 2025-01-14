@@ -2,6 +2,7 @@
 
 namespace WTS_EAE\Modules\ThumbGallery\Widgets;
 
+use DynamicOOOS\Stripe\FundingInstructions;
 use WTS_EAE\Base\EAE_Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -37,6 +38,11 @@ class ThumbGallery extends EAE_Widget_Base {
 
 	public function get_categories() {
 		return [ 'wts-eae' ];
+	}
+
+	public function get_style_depends()
+	{
+		return [ 'swiper' ];
 	}
 
 	public function get_keywords() {

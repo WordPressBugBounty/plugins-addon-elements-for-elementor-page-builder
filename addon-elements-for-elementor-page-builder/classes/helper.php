@@ -1682,6 +1682,17 @@ class Helper {
 				'pro' => true,
 			],
 
+			'dropbar' => [
+				'name' => 'Dropbar',
+				'enabled' => true,
+				'type' => 'widget',
+			],
+
+			'random-image' => [
+				'name' => 'Random Image',
+				'enabled' => true,
+				'type' => 'widget',
+			],
 			
 		];
 

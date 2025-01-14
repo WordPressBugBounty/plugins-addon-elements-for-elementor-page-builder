@@ -3878,7 +3878,6 @@ const EAECouponCode = function($scope){
 
 var ModuleHandler = elementorModules.frontend.handlers.Base,
             CouponCodeHandler;
-
             CouponCodeHandler = ModuleHandler.extend({
                 getDefaultSettings: function getDefaultSettings() {
                     return {
@@ -4266,6 +4265,194 @@ var ModuleHandler = elementorModules.frontend.handlers.Base,
 
             });
 
+
+    var ModuleHandler = elementorModules.frontend.handlers.Base,
+    DropbarHandler;
+    DropbarHandler = ModuleHandler.extend({
+            getDefaultSettings: function getDefaultSettings() {
+                return {
+                    settings: this.getElementSettings(),
+                };
+            },
+            getDefaultElements: function getDefaultElements(){
+                
+                const eId = this.$element.data('id');
+                const element = document.querySelector('.elementor-element-' + eId);
+                const wrapper = element.querySelector('.eae-dropbar-wrapper');
+                return {
+                    eid: eId,
+                    element: element,
+                    wrapper: wrapper,
+                }
+            },
+            onInit: function onInit(){
+              const { settings } = this.getDefaultSettings();
+              const { wrapper } = this.getDefaultElements();
+              const { element } = this.getDefaultElements();
+              const contentWrapper = wrapper.querySelector(".eae-drop-content");
+
+              if (settings.content_mode === 'hover') {
+                let animationTimeout;
+            
+                wrapper.addEventListener('mouseenter', () => {
+                  clearTimeout(animationTimeout);
+                  animationTimeout = setTimeout(() => {
+                    wrapper.classList.add('eae-active');
+                  }, settings.show_delay.size);
+                  wrapper.classList.add('eae-animation');
+                });
+            
+                wrapper.addEventListener('mouseleave', () => {
+                  if (!settings.caption_animation_out) {
+                      wrapper.classList.remove('eae-animation');
+                  }
+                    animationTimeout = setTimeout(() => {
+                        wrapper.classList.remove('eae-active');
+                    }, settings.hide_delay.size);
+                  });
+              }
+              
+              
+              if (settings.content_mode === 'click') {
+                    wrapper.addEventListener('click', () => {
+                    wrapper.classList.toggle('eae-active');
+                    if (wrapper.classList.contains('eae-active')) {
+                      wrapper.classList.add('eae-animation');
+                    }else{
+                      if (!settings.caption_animation_out) {
+                        wrapper.classList.remove('eae-animation');
+                      }
+                    }
+                });
+              }
+
+              function setPosition(element, position, animationType) {
+                const parentRect = element.parentElement.getBoundingClientRect();
+                const elemRect = element.getBoundingClientRect();
+                const wrapper = element.parentElement;
+                const screenWidth = window.innerWidth;
+            
+                const positionCalculations = {
+                    "bottom-left": () => ({ top: settings.off_set.size ? `${wrapper.offsetHeight + settings.off_set.size}` : "unset", left: 0 }),
+                    "bottom-center": () => ({ top: settings.off_set.size ? `${wrapper.offsetHeight + settings.off_set.size}` : "unset", left: (parentRect.width - elemRect.width) / 2 }),
+                    "bottom-right": () => ({ top: settings.off_set.size ? `${wrapper.offsetHeight + settings.off_set.size}` : "unset", left: parentRect.width - elemRect.width }),
+                    "top-left": () => ({ top: - (elemRect.height + settings.off_set.size), left: 0 }),
+                    "top-center": () => ({ top: - (elemRect.height + settings.off_set.size), left: (parentRect.width - elemRect.width) / 2 }),
+                    "top-right": () => ({ top: - (elemRect.height + settings.off_set.size), left: parentRect.width - elemRect.width }),
+                    "left-top": () => ({ top: 0, left: - (elemRect.width + settings.off_set.size) }),
+                    "left-center": () => ({ top: (parentRect.height - elemRect.height) / 2, left: - (elemRect.width + settings.off_set.size) }),
+                    "left-bottom": () => ({ top: parentRect.height - elemRect.height, left: - (elemRect.width + settings.off_set.size) }),
+                    "right-top": () => ({ top: 0, left: parentRect.width + settings.off_set.size }),
+                    "right-center": () => ({ top: (parentRect.height - elemRect.height) / 2, left: parentRect.width + settings.off_set.size }),
+                    "right-bottom": () => ({ top: parentRect.height - elemRect.height, left: parentRect.width + settings.off_set.size }),
+                };
+            
+                if (!positionCalculations[position]) {
+                    console.error("Invalid position provided");
+                    return;
+                }
+            
+                let { top, left } = positionCalculations[position]();
+            
+                top = typeof top === "string" ? parseFloat(top) : top;
+                left = typeof left === "string" ? parseFloat(left) : left;
+            
+                const elementWidth = elemRect.width;
+                const wrapperLeft = parentRect.left + left;
+                const wrapperRight = wrapperLeft + elementWidth;
+            
+                if (wrapperLeft < 0) {
+                    left = -parentRect.left;
+                } else if (wrapperRight > screenWidth) {
+                    left -= wrapperRight - screenWidth; 
+                }
+            
+                element.style.top = `${top}px`;
+                element.style.left = `${left}px`;
+            
+                const animationStyles = {
+                    "slide-left": () => {
+                        element.style.clipPath = "inset(0 100% 0 0)";
+                    },
+                    "slide-top": () => {
+                        element.style.clipPath = "inset(0 0 100% 0)";
+                    },
+                    "slide-bottom": () => {
+                        element.style.clipPath = "inset(100% 0 0 0)";
+                    },
+                    "slide-right": () => {
+                        element.style.clipPath = "inset(0 0 0 100%)";
+                    },
+                    "animation-fade": () => {
+                        element.style.opacity = "0";
+                    },
+                };
+            
+                if (animationStyles[animationType]) {
+                    animationStyles[animationType]();
+                } else {
+                    console.error("Invalid animation type provided");
+                    return;
+                }
+            
+                if (wrapper) {
+                    const toggleAnimation = (isActive) => {
+                        const animationToggles = {
+                            "slide-left": () => (element.style.clipPath = isActive ? "inset(0 0 0 0)" : "inset(0 100% 0 0)"),
+                            "slide-top": () => (element.style.clipPath = isActive ? "inset(0 0 0 0)" : "inset(0 0 100% 0)"),
+                            "slide-bottom": () => (element.style.clipPath = isActive ? "inset(0 0 0 0)" : "inset(100% 0 0 0)"),
+                            "slide-right": () => (element.style.clipPath = isActive ? "inset(0 0 0 0)" : "inset(0 0 0 100%)"),
+                            "animation-fade": () => (element.style.opacity = isActive ? "1" : "0"),
+                        };
+                        if (animationToggles[animationType]) {
+                            animationToggles[animationType]();
+                        }
+                    };
+                    let isAnimationActive = false;
+            
+                    let removeClassTimeout;
+            
+                    if (settings.content_mode === "hover") {
+                        wrapper.addEventListener("mouseenter", () => {
+                            clearTimeout(removeClassTimeout);
+                            toggleAnimation(true);
+                        });
+            
+                        wrapper.addEventListener("mouseleave", () => {
+                            removeClassTimeout = setTimeout(() => {
+                                toggleAnimation(false);
+                            }, settings.hide_delay.size);
+                        });
+                    } else {
+                        wrapper.addEventListener("click", () => {
+                            isAnimationActive = !isAnimationActive;
+                            toggleAnimation(isAnimationActive);
+                        });
+                    }
+                }
+            }
+              
+              setPosition(contentWrapper, settings.content_position, settings.content_animation);
+
+              var isLottiePanle = wrapper.querySelector('.eae-lottie-animation');
+
+              if (isLottiePanle != null) {
+                let lottie_data = JSON.parse(isLottiePanle.getAttribute('data-lottie-settings'));
+                let eae_animation = lottie.loadAnimation({
+                  container: isLottiePanle,
+                  path: lottie_data.url,
+                  renderer: "svg",
+                  loop: lottie_data.loop,
+                });
+          
+                if (lottie_data.reverse == true) {
+                  eae_animation.setDirection(-1);
+                }
+              }
+
+            },
+        });
+
     elementorFrontend.hooks.addAction(
       "frontend/element_ready/wts-ab-image.default",
       ab_image
@@ -4434,6 +4621,14 @@ var ModuleHandler = elementorModules.frontend.handlers.Base,
           $element: $scope
         });
   });
+
+    elementorFrontend.hooks.addAction('frontend/element_ready/eae-dropbar.default', function ($scope) {	
+      elementorFrontend.elementsHandler.addHandler(DropbarHandler, {
+          $element: $scope
+        });
+  });
     
   });
 })(jQuery);
+
+

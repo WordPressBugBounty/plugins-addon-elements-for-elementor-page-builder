@@ -452,6 +452,7 @@ class ImageCompare extends EAE_Widget_Base {
 		$attr = [ 'data-skip-lazy' => true ];
 
 		?>
+		<div class="eae-ab-image-container">
 		<figure <?php echo $this->get_render_attribute_string( 'wrapper' ); ?> >
 				<?php
 					echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'before_image_size', 'before_image' );
@@ -486,6 +487,7 @@ class ImageCompare extends EAE_Widget_Base {
 			<?php } ?>
 			</div>
 		</figure>
+		</div>
 		<?php
 	}
 

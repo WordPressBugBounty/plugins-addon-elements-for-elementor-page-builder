@@ -1,10 +1,10 @@
 === Elementor Addon Elements ===
-Contributors: wpvibes, hardiksharma, satishprajapati, webtechpooja, priyanshii5, jogendra12
+Contributors: wpvibes, hardiksharma, webtechpooja, priyanshii5, jogendra12
 Tags: elementor, addons, elements, elementor addon, elementor widget, page-builder, WordPress page builder, elementor extensions, elementor page builder
 Requires at least: 5.0
 Requires PHP: 7.0
 Tested up to: 6.7
-Stable tag: 1.13.10
+Stable tag: 1.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,13 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 8. Elementor addon widgets section
 
 == Changelog ==
+
+= 1.14
+* New Widget: Random Image
+* New Widget: Dropbar
+* Fixed : Deprecated Elementor CSS classes removed.
+* Fixed : Wordpress 6.7 compatibility added
+* Fixed : Compatibility with the latest Elementor Release
 
 = 1.13.10 =
 * Enhancement : Added Support for Loop in Modal Popup

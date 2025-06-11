@@ -131,10 +131,11 @@ class RandomImage extends EAE_Widget_Base {
 				'label' => esc_html__( 'Default Caption', 'wts-eae' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
+					'none' => __('None', 'wts-eae'),
                     'caption' => __('Caption', 'wts-eae'),
 					'description' => __('Description', 'wts-eae'),
 				],
-				'default' => 'caption',
+				'default' => 'none',
 			]
 		);
 
@@ -148,7 +149,7 @@ class RandomImage extends EAE_Widget_Base {
 					'column-reverse' => __('Bottom', 'wts-eae'),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .eae-random-image-content' => 'flex-direction: {{VALUE}}',						
+					'{{WRAPPER}} .eae-random-image-wrapper' => 'flex-direction: {{VALUE}}',						
 				],
 				'default' => 'column',
 			]
@@ -220,13 +221,10 @@ class RandomImage extends EAE_Widget_Base {
 						'step'=>1,
                     ],
                 ],
-				'default' => [
-                    'unit' => 'px',
-                    'size' => 500,
-                ],
-                'selectors' => [
-                  '{{WRAPPER}} .eae-random-image-wrapper img'  => 'width: {{SIZE}}{{UNIT}};',
-                ],
+               'selectors' => [
+					'{{WRAPPER}} .eae-random-image-wrapper:not(:has(.wts-eae-clickable)) img' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-random-image-wrapper .wts-eae-clickable' => 'width: {{SIZE}}{{UNIT}};',
+				],
             ]
         );
 
@@ -278,7 +276,8 @@ class RandomImage extends EAE_Widget_Base {
 					'image_dimension' => 'custom',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .eae-random-image-wrapper img' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-random-image-wrapper:not(:has(.wts-eae-clickable)) img' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-random-image-wrapper .wts-eae-clickable' => 'max-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -411,6 +410,7 @@ class RandomImage extends EAE_Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .eae-random-image-wrapper img' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .eae-random-image-wrapper .wts-eae-clickable img' => 'opacity: {{SIZE}};',
 				],
 			]
 		);
@@ -419,7 +419,7 @@ class RandomImage extends EAE_Widget_Base {
 			Group_Control_Css_Filter::get_type(),
 			[
 				'name' => 'css_filters',
-				'selector' => '{{WRAPPER}} .eae-random-image-wrapper img',
+				'selector' => '{{WRAPPER}} .eae-random-image-wrapper .wts-eae-clickable img , {{WRAPPER}} .eae-random-image-wrapper img ',
 			]
 		);
 
@@ -444,7 +444,9 @@ class RandomImage extends EAE_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .eae-random-image-wrapper:hover img' => 'opacity: {{SIZE}};',
+					// '{{WRAPPER}} .eae-random-image-wrapper:hover img' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .eae-random-image-wrapper img:hover' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .eae-random-image-wrapper .wts-eae-clickable:hover img' => 'opacity: {{SIZE}};',
 				],
 			]
 		);
@@ -453,7 +455,7 @@ class RandomImage extends EAE_Widget_Base {
 			Group_Control_Css_Filter::get_type(),
 			[
 				'name' => 'css_filters_hover',
-				'selector' => '{{WRAPPER}} .eae-random-image-wrapper:hover img',
+				'selector' => '{{WRAPPER}} .eae-random-image-wrapper .wts-eae-clickable:hover img , {{WRAPPER}} .eae-random-image-wrapper img:hover ',
 			]
 		);
 
@@ -553,7 +555,7 @@ class RandomImage extends EAE_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .eae-random-image-caption' => 'justify-content: {{VALUE}}',															
+					'{{WRAPPER}} .eae-random-image-caption' => 'align-self: {{VALUE}}',															
 				],
 			]
 		);
@@ -603,6 +605,27 @@ class RandomImage extends EAE_Widget_Base {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'selector' => '{{WRAPPER}} .eae-random-image-caption',
+			]
+		);
+
+		$this->add_responsive_control(
+            'border_radius_content',
+            [
+                'label' => esc_html__( 'Border Radius', 'wts-eae' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'selectors' => [
+                    '{{WRAPPER}} .eae-random-image-caption' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+              
+            ]
+        );
+
 		$this->add_responsive_control(
 			'caption_space',
 			[
@@ -623,10 +646,22 @@ class RandomImage extends EAE_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .eae-random-image-content' => 'gap: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-random-image-wrapper' => 'gap: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
+
+		$this->add_responsive_control(
+            'padding_caption',
+            [
+                'label' => esc_html__( 'Padding', 'wts-eae' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+                'selectors' => [
+                    '{{WRAPPER}} .eae-random-image-caption' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
 		$this->end_controls_section();
     }
 
@@ -648,8 +683,8 @@ class RandomImage extends EAE_Widget_Base {
 		if (!empty($settings['images_repeater'])) {
 			$random_key = array_rand($settings['images_repeater']);
 			$random_item = $settings['images_repeater'][$random_key];
-
-			if ($random_item['custom_caption'] == "") {
+			$random_item['hover_animation'] =  $settings['hover_animation'] != "" ? $settings['hover_animation'] : "";
+			if ($random_item['custom_caption'] == "" && $settings['default_caption'] != 'none') {
 				$image_post = get_post($random_item['image']['id']);
 				if ($image_post) {
 					if ($settings['default_caption'] == 'caption') {
@@ -666,32 +701,30 @@ class RandomImage extends EAE_Widget_Base {
 			if ($random_item['custom_link']['url'] != '' || $settings['enable_lightbox'] != "") {
 				$link = $this->get_link($random_item);
 				if ($link) {
-					$this->add_link_attributes('link_random', $link);
-
 					$this->add_render_attribute('link_random', [
 						'class' => 'wts-eae-clickable',
 					]);
-
-					if ($random_item['custom_link'] != '' && $settings['enable_lightbox'] == "yes") {
+					if ($random_item['custom_link']['url'] == '' && $settings['enable_lightbox'] == "yes") {
+						$this->add_link_attributes('link_random', $link);
 						$this->add_lightbox_data_attributes("link_random", $random_item['image']['id']);
+					}else{
+						$this->add_link_attributes('link_random', $random_item['custom_link']);
 					}
 				}
 			}
+			
 			?>
 			<div class="eae-random-image-wrapper">
-				<div class="eae-random-image-content">
-					<?php if(!empty($caption)) {?>
+				<?php if(!empty($caption)) {?>
 					<div class="eae-random-image-caption"><?php echo esc_html($caption); ?></div>
-					<?php } if ($link) { ?>
+					<?php }
+						if ($link) { ?>
 						<a <?php $this->print_render_attribute_string("link_random"); ?>>
-					<?php } ?>
-					<img class="eae-random-image elementor-animation-<?php echo esc_attr($settings['hover_animation']); ?>" 
-						src="<?php echo esc_url($random_item["image"]["url"]); ?>" 
-						alt="">
-					<?php if ($link) { ?>
-						</a>
-					<?php } ?>
-				</div>
+					<?php } 
+						echo Group_Control_Image_Size::get_attachment_image_html( $random_item, 'image' );
+					if ($link) { ?>
+					</a>
+				<?php } ?>
 			</div>
 			<?php
 		}

@@ -116,21 +116,21 @@ class Module {
 		$settings = $element->get_settings();
 
 		if ( $settings['eae_animated_gradient_enable'] === 'yes' ) {
-			if(isset($settings['gradient_background_angle'])){
+			$angle = -45;
+			if(isset($settings['gradient_background_angle']['size'])){
 				$angle = $settings['gradient_background_angle']['size'];
-				$element->add_render_attribute( '_wrapper', 'data-angle', $settings['gradient_background_angle']['size'] . 'deg' );
-				$gradient_color_list = $settings['gradient_color_list'];
-				$color =[];
-				foreach ( $gradient_color_list as $gradient_color ) {
-					if(!empty($gradient_color['eae_animated_gradient_color'])){
-						$color[] = $gradient_color['eae_animated_gradient_color'];
-					}
-					
-				};
-				$colors = implode( ',', $color );
-				$element->add_render_attribute( '_wrapper', 'data-color', $colors );
-
 			}
+			$element->add_render_attribute( '_wrapper', 'data-angle', $angle . 'deg' );
+			$gradient_color_list = $settings['gradient_color_list'];
+			$color =[];
+			foreach ( $gradient_color_list as $gradient_color ) {
+				if(!empty($gradient_color['eae_animated_gradient_color'])){
+					$color[] = $gradient_color['eae_animated_gradient_color'];
+				}
+				
+			};
+			$colors = implode( ',', $color );
+			$element->add_render_attribute( '_wrapper', 'data-color', $colors );
 		}
 	}
 

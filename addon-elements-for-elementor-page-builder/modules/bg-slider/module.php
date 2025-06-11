@@ -223,8 +223,9 @@ class Module {
 			return;
 		}
 		$settings = $element->get_settings_for_display();
-
+		$eae_slider = rand( 1, 99999 );
 		$element->add_render_attribute( '_wrapper', 'class', 'has_eae_slider' );
+		$element->add_render_attribute( '_wrapper', 'data-eae-slider', $eae_slider );
 		$element->add_render_attribute( 'eae-bs-background-slideshow-wrapper', 'class', 'eae-bs-background-slideshow-wrapper' );
 
 		$element->add_render_attribute( 'eae-bs-backgroundslideshow', 'class', 'eae-at-backgroundslideshow' );
@@ -287,7 +288,7 @@ class Module {
 	<script type="text/javascript">
 		
 		jQuery(document).ready(function ($) {
-			var elementSelector = ".elementor-element-<?php echo esc_attr($element_id); ?>";
+			var elementSelector = ".elementor-element-<?php echo esc_attr($element_id); ?>[data-eae-slider=<?php echo $eae_slider; ?>]";
 			var $element = jQuery(elementSelector);
 
 			// Adding the HTML structure

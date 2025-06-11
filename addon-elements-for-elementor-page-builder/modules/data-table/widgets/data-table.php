@@ -3000,7 +3000,9 @@ class DataTable extends EAE_Widget_Base {
 				endif;
 				
 				if( get_post_status( intval( $template ) ) === 'publish' ) :
-					echo Plugin::$instance->frontend->get_builder_content( intval( $template ), true );
+					if( Helper::check_template($template) !== '' ) :
+						echo Plugin::$instance->frontend->get_builder_content( intval( $template ), true );
+					endif;
 				endif;
 
 			endif;

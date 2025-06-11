@@ -141,10 +141,15 @@ jQuery(window).on("elementor/frontend/init", function () {
       var eae_overlay;
       var eae_cover;
       var eae_delay;
-      var eae_timer;
-      var slider_wrapper = $scope
+	  var eae_timer;
+	  var wid = $scope.data("id");
+	  var eae_slider_id = $scope.data("eae-slider");
+      /* var slider_wrapper = $scope.data("eae-slider")
         .children(".eae-section-bs")
-        .children(".eae-section-bs-inner");
+		  .children(".eae-section-bs-inner"); */
+	  var slider_wrapper = jQuery(".elementor-element-" + wid + "[data-eae-slider='" + eae_slider_id + "']")
+			.children('.aepro-section-bs')
+			.children('.aepro-section-bs-inner');
 
       if (slider_wrapper && slider_wrapper.data("eae-bg-slider")) {
         slider_images = slider_wrapper.data("eae-bg-slider");
@@ -561,148 +566,125 @@ var popupInstance = [];
 	// 	});
 	// }
 
-    var EaePopup = function ($scope, $) {
-      // To assign event
-      const eaePopupLoaded = new Event("eaePopupLoaded");
-      $preview_modal = $scope.find(".eae-popup-wrapper").data("preview-modal");
-      var effect = $scope.find(".eae-popup-wrapper").data("effect");
-      $close_btn_type = $scope
-        .find(".eae-popup-wrapper")
-        .data("close-button-type");
-		$close_btn =  $scope.find(".eae-popup-wrapper").data("close-btn");
-      if ($close_btn_type == "icon") {
-        $close_btn_html = '<i class="eae-close ' + $close_btn + '"> </i>';
-      } else {
-        $close_btn_html =
-          '<svg class="eae-close" style="-webkit-mask: url(' +
-          $close_btn +
-          "); mask: url(" +
-          $close_btn +
-          '); "></svg>';
-      }
+  var EaePopup = function ($scope, $) {
     
-		var eae_popup = $scope.find('.eae-popup-container');
-		var eae_popup_id = eae_popup.attr('id');
-		if (typeof popupInstance[eae_popup_id] === 'undefined' || popupInstance[eae_popup_id] === null) {
-			popupInstance[eae_popup_id] = eae_popup.find('.eae-popup-content').html();
-			eae_popup.find('.eae-popup-content').html('');
-		}
-		
-		var popup_link = $scope.find(".eae-popup-wrapper .eae-popup-link");
-		popup_link.on('click', function () {
-		  
-			eae_popup_id = jQuery(this).data('id');
-			eae_popup_arr = jQuery('.eae-popup-container.eae-popup-' + eae_popup_id); //Its working
-			eae_popup_arr.each(function (index, element) {
-			jQuery(element).find('.eae-popup-content').html(popupInstance[eae_popup_id]);
-		});
-		//eae_popup.find('.eae-popup-content').html(popupInstance[eae_popup_id]);
+    // Trigger event - seems like this is not used anywhere
+    const eaePopupLoaded = new Event("eaePopupLoaded");
+  
+    // Popup wrapper and attributes
+    const $popupWrapper = $scope.find(".eae-popup-wrapper");
+    const previewModal  = $popupWrapper.data("preview-modal");
+    const effect        = $popupWrapper.data("effect");
+    const closeBtnType  = $popupWrapper.data("close-button-type");
+    const closeBtn      = $popupWrapper.data("close-btn");
+  
+    // Close button HTML
+    const closeBtnHTML = closeBtnType === "icon"
+      ? `<i class="eae-close ${closeBtn}"> </i>`
+      : `<svg class="eae-close" style="-webkit-mask: url(${closeBtn}); mask: url(${closeBtn});"></svg>`;
+  
+    // Popup container setup
+    const $popupContainer = $scope.find('.eae-popup-container');
+    let popupId = $popupContainer.attr('id');
+  
+    // Store original popup content if not already stored
+    if (!popupInstance[popupId]) {
+      popupInstance[popupId] = $popupContainer.find('.eae-popup-content').clone(true);
+      $popupContainer.find('.eae-popup-content').empty();
+    }
+  
+    // Popup link click handler
+    const $popupLink = $scope.find(".eae-popup-wrapper .eae-popup-link");
+  
+    $popupLink.on('click', function () {
+      popupId = $(this).data('id');
+      const $popupArr = $('.eae-popup-container.eae-popup-' + popupId);
+  
+      $popupArr.each(function () {
+        $(this).find('.eae-popup-content').replaceWith(popupInstance[popupId].clone(true));
       });
+    });
   
-        $magnific = $scope.find(".eae-popup-link").eaePopup({
-          type: "inline",
+    // Initialize magnific popup
+    $scope.find(".eae-popup-link").eaePopup({
+      type: "inline",
+      disableOn: 0,
+      key: null,
+      midClick: false,
+      preloader: true,
+      focus: "",
+      closeOnContentClick: false,
+      closeOnBgClick: true,
+      closeBtnInside: $popupWrapper.data("close-in-out"),
+      showCloseBtn: true,
+      enableEscapeKey: true,
+      modal: false,
+      alignTop: false,
+      removalDelay: 200,
+      prependTo: null,
+      fixedContentPos: true,
+      fixedBgPos: "auto",
+      overflowY: "auto",
+      closeMarkup: closeBtnHTML,
+      tClose: "Close (Esc)",
+      tLoading: "Loading...",
+      autoFocusLast: true,
   
-          disableOn: 0,
+      mainClass: `eae-popup eae-popup-${$popupLink.data("id")} eae-wrap-${$popupLink.data("ctrl-id")}`,
   
-          key: null,
-  
-          midClick: false,
-  
-          mainClass:
-            "eae-popup eae-popup-" +
-            $scope.find(".eae-popup-link").data("id") +
-            " eae-wrap-" +
-            $scope.find(".eae-popup-link").data("ctrl-id"),
-  
-          preloader: true,
-  
-          focus: "", // CSS selector of input to focus after popup is opened
-  
-          closeOnContentClick: false,
-  
-          closeOnBgClick: true,
-  
-          closeBtnInside: $scope.find(".eae-popup-wrapper").data("close-in-out"),
-  
-          showCloseBtn: true,
-  
-          enableEscapeKey: true,
-  
-          modal: false,
-  
-          alignTop: false,
-  
-          removalDelay: 200,
-  
-          prependTo: null,
-  
-          fixedContentPos: true,
-  
-          fixedBgPos: "auto",
-  
-          overflowY: "auto",
-  
-          closeMarkup: $close_btn_html,
-  
-          tClose: "Close (Esc)",
-  
-          tLoading: "Loading...",
-  
-          autoFocusLast: true,
-  
-        callbacks: {
+      callbacks: {
         beforeOpen: function () {
-          if (effect != '') {
-            this.st.mainClass = "eae-popup eae-popup-" +
-              $scope.find(".eae-popup-link").data("id") +
-              " eae-wrap-" + $scope.find(".eae-popup-link").data("ctrl-id") + " mfp-" + effect;
+          if (effect) {
+            this.st.mainClass = `eae-popup eae-popup-${$popupLink.data("id")} eae-wrap-${$popupLink.data("ctrl-id")} mfp-${effect}`;
           }
-  
         },
         open: function () {
-          var id = $scope.find(".eae-popup-link").data("id");
-          var wrapper = jQuery('.eae-popup-' + id + '.eae-popup-container .eae-modal-content');
-			eae_element_reinitialize(wrapper);
-			var cf7 = wrapper.find('.wpcf7-form');
-			//console.log(cf7);
-			if (cf7.length > 0) {
-				cf7.each(function (index, element) {
-					wpcf7.init(element);
-				});
-			}
-        },
-        
-        afterClose: function () {
-          var eae_popup = $scope.find('.eae-popup-container');
-          eae_popup.find('.eae-popup-content').html('');
-        },
-            },
-        });
+          const id = $popupLink.data("id");
+          const $wrapper = $(`.eae-popup-${id}.eae-popup-container .eae-modal-content`);
   
-        if ($preview_modal == "yes") {
-          if ($scope.hasClass("elementor-element-edit-mode")) {
-            $scope.find(".eae-popup-link").click();
+          eae_element_reinitialize($wrapper);
+  
+          const cf7Forms = $wrapper.find('.wpcf7-form');
+          if (cf7Forms.length > 0) {
+            cf7Forms.each(function (_, form) {
+              wpcf7.init(form);
+            });
           }
-        }
-      };
-      
-      var eae_element_reinitialize = function (wrapper) {
-        wrapper.find('.e-con').each(function(){
-          elementorFrontend.elementsHandler.runReadyTrigger(jQuery(this));
-        });
+
+          // trigger forminator load event 
+          $wrapper.trigger('after.load.forminator');
+        },
+        afterClose: function () {
+          const $popup = $scope.find('.eae-popup-container');
+          $popup.find('.eae-popup-content').empty();
+        },
+      },
+    });
   
-        wrapper.find('.elementor-section').each(function(){
-          elementorFrontend.elementsHandler.runReadyTrigger(jQuery(this));
-        });
+    // Auto-open in preview mode
+    if (previewModal === "yes" && $scope.hasClass("elementor-element-edit-mode")) {
+      $popupLink.click();
+    }
+  };
   
-        wrapper.find('.elementor-column').each(function(){
-          elementorFrontend.elementsHandler.runReadyTrigger(jQuery(this));
-        });
-        
-        wrapper.find('.elementor-widget').each(function(){
-          elementorFrontend.elementsHandler.runReadyTrigger(jQuery(this));
-        });
-      }
+  var eae_element_reinitialize = function (wrapper) {
+    wrapper.find('.e-con').each(function(){
+      elementorFrontend.elementsHandler.runReadyTrigger(jQuery(this));
+    });
+
+    wrapper.find('.elementor-section').each(function(){
+      elementorFrontend.elementsHandler.runReadyTrigger(jQuery(this));
+    });
+
+    wrapper.find('.elementor-column').each(function(){
+      elementorFrontend.elementsHandler.runReadyTrigger(jQuery(this));
+    });
+    
+    wrapper.find('.elementor-widget').each(function(){
+      elementorFrontend.elementsHandler.runReadyTrigger(jQuery(this));
+    });
+  }
+
 
     var EAETestimonial = function ($scope, $) {
       if ($scope.find(".eae-grid-wrapper").hasClass("eae-masonry-yes")) {
@@ -4296,19 +4278,23 @@ var ModuleHandler = elementorModules.frontend.handlers.Base,
             
                 wrapper.addEventListener('mouseenter', () => {
                   clearTimeout(animationTimeout);
-                  animationTimeout = setTimeout(() => {
-                    wrapper.classList.add('eae-active');
-                  }, settings.show_delay.size);
                   wrapper.classList.add('eae-animation');
+                  animationTimeout = setTimeout(() => {
+                      wrapper.classList.add('eae-active');
+                  }, settings.show_delay.size);
                 });
             
                 wrapper.addEventListener('mouseleave', () => {
                   if (!settings.caption_animation_out) {
                       wrapper.classList.remove('eae-animation');
                   }
-                    animationTimeout = setTimeout(() => {
+                    if (settings.hide_delay.size) {
+                        animationTimeout = setTimeout(() => {
+                            wrapper.classList.remove('eae-active');
+                        }, settings.hide_delay.size);
+                    } else {
                         wrapper.classList.remove('eae-active');
-                    }, settings.hide_delay.size);
+                    }
                   });
               }
               
@@ -4415,7 +4401,9 @@ var ModuleHandler = elementorModules.frontend.handlers.Base,
                     if (settings.content_mode === "hover") {
                         wrapper.addEventListener("mouseenter", () => {
                             clearTimeout(removeClassTimeout);
-                            toggleAnimation(true);
+                            animationTimeout = setTimeout(() => {
+                              toggleAnimation(true);
+                          }, settings.show_delay.size);
                         });
             
                         wrapper.addEventListener("mouseleave", () => {

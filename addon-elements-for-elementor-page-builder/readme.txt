@@ -1,10 +1,10 @@
 === Elementor Addon Elements ===
-Contributors: wpvibes, hardiksharma, webtechpooja, priyanshii5, jogendra12
+Contributors: wpvibes, hardiksharma, tejwanihemant, webtechpooja, priyanshii5
 Tags: elementor, addons, elements, elementor addon, elementor widget, page-builder, WordPress page builder, elementor extensions, elementor page builder
 Requires at least: 5.0
 Requires PHP: 7.0
-Tested up to: 6.7
-Stable tag: 1.14
+Tested up to: 6.8
+Stable tag: 1.14.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 8. Elementor addon widgets section
 
 == Changelog ==
+
+= 1.14.1
+* Fixed : Issue with multiple Background Sliders load on same page.
+* Fixed : Modal Popup compatibility with Forminator form Captcha.
+* Fixed : Minor code structure enhancements
 
 = 1.14
 * New Widget: Random Image

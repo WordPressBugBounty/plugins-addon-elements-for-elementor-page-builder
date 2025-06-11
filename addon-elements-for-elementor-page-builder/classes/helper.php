@@ -1682,6 +1682,20 @@ class Helper {
 				'pro' => true,
 			],
 
+			'blob-shape' => [
+				'name' => 'Blob Shape',
+        'enabled' => true,
+				'type' => 'widget',
+				'pro' => true,
+			],
+
+			'text-scroll' => [
+				'name' => 'Text Scroll',
+				'enabled' => true,
+				'type' => 'widget',
+				'pro' => true,
+			],
+
 			'dropbar' => [
 				'name' => 'Dropbar',
 				'enabled' => true,
@@ -1800,6 +1814,20 @@ class Helper {
 		}
 
 		return $items;
+	}
+
+	public static function check_template($template_id){
+		$post = get_posts(
+			[
+				'post_type' => get_post_type($template_id),
+				'post__in' => [$template_id] 
+			]
+		);
+
+		if(!$post){
+			return '';
+		}
+		return $template_id;
 	}
 
 	public static function validate_html_tag( $tag, $allowed_tags = [], $fallback = 'div' ) {
@@ -2425,12 +2453,21 @@ class Helper {
 
 	public static function global_icon_style_controls($widget, $args){
 		
-		$wrapper_selector = '{{WRAPPER}} ' .$args['selector'];
-		$hover_wrapper_selector = '{{WRAPPER}} ' .$args['selector'];
+		$wrapper_selector = '{{WRAPPER}} ';
+		if(isset($args['selector_wrapper']) && $args['selector_wrapper'] != ''){
+			$wrapper_selector = $args['selector_wrapper'];
+		}
+		$wrapper_selector = $wrapper_selector .' '. $args['selector'];
+
+		$hover_wrapper_selector = '{{WRAPPER}} ';
+		if( (isset($args['is_parent_hover']) && $args['is_parent_hover'] == true) && (isset($args['hover_wrapper']) && $args['hover_wrapper'] != '' ) ){		
+			$hover_wrapper_selector = $args['hover_wrapper'];
+		}
+
 		$hover = ':hover';
 		if(isset($args['is_parent_hover']) && $args['is_parent_hover'] == true){			
 			$hover = '';
-			$hover_wrapper_selector = '{{WRAPPER}} ' .$args['hover_selector'];
+			$hover_wrapper_selector = $hover_wrapper_selector .'  '.$args['hover_selector'];
 		}
 
 		$condition = [];
@@ -2439,7 +2476,6 @@ class Helper {
 				$condition[$cond['key']] = $cond['value'];# code...
 			}
 			//echo '<pre>';  print_r($condition); echo '</pre>';
-			
 		}
 		
 		if(!isset($args['show_hover_controls'])){
@@ -2539,7 +2575,7 @@ class Helper {
 				'selectors' => [
 					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-stacked'.$hover => 'background-color: {{VALUE}};',
 					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.', '.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-default'.$hover => 'color: {{VALUE}}; border-color: {{VALUE}};',
-					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.','.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-defult'.$hover.' svg' => 'fill: {{VALUE}};',
+					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.','.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-default'.$hover.' svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);

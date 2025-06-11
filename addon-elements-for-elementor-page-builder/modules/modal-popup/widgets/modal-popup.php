@@ -121,7 +121,7 @@ class ModalPopup extends EAE_Widget_Base {
 		);
 
 		$saved_sections[''] = __( 'Select Section', 'wts-eae' );
-		$saved_sections     = $saved_sections + $this->select_elementor_page( 'section' );
+		$saved_sections     = $saved_sections + Helper::select_elementor_page( 'section' );
 		$this->add_control(
 			'saved_sections',
 			[
@@ -135,7 +135,7 @@ class ModalPopup extends EAE_Widget_Base {
 		);
 
 		$saved_container[''] = __('Select Container','wts-eae');
-		$saved_container     = $saved_container + $this->select_elementor_page( 'container' );
+		$saved_container     = $saved_container + Helper::select_elementor_page( 'container' );
 		$this->add_control(
 			'saved_container',
 			[
@@ -149,7 +149,7 @@ class ModalPopup extends EAE_Widget_Base {
 		);
 
 		$saved_pages[''] = __( 'Select Page', 'wts-eae' );
-		$saved_pages     = $saved_pages + $this->select_elementor_page( 'page' );
+		$saved_pages     = $saved_pages + Helper::select_elementor_page( 'page' );
 		$this->add_control(
 			'saved_pages',
 			[
@@ -163,7 +163,7 @@ class ModalPopup extends EAE_Widget_Base {
 		);
 
 		$saved_ae_template[''] = __( 'Select AE Template', 'wts-eae' );
-		$saved_ae_template     = $saved_ae_template + $this->select_ae_templates();
+		$saved_ae_template     = $saved_ae_template + Helper::select_ae_templates();
 		$this->add_control(
 			'saved_ae_template',
 			[
@@ -1001,60 +1001,6 @@ class ModalPopup extends EAE_Widget_Base {
 		$this->end_controls_section();
 	}
 
-	public function select_elementor_page( $type ) {
-		$args  = [
-			'tax_query'      => [
-				[
-					'taxonomy' => 'elementor_library_type',
-					'field'    => 'slug',
-					'terms'    => $type,
-				],
-			],
-			'post_type'      => 'elementor_library',
-			'posts_per_page' => -1,
-		];
-		$query = new \WP_Query( $args );
-
-		$posts = $query->posts;
-
-		foreach ( $posts as $post ) {
-			$items[ $post->ID ] = $post->post_title;
-		}
-
-		if ( empty( $items ) ) {
-			$items = [];
-		}
-
-		return $items;
-	}
-
-	private function select_ae_templates() {
-		$ae_id = [];
-		if ( wp_verify_nonce( isset( $_GET['post'] ) ) ) {
-			$ae_id = wp_verify_nonce( [ $_GET['post'] ] );
-		}
-		$args  = [
-			'post_type'      => 'ae_global_templates',
-			'meta_key'       => 'ae_render_mode',
-			'meta_value'     => 'block_layout',
-			'posts_per_page' => -1,
-			'post__not_in'   => $ae_id,
-		];
-		$query = new \WP_Query( $args );
-
-		$posts = $query->posts;
-
-		foreach ( $posts as $post ) {
-			$items[ $post->ID ] = $post->post_title;
-		}
-
-		if ( empty( $items ) ) {
-			$items = [];
-		}
-
-		return $items;
-	}
-
 	protected function render() {
 		$settings  = $this->get_settings_for_display();
 		$data      = $this->get_data();
@@ -1083,12 +1029,15 @@ class ModalPopup extends EAE_Widget_Base {
 		$this->add_render_attribute( 'eae-popup-wrapper', 'data-close-button-type', $close_button_type );
 		$this->add_render_attribute( 'eae-popup-wrapper', 'data-close-btn', $close_button );
 		$this->add_render_attribute( 'eae-popup-wrapper', 'data-close-in-out', $close_btn );
-		$this->add_render_attribute( 'eae-popup-wrapper', 'data-effect', $effect );	
+		$this->add_render_attribute( 'eae-popup-wrapper', 'data-effect', $effect );
+
+		$post_id = 0;
 		if($settings['support_loop'] == 'yes' ){
 			global $post;
 			global $wp_query;
 			$old_queried_object = $wp_query->queried_object;
 			$wp_query->queried_object = $post;
+			$post_id = $post->ID;
 		}
 		?>
 		<div <?php echo $this->get_render_attribute_string('eae-popup-wrapper');?>>
@@ -1137,6 +1086,7 @@ class ModalPopup extends EAE_Widget_Base {
 		</div>
 
 		<div id="<?php echo esc_attr($id); ?>" class="eae-popup-<?php echo esc_attr($id); ?> mfp-hide eae-popup-container">
+			<input class="eae-hidden-post-id" type="hidden" name="eae_hidden_post_id" data-id="<?php echo $id; ?>" value="<?php echo $post_id ?>" />
 			<div class="eae-popup-content">
 				<?php
 				if ( $settings['content_type'] === 'content' ) {
@@ -1159,7 +1109,7 @@ class ModalPopup extends EAE_Widget_Base {
 						</div>
 					<?php } ?>
 					<div class="eae-modal-content">
-						<?php if($this->check_template($settings['saved_sections']) !== ''){
+						<?php if(Helper::check_template($settings['saved_sections']) !== ''){
 							echo EPlugin::instance()->frontend->get_builder_content_for_display( $settings['saved_sections'] );
 						} ?>
 					</div>
@@ -1172,7 +1122,7 @@ class ModalPopup extends EAE_Widget_Base {
 						</div>
 					<?php } ?>
 					<div class="eae-modal-content">
-						<?php if($this->check_template($settings['saved_pages']) !== ''){
+						<?php if(Helper::check_template($settings['saved_pages']) !== ''){
 							echo EPlugin::instance()->frontend->get_builder_content_for_display( $settings['saved_pages'] );
 						} ?> 
 					</div>
@@ -1185,7 +1135,7 @@ class ModalPopup extends EAE_Widget_Base {
 						</div>
 					<?php } ?>
 					<div class="eae-modal-content">
-						<?php if($this->check_template($settings['saved_ae_template']) !== ''){
+						<?php if(Helper::check_template($settings['saved_ae_template']) !== ''){
 							echo EPlugin::instance()->frontend->get_builder_content_for_display( $settings['saved_ae_template'] );
 						} ?>
 					</div>
@@ -1198,7 +1148,7 @@ class ModalPopup extends EAE_Widget_Base {
 						</div>
 					<?php } ?>
 					<div class="eae-modal-content">
-						<?php if($this->check_template($settings['saved_container']) !== ''){
+						<?php if(Helper::check_template($settings['saved_container']) !== ''){
 							echo EPlugin::instance()->frontend->get_builder_content_for_display( $settings['saved_container'] );
 						} ?>
 					</div>

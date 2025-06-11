@@ -169,6 +169,8 @@ class Dropbar extends EAE_Widget_Base {
 				'options' => [
 					'row' =>  esc_html__( 'Before', 'wts-eae' ),
 					'row-reverse' =>  esc_html__( 'After', 'wts-eae' ),
+					'column' =>  esc_html__( 'Top', 'wts-eae' ),
+					'column-reverse' =>  esc_html__( 'Bottom', 'wts-eae' ),
 				],
 				'default' => 'row',
                 'selectors' => [
@@ -385,6 +387,25 @@ class Dropbar extends EAE_Widget_Base {
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
+            $this->add_responsive_control(
+                'button_width',
+                [
+                    'label' => esc_html__( 'Width', 'wts-eae' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' =>  ['px','%'],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1000,
+                            'step'=>1,
+                        ],
+                    ],
+                'selectors' => [
+                        '{{WRAPPER}} .eae-dropbar-wrapper' => 'width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
 
             $this->add_group_control(
                 Group_Control_Typography::get_type(),
@@ -627,6 +648,21 @@ class Dropbar extends EAE_Widget_Base {
             ]
         );
 
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'content_typography',
+                    'selector' => '{{WRAPPER}} .eae-drop-content',
+                    'global' => [
+                        'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                    ],
+                    'condition' => [
+					    'content_type' => 'plain_content',
+				    ],
+                ]
+            );
+
+
             $this->add_control(
                 'content_color',
                 [
@@ -650,6 +686,45 @@ class Dropbar extends EAE_Widget_Base {
                             'default' => 'classic',
                         ],
                     ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'text_alignment',
+                [
+                    'label' => esc_html__( 'Text Align', 'wts-eae' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'toggle' => false,
+                    'default' => 'center',
+                    'options' => [
+                        'start' => [
+                            'title' => esc_html__( 'Left', 'wts-eae' ),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => esc_html__( 'Center', 'wts-eae' ),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'end' => [
+                            'title' => esc_html__( 'Right', 'wts-eae' ),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .eae-drop-content' => 'text-align: {{VALUE}}',															
+                    ],
+                    'condition' => [
+					    'content_type' => 'plain_content',
+				    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
+                [
+                    'name' => 'content_border',
+                    'selector' => '{{WRAPPER}} .eae-drop-content',
+                    'separator' => 'before',
                 ]
             );
 
@@ -693,9 +768,11 @@ class Dropbar extends EAE_Widget_Base {
         $settings = $this->get_settings_for_display();
 
         $this->add_render_attribute('wrapper', 'class', 'eae-drop-content eae-position-'.$settings['content_position'].' eae-animation-'.$settings['content_animation']);
+        $this->add_render_attribute('container', 'class', 'eae-dropbar-wrapper elementor-animation-' . $settings['hover_animation']);
 
        ?>
-       <div class="eae-dropbar-wrapper">
+       <div  <?php $this->print_render_attribute_string('container');  ?>> 
+
         <span class="eae-dropbar-text">
             <?php
              Helper::render_icon_html($settings, $this,'icon','eae-dropbar-icon-', 'test');
@@ -737,12 +814,16 @@ class Dropbar extends EAE_Widget_Base {
 
     }
 
-	public function get_builder_content($template_id, $settings) {
-		if (empty($settings[$template_id])) {
-			error_log("Missing setting: $template_id");
+	public function get_builder_content($content_type, $settings) {
+		if (empty($settings[$content_type])) {
+			error_log("Missing setting: $content_type");
 			return '';
 		}
-		return EPlugin::instance()->frontend->get_builder_content_for_display($settings[$template_id]);
+		$template_id = $settings[$content_type];
+		if( Helper::check_template($template_id) !== ''){
+			return EPlugin::instance()->frontend->get_builder_content_for_display($template_id);
+		}
+		return '';
 	}
 
 }

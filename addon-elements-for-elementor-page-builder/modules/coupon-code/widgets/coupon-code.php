@@ -224,6 +224,8 @@ class CouponCode extends EAE_Widget_Base {
 			]
 		);
 
+      
+
         $this->add_control(
 			'preview_modal',
 			[
@@ -1048,7 +1050,7 @@ class CouponCode extends EAE_Widget_Base {
             $this,
             [
                 'name' => 'icon_trig',
-                'selector' => '.eae-cc-icon',
+                'selector' => '.eae-coupon-popup-link .eae-cc-icon',
                 'is_repeater' => false,
                 'hover_selector'      => '.eae-cc-icon:hover',
                 'is_repeater'   => false, 
@@ -1429,6 +1431,19 @@ class CouponCode extends EAE_Widget_Base {
         );
 
         $this->add_responsive_control(
+			'stn_cd_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+                    '{{WRAPPER}} .eae-coupon-wrapper .eae-code, {{WRAPPER}} .eae-cc-{{ID}} .eae-code' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',                    
+
+				],
+			]
+		);
+
+        $this->add_responsive_control(
             'gap',
             [
                 'label' => esc_html__( 'Gap', 'wts-eae' ),
@@ -1668,7 +1683,27 @@ class CouponCode extends EAE_Widget_Base {
         Helper::global_icon_style_controls(
             $this,
             [
-                'name' => 'icon_stan',
+                'name' => 'icon_stan_pop',
+                'selector' => '.eae-cc-icon',
+                'selector_wrapper' => '.eae-cc-{{ID}}',
+                'is_repeater' => false,
+                'hover_selector'      => '.eae-cc-icon:hover',
+                'hover_wrapper' => '.eae-cc-{{ID}}',
+                'is_repeater'   => false, 
+                'is_parent_hover' => true,
+                'conditions' => [
+                    [
+                        'key' => 'sta_layout',
+                        'value' => 'pop',
+                    ]
+                ]
+            ]
+        );
+
+        Helper::global_icon_style_controls(
+            $this,
+            [
+                'name' => 'icon_stan_click',
                 'selector' => '.eae-cc-icon',
                 'is_repeater' => false,
                 'hover_selector'      => '.eae-cc-icon:hover',
@@ -1676,11 +1711,10 @@ class CouponCode extends EAE_Widget_Base {
                 'is_parent_hover' => true,
                 'conditions' => [
                     [
-                        'key' => 'coupon_type',
-                        'value' => 'standard',
+                        'key' => 'sta_layout',
+                        'value' => 'click',
                     ]
                 ]
-                
             ]
         );
 
@@ -1698,9 +1732,10 @@ class CouponCode extends EAE_Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eae-cc-button' => 'gap: {{SIZE}}{{UNIT}};',
+                    '.eae-cc-{{ID}} .eae-cc-button' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
                 'condition'=>[
-                    'sta_layout'=>'click',
+                    'coupon_type'=>'standard',
                 ]   
             ]
         );
@@ -1771,7 +1806,6 @@ class CouponCode extends EAE_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-                
 				'exclude' => [
 					'box_shadow_position',
 				],
@@ -1788,6 +1822,21 @@ class CouponCode extends EAE_Widget_Base {
                 'selector' => '{{WRAPPER}} .eae-coupon-slide, {{WRAPPER}} .eae-scratch-container',
             ]
         );
+
+        $this->add_responsive_control(
+			'image_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .eae-scratch-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+                'condition'=>[
+                    'coupon_type'=>'scratch',
+                ]
+			]
+		);
 
         $this->add_responsive_control(
 			'alignment_position',
@@ -1849,6 +1898,37 @@ class CouponCode extends EAE_Widget_Base {
 		);
 
         $this->add_responsive_control(
+			'text_alignment',
+			[
+				'label' => esc_html__( 'Text Align', 'wts-eae' ),
+				'type' => Controls_Manager::CHOOSE,
+				'toggle' => false,
+				'default' => 'center',
+				'options' => [
+					'start' => [
+						'title' => esc_html__( 'Left', 'wts-eae' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'wts-eae' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'end' => [
+						'title' => esc_html__( 'Right', 'wts-eae' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-scratch-title' => 'text-align: {{VALUE}}',															
+					'{{WRAPPER}} .eae-scratch-des' => 'text-align: {{VALUE}}',															
+				],
+                'condition'=>[
+                    'coupon_type'=>'slide',
+                ]
+			]
+		);
+
+        $this->add_responsive_control(
                 'text_padding_back',
                 [
                     'label' => esc_html__( 'Padding', 'wts-eae' ),
@@ -1862,6 +1942,34 @@ class CouponCode extends EAE_Widget_Base {
                     ]
                 ]
             );
+
+        $this->add_responsive_control(
+            'front_content_space',
+            [
+                'label' => esc_html__( 'Gap', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'max' => 200,
+                    ],
+                    'em' => [
+                        'min' => 0,
+                        'max' => 10,
+                    ],
+                    'rem' => [
+                        'min' => 0,
+                        'max' => 10,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eae-slide-fr' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+                'condition'=>[
+                    'coupon_type'=>'slide',
+                ]
+            ]
+        );
 		
         $this->add_control(
             'heading_overlay',
@@ -2077,7 +2185,7 @@ class CouponCode extends EAE_Widget_Base {
                 'label' => esc_html__( 'Border Radius', 'wts-eae' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'separator' => 'after',
+               
                 'selectors' => [
                     '{{WRAPPER}} .eae-coupon-back' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '{{WRAPPER}} .eae-back-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -2097,8 +2205,38 @@ class CouponCode extends EAE_Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+			'back_text_alignment',
+			[
+				'label' => esc_html__( 'Text Align', 'wts-eae' ),
+				'type' => Controls_Manager::CHOOSE,
+				'toggle' => false,
+				'default' => 'center',
+                'separator' => 'after',
+				'options' => [
+					'start' => [
+						'title' => esc_html__( 'Left', 'wts-eae' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'wts-eae' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'end' => [
+						'title' => esc_html__( 'Right', 'wts-eae' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-back-title' => 'text-align: {{VALUE}}',															
+					'{{WRAPPER}} .eae-back-des' => 'text-align: {{VALUE}}',															
+				],
+                'condition'=>[
+                    'coupon_type!'=>'standard',
+                ]
+			]
+		);
 
-        
         $this->add_control(
             'back_title_heading',
             [
@@ -2346,6 +2484,25 @@ class CouponCode extends EAE_Widget_Base {
             [
                 'label' => esc_html__( 'Expire Date', 'wts-eae' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'expire_gap',
+            [
+                'label' => esc_html__( 'Gap', 'wts-eae' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .wts-eae-coupon-code-wrapper' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+                
             ]
         );
 

@@ -121,25 +121,33 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 										if ( empty( $item['saved_section'] ) ) {
 											return;
 										}
-										echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_section'] );
+										if(Helper::check_template($item['saved_section']) !== ''){
+											echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_section'] );
+										}
 										break;
 									case 'saved_page':
 										if ( empty( $item['saved_pages'] ) ) {
 											return;
 										}
-										echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_pages'] );
+										if(Helper::check_template($item['saved_pages']) !== ''){
+											echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_pages'] );
+										}
 										break;
 									case 'ae_template':
 										if ( empty( $item['ae_templates'] ) ) {
 											return;
 										}
-										echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['ae_templates'] );
+										if(Helper::check_template($item['ae_templates']) !== ''){
+											echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['ae_templates'] );
+										}
 										break;
 									case 'saved_container':
 										if ( empty( $item['saved_container'] ) ) {
 											return;
 										}
-										echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_container'] );
+										if(Helper::check_template($item['saved_container']) !== ''){
+											echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_container'] );
+										}
 										break;
 								}		
 								?>

@@ -10,6 +10,19 @@
     transition: all 0.3s;
 }
 
+.eae-ytf-refresh-cache-btn button{
+    display: inline-block;
+    line-height: 1;
+    background-color: #69727D;
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
 .elementor-button.go-pro.dialog-button.dialog-action.dialog-buttons-action.eae-pro-hide{
     display: none;
 }

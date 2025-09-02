@@ -581,8 +581,8 @@ var popupInstance = [];
     // Close button HTML
     const closeBtnHTML = closeBtnType === "icon"
       ? `<i class="eae-close ${closeBtn}"> </i>`
-      : `<svg class="eae-close" style="-webkit-mask: url(${closeBtn}); mask: url(${closeBtn});"></svg>`;
-  
+      : `<svg class="eae-close" style="-webkit-mask: url(${closeBtn}); mask: url(${closeBtn}); -webkit-mask-size: cover; mask-size: cover; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></svg>`;
+
     // Popup container setup
     const $popupContainer = $scope.find('.eae-popup-container');
     let popupId = $popupContainer.attr('id');
@@ -2831,15 +2831,16 @@ var popupInstance = [];
         ".eae-content-switch-label.secondary-label"
       );
       const secondary_id = $(secondary_label).attr("item_id");
+
       let primary_content_section = wrapper.find(
         ".eae-cs-content-section.eae-content-section-" + primary_id
       );
       let secondary_content_section = wrapper.find(
         ".eae-cs-content-section.eae-content-section-" + secondary_id
       );
-      $(toggle_switch).on("click", function (e) {
-        var checkbox = $(this).find("input.eae-content-toggle-switch");
-        if (checkbox.is(":checked")) {
+
+      function switchMode(toSecondary) {
+        if (toSecondary) {
           secondary_label.addClass("active");
           secondary_content_section.addClass("active");
           primary_label.removeClass("active");
@@ -2850,9 +2851,28 @@ var popupInstance = [];
           secondary_label.removeClass("active");
           secondary_content_section.removeClass("active");
         }
-          window.dispatchEvent(new Event("resize"));
+
+        wrapper.find("input.eae-content-toggle-switch").prop("checked", !!toSecondary);
+        window.dispatchEvent(new Event("resize"));
+      }
+
+      // Toggle click
+      $(toggle_switch).on("click", function (e) {
+        e.preventDefault();
+        const checkbox = $(this).find("input.eae-content-toggle-switch");
+        const nextChecked = !checkbox.is(":checked");
+        switchMode(nextChecked);
       });
 
+      primary_label.on("click", function (e) {
+        e.preventDefault();
+        switchMode(false);
+      });
+
+      secondary_label.on("click", function (e) {
+        e.preventDefault();
+        switchMode(true);
+      });
     };
 
     var FilterableGallery = function ($scope, $) {
@@ -3319,6 +3339,19 @@ var popupInstance = [];
           if (pause_on_hover == 'yes') {
               pause_on_hover_func(sswiper, pause_on_hover, wid , slider_data);
           }
+
+          if (slider_data.loop === 'yes') {
+            const thumbsSwiper = (sswiper && sswiper.thumbs) ? sswiper.thumbs.swiper : null;
+            if (thumbsSwiper && typeof thumbsSwiper.slideToLoop === 'function') {
+              sswiper.on('slideChange', function () {
+                const realIndex = sswiper.realIndex;
+                if(realIndex != thumbsSwiper.realIndex){
+                  thumbsSwiper.slideToLoop(realIndex);
+                }
+              });
+            }
+          }
+
           if (typeof slider_data.autoplay !== "undefined") {
         
             let pause_on_hover = slider_data.pauseOnHover;
@@ -4247,6 +4280,55 @@ var ModuleHandler = elementorModules.frontend.handlers.Base,
 
             });
 
+            var ModuleHandler = elementorModules.frontend.handlers.Base,
+            AnimatedLink;
+            AnimatedLink = ModuleHandler.extend({
+              getDefaultSettings: function getDefaultSettings() {
+                  return {
+                      settings: this.getElementSettings(),
+                  };
+              },
+              getDefaultElements: function getDefaultElements(){
+                  
+                  const eId = this.$element.data('id');
+                  const element = document.querySelector('.elementor-element-' + eId);
+                  const wrapper = element.querySelector('.eae-animated-link-wrapper');
+                  return {
+                      eid: eId,
+                      element: element,
+                      wrapper: wrapper,
+                  }
+              },
+              onInit: function onInit(){
+                  const { settings } = this.getDefaultSettings();
+                  const { wrapper } = this.getDefaultElements();
+                  const { element } = this.getDefaultElements();
+                  
+                  let lottiePanels = element.querySelectorAll('.eae-lottie-animation');
+
+                  lottiePanels.forEach((lottiePanel) => {
+                      let lottieData = JSON.parse(lottiePanel.getAttribute('data-lottie-settings'));
+                      let eaeAnimation = lottie.loadAnimation({
+                          container: lottiePanel,
+                          path: lottieData.url,
+                          renderer: "svg",
+                          loop: lottieData.loop,
+                      });
+
+                      if (lottieData.reverse === true) {
+                          eaeAnimation.setDirection(-1);
+                      }
+                  });
+
+                                  
+              },
+              onElementChange: function onElementChange(propertyName) {                  
+                 
+                      
+              },
+
+          });
+
 
     var ModuleHandler = elementorModules.frontend.handlers.Base,
     DropbarHandler;
@@ -4441,6 +4523,7 @@ var ModuleHandler = elementorModules.frontend.handlers.Base,
             },
         });
 
+
     elementorFrontend.hooks.addAction(
       "frontend/element_ready/wts-ab-image.default",
       ab_image
@@ -4609,6 +4692,12 @@ var ModuleHandler = elementorModules.frontend.handlers.Base,
           $element: $scope
         });
   });
+
+    elementorFrontend.hooks.addAction('frontend/element_ready/eae-animated-link.default', function ($scope) {	
+      elementorFrontend.elementsHandler.addHandler(AnimatedLink, {
+          $element: $scope
+        });
+    });
 
     elementorFrontend.hooks.addAction('frontend/element_ready/eae-dropbar.default', function ($scope) {	
       elementorFrontend.elementsHandler.addHandler(DropbarHandler, {

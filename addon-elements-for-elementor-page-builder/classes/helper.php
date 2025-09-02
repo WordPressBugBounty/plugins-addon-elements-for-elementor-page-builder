@@ -14,18 +14,21 @@ use Elementor\Icons_Manager;
 use Elementor\Utils;
 use Elementor\Plugin as EPlugin;
 use WTS_EAE\Plugin as EAE;
+use WTS_EAE\Pro\Modules\YoutubeFeeds\Widgets\YoutubeFeeds_Helper;
 class Helper {
 
 	public function __construct() {
-		
+
 		add_action( 'wp_ajax_eae_refresh_insta_cache', [ $this, 'ajax_refresh_insta_cache' ] );
 		add_action( 'wp_ajax_nopriv_eae_refresh_insta_cache', [ $this, 'ajax_refresh_insta_cache' ] );
 		add_action( 'wp_ajax_eae_add_to_cart', [ $this, 'ajax_wp_add_to_cart' ] );
 		add_action( 'wp_ajax_nopriv_eae_add_to_cart', [ $this, 'ajax_wp_add_to_cart' ] );
 
+		if ( class_exists( 'WTS_EAE\Pro\Modules\YoutubeFeeds\Widgets\YoutubeFeeds_Helper' ) ) {
+			YoutubeFeeds_Helper::register_ajax_action();
+		}
 	}
 
-	
 	public function ajax_wp_add_to_cart(){
 
 		$nonce = $_POST['eae_nonce'];
@@ -1681,10 +1684,16 @@ class Helper {
 				'type' => 'widget',
 				'pro' => true,
 			],
+      
+			'animated-link' => [
+				'name' => 'Animated Link',
+				'enabled' => true,
+        		'type' => 'widget',
+			],
 
 			'blob-shape' => [
 				'name' => 'Blob Shape',
-        'enabled' => true,
+        		'enabled' => true,
 				'type' => 'widget',
 				'pro' => true,
 			],
@@ -1695,17 +1704,24 @@ class Helper {
 				'type' => 'widget',
 				'pro' => true,
 			],
-
+        
 			'dropbar' => [
 				'name' => 'Dropbar',
 				'enabled' => true,
 				'type' => 'widget',
 			],
-
+        
 			'random-image' => [
 				'name' => 'Random Image',
 				'enabled' => true,
 				'type' => 'widget',
+			],
+
+			'audio-player' => [
+				'name' => 'Audio Player',
+				'enabled' => true,
+				'type' => 'widget',
+				'pro' => true,
 			],
 			
 		];
@@ -1729,6 +1745,12 @@ class Helper {
 		// if ( version_compare( PHP_VERSION, '8.0.0', '>=' ) ) {
 			$modules['add-to-calendar'] = [
 				'name'=> 'Add To Calendar',
+				'enabled'=> true,
+				'type'=> 'widget',
+				'pro'=> true
+			];
+			$modules['youtube-feeds'] = [
+				'name'=> 'YouTube Feeds',
 				'enabled'=> true,
 				'type'=> 'widget',
 				'pro'=> true
@@ -1858,6 +1880,8 @@ class Helper {
 
 	public static function eae_media_controls($widget, $args){
 		// 
+		$label = 'Icon Type';
+
 		$defaults = [
 			'icon'      => true,
 			'image' 	=> true,
@@ -1865,6 +1889,15 @@ class Helper {
 		];
 
 		$args = wp_parse_args( $args, $defaults );
+
+		$label ='Icon Type';
+		if(isset($args['icon_type']) && $args['icon_type'] != ''){
+			$label = $args['icon_type'];
+		}
+
+		if( isset($args['label']) && $args['label'] != ''){
+			$label = $args['label'];
+		}
 
 		$graphic_type['none'] = [
 				'title' => __( 'None', 'wts-eae' ),
@@ -1907,7 +1940,7 @@ class Helper {
 		$widget->add_control(
 			$args['name'] . '_graphic_type',
 			[
-				'label'       => __( 'Icon Type', 'wts-eae' ),
+				'label'       => __( $label, 'wts-eae' ),
 				'label_block' => false,
 				'type'        => Controls_Manager::CHOOSE,
 				'options'     => $graphic_type,
@@ -2211,7 +2244,7 @@ class Helper {
 				'selectors' => [
 					$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-stacked' => 'background-color: {{VALUE}};',
 					$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed, '.$wrapper_selector.'.eae-graphic-view-default' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-					$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed, '.$wrapper_selector.'.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
+					$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed svg, '.$wrapper_selector.'.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
 				],
 				'condition' => [
 					$args['name'].'_popover_toggle' => 'yes'
@@ -2358,7 +2391,7 @@ class Helper {
 				'selectors' => [
 					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-stacked'.$hover => 'background-color: {{VALUE}};',
 					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.', '.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-default'.$hover => 'color: {{VALUE}}; border-color: {{VALUE}};',
-					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.','.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-defult'.$hover.' svg' => 'fill: {{VALUE}};',
+					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.' svg,'.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-default'.$hover.' svg' => 'fill: {{VALUE}};',
 				],
 				'condition' => [
 					$args['name'].'_hover_popover_toggle' => 'yes'
@@ -2421,7 +2454,7 @@ class Helper {
 					'selectors' => [
 						$active_selector .'.eae-gbl-icon.eae-graphic-view-stacked' => 'background-color: {{VALUE}};',
 						$active_selector .'.eae-gbl-icon.eae-graphic-view-framed, '.$active_selector.'.eae-graphic-view-default' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-						$active_selector .'.eae-gbl-icon.eae-graphic-view-framed, '.$active_selector.'.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
+						$active_selector .'.eae-gbl-icon.eae-graphic-view-framed svg, '.$active_selector.'.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
 					],
 					'condition' => [
 						$args['name'].'_active_popover_toggle' => 'yes'
@@ -2509,7 +2542,7 @@ class Helper {
 					'selectors' => [
 						$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-stacked' => 'background-color: {{VALUE}};',
 						$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed, '.$wrapper_selector.'.eae-graphic-view-default' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-						$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed, '.$wrapper_selector.'.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
+						$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed svg, '.$wrapper_selector.'.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
 					],
 					'global' => [
 						'default' => $p_default
@@ -2527,7 +2560,7 @@ class Helper {
 					'selectors' => [
 						$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-stacked' => 'background-color: {{VALUE}};',
 						$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed, '.$wrapper_selector.'.eae-graphic-view-default' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-						$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed, '.$wrapper_selector.'.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
+						$wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed svg, '.$wrapper_selector.'.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
 					],
 					'default' => $p_default,
 					'condition' => $condition
@@ -2575,7 +2608,7 @@ class Helper {
 				'selectors' => [
 					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-stacked'.$hover => 'background-color: {{VALUE}};',
 					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.', '.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-default'.$hover => 'color: {{VALUE}}; border-color: {{VALUE}};',
-					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.','.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-default'.$hover.' svg' => 'fill: {{VALUE}};',
+					$hover_wrapper_selector .'.eae-gbl-icon.eae-graphic-view-framed'.$hover.' svg,'.$hover_wrapper_selector.'.eae-gbl-icon.eae-graphic-view-default'.$hover.' svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);
@@ -2631,7 +2664,7 @@ class Helper {
 					'selectors' => [
 						$active_selector . '.eae-gbl-icon.eae-graphic-view-stacked' => 'background-color: {{VALUE}};',
 						$active_selector . '.eae-gbl-icon.eae-graphic-view-framed, ' . $active_selector . '.eae-gbl-icon.eae-graphic-view-default' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-						$active_selector . '.eae-gbl-icon.eae-graphic-view-framed, ' . $active_selector . '.eae-gbl-icon.eae-graphic-view-defult svg' => 'fill: {{VALUE}};',
+						$active_selector . '.eae-gbl-icon.eae-graphic-view-framed svg, ' . $active_selector . '.eae-gbl-icon.eae-graphic-view-default svg' => 'fill: {{VALUE}};',
 					],
 					'global'    => [
 							'default' => Global_Colors::COLOR_ACCENT,

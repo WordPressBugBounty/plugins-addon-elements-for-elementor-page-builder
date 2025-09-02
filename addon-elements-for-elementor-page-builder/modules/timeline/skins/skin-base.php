@@ -16,6 +16,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
+use Elementor\Icons_Manager;
 
 abstract class Skin_Base extends Elementor_Skin_Base {
 
@@ -172,7 +173,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'timeline_align',
 			[
 				'label'   => __( 'Alignment', 'wts-eae' ),
@@ -191,8 +192,12 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 						'title' => __( 'Right', 'wts-eae' ),
 						'icon'  => 'eicon-h-align-right',
 					],
-					'toggle' => false,
+					'justify' => [
+						'title' => __('Justify','wts-eae'),
+						'icon' => 'eicon-justify-space-evenly-h',
+					]
 				],
+				'toggle' => false,
 			]
 		);
 		$this->add_control(
@@ -226,7 +231,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'horizontal_spacing',
 			[
 				'label'     => __( 'Horizontal Spacing', 'wts-eae' ),
@@ -240,15 +245,17 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'default'   => [
 					'size' => 0,
 				],
+				'render_type' => 'template',
 				'selectors' => [
 					'{{WRAPPER}} .eae-layout-center .eae-tl-icon-wrapper' => 'margin-right: {{SIZE}}{{UNIT}} !important; margin-left: {{SIZE}}{{UNIT}} !important;',
 					'{{WRAPPER}} .eae-layout-left .eae-tl-icon-wrapper'   => 'margin-right: {{SIZE}}{{UNIT}} !important;',
 					'{{WRAPPER}} .eae-layout-right .eae-tl-icon-wrapper'  => 'margin-left: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .eae-layout-justify .eae-tl-icon-wrapper' => 'margin-right: {{SIZE}}{{UNIT}} !important; margin-left: {{SIZE}}{{UNIT}} !important;',
 				],
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'vertical_spacing',
 			[
 				'label'     => __( 'Vertical Spacing', 'wts-eae' ),
@@ -277,7 +284,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'content_align',
 			[
 				'label'     => __( 'Alignment', 'wts-eae' ),
@@ -323,7 +330,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'separator' => 'before',
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'image_align_post',
 			[
 				'label'        => __( 'Alignment', 'wts-eae' ),
@@ -363,7 +370,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'image_width_post',
 			[
 				'label'     => __( 'Size', 'wts-eae' ),
@@ -382,11 +389,13 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 					'{{WRAPPER}}.image-position-column .eae-tl-content' => 'width: 100%',
 					'{{WRAPPER}}.image-position-row .eae-tl-content' => 'width: calc(100% - {{SIZE}}%)',
 					'{{WRAPPER}}.image-position-row-reverse .eae-tl-content' => 'width: calc(100% - {{SIZE}}%)',
+					'{{WRAPPER}}.image-position-row .eae-tl-item-content .eae-tl-content' => 'width: calc(100% - {{SIZE}}% - {{' . $this->get_control_id('image_spacing_post') . '.SIZE}}{{' . $this->get_control_id('image_spacing_post') . '.UNIT}})',
+					'{{WRAPPER}}.image-position-row-reverse .eae-tl-item-content .eae-tl-content' => 'width: calc(100% - {{SIZE}}% - {{' . $this->get_control_id('image_spacing_post') . '.SIZE}}{{' . $this->get_control_id('image_spacing_post') . '.UNIT}})',
 				],
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'image_spacing_post',
 			[
 				'label'     => __( 'Spacing', 'wts-eae' ),
@@ -424,7 +433,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				],
 			]
 		);
-		$this->add_control(
+
+		$this->add_responsive_control(
 			'image_radius_post',
 			[
 				'label'      => __( 'Radius', 'wts-eae' ),
@@ -525,7 +535,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'global'   => [
 					'default' => Global_Typography::TYPOGRAPHY_TEXT,
 				],
-				'selector' => '{{WRAPPER}} .eae-tl-item-content',
+				'selector' => '{{WRAPPER}} .eae-tl-content-innner',
 			]
 		);
 		$this->add_group_control(
@@ -554,6 +564,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 					'{{WRAPPER}} .eae-layout-center.eae-timeline .eae-timeline-item:nth-child(even) .eae-tl-item-content::before' => 'border-color: transparent {{VALUE}} transparent transparent !important;',
 					'{{WRAPPER}} .eae-layout-center.eae-timeline .eae-timeline-item:nth-child(odd) .eae-tl-item-content::before' => 'border-color: transparent transparent transparent {{VALUE}} !important;',
 					'{{WRAPPER}} .eae-layout-right.eae-timeline .eae-tl-item-content::before' => 'border-color: transparent transparent transparent {{VALUE}} !important;',
+					'{{WRAPPER}} .eae-layout-justify.eae-timeline .eae-tl-item-content::before' => 'border-color: transparent {{VALUE}} transparent transparent !important;',
 					'{{WRAPPER}} .eae-layout-left.eae-timeline .eae-tl-item-content::before' => 'border-color: transparent {{VALUE}} transparent transparent !important;',
 					'(mobile){{WRAPPER}} .eae-layout-center.eae-timeline.eae-tl-res-layout-left .eae-timeline-item .eae-tl-item-content::before' => 'border-color: transparent {{VALUE}} transparent transparent !important;',
 					'(tablet){{WRAPPER}} .eae-layout-center.eae-timeline.eae-tl-res-layout-left .eae-timeline-item .eae-tl-item-content::before' => 'border-color: transparent {{VALUE}} transparent transparent !important;',
@@ -564,7 +575,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				],
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'box_radius',
 			[
 				'label'      => __( 'Border Radius', 'wts-eae' ),
@@ -1399,21 +1410,25 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 					?>
 				</div>
 				<div class="eae-tl-content-wrapper">
-					<?php if ( ! empty( $item['item_link']['url'] ) ) { ?>
-						<a <?php echo $this->parent->get_render_attribute_string( $item['_id'] . '-link-attributes' ); ?>>
+						<?php if ( ! empty( $item['item_link']['url'] ) && $item['item_link_type'] == 'wrapper' ) { ?>
+							<a <?php echo $this->parent->get_render_attribute_string( $item['_id'] . '-link-attributes' ); ?>>
 						<?php } ?>
 						<div class="eae-tl-item-content">
 							<?php
-
+							$content_class = [];
 							if ( $item['item_content_image']['id'] !== '' || $item['item_content_image']['id'] === 0 ) {
 								echo "<div class='eae-tl-item-image'>" . Group_Control_Image_Size::get_attachment_image_html( $item, 'item_content_image_size', 'item_content_image' ) . '</div>';
 							} else {
-								if ( $settings['_skin'] === 'skin2' ) {
+								if ( $settings['_skin'] === 'skin2' && !empty($item['item_content_image']['url']) ) {
 									echo "<div class='eae-tl-item-image'><img width='300px' src='" . esc_url($item['item_content_image']['url']) . "'></div>";
+								}else {
+									$content_class[] = 'eae-width-100';
 								}
 							}
+							$content_class[] = 'eae-tl-content';
+							$this->parent->set_render_attribute( 'tl_content', 'class', $content_class );
 							?>
-							<div class="eae-tl-content">
+							<div <?php echo $this->parent->get_render_attribute_string( 'tl_content' ); ?>>
 								<div class="eae-content-inner">
 									<div class="eae-tl-item-meta-wrapper-inner">
 										<?php
@@ -1435,12 +1450,19 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 										Helper::eae_wp_kses( $item['item_title_text'] )
 									);
 									echo '<div class="eae-tl-content-innner">' . wp_kses_post($item['item_content']) . '</div>';
+									
 									?>
 								</div>
 							</div>
+							<?php
+							// Render button for custom data source
+							if ( 'custom' === $settings['data_source'] && $item['item_link_type'] == 'call_to_action' ) {
+								$this->render_timeline_button( $item );
+							}
+							?>
 						</div>
 						<?php
-						if ( ! empty( $item['item_link']['url'] ) ) {
+						if ( ! empty( $item['item_link']['url'] && $item['item_link_type'] == 'wrapper'  ) ) {
 							echo '</a>';
 						}
 						?>
@@ -1513,6 +1535,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 
 	public function render_image( $settings ) {
 		global $post;
+
 		if ( $settings['show_image'] === 'yes' ) {
 			?>
 			<div class="eae-tl-item-image">
@@ -1586,5 +1609,76 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			}
 			echo get_the_date( $format, $post );
 		}
+	}
+
+	/**
+	 * Render timeline button
+	 */
+	public function render_timeline_button( $item ) {
+		if ( empty( $item['custom_button_text'] ) ) {
+			return;
+		}
+
+		$button_tag = 'span';
+		$button_html = '';
+		$button_url = '';
+		$target = '';
+		$nofollow = '';
+
+		$this->parent->set_render_attribute( 'tl-button', 'class', 'eae-tl-button' );
+		if ( ! empty( $item['item_link']['url'] ) ) {
+			$button_tag = 'a';
+			//$this->parent->add_link_attributes( 'tl-button', $item['custom_button_link'] );
+			$button_url = $item['item_link']['url'];
+			if ( ! empty( $item['item_link']['is_external'] ) && 'yes' === $item['item_link']['is_external'] ) {
+				$this->parent->set_render_attribute( 'tl-button', 'target', '_blank' );
+			}
+			if ( ! empty( $item['item_link']['nofollow'] ) && 'yes' === $item['item_link']['nofollow'] ) {
+				$this->parent->set_render_attribute( 'tl-button', 'rel', 'nofollow' );
+			}
+			$this->parent->set_render_attribute( 'tl-button', 'href', esc_url( $button_url ) );
+		}
+
+		$icon_position = isset( $item['custom_button_icon_position'] ) ? $item['custom_button_icon_position'] : 'left';
+		$has_icon = ! empty( $item['custom_button_icon_eae_icon'] ) ? $item['custom_button_icon_eae_icon'] : 'none';
+
+		$button_html = '<div class="eae-tl-button-wrapper">';
+		$button_html .= '<' . $button_tag . ' ' . $this->parent->get_render_attribute_string( 'tl-button' ) . '>';
+
+		if ( $has_icon == 'custom' && 'left' === $icon_position ) {
+			$button_html .= $this->render_timeline_button_icon( $item, 'left' );
+		}
+
+		$button_html .= '<span class="eae-button-text">' . esc_html( $item['custom_button_text'] ) . '</span>';
+
+		if ( $has_icon == 'custom' && 'right' === $icon_position ) {
+			$button_html .= $this->render_timeline_button_icon( $item, 'right' );
+		}
+
+		$button_html .= '</' . $button_tag . '>';
+		$button_html .= '</div>';
+
+		echo $button_html;
+	}
+
+	/**
+	 * Render timeline button icon
+	 */
+	public function render_timeline_button_icon( $item, $position ) {
+		if ( $item['custom_button_icon_eae_icon'] != 'custom' ) {
+			return;
+		}
+		$icon_html = '';
+		$icon_class = 'eae-button-icon eae-icon-' . $position;
+		ob_start();
+		?>
+		<span class="<?php echo $icon_class; ?>">
+		<?php
+		Icons_Manager::render_icon( $item['custom_button_icon_icon_new'], [ 'aria-hidden' => 'true' ] );
+		?>
+		</span>
+		<?php
+		$icon_html = ob_get_clean();
+		return $icon_html;
 	}
 }

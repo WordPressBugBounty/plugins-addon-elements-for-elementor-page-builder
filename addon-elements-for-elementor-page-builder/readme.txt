@@ -1,10 +1,10 @@
 === Elementor Addon Elements ===
-Contributors: wpvibes, hardiksharma, tejwanihemant, webtechpooja, priyanshii5
+Contributors: wpvibes, hardiksharma, satishprajapati, webtechpooja, priyanshii5, jogendra12
 Tags: elementor, addons, elements, elementor addon, elementor widget, page-builder, WordPress page builder, elementor extensions, elementor page builder
 Requires at least: 5.0
 Requires PHP: 7.0
 Tested up to: 6.8
-Stable tag: 1.14.1
+Stable tag: 1.14.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -134,12 +134,20 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= 1.14.1
+= 1.14.2 =
+* Enhancement: Improved Content Switcher Skin 2 and Skin 3 layouts. Added shadow controls, height/width controls for more flexibility, and made labels clickable.
+* Enhancement: Widget control for the content part was added to provide more flexibility in Info Circle.
+* Fix: Issue with Content Switcher Skin 2 layout and alignment. The switcher handle was going outside the switch.
+* Fix: Issue with the Modal Popup close SVG icon not displaying when an SVG was selected.
+* Fix: Issue with the Thumbnail Slider loop. Thumbnails were not behaving correctly when the loop was enabled.
+* Fix: Issue with the Comparison Table when encountering the same class name css rule in some Themes.
+
+= 1.14.1 =
 * Fixed : Issue with multiple Background Sliders load on same page.
 * Fixed : Modal Popup compatibility with Forminator form Captcha.
 * Fixed : Minor code structure enhancements
 
-= 1.14
+= 1.14 =
 * New Widget: Random Image
 * New Widget: Dropbar
 * Fixed : Deprecated Elementor CSS classes removed.

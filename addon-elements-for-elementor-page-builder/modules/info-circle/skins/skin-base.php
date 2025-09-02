@@ -537,6 +537,18 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
+
+		$this->add_responsive_control(
+			'ic_content_width',
+			[
+				'label'      => __( 'Width', 'wts-eae' ),
+				'type'       => Controls_Manager::SLIDER,
+				'selectors'  => [
+					'{{WRAPPER}} .eae-info-circle-item__content-wrap' => 'width: {{SIZE}}%; height: {{SIZE}}%;',
+				],
+			]
+			);
+
 		$this->add_control(
 			'ic_content_mouseenter',
 			[

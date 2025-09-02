@@ -63,6 +63,7 @@ class WPML_Compatibility {
 		$widgets = $this->data_table( $widgets );
 		$widgets = $this->chart( $widgets );
 		$widgets = $this->content_switcher( $widgets ); 
+		$widgets = $this->animated_link( $widgets ); 
 		
 
 		if(Plugin::$is_pro){
@@ -99,6 +100,7 @@ class WPML_Compatibility {
 		require_once EAE_PATH . 'wpml/modules/pro/class-wpml-image-stack.php';
 		require_once EAE_PATH . 'wpml/modules/pro/class-wpml-info-group.php';
 		require_once EAE_PATH . 'wpml/modules/pro/class-wpml-testimonial-slider.php';
+		require_once EAE_PATH . 'wpml/modules/pro/class-wpml-audio-player.php';
 
 			$widgets = $this->advanced_heading( $widgets );
 			$widgets = $this->add_to_calendar( $widgets );
@@ -123,6 +125,7 @@ class WPML_Compatibility {
 			$widgets = $this->testimonial_slider( $widgets );
 			$widgets = $this->google_review( $widgets );
 			$widgets = $this->woo_category( $widgets );
+			$widgets = $this->audio_player( $widgets );
 		}
 		return $widgets;
 	}
@@ -1137,6 +1140,48 @@ class WPML_Compatibility {
 				[
 					'field'       => 'btn_text',
 					'type'        => __( 'Woo Category : Button Text', 'wts-eae' ),
+					'editor_type' => 'LINE',
+				],
+			],
+		];
+		return $widgets;
+	}
+
+	private function audio_player( $widgets ) {
+
+		$widgets['eae-audio-player'] = [
+
+			'conditions'        => [ 'widgetType' => 'eae-audio-player' ],
+			'fields'            => [
+				[
+					'field'       => 'album_title',
+					'type'        => __( 'Audio Player: Album Title', 'wts-eae' ),
+					'editor_type' => 'LINE',
+				],
+				[
+					'field'       => 'album_sub_title',
+					'type'        => __( 'Audio player: Album Sub Title', 'wts-eae' ),
+					'editor_type' => 'LINE',
+				],
+				[
+					'field'       => 'album_list_heading',
+					'type'        => __( 'Audio player: List Heading', 'wts-eae' ),
+					'editor_type' => 'LINE',
+				],
+
+			],
+			'integration-class' => '\WTS_EAE\WPML_EAE_Audio_Player',
+		];
+    return $widgets;
+	}
+
+	private function animated_link( $widgets ){
+		$widgets['eae-animated-link'] = [
+			'conditions' => [ 'widgetType' => 'eae-animated-link' ],
+			'fields'     => [
+				[
+					'field'       => 'title',
+					'type'        => __( 'Animated Link : Text', 'wts-eae' ),
 					'editor_type' => 'LINE',
 				],
 			],

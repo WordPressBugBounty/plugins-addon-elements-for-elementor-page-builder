@@ -492,9 +492,9 @@ class ComparisonTable extends EAE_Widget_Base {
 				[
 					'label'     => __( 'Color', 'wts-eae' ),
 					'type'      => Controls_Manager::COLOR,
-					'global'    => [
+					/* 'global'    => [
 						'default' => Global_Colors::COLOR_PRIMARY,
-					],
+					], */
 					'selectors' => [
 						'{{WRAPPER}} .eae-ct-plan.eae-table-' . $i . ' .eae-ct-price-wrapper .eae-ct-original-price' => 'color: {{VALUE}};',
 					],
@@ -509,9 +509,9 @@ class ComparisonTable extends EAE_Widget_Base {
 				[
 					'label'     => __( 'Line Through Color', 'wts-eae' ),
 					'type'      => Controls_Manager::COLOR,
-					'global'    => [
+					/* 'global'    => [
 						'default' => Global_Colors::COLOR_PRIMARY,
-					],
+					], */
 					'selectors' => [
 						'{{WRAPPER}} .eae-ct-plan.eae-table-' . $i . ' .eae-ct-price-wrapper .eae-ct-original-price' => 'text-decoration-color: {{VALUE}};',
 					],
@@ -1466,8 +1466,11 @@ class ComparisonTable extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
+				'global'    => [
+						'default' => Global_Colors::COLOR_PRIMARY,
+					],
 				'selectors' => [
-					'{{WRAPPER}} .eae-ct-original-price' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eae-ct-plan .eae-ct-price-wrapper .eae-ct-original-price' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1476,6 +1479,9 @@ class ComparisonTable extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Text Decoration Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
+				'global'    => [
+						'default' => Global_Colors::COLOR_PRIMARY,
+					],
 				'selectors' => [
 					'{{WRAPPER}} .eae-ct-original-price' => 'text-decoration-color: {{VALUE}};',
 				],
@@ -2112,7 +2118,7 @@ class ComparisonTable extends EAE_Widget_Base {
 				<tbody>
 					<tr class="eae-ct-header">
 						<?php
-						$class   = 'hide';
+						$class   = 'eae-hide';
 						$cont    = '';
 						$rowspan = '';
 						if ( ! empty( $settings['feature_box_heading'] ) ) {
@@ -2156,9 +2162,10 @@ class ComparisonTable extends EAE_Widget_Base {
 					</tr>
 					<?php
 					echo '<tr>';
-					$cls = 'hide';
+					$cls = 'eae-hide';
+					
 					if ( ! empty( $settings['feature_box_heading'] ) ) {
-						$cls = 'hide eae-ct-hide eae-fbox-heading';
+						$cls .= ' eae-ct-hide eae-fbox-heading';
 					}
 					?>
 					<td class="<?php echo esc_attr($cls); ?>">
@@ -2326,7 +2333,7 @@ class ComparisonTable extends EAE_Widget_Base {
 						<tr class="eae-ct-header">
 							<# 
 							var cont='' ; 
-							view.addRenderAttribute( 'feature_heading' , 'class' , 'hide' ); 
+							view.addRenderAttribute( 'feature_heading' , 'class' , 'eae-hide' ); 
 							view.addRenderAttribute( 'feature_heading' , 'rowspan' , null ); 
 							if (settings['feature_box_heading'] !='' ) { 
 								var cls='eae-fbox-heading' ;
@@ -2370,11 +2377,11 @@ class ComparisonTable extends EAE_Widget_Base {
 						</tr>
 						<tr>
 							<# 
-							var cls='hide' ; 
-							view.addRenderAttribute( 'fet_heading' , 'class' , 'hide' ); 
+							var cls='eae-hide' ; 
+							view.addRenderAttribute( 'fet_heading' , 'class' , 'eae-hide' ); 
 								if (settings['feature_box_heading'] !='' ) { 
-									view.addRenderAttribute( 'fet_heading' , 'class' , ['hide eae-ct-hide eae-fbox-heading'] ); 
-									var cls='hide eae-ct-hide eae-fbox-heading' ; 
+									view.addRenderAttribute( 'fet_heading' , 'class' , ['eae-hide eae-ct-hide eae-fbox-heading'] ); 
+									var cls='eae-hide eae-ct-hide eae-fbox-heading' ; 
 								} 
 							#>
 

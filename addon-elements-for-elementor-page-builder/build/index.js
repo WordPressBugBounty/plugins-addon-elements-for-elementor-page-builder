@@ -2937,6 +2937,431 @@ class SwiperBase{
 
 /***/ }),
 
+/***/ 607:
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(305);
+
+( function ($){
+
+    $(window).on('elementor/frontend/init', function(){
+        var ModuleHandler = elementorModules.frontend.handlers.Base,
+            YouTubeFeeds;
+        YouTubeFeeds = ModuleHandler.extend({
+            getDefaultSettings: function getDefaultSettings(){
+                return {
+                    settings: this.getElementSettings(),
+                }
+            },
+            getDefaultElements: function getDefaultElements(){
+                const eId = this.$element.data('id');
+                // Use native DOM element for scope
+                const scope = this.$element;
+                const element = document.querySelector('.elementor-element-' + eId);
+                const wrapper = element.querySelector('.eae-youtube-feeds');
+
+                return {
+                    eid: eId,
+                    scope: scope,
+                    element: element,
+                    wrapper: wrapper,
+                }
+            },
+            onInit: function onInit(){
+                const that = this;
+                const { eid , scope , element , wrapper } = this.getDefaultElements();
+                const { settings } = this.getDefaultSettings();
+                if(wrapper != null){
+                    // Carousel init
+                    if(wrapper.classList.contains('eae-youtube-carousel')){
+                        
+                        const outer_wrapper = scope.find('.eae-swiper-outer-wrapper');
+                        const swiper_settings = outer_wrapper.data('swiper-settings');
+                        
+                        if(swiper_settings) {
+                            new _base__WEBPACK_IMPORTED_MODULE_0__/* .SwiperBase */ .Y(swiper_settings, eid, scope);
+                        }
+                    }
+                    // Video playback
+                    that.initVideoPlayback(wrapper, scope, settings);
+                    // AJAX loading for Load More & Pagination
+
+                    if(settings.eae_request_mode === 'live'){
+                        that.initAjaxLoading(wrapper, scope, settings);
+                    }else if(settings.eae_request_mode === 'cache'){
+                        that.initCacheLoading(wrapper, scope, settings);
+                    }
+                }
+            },
+            initAjaxLoading: function(wrapper, scope, settings){
+                // Button selectors
+                const that = this;
+                wrapper.addEventListener('click', function(e){
+                    e.preventDefault();
+                    const btn = e.target.closest('.eae-youtube-load-more-btn, .eae-youtube-next-btn, .eae-youtube-prev-btn');
+                    if (!btn || !wrapper.contains(btn)) {
+                        return;
+                    }
+
+                    if(btn.disabled) return;
+
+                    btn.disabled = true;
+                    
+                    wrapper.classList.add('eae-youtube-loading');
+
+                    const cssClass = (settings.eae_youtube_layout === 'playlist') ? '.eae-youtube-playlist-items' : '.eae-youtube-videos-wrapper';
+
+                    const videosWrapper = wrapper.querySelector(cssClass);
+
+
+                    // let pageToken = '';
+                    const pageToken = btn.classList.contains('eae-youtube-prev-btn')
+                        ? btn.dataset.prevPageToken || ''
+                        : btn.dataset.nextPageToken || '';
+
+                    const ajaxData = new FormData();
+                    ajaxData.append('action', 'eae_youtube_ajax_videos');
+                    ajaxData.append('settings', JSON.stringify(settings));
+                    ajaxData.append('next_page_token', pageToken);
+                    ajaxData.append('eae_nonce', eae.nonce);
+                    
+                    fetch(eae.ajaxurl, {
+                        method: 'POST',
+                        body: ajaxData
+                    })
+                    .then(response => response.json())
+                    .then(response => {
+                        
+                        btn.disabled = false;
+                        
+                        if(response.success && response.data.html){
+                            videosWrapper.style.opacity = '0.5';
+                            setTimeout(function(){
+                                if(btn.classList.contains('eae-youtube-load-more-btn') ){
+                                    videosWrapper.insertAdjacentHTML('beforeend', response.data.html);
+                                } else {
+                                    videosWrapper.innerHTML = response.data.html;
+                                }
+
+                                videosWrapper.style.opacity = '1';
+                                
+                                that.initVideoPlayback(wrapper, scope, settings);
+
+                                if(btn.classList.contains('eae-youtube-load-more-btn')){
+                                    that.updateBtn(btn, response.data.next_page_token, 'next-page-token');
+
+                                    const counter = wrapper.querySelector('.eae-youtube-count');
+                                    if(counter){
+                                        const countValue = wrapper.querySelectorAll('.eae-youtube-item').length;
+                                        counter.innerHTML = ( settings.eae_youtube_counter_type == 'range' ) ? '1 - ' + countValue : countValue;
+                                    }
+
+                                    const footer = wrapper.querySelector('.eae-youtube-playlist-footer');
+                                    if(footer && response.data.next_page_token == ''){
+                                        footer.style.display = 'none';
+                                    }
+                                }
+
+                                wrapper.classList.remove('eae-youtube-loading');
+
+                            }, 200);
+
+                            if (btn.classList.contains('eae-youtube-next-btn')){
+                                that.updateBtn(btn, response.data.next_page_token, 'next-page-token');
+
+                                const prevBtn = wrapper.querySelector('.eae-youtube-prev-btn');
+                                if(prevBtn){
+                                    that.updateBtn(prevBtn, response.data.prev_page_token, 'prev-page-token');
+                                    if (settings.eae_request_mode === 'cache') {
+                                        that.prevNextBtnCounterCalc(wrapper, btn);
+                                        that.updatePrevNextCount(wrapper);
+                                    }
+                                }   
+                            }
+
+                            if (btn.classList.contains('eae-youtube-prev-btn')){
+                                that.updateBtn(btn, response.data.prev_page_token, 'prev-page-token');
+
+                                const nextBtn = wrapper.querySelector('.eae-youtube-next-btn');
+                                if(nextBtn){
+                                    that.updateBtn(nextBtn, response.data.next_page_token, 'next-page-token');
+                                    if (settings.eae_request_mode === 'cache') {
+                                        that.prevNextBtnCounterCalc(wrapper, btn);
+                                        that.updatePrevNextCount(wrapper);
+                                    }
+                                }
+                            }
+                        }
+                    })
+                    .catch((err) => {
+                        console.error('YouTube Feeds AJAX failed:', err);
+                    })
+                    .finally(() => {
+                        btn.disabled = false;
+                        wrapper.classList.remove('eae-youtube-loading');
+                        if (videosWrapper) {
+                            videosWrapper.style.opacity = '1';
+                        }
+                    });
+                });
+            },
+            getCount: function getCount(element){
+                return parseInt(element.getAttribute('data-count')) || 0;
+            },
+            updateBtn: function updateBtn(btn, token, tokenKey){
+                if (!btn) return;
+
+                btn.style.display = token ? 'flex' : 'none';
+                btn.setAttribute('data-' + tokenKey, token);
+            },
+            initCacheLoading: function(wrapper, scope, settings){
+                const that = this;
+
+                wrapper.addEventListener('click', function(e){
+                    const target = e.target;
+                    const count = parseInt(settings.eae_video_count) || 6;
+                    const videos = wrapper.querySelectorAll('.eae-youtube-item');
+
+                    if(target.classList.contains('eae-youtube-load-more-btn') ){
+                        
+                        wrapper.classList.add('eae-youtube-loading');
+
+                        let shownCount = that.getCount(target) + count;
+
+                        setTimeout(() => {
+                            videos.forEach((video, index) => video.style.display = index < shownCount ? 'flex' : 'none');
+                            wrapper.classList.remove('eae-youtube-loading');
+                            
+                            target.setAttribute('data-count', shownCount);
+                            if (shownCount >= videos.length){ 
+                                target.style.display = 'none';
+                                
+                                const footer = wrapper.querySelector('.eae-youtube-playlist-footer');
+                                if(footer){
+                                    footer.style.display = 'none';
+                                }
+                            }
+                        }, 500);
+
+                        const counter = wrapper.querySelector('.eae-youtube-count');
+                        if(counter){
+                            const countValue = (shownCount >= settings.eae_cache_limit) ? settings.eae_cache_limit : shownCount;
+                            counter.innerHTML = ( settings.eae_youtube_counter_type == 'range' ) ? '1 - ' + countValue : countValue;
+                        }
+                    }
+
+                    if(target.classList.contains('eae-youtube-next-btn') || target.classList.contains('eae-youtube-prev-btn')){
+                        const prevBtn = wrapper.querySelector('.eae-youtube-prev-btn');
+                        const nextBtn = wrapper.querySelector('.eae-youtube-next-btn');
+
+                        wrapper.classList.add('eae-youtube-loading');
+                        
+                        that.prevNextBtnCounterCalc(wrapper,target);
+
+                        setTimeout(() => {
+                            const start = parseInt(prevBtn.getAttribute('data-count')) || 0;
+                            const end = parseInt(nextBtn.getAttribute('data-count')) || videos.length;
+                            videos.forEach((v, i) => v.style.display = (i >= start && i < end) ? 'flex' : 'none');
+                            wrapper.classList.remove('eae-youtube-loading');
+                            
+                            that.updatePrevNextCount(wrapper);
+
+                        }, 500);
+                    }
+                });
+            },
+            prevNextBtnCounterCalc: function prevNextBtnCounterCalc(wrapper,btn){
+                const that = this;
+                const { settings } = this.getDefaultSettings();
+                const count = parseInt(settings.eae_video_count) || 6;
+                let current = that.getCount(btn);
+                
+                const prevBtn = wrapper.querySelector('.eae-youtube-prev-btn');
+                const nextBtn = wrapper.querySelector('.eae-youtube-next-btn');
+
+                if (btn.classList.contains('eae-youtube-next-btn')) {
+
+                    current += count;
+                    
+                    if (current >= settings.eae_cache_limit) btn.style.display = 'none';
+                    if (current > count) prevBtn.style.display = 'flex';
+                    
+                    prevBtn.setAttribute('data-count', current - count);
+
+                } else if (current > 0) {
+                    current -= count;
+                    
+                    if (current < count) btn.style.display = 'none';
+                    if (current < settings.eae_cache_limit) nextBtn.style.display = 'flex';
+
+                    nextBtn.setAttribute('data-count', current + count);
+                }
+
+                btn.setAttribute('data-count', current);
+            },
+            updatePrevNextCount: function updatePrevNextCount(wrapper){
+                const { settings } = this.getDefaultSettings();
+                if(settings.eae_youtube_counter_type == 'range'){
+                    const prevBtn = wrapper.querySelector('.eae-youtube-prev-btn');
+                    const nextBtn = wrapper.querySelector('.eae-youtube-next-btn');
+
+                    const start = parseInt(prevBtn.getAttribute('data-count')) || 0;
+                    const end = parseInt(nextBtn.getAttribute('data-count')) || settings.eae_video_count;
+
+                    const counter = wrapper.querySelector('.eae-youtube-count');
+                    if(counter){
+                        const countStart = (start == 0) ? 1 : start;
+                        counter.innerHTML =  countStart + ' - ' + end;
+                    }
+                }
+            },
+            initVideoPlayback: function initVideoPlayback(wrapper, scope, settings){
+                const that = this;
+
+                if (settings.eae_youtube_playback_mode === 'lightbox' && settings.eae_youtube_layout !== 'playlist') {
+                    that.runLightbox();
+                    return;
+                }
+
+                // const cssClass = settings.eae_youtube_layout === 'playlist' ? '.eae-youtube-item' : '.eae-youtube-thumbnail';
+                let cssClass;
+
+                if (settings.eae_youtube_layout === 'playlist') {
+                    cssClass = '.eae-youtube-item';
+                } else {
+                    if (settings.content_skin === 'card') {
+                        cssClass = '.eae-youtube-content';
+                    } else {
+                        cssClass = '.eae-youtube-thumbnail';
+                    }
+                }
+
+                const elements = wrapper.querySelectorAll(cssClass);
+
+                // Handle thumbnail clicks
+                elements.forEach(function(element) {
+                    element.addEventListener('click', function(e) {
+                        e.preventDefault();
+
+                        const embedUrl = element.dataset.embedUrl;
+
+                        if(settings.eae_youtube_layout !== 'playlist'){
+                            if (settings.eae_youtube_playback_mode === 'inline') {
+                                const item = element.closest('.eae-youtube-item');
+                                that.playInline(item, embedUrl, wrapper);
+                            }
+                        }else{
+                            elements.forEach(function(el){
+                                el.classList.contains('eae-youtube-playing')? el.classList.remove('eae-youtube-playing') : '';
+                            });
+
+                            that.playInPlayer(wrapper, embedUrl);
+                            element.classList.add('eae-youtube-playing');
+                        }
+                    });
+                });
+
+                if (settings.eae_youtube_layout === 'playlist') {
+                    const player = wrapper.querySelector('.eae-youtube-playlist-player');
+                    if (player) {
+                        player.addEventListener('click', function() {
+                            const videos = wrapper.querySelectorAll('.eae-youtube-item');
+                            if (videos.length) videos[0].click();
+                        });
+                    }
+                }
+            },
+            runLightbox: function runLightbox() {
+				const { wrapper, scope } = this.getDefaultElements();
+                let container = scope.find('.eae-youtube-lightbox');
+				if (!container.hasClass('lightbox')) return;
+
+				var options = {
+					selector: '.eae-youtube-item'
+				};
+
+                const raw = container.attr('data-lg-settings') || '{}';
+                let lgSettings = {};
+                
+                try { 
+                    lgSettings = JSON.parse(raw); 
+                } catch(e) { 
+                    lgSettings = {}; 
+                }
+
+                options = { ...options, ...lgSettings };
+
+                const pluginList = [
+                    typeof lgVideo!=='undefined' ? lgVideo : null,
+                    typeof lgShare!=='undefined' ? lgShare : null,
+                    typeof lgZoom!=='undefined' ? lgZoom : null,
+                    typeof lgHash!=='undefined' ? lgHash : null,
+                    typeof lgRotate!=='undefined' ? lgRotate : null,
+                    typeof lgFullscreen!=='undefined' ? lgFullscreen : null,
+                    typeof lgThumbnail!=='undefined' ? lgThumbnail : null].filter(Boolean);
+
+                options = { ...options, plugins: pluginList };
+                if (typeof lightGallery === 'function') {
+                    lightGallery(wrapper, options);
+                }
+			},
+            playInPlayer: function playInPlayer(wrapper, embedUrl) {
+                const player = wrapper.querySelector('.eae-youtube-playlist-player');
+                if (player) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = embedUrl;
+                    iframe.setAttribute('frameborder', '0');
+                    iframe.setAttribute('allowfullscreen', '');
+                    iframe.setAttribute('allow', 'autoplay; encrypted-media');
+                    player.innerHTML = '';
+                    player.appendChild(iframe);
+                    player.classList.add('playing');
+                }
+            },
+            playInline: function playInline(item, embedUrl, wrapper){
+                wrapper.querySelectorAll('.eae-youtube-item.playing').forEach(function(item) {
+                    item.classList.remove('playing');
+                    const inlinePlayer = item.querySelector('.eae-youtube-inline-player');
+                    if (inlinePlayer) {
+                        inlinePlayer.innerHTML = '';
+                    }
+                });
+
+                const inlinePlayer = item.querySelector('.eae-youtube-inline-player');
+
+                if (!inlinePlayer) {
+                    const newPlayerDiv = document.createElement('div');
+                    newPlayerDiv.className = 'eae-youtube-inline-player';
+                    const contentElement = item.querySelector('.eae-youtube-content');
+                    contentElement.parentNode.insertBefore(newPlayerDiv, contentElement);
+                }
+
+                const iframe = document.createElement('iframe');
+                iframe.src = embedUrl;
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute('allow', 'autoplay; encrypted-media');
+                iframe.setAttribute('title', 'YouTube video player');
+
+                const playerElement = item.querySelector('.eae-youtube-inline-player');
+                if (playerElement) {
+                    playerElement.appendChild(iframe);
+                }
+                item.classList.add('playing');
+            },
+        });
+        elementorFrontend.hooks.addAction('frontend/element_ready/eae-youtube-feeds.default', function ($scope) {
+            elementorFrontend.elementsHandler.addHandler(YouTubeFeeds, {
+				$element: $scope
+			});
+        });
+    });
+})(jQuery);
+
+
+/***/ }),
+
 /***/ 734:
 /***/ (() => {
 
@@ -3831,6 +4256,616 @@ class SwiperBase{
 
 /***/ }),
 
+/***/ 948:
+/***/ (() => {
+
+(function ($){
+    $(window).on('elementor/frontend/init', function () {
+        var ModuleHandler = elementorModules.frontend.handlers.Base,
+        AudioPlayerHandler;
+           
+        AudioPlayerHandler = ModuleHandler.extend({
+            getDefaultSettings: function getDefaultSettings() {
+                return {
+                    settings: this.getElementSettings(),
+                };
+            },
+            getDefaultElements: function getDefaultElements() {
+				
+                const eId = this.$element.data('id'); 
+                const element = document.querySelector('.elementor-element-' + eId);
+                const wrapper = element.querySelector('.eae-audio-player-wrapper');
+                let playerOut = false;
+                return{
+                    eid: eId,
+                    element: element,
+                    wrapper: wrapper, 
+                }
+			},
+            onInit: function onInit(){
+                const { settings } = this.getDefaultSettings();
+                const { wrapper } = this.getDefaultElements();
+
+                const audioPlayer = wrapper.querySelector('.eae-audio-player');
+                const playPauseBtn = wrapper.querySelector('.eae-play-pause-btn');
+                const prevBtn = wrapper.querySelector('.eae-prevBtn');
+                const nextBtn = wrapper.querySelector('.eae-nextBtn');
+                const progress = wrapper.querySelector('.eae-progress');
+                const handle = wrapper.querySelector('.eae-handle');
+                const progressWrapper = wrapper.querySelector('.eae-progress-bar');
+                const playlistIcon = wrapper.querySelector('.eae-playlistIcon');
+                const playListOpenIcon = wrapper.querySelector('.eae-list-open-icon');
+                const volumeControl = wrapper.querySelector('.eae-volume-input');
+                const volumeInputWrapper = wrapper.querySelector('.eae-volume');
+                const volumeWrapper = wrapper.querySelector('.eae-volume-control');
+                const playlist = wrapper.querySelector('.eae-playlist');
+                const songTitle = wrapper.querySelector('.eae-audioTitle');
+                const songAuthor = wrapper.querySelector('.eae-audioAuthor');
+                const songImage = wrapper.querySelectorAll('.eae-album-cover');
+                const currentTimeDisplay = wrapper.querySelector('.eae-current-time');
+                const durationDisplay = wrapper.querySelector('.eae-duration');
+                const repeatBtn = wrapper.querySelector('.eae-repeatBtn');
+                const shuffleBtn = wrapper.querySelector('.eae-shuffleBtn');
+                const closeButton = wrapper.querySelector('.eae-player-sticky-close');
+                const playerLayout3 = wrapper.querySelector('.eae-player');
+                const playListItem = wrapper.querySelectorAll('.eae-playlist-item');
+                const volumeIcon = wrapper.querySelector(".eae-volume-control i");
+                const songData = playlist.getAttribute('data-audio');
+                let elementPagePosition = wrapper.getBoundingClientRect().top + window.scrollY;
+
+             
+                
+                // State management
+                let isPlaying = false;
+                let currentSongIndex = 0;
+                let isDragging = false;
+                let repeatMode = 'none'; // 'none', 'all', 'one'
+                let isShuffled = false;
+                
+                const eaeSongs = JSON.parse(songData).map((item, index) => ({
+                    index: index,
+                    audio_title: item.audio_title || 'Unknown Track',
+                    audio_author: item.audio_author || 'Unknown Artist',
+                    file: item.file || '', // Using file directly from songData
+                    duration: item.duration || 0,
+                })).filter(song => song.file); // Ensures only valid file entries remain
+             
+
+                const getAudioDuration = async (url) => {
+                    return new Promise((resolve, reject) => {
+                        const audio = new Audio(url);
+                        audio.addEventListener("loadedmetadata", () => {
+                            resolve(audio.duration);
+                        });
+                        audio.addEventListener("error", () => {
+                            reject(new Error(`Failed to load audio file: ${url}`));
+                        });
+                    });
+                };
+                
+                const totalDurations = async () => {
+                    try {
+                        const durations = await Promise.all(
+                            eaeSongs.map(async (song, index) => ({
+                                index: index,
+                                duration: await getAudioDuration(song.file)
+                            }))
+                        );
+                        return durations;
+                    } catch (error) {
+                        console.error("Error calculating total durations:", error);
+                        return [];
+                    }
+                };
+                
+                totalDurations().then(durations => {
+                    if (durations.length) {
+                        for (let i = 0; i < durations.length; i++) {
+                            if (playListItem[i]) { 
+                                playListItem[i].querySelector('.eae-list-duration').textContent = formatTime(durations[i].duration);
+                            }
+                        }
+                    }
+                });
+
+
+                wrapper.querySelector('.eae-volume-input')?.addEventListener("input", function() {
+                    var value = (this.value-this.min)/(this.max-this.min)*100
+                    if (settings.slider_color) {
+                        this.style.background = `linear-gradient(to right, ${settings.slider_color} 0%, ${settings.slider_color} ${value}%, ${settings.range_color ? settings.range_color : 'white'} ${value}%, ${settings.range_color ? settings.range_color : 'white'} 100%)`;
+                    } else {
+                        this.style.background = `linear-gradient(to right, #666666 0%, #666666 ${value}%, #fff ${value}%, white 100%)`;
+                    }
+                });
+
+               
+                // Utility functions
+                function updatePlayState(playing) {
+                    if (!playPauseBtn) return;
+                    isPlaying = playing;
+                    playPauseBtn.classList.replace(playing ? 'fa-play' : 'fa-pause', playing ? 'fa-pause' : 'fa-play');
+                }
+               
+
+                function displayVolumeControl(e) {
+
+                    const volumeInput = volumeWrapper.querySelector(".eae-volume-input");
+                    
+
+                    if (volumeWrapper && settings.eae_audio_player_layout != 'layout-3') {
+                        volumeInputWrapper.style.display = volumeInputWrapper.style.display === 'flex' ? 'none' : 'flex';
+                    }
+                 
+                    if (volumeWrapper && settings.eae_audio_player_layout == 'layout-3' && e.target.matches("i")) {
+                        if (volumeIcon.classList.contains("fa-volume-mute")) {
+                            volumeIcon.classList.remove("fa-volume-mute");
+                            volumeIcon.classList.add("fa-volume-up");
+                            audioPlayer.muted = false;
+                        } else {
+                            volumeIcon.classList.remove("fa-volume-up", "fa-volume-down");
+                            volumeIcon.classList.add("fa-volume-mute");
+                            audioPlayer.muted = true;
+                        }
+                    }
+
+
+                    if (volumeInput && volumeIcon) {
+                        volumeInput.addEventListener("input", function () {
+                            if (this.value == 0) {
+                                volumeIcon.classList.remove("fa-volume-up", "fa-volume-down");
+                                volumeIcon.classList.add("fa-volume-mute");
+                            } else if (this.value > 0 && this.value < 0.5) {
+                                volumeIcon.classList.remove("fa-volume-up", "fa-volume-mute");
+                                volumeIcon.classList.add("fa-volume-down");
+                            } else {
+                                volumeIcon.classList.remove("fa-volume-down", "fa-volume-mute");
+                                volumeIcon.classList.add("fa-volume-up");
+                            }
+                        });
+                    }
+                }
+                
+                let currentLoadAbortController = null;
+
+                function loadSong(index) {
+                    return new Promise((resolve, reject) => {
+                       
+                        if (!audioPlayer || !eaeSongs.length || index < 0 || index >= eaeSongs.length) {
+                            reject(new Error('Invalid song index'));
+                            return;
+                        }
+
+                        // Abort any previous load
+                        if (currentLoadAbortController) {
+                            currentLoadAbortController.abort();
+                        }
+                        currentLoadAbortController = new AbortController();
+
+                        // Pause and reset current audio
+                        audioPlayer.pause();
+                        audioPlayer.currentTime = 0;
+                      
+                        const song = eaeSongs[index];
+                        currentSongIndex = index;
+
+                        // Update UI elements
+                        if (songTitle) songTitle.textContent = song.audio_title;
+                        if (songAuthor) songAuthor.textContent = song.audio_author;
+                        if(settings.show_repeater_image === 'yes'){
+                            songImage.forEach((img) => {
+                                if(img.getAttribute('data-index') == index){
+                                    img.style.display = 'block';
+                                }else{
+                                    img.style.display = 'none';
+                                }
+                            });
+                        }
+                        highlightActiveSong(index);
+
+                        // Set new audio source
+                        audioPlayer.src = song.file;
+
+                        // Wait for the new audio to load
+                        const onCanPlay = () => {
+                            resolve();
+                            currentLoadAbortController = null;
+                        };
+                        const onError = (error) => {
+                            reject(error);
+                            currentLoadAbortController = null;
+                        };
+
+                        audioPlayer.addEventListener(
+                            'canplaythrough',
+                            onCanPlay,
+                            { signal: currentLoadAbortController.signal, once: true }
+                        );
+                        audioPlayer.addEventListener(
+                            'error',
+                            () => onError(audioPlayer.error),
+                            { signal: currentLoadAbortController.signal, once: true }
+                        );
+
+                        audioPlayer.load(); // Initiate load
+                    });
+                }
+
+                
+                function highlightActiveSong(index) {
+                    if (!playlist) return;
+                    playlist.querySelectorAll('.eae-playlist-item').forEach((item, i) => {
+                        item.classList.toggle('active', i === index);
+                    });
+                }
+                
+                function handleProgressUpdate() {
+                    if (audioPlayer && audioPlayer.duration) {
+                        const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                        if (progress) progress.style.width = `${progressPercent}%`;
+                        if (handle) handle.style.left = `${progressPercent - 1 }% `;
+                    }
+                }
+                
+                function seekAudio(e) {
+                    if (!progressWrapper || !audioPlayer) return;
+                    const rect = progressWrapper.getBoundingClientRect();
+                    const offsetX = e.clientX - rect.left;
+                    const newTime = (offsetX / rect.width) * audioPlayer.duration;
+                    if (!isNaN(newTime)) {
+                        audioPlayer.currentTime = newTime;
+                    }
+                }
+
+                function checkBeforePlay(){
+                    document.querySelectorAll('.eae-player-out-viewport').forEach(container => {
+                        const wrapperId = wrapper.getAttribute("eae-audio-data-id");
+                        const parentContainer = container.parentElement?.parentElement;
+
+                        if (wrapperId != parentContainer.getAttribute("data-id")) {
+                            container.style.visibility='hidden';
+                        }
+                        
+                    });
+                    document.querySelectorAll('audio').forEach(player => {
+                        if (player !== audioPlayer) {
+                            player.pause();
+                        }
+                        if(player.currentTime > 0){
+                            updatePlay()
+                        }
+                    });
+                }
+
+                function updatePlay() {
+                    document.querySelectorAll('.eae-play-pause-btn').forEach(playPauseBtn => {
+                        playPauseBtn.classList.replace('fa-pause','fa-play')
+                       
+                    });
+                }
+                
+                // Event Handlers
+                function handlePlayPause() {
+                    checkBeforePlay();
+                
+                    if (!audioPlayer.src || audioPlayer.currentTime === 0) {
+                        loadSong(currentSongIndex).then(() => {
+                            audioPlayer.play().catch(error => console.error('Audio playback failed:', error));
+                            updatePlayState(true);
+                        }).catch(error => console.error('Error loading song:', error));
+                    } else {
+                        // Toggle play/pause on existing source
+                        if (isPlaying) {
+                            audioPlayer.pause();
+                        } else {
+                            audioPlayer.play().catch(error => console.error('Audio playback failed:', error));
+                        }
+                       
+                        updatePlayState(!isPlaying);
+                    }
+                }
+                
+              
+                
+                async function handlePrev() {
+                    if (!eaeSongs.length) return;
+                    const newIndex = (currentSongIndex - 1 + eaeSongs.length) % eaeSongs.length;
+                    try {
+                        await loadSong(newIndex);
+                        await audioPlayer.play();
+                        updatePlayState(true);
+                    } catch (error) {
+                        console.error('Failed to play previous song:', error);
+                        updatePlayState(false);
+                    }
+                }
+                
+                
+                function handleVolumeChange(e) {
+                    if (audioPlayer) {
+                        audioPlayer.volume = parseFloat(e.target.value);
+                    }
+                }
+
+                function toggleRepeatMode() {
+                    const modes = ['none', 'all'];
+                    repeatMode = modes[(modes.indexOf(repeatMode) + 1) % modes.length];
+                    updateRepeatButtonUI();
+                }
+                
+                function toggleShuffle() {
+                    isShuffled = !isShuffled;
+                    updateShuffleButtonUI();
+                }
+
+                function updateRepeatButtonUI() {
+                    if (!repeatBtn) return;
+                    if (isShuffled) return;
+                    repeatBtn.classList.remove('eae-repeat-active');
+                    switch (repeatMode) {
+                        case 'all':
+                            repeatBtn.classList.add('eae-repeat-active');
+                            break;
+                        default:
+                            repeatBtn.classList.add('');
+                    }
+                }
+                
+                function updateShuffleButtonUI() {
+                    if (!shuffleBtn) return;
+                    shuffleBtn.classList.toggle('active', isShuffled);
+                    repeatBtn.classList.remove('eae-repeat-active');
+                }
+                
+                // Modified handleNext function
+                async function handleNext() {
+                    if (!eaeSongs.length) return;
+                    let newIndex;
+                    try {
+                        await loadSong(newIndex);
+                        await audioPlayer.play();
+                        updatePlayState(true);
+                    } catch (error) {
+                        console.error('Failed to play next song:', error);
+                        updatePlayState(false);
+                    }
+                }
+                async function handleNext() {
+                    if (!eaeSongs.length) return;
+                    
+                     if (isShuffled) {
+                        if (eaeSongs.length === 1) {
+                            newIndex = 0;
+                        } else {
+                            do {
+                                newIndex = Math.floor(Math.random() * eaeSongs.length);
+                            } while (newIndex === currentSongIndex);
+                        }
+                    }else{
+                        if (repeatMode == 'none') {
+                            newIndex = (currentSongIndex + 1) % eaeSongs.length;
+                        }else{
+                            newIndex = currentSongIndex ;
+                        }
+                    } 
+                    try {
+                        await loadSong(newIndex);
+                        await audioPlayer.play();
+                        updatePlayState(true);
+                    } catch (error) {
+                        console.error('Failed to play next song:', error);
+                        updatePlayState(false);
+                    }
+                }
+                
+                // Drag Handling
+                function startDragging(e) {
+                    isDragging = true;
+                    seekAudio(e);
+                }
+                
+                function stopDragging() {
+                    isDragging = false;
+                }
+
+                function updateCurrentTime() {
+
+                    if (currentTimeDisplay || durationDisplay) {
+                        const currentTime = audioPlayer.currentTime;
+                        const totalDuration = audioPlayer.duration;
+                      
+                        if (!isNaN(currentTime) && currentTimeDisplay) {
+                          currentTimeDisplay.textContent = formatTime(currentTime);
+                        }
+                        
+                        if ((!isNaN(totalDuration) && totalDuration > 0 && durationDisplay)) {
+                          durationDisplay.textContent = formatTime(totalDuration);
+                        }
+                        
+                        if (!isNaN(currentTime) && !isNaN(totalDuration) && totalDuration > 0) {
+                          const progressPercent = (currentTime / totalDuration) * 100;
+                          progress.style.width = `${progressPercent}%`;
+                          handle.style.left = `${progressPercent - 1}%`;
+                        }
+                      }
+                }
+                
+                function updateDuration() {
+                    if (durationDisplay) {
+                      durationDisplay.textContent = formatTime(audioPlayer.duration);
+                    }
+                }
+                function formatTime(seconds) {
+                    const minutes = Math.floor(seconds / 60);
+                    const remainingSeconds = Math.floor(seconds % 60);
+                    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+                }
+                function closePlayer() {  
+                    wrapper.style.visibility = 'hidden';
+                    if(!audioPlayer.paused){
+                        updatePlayState(!isPlaying);
+                    }
+                    audioPlayer.pause();
+                }
+
+                const resizeObserver = new ResizeObserver((entries) => {
+                    for (let entry of entries) {
+                        if (entry.contentRect.width < 600) {
+                            wrapper.classList.add('eae-player-compact');
+                        } else {
+                            wrapper.classList.remove('eae-player-compact');
+                            wrapper.style.flexDirection = ''; 
+                        }
+                    }
+                });
+                // Event Listeners
+                playPauseBtn?.addEventListener('click', handlePlayPause);
+                nextBtn?.addEventListener('click', handleNext);
+                prevBtn?.addEventListener('click', handlePrev);
+                volumeControl?.addEventListener('input', handleVolumeChange);
+                closeButton?.addEventListener('click', closePlayer);
+                progressWrapper?.addEventListener('click', seekAudio);
+                volumeWrapper?.addEventListener('click', displayVolumeControl);
+                handle?.addEventListener('mousedown', startDragging);
+                audioPlayer?.addEventListener('timeupdate', updateCurrentTime);
+                audioPlayer?.addEventListener('durationchange', updateDuration);
+                repeatBtn?.addEventListener('click', toggleRepeatMode);
+                shuffleBtn?.addEventListener('click', toggleShuffle);
+                audioPlayer?.addEventListener('timeupdate', handleProgressUpdate);
+                audioPlayer?.addEventListener('ended', handleNext);
+                resizeObserver.observe(wrapper);
+                
+                wrapper.addEventListener('mousemove', (e) => {
+                    if (isDragging) seekAudio(e);
+                });
+                
+                wrapper.addEventListener('mouseup', stopDragging);
+
+                if(settings.always_on_list == 'yes' && ( settings.eae_audio_player_layout == 'layout-1' || settings.eae_audio_player_layout == 'layout-4')){
+                    playlistIcon.style.display ='none';
+                    playlist.style.display = 'flex';
+                }
+
+                if(settings.eae_audio_player_layout == 'layout-3'){
+                    let sidebarWidth = playlist.offsetWidth;
+                    playlist.style.left = `-${sidebarWidth + 10}px`;
+                }
+
+                playListOpenIcon?.addEventListener('click', () => {
+                    let sidebarWidth = playlist.offsetWidth;
+                    playlist.classList.remove('eae-active');
+                    playlist.style.left = "0";
+                    playlist.style.left = `-${sidebarWidth}px`;
+                    setTimeout(() => {
+                        playlistIcon.style.display = 'block';
+                    }, 300);
+                });
+                playlistIcon?.addEventListener('click', () => {
+                    if (playlist) {
+                        playlist.classList.toggle('eae-active');
+                        const isActive = playlist.classList.contains('eae-active');
+                        if (settings.eae_audio_player_layout === 'layout-3') {
+                            let sidebarWidth = playlist.offsetWidth;
+                            if (!playlist.classList.contains('eae-active')) {
+                                playlist.style.left = `-${sidebarWidth}px`;
+                            } else {
+                                playlistIcon.style.display = 'none';
+                                playlist.style.left = "0";
+                            }
+                        }else{
+                            playlist.style.display = playlist.style.display === 'flex' ? 'none' : 'flex';
+                            playlistIcon.classList.replace(isActive ? 'eicon-menu-bar' : 'eicon-editor-close', isActive ? 'eicon-editor-close' : 'eicon-menu-bar');
+                        }
+                    }
+                });
+                
+                
+                
+                playlist?.addEventListener('click', (e) => {
+                    const item = e.target.closest('.eae-playlist-item');
+                    if (item && playlist) {
+                        const items = Array.from(playlist.querySelectorAll("li")); // Select only <li> elements
+                        const index = items.indexOf(item);
+                        loadSong(index);
+                        audioPlayer?.play();
+                        updatePlayState(true);
+                    }
+                });
+                
+                
+                // Initialize player
+                if (eaeSongs.length > 0) {
+                    loadSong(0);
+                    if (audioPlayer && volumeControl) {
+                        audioPlayer.volume = parseFloat(volumeControl.value);
+                    } else if (audioPlayer) {
+                        audioPlayer.volume = 1; // Default volume
+                    }
+                }
+
+                if(settings.enable_sticky === 'yes'){
+
+                    if (closeButton) {
+                        closeButton.style.display = 'none';
+                    }
+                    if((elementorFrontend.isEditMode() && settings.preview_sticky == 'yes') || !elementorFrontend.isEditMode()){
+                        makeStickyVideo(wrapper);
+                        document.addEventListener('scroll', () => {
+                            if (window.requestAnimationFrame) {
+                            window.requestAnimationFrame(() => {
+                                makeStickyVideo(wrapper);
+                            });
+                            } else {
+                                makeStickyVideo(wrapper);
+                            }
+                        });
+                    }
+                }
+               
+                function makeStickyVideo(ele){
+                   
+                    let currentScrollPosition = window.scrollY;
+                 
+                    if(window.scrollY - 200 >= elementPagePosition){
+                        if(!elementorFrontend.isEditMode()){
+                            if( audioPlayer.paused) return;
+                        }
+                       
+                        if (closeButton) {
+                            closeButton.style.display = 'block';
+                        }
+                        isDragEnabled = true;
+                    
+                        wrapper.classList.add('eae-player-out-viewport');
+
+                        if(wrapper.classList.contains('eae-player-compact') && wrapper.classList.contains('eae-layout-4')) {
+                            playerLayout3.style.flexDirection = '';
+                        }
+                    }else{
+                        if (closeButton) {
+                            closeButton.style.display = 'none';
+                        }
+                        wrapper.style.visibility = 'visible';
+                        wrapper.classList.remove('eae-player-out-viewport');
+                        wrapper.offsetHeight;
+                    }
+                    
+                    lastScrollTop = currentScrollPosition <= 0 ? 0 : currentScrollPosition;
+                }
+            },
+        });
+       
+        
+        elementorFrontend.hooks.addAction('frontend/element_ready/eae-audio-player.default', function ($scope){
+            elementorFrontend.elementsHandler.addHandler(AudioPlayerHandler, {
+				$element: $scope
+			});
+        });
+    });
+
+})(jQuery);
+
+/***/ }),
+
 /***/ 994:
 /***/ (() => {
 
@@ -4372,6 +5407,7 @@ class SwiperBase{
 /******/ 	__webpack_require__(211);
 /******/ 	__webpack_require__(327);
 /******/ 	__webpack_require__(259);
+/******/ 	__webpack_require__(948);
 /******/ 	__webpack_require__(147);
 /******/ 	__webpack_require__(340);
 /******/ 	__webpack_require__(107);
@@ -4395,7 +5431,8 @@ class SwiperBase{
 /******/ 	__webpack_require__(393);
 /******/ 	__webpack_require__(322);
 /******/ 	__webpack_require__(82);
-/******/ 	var __webpack_exports__ = __webpack_require__(870);
+/******/ 	__webpack_require__(870);
+/******/ 	var __webpack_exports__ = __webpack_require__(607);
 /******/ 	
 /******/ })()
 ;

@@ -1482,6 +1482,26 @@ class ThumbGallery extends EAE_Widget_Base {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => 'content_border_normal',
+				'selector'  => '{{WRAPPER}} .eae-slide-content',
+			]
+		);
+
+		$this->add_control(
+			'content_border_radius',
+			[
+				'label'      => __( 'Border Radius', 'wts-eae' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .eae-slide-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(

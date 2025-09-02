@@ -319,6 +319,64 @@ class Content_Switcher extends EAE_Widget_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'switch_skin_1_min_width',
+			[
+				'label' => __('Min Width','wts-eae'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+					],
+				],
+				'condition' => [
+					'_skin' => 'skin1'
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-cs-layout-skin1 .eae-content-switch-button' => 'min-width: {{SIZE}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'switch_skin_1_spacing',
+			[
+				'label' => __('Spacing','wts-eae'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+					],
+				],
+				'condition' => [
+					'_skin' => 'skin1'
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-cs-layout-skin1 .eae-cs-switch-wrapper' => 'gap: {{SIZE}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'switch_skin_1_padding',
+			[
+				'label' => __('Padding','wts-eae'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px','%'],
+				'condition' => [
+					'_skin' => 'skin1'
+				],
+				'separator' => 'after',
+				'selectors' => [
+					'{{WRAPPER}} .eae-cs-layout-skin1 .eae-content-switch-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
+			]
+		);
+
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -326,7 +384,8 @@ class Content_Switcher extends EAE_Widget_Base {
 				'global'   => [
 					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
 				],
-				'selector' => '{{WRAPPER}} .eae-cs-label-wrapper .eae-content-switch-button .eae-content-switch-label , {{WRAPPER}} .eae-content-switcher-wrapper .eae-cs-switch-wrapper .eae-content-switch-label .eae-cs-label',
+				'selector' => '{{WRAPPER}} .eae-cs-label-wrapper .eae-content-switch-button .eae-content-switch-label , 
+								{{WRAPPER}} .eae-content-switcher-wrapper .eae-cs-switch-wrapper .eae-content-switch-label .eae-cs-label',
 
 			]
 		);
@@ -536,6 +595,41 @@ class Content_Switcher extends EAE_Widget_Base {
 					'body.rtl {{WRAPPER}} .eae-cs-switch-container .eae-content-switch-label.eae-cs-icon-align-right i' => 'margin-right: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .eae-cs-switch-container .eae-content-switch-label.eae-cs-icon-align-left i' => 'margin-right: {{SIZE}}{{UNIT}};',
 					'body.rtl {{WRAPPER}} .eae-cs-switch-container .eae-content-switch-label.eae-cs-icon-align-left i' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-cs-switch-container .eae-content-switch-label.eae-cs-icon-align-right svg' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'body.rtl {{WRAPPER}} .eae-cs-switch-container .eae-content-switch-label.eae-cs-icon-align-right svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-cs-switch-container .eae-content-switch-label.eae-cs-icon-align-left svg' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'body.rtl {{WRAPPER}} .eae-cs-switch-container .eae-content-switch-label.eae-cs-icon-align-left svg' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'icon_size',
+			[
+				'label'      => __( 'Icon Size', 'wts-eae' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', '%' ],
+				'range'      => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 100,
+						'step' => 1,
+					],
+					'em' => [
+						'min'  => 0,
+						'max'  => 10,
+						'step' => 0.1,
+					],
+				],
+				'default'    => [
+					'size' => 20,
+					'unit' => 'px',
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .eae-cs-label-wrapper .eae-content-switch-button .eae-content-switch-label i, 
+					{{WRAPPER}} .eae-cs-label-wrapper .eae-content-switch-button .eae-content-switch-label svg' => 'font-size: {{SIZE}}{{UNIT}};', 
+					'{{WRAPPER}} .eae-content-switcher-wrapper .eae-cs-switch-wrapper .eae-content-switch-label i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-content-switcher-wrapper .eae-cs-switch-wrapper .eae-content-switch-label svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -694,7 +788,7 @@ class Content_Switcher extends EAE_Widget_Base {
 			[
 				'name'     => 'title_section_bg_color',
 				'label'    => __( 'Background', 'wts-eae' ),
-				'types'    => [ 'classic', 'gradient', 'video' ],
+				'types'    => [ 'classic', 'gradient' ],
 				'selector' => '{{WRAPPER}} .eae-content-switcher-wrapper .eae-cs-switch-container',
 			]
 		);
@@ -741,10 +835,54 @@ class Content_Switcher extends EAE_Widget_Base {
 				],
 			]
 		);
+
+		$this->add_control(
+			'handle_style_heading',
+			[
+				'label' => __('Handle','wts-eae'),
+				'type' => Controls_Manager::HEADING,
+			]
+		);
+
+		$this->add_control(
+			'handle_size',
+			[
+				'label' => __('Size','wts-eae'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .eae-content-toggle-switcher:before' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--eae-cs-handle-w:  {{SIZE}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_control(
+			'slider_inside_spacing',
+			[
+				'label' => __('Spacing','wts-eae'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range'      => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 10,
+					],
+				],
+				'condition' => [
+					'_skin' => 'skin3',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-cs-layout-skin3 .eae-content-toggle-switcher:before' => 'left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--eae-cs-slider-spacing: {{SIZE}}{{UNIT}};' 
+				]
+			]
+		);
+
 		$this->add_responsive_control(
 			'handle_border_size',
 			[
-				'label'     => __( 'Handle Border Size', 'wts-eae' ),
+				'label'     => __( 'Border Size', 'wts-eae' ),
 				'type'      => Controls_Manager::NUMBER,
 				'min'       => 0,
 				'max'       => 100,
@@ -755,22 +893,103 @@ class Content_Switcher extends EAE_Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'handle_border_radius', 
+			[
+				'label' => __('Border Radius','wts-eae'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .eae-content-toggle-switcher:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_control(
+			'slider_style_heading',
+			[
+				'label' => __('Slider','wts-eae'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'slider_height',
+			[
+				'label' => __('Height','wts-eae'),
+				'type'      => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%'],
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-content-toggle-switcher' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-cs-switch-button' => 'height: {{SIZE}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'slider_width',
+			[
+				'label' => __('Width','wts-eae'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%'],
+				'range'     => [
+					'px' => [
+						'min' => 4,
+						'max' => 150,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-content-toggle-switcher' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-cs-switch-button' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--eae-cs-slider-w: {{SIZE}}{{UNIT}};',
+				]
+			]
+		);
+
 		$this->add_responsive_control(
 			'slider_border_size',
 			[
-				'label'     => __( 'Slider Border Size', 'wts-eae' ),
+				'label'     => __( 'Border Size', 'wts-eae' ),
 				'type'      => Controls_Manager::NUMBER,
 				'min'       => 0,
 				'max'       => 100,
 				'step'      => 1,
 				'selectors' => [
 					'{{WRAPPER}} .eae-content-switcher-wrapper .eae-cs-switch-wrapper .eae-content-toggle-switcher' => 'border-width : {{VALUE}}px;',
+					 '{{WRAPPER}}' => '--eae-cs-slider-br: {{VALUE}}px;',
 				],
 				'condition' => [
 					'_skin' => [ 'skin3', 'skin4' ],
 				],
 			]
 		);
+
+		$this->add_control(
+			'slider_border_radius', 
+			[
+				'label' => __('Border Radius','wts-eae'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .eae-content-toggle-switcher' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_control(
+			'switch_style_devider',
+			[
+				'type' => Controls_Manager::DIVIDER,
+			]
+		);
+
 		$this->start_controls_tabs(
 			'switch_style_tabs'
 		);
@@ -815,6 +1034,16 @@ class Content_Switcher extends EAE_Widget_Base {
 				],
 			]
 		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'handle_box_shadow',
+				'label' => __('Handle Box Shadow','wts-eae'),
+				'selector' => '{{WRAPPER}} .eae-content-toggle-switcher:before'
+			]
+		);
+
 		$this->add_control(
 			'slider_color',
 			[
@@ -846,6 +1075,15 @@ class Content_Switcher extends EAE_Widget_Base {
 				'condition' => [
 					'_skin' => [ 'skin3', 'skin4' ],
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'slider_box_shadow',
+				'label' => __('Slider Box Shadow','wts-eae'),
+				'selector' => '{{WRAPPER}} .eae-content-toggle-switcher'
 			]
 		);
 
@@ -884,6 +1122,16 @@ class Content_Switcher extends EAE_Widget_Base {
 				],
 			]
 		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'handle_box_shadow_active',
+				'label' => __('Handle Box Shadow','wts-eae'),
+				'selector' => '{{WRAPPER}} .eae-content-toggle-switch:checked + .eae-content-toggle-switcher:before'
+			]
+		);
+
 		$this->add_control(
 			'slider_color_active',
 			[
@@ -909,6 +1157,15 @@ class Content_Switcher extends EAE_Widget_Base {
 				'condition' => [
 					'_skin' => [ 'skin3', 'skin4' ],
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'slider_box_shadow_active',
+				'label' => __('Slider Box Shadow','wts-eae'),
+				'selector' => '{{WRAPPER}} .eae-content-toggle-switch:checked + .eae-content-toggle-switcher'
 			]
 		);
 
@@ -957,7 +1214,7 @@ class Content_Switcher extends EAE_Widget_Base {
 			[
 				'name'     => 'content_box_bg_color',
 				'label'    => __( 'Background', 'wts-eae' ),
-				'types'    => [ 'classic', 'gradient', 'video' ],
+				'types'    => [ 'classic', 'gradient' ],
 				'selector' => '{{WRAPPER}} .eae-content-switcher-wrapper .eae-cs-content-container .eae-cs-content-wrapper',
 			]
 		);

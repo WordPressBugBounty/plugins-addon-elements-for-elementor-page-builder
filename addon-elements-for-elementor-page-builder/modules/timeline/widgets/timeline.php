@@ -98,6 +98,322 @@ class Timeline extends EAE_Widget_Base {
 		$this->read_more_controls();
 
 		$this->end_controls_section();
+
+		// Add button style controls for custom source
+		$this->register_button_style_controls();
+	}
+
+	protected function register_button_style_controls() {
+
+		$this->start_controls_section(
+			'section_custom_button_style',
+			[
+				'label'     => __( 'Call to Action', 'wts-eae' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'data_source' => 'custom',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'custom_button_alignment',
+			[
+				'label'     => __( 'Alignment', 'wts-eae' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'left'   => [
+						'title' => __( 'Left', 'wts-eae' ),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'wts-eae' ),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => __( 'Right', 'wts-eae' ),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'default'   => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button-wrapper' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'custom_button_typography',
+				'label'    => __( 'Typography', 'wts-eae' ),
+				'selector' => '{{WRAPPER}} .eae-tl-button',
+			]
+		);
+
+		$this->start_controls_tabs( 'custom_button_style_tabs' );
+
+		$this->start_controls_tab(
+			'custom_button_style_normal',
+			[
+				'label' => __( 'Normal', 'wts-eae' ),
+			]
+		);
+
+		$this->add_control(
+			'custom_button_text_color',
+			[
+				'label'     => __( 'Text Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'custom_button_background_color',
+			[
+				'label'     => __( 'Background Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#007cba',
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name'     => 'custom_button_border',
+				'label'    => __( 'Border', 'wts-eae' ),
+				'selector' => '{{WRAPPER}} .eae-tl-button',
+			]
+		);
+
+		$this->add_control(
+			'custom_button_border_radius',
+			[
+				'label'      => __( 'Border Radius', 'wts-eae' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .eae-tl-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'custom_button_padding',
+			[
+				'label'      => __( 'Padding', 'wts-eae' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'default'    => [
+					'top'    => '12',
+					'right'  => '24',
+					'bottom' => '12',
+					'left'   => '24',
+					'unit'   => 'px',
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .eae-tl-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'custom_button_box_shadow',
+				'label'    => __( 'Box Shadow', 'wts-eae' ),
+				'selector' => '{{WRAPPER}} .eae-tl-button',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'custom_button_style_hover',
+			[
+				'label' => __( 'Hover', 'wts-eae' ),
+			]
+		);
+
+		$this->add_control(
+			'custom_button_text_color_hover',
+			[
+				'label'     => __( 'Text Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'custom_button_background_color_hover',
+			[
+				'label'     => __( 'Background Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'custom_button_border_color_hover',
+			[
+				'label'     => __( 'Border Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'custom_button_box_shadow_hover',
+				'label'    => __( 'Box Shadow', 'wts-eae' ),
+				'selector' => '{{WRAPPER}} .eae-tl-button:hover',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->add_responsive_control(
+			'custom_button_margin',
+			[
+				'label'      => __( 'Margin', 'wts-eae' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'separator'  => 'before',
+				'default'    => [
+					'top'    => '10',
+					'right'  => '0',
+					'bottom' => '0',
+					'left'   => '0',
+					'unit'   => 'px',
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .eae-tl-button-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'custom_button_seperator_before',
+			[
+				'type'        => Controls_Manager::DIVIDER,
+				'separator'   => 'before',
+			]
+		);
+
+		$this->add_control(
+			'custom_button_icon_heading',
+			[
+				'label'     => __( 'Button Icon', 'wts-eae' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'custom_button_icon_size',
+			[
+				'label'     => __( 'Icon Size', 'wts-eae' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 5,
+						'max' => 100,
+					],
+				],
+				'default'   => [
+					'size' => 16,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button .eae-button-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-tl-button .eae-button-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'custom_button_icon_spacing',
+			[
+				'label'     => __( 'Icon Spacing', 'wts-eae' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+					],
+				],
+				'default'   => [
+					'size' => 8,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button .eae-button-icon.eae-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eae-tl-button .eae-button-icon.eae-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( 'custom_button_icon_style_tabs' );
+
+		$this->start_controls_tab(
+			'custom_button_icon_style_normal',
+			[
+				'label' => __( 'Normal', 'wts-eae' ),
+			]
+		);
+
+		$this->add_control(
+			'custom_button_icon_color',
+			[
+				'label'     => __( 'Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button .eae-button-icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eae-tl-button .eae-button-icon svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'custom_button_icon_style_hover',
+			[
+				'label' => __( 'Hover', 'wts-eae' ),
+			]
+		);
+
+		$this->add_control(
+			'custom_button_icon_color_hover',
+			[
+				'label'     => __( 'Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .eae-tl-button:hover .eae-button-icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eae-tl-button:hover .eae-button-icon svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
 	}
 
 	public function eae_timeline_content_section() {
@@ -136,7 +452,93 @@ class Timeline extends EAE_Widget_Base {
 					'url'         => '#',
 					'is_external' => '',
 				],
+			]
+		);
 
+		$repeater->add_control(
+			'item_link_type',
+			[
+				'label'   => __( 'Link Type', 'wts-eae' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'wrapper'   => __( 'Wrapper', 'wts-eae' ),
+					'call_to_action'  => __( 'Call to Action', 'wts-eae' ),
+				],
+				'default' => 'wrapper',
+			]
+		);
+
+		$repeater->add_control(
+			'custom_button_seperator_before',
+			[
+				'type'        => Controls_Manager::DIVIDER,
+				'condition'   => [
+					'item_link_type' => 'call_to_action',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'custom_button_heading',
+			[
+				'label'       => __( 'Call to Action', 'wts-eae' ),
+				'type'        => Controls_Manager::HEADING,
+				'condition'   => [
+					'item_link_type' => 'call_to_action',
+				],
+			]
+);
+
+		$repeater->add_control(
+			'custom_button_text',
+			[
+				'label'       => __( 'Button Text', 'wts-eae' ),
+				'type'        => Controls_Manager::TEXT,
+				'dynamic'     => [
+					'active' => true,
+				],
+				'default'     => __( 'Read More', 'wts-eae' ),
+				'placeholder' => __( 'Enter button text', 'wts-eae' ),
+				'condition'   => [
+					'item_link_type' => 'call_to_action',
+				],
+			]
+		);
+
+		$repeater->add_group_control(
+			Group_Control_Icon::get_type(),
+			[
+				'name'      => 'custom_button_icon',
+				'label'     => __( 'Button Icon', 'wts-eae' ),
+				'condition'   => [
+					'item_link_type' => 'call_to_action',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'custom_button_icon_position',
+			[
+				'label'     => __( 'Icon Position', 'wts-eae' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => [
+					'left'  => __( 'Left', 'wts-eae' ),
+					'right' => __( 'Right', 'wts-eae' ),
+				],
+				'default'   => 'left',
+				'condition'   => [
+					'item_link_type' => 'call_to_action',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'custom_button_seperator_after',
+			[
+				'type'        => Controls_Manager::DIVIDER,
+				'condition'   => [
+					'item_link_type' => 'call_to_action',
+				],
 			]
 		);
 
@@ -368,7 +770,9 @@ class Timeline extends EAE_Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}:hover .eae-tl-item-meta' => 'color: {{VALUE}};',
+					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused:hover .eae-tl-item-meta' => 'color: {{VALUE}};',
 					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-content-wrapper:hover .eae-tl-item-meta-inner' => 'color: {{VALUE}};',
+					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused .eae-tl-content-wrapper:hover .eae-tl-item-meta-inner' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'tl_custom_card_style' => 'yes',
@@ -458,7 +862,7 @@ class Timeline extends EAE_Widget_Base {
 					'default' => Global_Colors::COLOR_SECONDARY,
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused .eae-tl-content-wrapper:hover .eae-tl-item-meta-inner' => 'color: {{VALUE}};',
+					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused .eae-tl-content-wrapper .eae-tl-item-meta-inner' => 'color: {{VALUE}};',
 					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused .eae-tl-item-meta' => 'color: {{VALUE}};',
 				],
 				'condition' => [
@@ -646,6 +1050,8 @@ class Timeline extends EAE_Widget_Base {
 		);
 
 		$this->get_repeater_icon_styles( $repeater );
+
+		$this->get_repeater_button_styles( $repeater );
 
 		$repeater->end_controls_tab();
 
@@ -947,6 +1353,157 @@ class Timeline extends EAE_Widget_Base {
 				'tabs'                  => false,
 				'custom_style_switch'   => true,
 				'focus_item_class'      => 'eae-tl-item-focused',
+			]
+		);
+	}
+
+	public function get_repeater_button_styles( $repeater ) {
+		$repeater->add_control(
+			'tl_custom_button_style',
+			[
+				'label'        => __( 'Call to Action', 'wts-eae' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Yes', 'wts-eae' ),
+				'label_off'    => __( 'No', 'wts-eae' ),
+				'return_value' => 'yes',
+				'default'      => 'no',
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_style_normal',
+			[
+				'label'     => __( 'Normal', 'wts-eae' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_text_color',
+			[
+				'label'     => __( 'Text Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-button' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_background_color',
+			[
+				'label'     => __( 'Background Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-button' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_border_color',
+			[
+				'label'     => __( 'Border Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-button' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_style_hover',
+			[
+				'label'     => __( 'Hover', 'wts-eae' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_text_color_hover',
+			[
+				'label'     => __( 'Text Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-button:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_background_color_hover',
+			[
+				'label'     => __( 'Background Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-button:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_border_color_hover',
+			[
+				'label'     => __( 'Border Color', 'wts-eae' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-button:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'tl_custom_button_alignment',
+			[
+				'label'     => __( 'Alignment', 'wts-eae' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'left'   => [
+						'title' => __( 'Left', 'wts-eae' ),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'wts-eae' ),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => __( 'Right', 'wts-eae' ),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'default'   => 'center',
+				'condition' => [
+					'tl_custom_button_style' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-button-wrapper' => 'justify-content: {{VALUE}};',
+				],
 			]
 		);
 	}

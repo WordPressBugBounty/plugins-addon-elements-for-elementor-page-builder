@@ -659,9 +659,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Title Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_PRIMARY,
-				],
 				'condition' => [
 					'tl_custom_card_style' => 'yes',
 				],
@@ -676,9 +673,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Date Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_SECONDARY,
-				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-item-meta' => 'color: {{VALUE}};',
 					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-content-wrapper .eae-tl-item-meta-inner' => 'color: {{VALUE}};',
@@ -694,9 +688,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Content Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_TEXT,
-				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-content' => 'color: {{VALUE}};',
 				],
@@ -748,9 +739,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Title Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_PRIMARY,
-				],
 				'condition' => [
 					'tl_custom_card_style' => 'yes',
 				],
@@ -765,9 +753,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Date Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_SECONDARY,
-				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}:hover .eae-tl-item-meta' => 'color: {{VALUE}};',
 					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused:hover .eae-tl-item-meta' => 'color: {{VALUE}};',
@@ -785,9 +770,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Content Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_TEXT,
-				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .eae-tl-content-wrapper:hover .eae-tl-content' => 'color: {{VALUE}};',
 				],
@@ -842,9 +824,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Title Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_PRIMARY,
-				],
 				'condition' => [
 					'tl_custom_card_style' => 'yes',
 				],
@@ -858,9 +837,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Date Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_SECONDARY,
-				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused .eae-tl-content-wrapper .eae-tl-item-meta-inner' => 'color: {{VALUE}};',
 					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused .eae-tl-item-meta' => 'color: {{VALUE}};',
@@ -875,9 +851,6 @@ class Timeline extends EAE_Widget_Base {
 			[
 				'label'     => __( 'Content Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'    => [
-					'default' => Global_Colors::COLOR_TEXT,
-				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}.eae-tl-item-focused .eae-tl-content-wrapper .eae-tl-content' => 'color: {{VALUE}};',
 				],

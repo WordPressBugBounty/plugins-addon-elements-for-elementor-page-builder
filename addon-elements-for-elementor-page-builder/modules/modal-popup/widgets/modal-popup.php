@@ -437,7 +437,7 @@ class ModalPopup extends EAE_Widget_Base {
 					'default' => Global_Colors::COLOR_PRIMARY,
 				],
 				'selectors' => [
-					'.eae-wrap-{{ID}} .mfp-title' => 'color: {{VALUE}};',
+					'.eae-popup.eae-wrap-{{ID}} .mfp-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -447,7 +447,7 @@ class ModalPopup extends EAE_Widget_Base {
 				'label'     => __( 'Background Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'.eae-wrap-{{ID}} .mfp-title' => 'background-color: {{VALUE}};',
+					'.eae-popup.eae-wrap-{{ID}} .mfp-title' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -459,7 +459,7 @@ class ModalPopup extends EAE_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [
-					'.eae-wrap-{{ID}} .mfp-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'.eae-popup.eae-wrap-{{ID}} .mfp-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -472,7 +472,7 @@ class ModalPopup extends EAE_Widget_Base {
 				'global'   => [
 					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 				],
-				'selector' => '.eae-wrap-{{ID}} .mfp-title',
+				'selector' => '.eae-popup.eae-wrap-{{ID}} .mfp-title',
 			]
 		);
 		$this->add_group_control(
@@ -480,7 +480,7 @@ class ModalPopup extends EAE_Widget_Base {
 			[
 				'name'     => 'item_text_shadow',
 				'label'    => 'Text Shadow',
-				'selector' => '.eae-wrap-{{ID}} .mfp-title',
+				'selector' => '.eae-popup.eae-wrap-{{ID}} .mfp-title',
 			]
 		);
 
@@ -503,7 +503,7 @@ class ModalPopup extends EAE_Widget_Base {
 					'default' => Global_Colors::COLOR_TEXT,
 				],
 				'selectors' => [
-					'.eae-wrap-{{ID}} .eae-modal-content' => 'color: {{VALUE}};',
+					'.eae-popup.eae-wrap-{{ID}} .eae-modal-content' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'content_type' => 'content',
@@ -517,7 +517,7 @@ class ModalPopup extends EAE_Widget_Base {
 				'label'     => __( 'Background Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'.eae-wrap-{{ID}} .mfp-inline-holder .mfp-content' => 'background-color: {{VALUE}};',
+					'.eae-popup.eae-wrap-{{ID}} .mfp-inline-holder .mfp-content' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -530,7 +530,7 @@ class ModalPopup extends EAE_Widget_Base {
 				'global'    => [
 					'default' => Global_Typography::TYPOGRAPHY_TEXT,
 				],
-				'selector'  => '.eae-wrap-{{ID}} .eae-modal-content',
+				'selector'  => '.eae-popup.eae-wrap-{{ID}} .eae-modal-content',
 				'condition' => [
 					'content_type' => 'content',
 				],
@@ -541,7 +541,7 @@ class ModalPopup extends EAE_Widget_Base {
 			[
 				'name'      => 'content_text_shadow',
 				'label'     => 'Text Shadow',
-				'selector'  => '.eae-wrap-{{ID}} .eae-modal-content',
+				'selector'  => '.eae-popup.eae-wrap-{{ID}} .eae-modal-content',
 				'condition' => [
 					'content_type' => 'content',
 				],
@@ -566,7 +566,7 @@ class ModalPopup extends EAE_Widget_Base {
 				'name'      => 'box_border',
 				'label'     => __( 'Border', 'wts-eae' ),
 				'separator' => 'before',
-				'selector'  => '.eae-wrap-{{ID}} .mfp-inline-holder .mfp-content',
+				'selector'  => '.eae-popup.eae-wrap-{{ID}} .mfp-inline-holder .mfp-content',
 			]
 		);
 
@@ -577,7 +577,7 @@ class ModalPopup extends EAE_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
-					'.eae-wrap-{{ID}} .mfp-inline-holder .mfp-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'.eae-popup.eae-wrap-{{ID}} .mfp-inline-holder .mfp-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -587,7 +587,7 @@ class ModalPopup extends EAE_Widget_Base {
 			[
 				'name'     => 'item_box_shadow',
 				'label'    => 'Box Shadow',
-				'selector' => '.eae-wrap-{{ID}} .mfp-content',
+				'selector' => '.eae-popup.eae-wrap-{{ID}} .mfp-content',
 			]
 		);
 		$this->end_controls_section();
@@ -878,8 +878,8 @@ class ModalPopup extends EAE_Widget_Base {
 					'size' => 28,
 				],
 				'selectors' => [
-					'.eae-wrap-{{ID}} .eae-close'    => 'font-size: {{SIZE}}px;height: {{SIZE}}px;width: {{SIZE}}px;',
-					'.eae-wrap-{{ID}} svg.eae-close' => 'width: {{SIZE}}px;height: {{SIZE}}px;width: {{SIZE}}px;',
+					'.eae-popup.eae-wrap-{{ID}} .eae-close'    => 'font-size: {{SIZE}}px;height: {{SIZE}}px;width: {{SIZE}}px;',
+					'.eae-popup.eae-wrap-{{ID}} svg.eae-close' => 'width: {{SIZE}}px;height: {{SIZE}}px;width: {{SIZE}}px;',
 				],
 			]
 		);
@@ -890,8 +890,8 @@ class ModalPopup extends EAE_Widget_Base {
 				'label'     => __( 'Color', 'wts-eae' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'.eae-wrap-{{ID}}.eae-popup .eae-close' => 'color: {{VALUE}};',
-					'.eae-wrap-{{ID}}.eae-popup svg' => 'background-color: {{VALUE}};',
+					'.eae-popup.eae-wrap-{{ID}}.eae-popup .eae-close' => 'color: {{VALUE}};',
+					'.eae-popup.eae-wrap-{{ID}}.eae-popup svg' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -915,7 +915,7 @@ class ModalPopup extends EAE_Widget_Base {
 					'size' => 10,
 				],
 				'selectors'  => [
-					'.eae-wrap-{{ID}} .eae-close' => 'top:{{SIZE}}{{UNIT}};',
+					'.eae-popup.eae-wrap-{{ID}} .eae-close' => 'top:{{SIZE}}{{UNIT}};',
 				],
 				'condition'  => [
 					'btn_in_out' => 'yes',
@@ -942,7 +942,7 @@ class ModalPopup extends EAE_Widget_Base {
 					'size' => 10,
 				],
 				'selectors'  => [
-					'.eae-wrap-{{ID}} .eae-close' => 'right:{{SIZE}}{{UNIT}};',
+					'.eae-popup.eae-wrap-{{ID}} .eae-close' => 'right:{{SIZE}}{{UNIT}};',
 				],
 				'condition'  => [
 					'btn_in_out' => 'yes',
@@ -966,7 +966,7 @@ class ModalPopup extends EAE_Widget_Base {
 					],
 				],
 				'selectors'  => [
-					'.eae-wrap-{{ID}} .eae-close' => 'top:{{SIZE}}{{UNIT}};',
+					'.eae-popup.eae-wrap-{{ID}} .eae-close' => 'top:{{SIZE}}{{UNIT}};',
 				],
 				'condition'  => [
 					'btn_in_out!' => 'yes',
@@ -990,7 +990,7 @@ class ModalPopup extends EAE_Widget_Base {
 					],
 				],
 				'selectors'  => [
-					'.eae-wrap-{{ID}} .eae-close' => 'right:{{SIZE}}{{UNIT}};',
+					'.eae-popup.eae-wrap-{{ID}} .eae-close' => 'right:{{SIZE}}{{UNIT}};',
 				],
 				'condition'  => [
 					'btn_in_out!' => 'yes',

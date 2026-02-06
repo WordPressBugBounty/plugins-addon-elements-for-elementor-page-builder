@@ -27,7 +27,7 @@ class ImageCompare extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-image-compare';
+		return 'wpv wpv-image-compare';
 	}
 
 

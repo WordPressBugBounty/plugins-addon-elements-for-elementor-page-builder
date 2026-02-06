@@ -47,7 +47,7 @@ class Module {
 			$element->start_controls_section(
 				'_eae_section_bg_slider',
 				[
-					'label' => __( 'EAE - Background Slider', 'wts-eae' ),
+					'label' => __( 'AE - Background Slider', 'wts-eae' ),
 					'tab'   => Controls_Manager::TAB_STYLE,
 				]
 			);

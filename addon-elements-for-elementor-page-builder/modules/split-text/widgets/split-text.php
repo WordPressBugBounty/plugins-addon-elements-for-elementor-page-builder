@@ -24,7 +24,7 @@ class SplitText extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-split-text';
+		return 'wpv wpv-split-text';
 	}
 
 	public function get_categories() {

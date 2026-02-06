@@ -28,7 +28,7 @@ class RandomImage extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-coupon-code';
+		return 'wpv wpv-random-image';
 	}
 
 	public function get_categories() {

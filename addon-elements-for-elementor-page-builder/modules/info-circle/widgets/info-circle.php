@@ -25,7 +25,7 @@ class Info_Circle extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-info-circle';
+		return 'wpv wpv-info-circle';
 	}
 
 	protected function register_skins() {

@@ -22,7 +22,7 @@ class AnimatedLink extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-advance-button';
+		return 'wpv wpv-animated-link';
 	}
     public function get_script_depends() {
 		return [ 'eae-lottie' ];

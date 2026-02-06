@@ -19,11 +19,11 @@ class Twitter extends EAE_Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'EAE - Twitter', 'wts-eae' );
+		return __( 'Twitter', 'wts-eae' );
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-twitter-feed';
+		return 'wpv wpv-twitter';
 	}
 
 	public function get_categories() {

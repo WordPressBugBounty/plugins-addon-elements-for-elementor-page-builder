@@ -576,7 +576,9 @@ var popupInstance = [];
     const previewModal  = $popupWrapper.data("preview-modal");
     const effect        = $popupWrapper.data("effect");
     const closeBtnType  = $popupWrapper.data("close-button-type");
-    const closeBtn      = $popupWrapper.data("close-btn");
+	  let closeBtn = $popupWrapper.data("close-btn");
+
+	closeBtn = escapeHtml(closeBtn);
   
     // Close button HTML
     const closeBtnHTML = closeBtnType === "icon"
@@ -3891,6 +3893,17 @@ const EAECouponCode = function($scope){
     console.log('wrapper', wrapper);
 }
 
+var escapeHtml = function (text) {
+	var map = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		"'": '&#039;'
+	};
+	return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
 var ModuleHandler = elementorModules.frontend.handlers.Base,
             CouponCodeHandler;
             CouponCodeHandler = ModuleHandler.extend({
@@ -3993,12 +4006,12 @@ var ModuleHandler = elementorModules.frontend.handlers.Base,
 
                         $close_btn_html =
                         '<svg class="eae-close" style="-webkit-mask-image: url(' +
-                        settings.pop_icon.value.url +
+                        escapeHtml(settings.pop_icon.value.url) +
                         "); mask-image: url(" +
-                        settings.pop_icon.value.url +
+                        escapeHtml(settings.pop_icon.value.url) +
                         '); "></svg>';
                         } else {
-                            $close_btn_html = '<i class="eae-close ' + settings.pop_icon.value + '"> </i>';
+                            $close_btn_html = '<i class="eae-close ' + escapeHtml(settings.pop_icon.value) + '"> </i>';
                         }
                     $(popWrapper).eaePopup({
                         type:'inline',

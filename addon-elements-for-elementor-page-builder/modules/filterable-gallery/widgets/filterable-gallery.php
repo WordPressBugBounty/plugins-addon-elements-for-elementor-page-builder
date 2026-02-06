@@ -34,7 +34,7 @@ class FilterableGallery extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-filterable-gallery';
+		return 'wpv wpv-filterable-gallery';
 	}
 
 	public function get_categories() {

@@ -26,7 +26,7 @@ class Module {
 				'eae_animated_gradient',
 				[
 					'tab'   => Controls_Manager::TAB_STYLE,
-					'label' => __( 'EAE - Animated Gradient Background', 'wts-eae' ),
+					'label' => __( 'AE - Animated Gradient Background', 'wts-eae' ),
 				]
 			);
 			$element->add_control(

@@ -21,7 +21,7 @@ class Chart extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-chart';
+		return 'wpv wpv-charts';
 	}
 
 	public function get_categories() {

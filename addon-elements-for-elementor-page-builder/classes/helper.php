@@ -1558,7 +1558,7 @@ class Helper {
 
 			
 			'video-box' => [
-				'name'	=> 'Video',
+				'name'	=> 'Video Box',
 				'enabled' => true, 
 				'type'	=> 'widget',
 				'pro'	=> true

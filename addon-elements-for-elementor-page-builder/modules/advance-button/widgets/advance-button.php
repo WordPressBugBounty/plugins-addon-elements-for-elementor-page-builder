@@ -28,7 +28,7 @@ class AdvanceButton extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-advance-button';
+		return 'wpv wpv-advanced-button';
 	}
     
     protected function register_controls()

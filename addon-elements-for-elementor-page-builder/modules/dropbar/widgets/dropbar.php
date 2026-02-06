@@ -29,7 +29,7 @@ class Dropbar extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-advance-button';
+		return 'wpv wpv-drop-bar';
 	}
     
     protected function register_controls(){
@@ -51,7 +51,7 @@ class Dropbar extends EAE_Widget_Base {
 					'plain_content' => __( 'WYSIWYG', 'wts-eae' ),
 					'saved_section' => __( 'Saved Section', 'wts-eae' ),
 					'saved_page'    => __( 'Saved Page', 'wts-eae' ),
-					'ae_template'   => __( 'AE-Template', 'wts-eae' ),
+					'ae_template'   => __( 'DA-Template', 'wts-eae' ),
 					'saved_container' => __('Saved Container','wts-eae'),
 				],
 				'default' => 'plain_content',
@@ -114,12 +114,12 @@ class Dropbar extends EAE_Widget_Base {
 			]
 		);
 
-		$saved_ae_template[''] = __( 'Select AE Template', 'wts-eae' );
+		$saved_ae_template[''] = __( 'Select DA Template', 'wts-eae' );
 		$saved_ae_template     = $saved_ae_template + Helper::select_ae_templates();
 		$this->add_control(
 			'ae_templates',
 			[
-				'label'     => __( 'AE-Templates', 'wts-eae' ),
+				'label'     => __( 'DA Templates', 'wts-eae' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => $saved_ae_template,
 				'condition' => [

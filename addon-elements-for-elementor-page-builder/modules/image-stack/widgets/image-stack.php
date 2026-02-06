@@ -30,7 +30,7 @@ class ImageStack extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-image-stack';
+		return 'wpv wpv-image-stack';
 	}
 
 	public function get_categories() {

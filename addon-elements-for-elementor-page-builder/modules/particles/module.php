@@ -38,7 +38,7 @@ class Module {
 				'eae_particles',
 				[
 					'tab'   => Controls_Manager::TAB_STYLE,
-					'label' => __( 'EAE - Particles', 'wts-eae' ),
+					'label' => __( 'AE - Particles', 'wts-eae' ),
 				]
 			);
 

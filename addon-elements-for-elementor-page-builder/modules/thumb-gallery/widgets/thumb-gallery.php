@@ -33,7 +33,7 @@ class ThumbGallery extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-thumbnail-slider';
+		return 'wpv wpv-thumbnail-slider';
 	}
 
 	public function get_categories() {

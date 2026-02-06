@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Plugin Name: Elementor Addon Elements
- * Description: Elementor Addon Elements comes with 40+ widgets and extensions to extend the power of Elementor Page Builder.
- * Plugin URI: https://www.elementoraddons.com/elements-addon-elements/
+ * Plugin Name: Addon Elements for Elementor (formerly Elementor Addon Elements)
+ * Description: Addon Elements for Elementor comes with 60+ widgets and extensions to extend the power of Elementor Page Builder.
+ * Plugin URI: https://wpbuilderaddons.com/addon-elements-elementor/
  * Author: WPVibes
- * Version: 1.14.3
+ * Version: 1.14.4
  * Author URI: https://wpvibes.com/
- * Elementor tested up to: 3.32
- * Elementor Pro tested up to: 3.32
+ * Elementor tested up to: 3.33
+ * Elementor Pro tested up to: 3.33
  * Text Domain: wts-eae
  * @package WTS_EAE
  */
@@ -19,7 +19,7 @@ if(! defined('EAE_FILE')){
 	define( 'EAE_URL', plugins_url( '/', __FILE__ ) );
 	define( 'EAE_PATH', plugin_dir_path( __FILE__ ) );
 	define( 'EAE_SCRIPT_SUFFIX', defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min' );
-	define( 'EAE_VERSION', '1.14.3' );
+	define( 'EAE_VERSION', '1.14.4' );
 }
 
 
@@ -50,7 +50,7 @@ if(!function_exists('eae_activate')){
 			add_action( 'admin_notices', function(){
 				?>
 				<div class="notice notice-error is-dismissible">
-					<p><?php esc_html_e( 'Elementor Addon Elements requires Elementor plugin to be active.', 'wts-eae' ); ?></p>
+					<p><?php esc_html_e( 'Addon Elements for Elementor requires Elementor plugin to be active.', 'wts-eae' ); ?></p>
 				</div>
 				<?php
 			});
@@ -78,7 +78,7 @@ if(strpos($current_file_path, 'elementor-addon-elements/elementor-addon-elements
 			add_action( 'admin_notices', function(){
 				?>
 				<div class="notice notice-error is-dismissible">
-					<p><?php esc_html_e( 'Elementor Addon Elements (Free) cannot be activated along with Pro version', 'wts-eae' ); ?></p>
+					<p><?php esc_html_e( 'Addon Elements for Elementor (Free) cannot be activated along with Pro version', 'wts-eae' ); ?></p>
 				</div>
 				<?php
 			});
@@ -96,14 +96,14 @@ if(!function_exists('wts_eae_pro_fail_load')){
 			if ( ! current_user_can( 'activate_plugins' ) ) {
 				return;
 			}
-			$message      = esc_html__( 'Elementor Addon Elements is not working because you need to activate the Elementor plugin.', 'wts-eae' );
+			$message      = esc_html__( 'Addon Elements for Elementor is not working because you need to activate the Elementor plugin.', 'wts-eae' );
 			$action_url   = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
 			$button_label = __( 'Activate Elementor', 'wts-eae' );
 		} else {
 			if ( ! current_user_can( 'install_plugins' ) ) {
 				return;
 			}
-			$message      = esc_html__( 'Elementor Addon Elements is not working because you need to install the Elementor plugin.', 'wts-eae' );
+			$message      = esc_html__( 'Addon Elements for Elementor is not working because you need to install the Elementor plugin.', 'wts-eae' );
 			$action_url   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
 			$button_label = __( 'Install Elementor', 'wts-eae' );
 		}

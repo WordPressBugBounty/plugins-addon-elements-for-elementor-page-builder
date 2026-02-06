@@ -879,3 +879,111 @@ a.eae-go-pro {
   margin-bottom: 10px;
 }
 
+/* Common Sidebar Card Style */
+.eae-sidebar-card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    border: 1px solid #e6e6e6;
+}
+
+/* Branding Header */
+.eae-brand-header {
+    text-align: center;
+    background: linear-gradient(135deg, #6F63F2, #8A4DE8);
+    padding: 30px 20px;
+    border-radius: 4px 4px 0 0;
+    margin: -24px -24px 20px -24px;
+    color: #fff;
+}
+
+.eae-old-title {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+}
+
+.eae-new-title {
+    font-size: 22px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 1.4em;
+    color:#FFFFFF;
+}
+
+.eae-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Brand Description */
+.eae-brand-desc {
+    font-size: 16px;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.eae-btn-primary {
+    display: block;
+    text-align: center;
+    background: #2171b1;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.eae-btn-primary:hover, .eae-btn-primary:active,
+.eae-btn-primary:visited  {
+    background: #2171b1;
+    color:#FFFFFF;
+}
+
+.eae-btn-outline {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #24689c;
+    color: #24689c;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.eae-btn-outline:hover {
+    background: #24689c;
+    color: #fff;
+}
+
+/* Help Box */
+.eae-help-box h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    margin-top: 0px;
+}
+
+.eae-help-box p {
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+a.eae-btn-primary {
+    display: inline-flex;
+    align-items: center;  
+    gap: 6px;           
+    width: -webkit-fill-available;
+    justify-content: center;
+}
+
+a.eae-btn-primary .external-link svg {
+    display: block;        /* baseline issue fix */
+   
+}

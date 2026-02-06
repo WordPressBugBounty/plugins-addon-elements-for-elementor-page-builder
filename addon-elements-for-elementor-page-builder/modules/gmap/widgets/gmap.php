@@ -20,7 +20,7 @@ class Gmap extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-google-map';
+		return 'wpv wpv-google-map';
 	}
 
 

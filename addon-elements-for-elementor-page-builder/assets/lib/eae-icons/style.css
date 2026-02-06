@@ -1,280 +1,267 @@
-.eae-icon::before{
-	content: '';
-	display: inline-block;
-    background-color: #BABFC5;
-    width: 1em;
-    height: 1em;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-	mask-size: contain;
-    -webkit-mask-position: center;
-	mask-position: center;
-	transition: all 0.6s ease 0s;
+@font-face {
+  font-family: 'wpv-icons';
+  src:
+    url('fonts/wpv-icons.ttf?34s1il') format('truetype'),
+    url('fonts/wpv-icons.woff?34s1il') format('woff'),
+    url('fonts/wpv-icons.svg?34s1il#wpv-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
 
-.eae-icon::after {
-    content: 'EAE';
-    position: absolute;
-    left: 0;
-    top: 0;
-    text-align-last: start;
-    font-size: 11px;
-    border-bottom-right-radius: 2px;
-	border-top-left-radius: 2px;
-    padding: 3px 6px;
-    font-style: normal;
-    color: #000;
-    background-color: gold;
-}
-.elementor-navigator__element__element-type .eae-icon::after {
-    top: 50%;
-    transform: translateY(-50%);
+.wpv {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'wpv-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.elementor-element-wrapper:hover .eae-icon::before{
-	background-color: #fff;
+.wpv-acf-logo:before {
+  content: "\e94c";
 }
-
-.eae-compare-table::before {
-    -webkit-mask-image: url('icons/comparison-table.svg');
-	mask-image: url('icons/comparison-table.svg'); 
+.wpv-pods-logo:before {
+  content: "\e900";
 }
-
-.eae-info-circle::before {
-    -webkit-mask-image: url('icons/info-circle.svg');
-	mask-image: url('icons/info-circle.svg'); 
+.wpv-repeater:before {
+  content: "\e901";
 }
-
-.eae-time-line::before {
-    -webkit-mask-image: url('icons/timeline.svg');
-	mask-image: url('icons/timeline.svg'); 
+.wpv-author:before {
+  content: "\e902";
 }
-
-.eae-dual-button::before {
-    -webkit-mask-image: url('icons/dual-button.svg');
-	mask-image: url('icons/dual-button.svg'); 
+.wpv-button:before {
+  content: "\e903";
 }
-
-.eae-advance-button::before {
-    -webkit-mask-image: url('icons/advanced-button.svg');
-	mask-image: url('icons/advanced-button.svg'); 
+.wpv-custom-field:before {
+  content: "\e904";
 }
-
-.eae-animated-text::before {
-    -webkit-mask-image: url('icons/animated-text.svg');
-	mask-image: url('icons/animated-text.svg'); 
+.wpv-map:before {
+  content: "\e905";
 }
-
-.eae-modal-popup::before {
-    -webkit-mask-image: url('icons/popup.svg');
-	mask-image: url('icons/popup.svg'); 
+.wpv-post-comment:before {
+  content: "\e906";
 }
-
-.eae-progress-bar::before {
-    -webkit-mask-image: url('icons/progress-bar.svg');
-	mask-image: url('icons/progress-bar.svg'); 
+.wpv-post-content:before {
+  content: "\e907";
 }
-
-.eae-flip-box::before {
-    -webkit-mask-image: url('icons/flipbox.svg');
-	mask-image: url('icons/flipbox.svg'); 
+.wpv-post-image:before {
+  content: "\e908";
 }
-
-.eae-split-text::before {
-    -webkit-mask-image: url('icons/split-text.svg');
-	mask-image: url('icons/split-text.svg'); 
+.wpv-post-meta:before {
+  content: "\e909";
 }
-
-.eae-google-map::before {
-    -webkit-mask-image: url('icons/google-map.svg');
-	mask-image: url('icons/google-map.svg'); 
+.wpv-post-navigation:before {
+  content: "\e90a";
 }
-
-.eae-price-table::before {
-    -webkit-mask-image: url('icons/price-table.svg');
-	mask-image: url('icons/price-table.svg'); 
+.wpv-post-title:before {
+  content: "\e90b";
 }
-
-.eae-twitter-feed::before {
-    -webkit-mask-image: url('icons/twitter-feed.svg');
-	mask-image: url('icons/twitter-feed.svg'); 
+.wpv-search-form:before {
+  content: "\e90c";
 }
-
-.eae-post-list::before {
-    -webkit-mask-image: url('icons/post-list.svg');
-	mask-image: url('icons/post-list.svg'); 
+.wpv-taxonomy:before {
+  content: "\e90d";
 }
-
-.eae-shape-separator::before {
-    -webkit-mask-image: url('icons/shape-separator.svg');
-	mask-image: url('icons/shape-separator.svg'); 
+.wpv-trigger:before {
+  content: "\e90e";
 }
-
-.eae-text-separator::before {
-    -webkit-mask-image: url('icons/text-separator.svg');
-	mask-image: url('icons/text-separator.svg'); 
+.wpv-woo-logo:before {
+  content: "\e90f";
 }
-
-.eae-filterable-gallery::before {
-    -webkit-mask-image: url('icons/filterable-gallery.svg');
-	mask-image: url('icons/filterable-gallery.svg'); 
+.wpv-animated-gradient:before {
+  content: "\e910";
 }
-
-.eae-content-switcher::before {
-    -webkit-mask-image: url('icons/content-switcher.svg');
-	mask-image: url('icons/content-switcher.svg'); 
+.wpv-coupon-code:before {
+  content: "\e911";
 }
-
-.eae-chart::before {
-    -webkit-mask-image: url('icons/charts.svg');
-	mask-image: url('icons/charts.svg'); 
+.wpv-animated-link:before {
+  content: "\e912";
 }
-
-.eae-thumbnail-slider::before {
-    -webkit-mask-image: url('icons/thumbnail-slider.svg');
-	mask-image: url('icons/thumbnail-slider.svg'); 
+.wpv-background-slider:before {
+  content: "\e913";
 }
-
-.eae-thumbnail-slider::before {
-    -webkit-mask-image: url('icons/thumbnail-slider.svg');
-	mask-image: url('icons/thumbnail-slider.svg'); 
+.wpv-woo-products:before {
+  content: "\e914";
 }
-
-.eae-content-ticker::before {
-    -webkit-mask-image: url('icons/content-ticker.svg');
-	mask-image: url('icons/content-ticker.svg'); 
+.wpv-blob-shape:before {
+  content: "\e915";
 }
-
-.eae-advance-button::before {
-    -webkit-mask-image: url('icons/advanced-button.svg');
-	mask-image: url('icons/advanced-button.svg'); 
+.wpv-advanced-button:before {
+  content: "\e916";
 }
-
-.eae-radial-charts::before {
-    -webkit-mask-image: url('icons/radial-chart.svg');
-	mask-image: url('icons/radial-chart.svg'); 
+.wpv-advanced-heading:before {
+  content: "\e917";
 }
-
-.eae-image-accordion::before {
-    -webkit-mask-image: url('icons/image-accordion.svg');
-	mask-image: url('icons/image-accordion.svg'); 
+.wpv-advanced-list:before {
+  content: "\e918";
 }
-
-.eae-faq::before {
-    -webkit-mask-image: url('icons/faq.svg');
-	mask-image: url('icons/faq.svg'); 
+.wpv-advanced-price-table:before {
+  content: "\e919";
 }
-
-.eae-advanced-list::before {
-    -webkit-mask-image: url('icons/advanced-list.svg');
-	mask-image: url('icons/advanced-list.svg'); 
+.wpv-animated-text:before {
+  content: "\e91a";
 }
-
-.eae-video-box::before {
-    -webkit-mask-image: url('icons/video-box.svg');
-	mask-image: url('icons/video-box.svg'); 
+.wpv-business-hours:before {
+  content: "\e91b";
 }
-
-.eae-business-hours::before {
-    -webkit-mask-image: url('icons/business-hours.svg');
-	mask-image: url('icons/business-hours.svg'); 
+.wpv-charts:before {
+  content: "\e91c";
 }
-
-.eae-instagram-feed::before {
-    -webkit-mask-image: url('icons/instagram.svg');
-	mask-image: url('icons/instagram.svg'); 
+.wpv-circular-progress:before {
+  content: "\e91d";
 }
-
-.eae-floating-elements::before {
-    -webkit-mask-image: url('icons/floating-elements.svg');
-	mask-image: url('icons/floating-elements.svg'); 
+.wpv-comparison-table:before {
+  content: "\e91f";
 }
-
-.eae-advance-price-table::before {
-    -webkit-mask-image: url('icons/price-table.svg');
-	mask-image: url('icons/price-table.svg'); 
+.wpv-content-switcher:before {
+  content: "\e920";
 }
-
-.eae-add-to-calendar::before {
-    -webkit-mask-image: url('icons/add-to-calendar.svg');
-	mask-image: url('icons/add-to-calendar.svg'); 
+.wpv-content-ticker:before {
+  content: "\e921";
 }
-
-.eae-advanced-heading::before {
-    -webkit-mask-image: url('icons/advanced-heading.svg');
-	mask-image: url('icons/advanced-heading.svg'); 
+.wpv-data-table:before {
+  content: "\e922";
 }
-
-.eae-image-compare::before {
-    -webkit-mask-image: url('icons/image-compare.svg');
-	mask-image: url('icons/image-compare.svg'); 
+.wpv-dual-button:before {
+  content: "\e923";
 }
-
-.eae-team-members::before {
-    -webkit-mask-image: url('icons/team-members.svg');
-	mask-image: url('icons/team-members.svg'); 
+.wpv-faq:before {
+  content: "\e924";
 }
-
-.eae-data-table::before {
-    -webkit-mask-image: url('icons/data-table.svg');
-	mask-image: url('icons/data-table.svg'); 
+.wpv-filterable-gallery:before {
+  content: "\e925";
 }
-
-.eae-image-scroll::before {
-    -webkit-mask-image: url('icons/image-scroll.svg');
-	mask-image: url('icons/image-scroll.svg'); 
+.wpv-flip-box:before {
+  content: "\e926";
 }
-
-.eae-video-gallery::before {
-    -webkit-mask-image: url('icons/video-gallery.svg');
-	mask-image: url('icons/video-gallery.svg'); 
+.wpv-floating-element:before {
+  content: "\e927";
 }
-.eae-image-stack::before {
-    -webkit-mask-image: url('icons/image-stack.svg');
-	mask-image: url('icons/image-stack.svg'); 
+.wpv-image-accordion:before {
+  content: "\e928";
 }
-.eae-image-hotspot::before {
-    -webkit-mask-image: url('icons/image-hotspot.svg');
-	mask-image: url('icons/image-hotspot.svg'); 
+.wpv-image-compare:before {
+  content: "\e929";
 }
-.eae-devices::before {
-    -webkit-mask-image: url('icons/devices.svg');
-	mask-image: url('icons/devices.svg'); 
+.wpv-info-circle:before {
+  content: "\e92a";
 }
-.eae-info-group::before {
-    -webkit-mask-image: url('icons/info-group.svg');
-	mask-image: url('icons/info-group.svg'); 
+.wpv-info-group:before {
+  content: "\e92b";
 }
-.eae-circular-progress::before {
-    -webkit-mask-image: url('icons/cicular-progress.svg');
-	mask-image: url('icons/cicular-progress.svg');
+.wpv-instagram-feed:before {
+  content: "\e91e";
 }
-.eae-table-of-content::before {
-    -webkit-mask-image: url('icons/table-of-content.svg');
-	mask-image: url('icons/table-of-content.svg');
+.wpv-modal-popup:before {
+  content: "\e92c";
 }
-.eae-call-to-action::before {
-    -webkit-mask-image: url('icons/call-to-action.svg');
-	mask-image: url('icons/call-to-action.svg');
+.wpv-post-list:before {
+  content: "\e92d";
 }
-.eae-coupon-code::before {
-    -webkit-mask-image: url('icons/coupon-code.svg');
-	mask-image: url('icons/coupon-code.svg');
+.wpv-price-table:before {
+  content: "\e92e";
 }
-.eae-google-review::before {
-    -webkit-mask-image: url('icons/google-review.svg');
-	mask-image: url('icons/google-review.svg');
+.wpv-progress-bar:before {
+  content: "\e92f";
 }
-.eae-testimonial-slider::before{
-    -webkit-mask-image: url('icons/testimonial-slider.svg');
-	mask-image: url('icons/testimonial-slider.svg');
+.wpv-radial-chart:before {
+  content: "\e930";
 }
-.eae-woo-products::before{
-    -webkit-mask-image: url('icons/woo-products.svg');
-	mask-image: url('icons/woo-products.svg');
+.wpv-shape-divider:before {
+  content: "\e931";
 }
-.eae-woo-category::before{
-    -webkit-mask-image: url('icons/woo-category.svg');
-	mask-image: url('icons/woo-category.svg');
+.wpv-text-separator:before {
+  content: "\e932";
+}
+.wpv-split-text:before {
+  content: "\e933";
+}
+.wpv-team-member:before {
+  content: "\e934";
+}
+.wpv-thumbnail-slider:before {
+  content: "\e935";
+}
+.wpv-timeline:before {
+  content: "\e936";
+}
+.wpv-video-box:before {
+  content: "\e937";
+}
+.wpv-video-gallery:before {
+  content: "\e938";
+}
+.wpv-add-to-calendar:before {
+  content: "\e939";
+}
+.wpv-audio-player:before {
+  content: "\e93b";
+}
+.wpv-call-to-action:before {
+  content: "\e93c";
+}
+.wpv-devices:before {
+  content: "\e93d";
+}
+.wpv-drop-bar:before {
+  content: "\e93e";
+}
+.wpv-form-actions:before {
+  content: "\e93f";
+}
+.wpv-google-map:before {
+  content: "\e940";
+}
+.wpv-google-reviews:before {
+  content: "\e941";
+}
+.wpv-image-hotspot:before {
+  content: "\e942";
+}
+.wpv-image-scroll:before {
+  content: "\e943";
+}
+.wpv-image-stack:before {
+  content: "\e944";
+}
+.wpv-particle-background:before {
+  content: "\e945";
+}
+.wpv-random-image:before {
+  content: "\e946";
+}
+.wpv-table-of-content:before {
+  content: "\e947";
+}
+.wpv-testimonial-slider:before {
+  content: "\e93a";
+}
+.wpv-text-scroll:before {
+  content: "\e948";
+}
+.wpv-twitter:before {
+  content: "\e949";
+}
+.wpv-woo-category:before {
+  content: "\e94a";
+}
+.wpv-youtube-feed:before {
+  content: "\e94b";
 }

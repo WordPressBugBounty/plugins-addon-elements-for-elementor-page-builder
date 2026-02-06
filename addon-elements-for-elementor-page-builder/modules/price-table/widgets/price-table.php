@@ -27,7 +27,7 @@ class PriceTable extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-price-table';
+		return 'wpv wpv-price-table';
 	}
 
 	public function get_categories() {

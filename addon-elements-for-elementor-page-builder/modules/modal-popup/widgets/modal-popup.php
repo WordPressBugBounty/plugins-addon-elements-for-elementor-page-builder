@@ -30,7 +30,7 @@ class ModalPopup extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-modal-popup';
+		return 'wpv wpv-modal-popup';
 	}
 
 	public function get_categories() {
@@ -43,7 +43,7 @@ class ModalPopup extends EAE_Widget_Base {
 			'savedsection' => __( 'Saved Section', 'wts-eae' ),
 			'savedcontainer' => __('Saved Container','wts-eae'),
 			'savedpage'    => __( 'Saved Page', 'wts-eae' ),
-			'aetemplate'   => __( 'AE Template', 'wts-eae' ),
+			'aetemplate'   => __( 'DA Template', 'wts-eae' ),
 		];
 
 		return $options;
@@ -162,12 +162,12 @@ class ModalPopup extends EAE_Widget_Base {
 			]
 		);
 
-		$saved_ae_template[''] = __( 'Select AE Template', 'wts-eae' );
+		$saved_ae_template[''] = __( 'Select DA Template', 'wts-eae' );
 		$saved_ae_template     = $saved_ae_template + Helper::select_ae_templates();
 		$this->add_control(
 			'saved_ae_template',
 			[
-				'label'     => __( 'Select AE Template', 'wts-eae' ),
+				'label'     => __( 'Select DA Template', 'wts-eae' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => $saved_ae_template,
 				'condition' => [

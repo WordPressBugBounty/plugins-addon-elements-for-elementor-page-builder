@@ -31,7 +31,7 @@ class ComparisonTable extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-compare-table';
+		return 'wpv wpv-comparison-table';
 	}
 
 	public function get_categories() {

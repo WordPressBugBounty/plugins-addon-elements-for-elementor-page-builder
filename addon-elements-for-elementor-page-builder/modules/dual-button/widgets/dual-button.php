@@ -28,7 +28,7 @@ class DualButton extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-dual-button';
+		return 'wpv wpv-dual-button';
 	}
 
 	public function get_categories() {

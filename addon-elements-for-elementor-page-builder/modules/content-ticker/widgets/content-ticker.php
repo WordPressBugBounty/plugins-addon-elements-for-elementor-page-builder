@@ -28,7 +28,7 @@ class ContentTicker extends EAE_Widget_Base{
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-content-ticker';
+		return 'wpv wpv-content-ticker';
 	}
 
 	public function get_categories() {

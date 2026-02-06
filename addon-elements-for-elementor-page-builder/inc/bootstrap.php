@@ -76,7 +76,7 @@ class Plugin {
 	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 		if ( EAE_PLUGIN_BASE === $plugin_file ) {
 			$row_meta = [
-				'docs' => '<a href="https://docs.wpvibes.com/eae/" aria-label="' . esc_attr( esc_html__( 'View Documentation', 'wts-eae' ) ) . '" target="_blank">' . esc_html__( 'Docs', 'wts-eae' ) . '</a>',
+				'docs' => '<a href="https://wpbuilderaddons.com/docs/addon-elements-elementor/" aria-label="' . esc_attr( esc_html__( 'View Documentation', 'wts-eae' ) ) . '" target="_blank">' . esc_html__( 'Docs', 'wts-eae' ) . '</a>',
 				'settings' => '<a href="admin.php?page=eae-settings" aria-label="' . esc_attr( esc_html__( 'Settings', 'wts-eae' ) ) . '">' . esc_html__( 'Settings', 'wts-eae' ) . '</a>',
 			];
 
@@ -288,7 +288,7 @@ class Plugin {
 		\Elementor\Plugin::instance()->elements_manager->add_category(
 			'wts-eae',
 			[
-				'title' => 'Elementor Addon Elements',
+				'title' => 'Addon Elements for Elementor',
 				'icon'  => 'font',
 			],
 			1
@@ -528,7 +528,7 @@ class Plugin {
 		$file_path                  = 'elementor/elementor.php';
 
 		$upgrade_link = wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' ) . $file_path, 'upgrade-plugin_' . $file_path );
-		$message      = '<p>' . sprintf( __( 'Elementor Addon Elements requires Elementor %s Please update Elementor to continue.', 'wts-eae' ), $elementor_version_required ) . '</p>';
+		$message      = '<p>' . sprintf( __( 'Addon Elements for Elementor requires Elementor %s Please update Elementor to continue.', 'wts-eae' ), $elementor_version_required ) . '</p>';
 		$message     .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $upgrade_link, __( 'Update Elementor Now', 'wts-eae' ) ) . '</p>';
 
 		//phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
@@ -543,14 +543,14 @@ class Plugin {
 				return;
 			}
 
-			$message      = esc_html__( 'Elementor Addon Elements is not working because you need to activate the Elementor plugin.', 'wts-eae' );
+			$message      = esc_html__( 'Addon Elements for Elementor is not working because you need to activate the Elementor plugin.', 'wts-eae' );
 			$action_url   = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
 			$button_label = __( 'Activate Elementor', 'wts-eae' );
 		} else {
 			if ( ! current_user_can( 'install_plugins' ) ) {
 				return;
 			}
-			$message      = esc_html__( 'Elementor Addon Elements is not working because you need to install the Elementor plugin.', 'wts-eae' );
+			$message      = esc_html__( 'Addon Elements for Elementor is not working because you need to install the Elementor plugin.', 'wts-eae' );
 			$action_url   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
 			$button_label = __( 'Install Elementor', 'wts-eae' );
 		}
@@ -589,7 +589,7 @@ class Plugin {
 		}
 		?>
 				<div class="notice notice-success">
-					<p><?php echo 'I hope you are enjoying using <b>Elementor Addon Elements</b>. Could you please do a BIG favor and give it a 5-star rating on WordPress.org ? <br/> Just to help us spread the word and boost our motivation. <br/><b>~ Anand Upadhyay</b>'; ?></p>
+					<p><?php echo 'I hope you are enjoying using <b>Addon Elements for Elementor</b>. Could you please do a BIG favor and give it a 5-star rating on WordPress.org ? <br/> Just to help us spread the word and boost our motivation. <br/><b>~ Anand Upadhyay</b>'; ?></p>
 					<p>
 					<?php
 						printf(
@@ -694,7 +694,7 @@ class Plugin {
 			</div>
 			<div class="fv-add-content">
 			<div>
-			<p><?php printf( 'I hope you are enjoying using <b>%1$s</b>. Here is another useful plugin by us - <b>%2$s</b>. <br/>If you are using Elementor Pro Form, then you can capture form submissions within WordPress Admin.', 'Elementor Addon Elements', 'Form Vibes' ); ?></p>
+			<p><?php printf( 'I hope you are enjoying using <b>%1$s</b>. Here is another useful plugin by us - <b>%2$s</b>. <br/>If you are using Elementor Pro Form, then you can capture form submissions within WordPress Admin.', 'Addon Elements for Elementor', 'Form Vibes' ); ?></p>
 
 				<p>
 					<?php

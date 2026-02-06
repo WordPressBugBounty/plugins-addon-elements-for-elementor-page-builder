@@ -29,7 +29,7 @@ class FlipBox extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-flip-box';
+		return 'wpv wpv-flip-box';
 	}
 
 	public function get_categories() {

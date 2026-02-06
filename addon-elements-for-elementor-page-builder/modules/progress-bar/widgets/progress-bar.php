@@ -17,7 +17,7 @@ class Progress_Bar extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-progress-bar';
+		return 'wpv wpv-progress-bar';
 	}
 
 	public function get_keywords() {

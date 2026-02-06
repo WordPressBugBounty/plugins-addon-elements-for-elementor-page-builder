@@ -25,7 +25,7 @@ class AnimatedText extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-animated-text';
+		return 'wpv wpv-animated-text';
 	}
 
 	public function get_categories() {

@@ -26,7 +26,7 @@ class Timeline extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-time-line eae-icon';
+		return 'wpv wpv-timeline';
 	}
 	protected function register_skins() {
 		$this->add_skin( new Skins\Skin_1( $this ) );

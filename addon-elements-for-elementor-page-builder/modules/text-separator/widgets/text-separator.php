@@ -25,7 +25,7 @@ class TextSeparator extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-text-separator';
+		return 'wpv wpv-text-separator';
 	}
 
 	public function get_categories() {

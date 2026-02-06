@@ -22,11 +22,11 @@ class ShapeSeparator extends EAE_Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'EAE - Shape Separator', 'wts-eae' );
+		return __( 'Shape Separator', 'wts-eae' );
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-shape-separator';
+		return 'wpv wpv-shape-divider';
 	}
 
 	public function get_categories() {

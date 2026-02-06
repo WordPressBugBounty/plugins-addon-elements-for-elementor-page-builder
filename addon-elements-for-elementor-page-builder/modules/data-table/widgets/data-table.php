@@ -29,7 +29,7 @@ class DataTable extends EAE_Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eae-icon eae-data-table';
+		return 'wpv wpv-data-table';
 	}
 
 	public function get_categories() {
@@ -613,7 +613,7 @@ class DataTable extends EAE_Widget_Base {
 				'options'   => [
 					'saved_section' => __( 'Saved Section', 'wts-eae' ),
 					'saved_page'    => __( 'Saved Page', 'wts-eae' ),
-					'ae_template'   => __( 'AE-Template', 'wts-eae' ),
+					'ae_template'   => __( 'DA-Template', 'wts-eae' ),
 				],
 				'default'   => 'saved_section',
 				'condition' => [
@@ -656,7 +656,7 @@ class DataTable extends EAE_Widget_Base {
 		$repeater->add_control(
 			'table_ae_templates',
 			[
-				'label'     => __( 'AE-Templates', 'wts-eae' ),
+				'label'     => __( 'DA-Templates', 'wts-eae' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => $templates,
 				'condition' => [

@@ -687,10 +687,16 @@ class RandomImage extends EAE_Widget_Base {
 			if ($random_item['custom_caption'] == "" && $settings['default_caption'] != 'none') {
 				$image_post = get_post($random_item['image']['id']);
 				if ($image_post) {
-					if ($settings['default_caption'] == 'caption') {
-						$caption = $image_post->post_excerpt; // Caption
+					// SECURITY FIX: Check if user can access the post before retrieving its content
+					if ($image_post && current_user_can('read_post', $image_post->ID)) {
+						if ($settings['default_caption'] == 'caption') {
+							$caption = $image_post->post_excerpt; // Caption
+						} else {
+							$caption = $image_post->post_content; // Description
+						}
 					} else {
-						$caption = $image_post->post_content; // Description
+						$caption = '';
+						$caption = $random_item['custom_caption'];
 					}
 				}
 			} else {
@@ -731,5 +737,3 @@ class RandomImage extends EAE_Widget_Base {
     }
         
 }
-
-        

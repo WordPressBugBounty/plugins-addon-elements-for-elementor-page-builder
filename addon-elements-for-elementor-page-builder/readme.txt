@@ -4,7 +4,7 @@ Tags: elementor, addons, elements, elementor addon, elementor widget, page-build
 Requires at least: 5.0
 Requires PHP: 7.0
 Tested up to: 6.9
-Stable tag: 1.14.4
+Stable tag: 1.14.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,8 +135,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
+= 1.14.5 =
+* Fixed security issue
+
 = 1.14.4 =
-* Compatibility check with Elementor latest release and WP 6.9
+* Compatibility check with Elementor's latest release and WP 6.9
 * Fixed security issue
 
 = 1.14.3 =

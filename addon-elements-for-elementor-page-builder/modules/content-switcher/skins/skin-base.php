@@ -122,7 +122,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 											return;
 										}
 										if(Helper::check_template($item['saved_section']) !== ''){
-											echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_section'] );
+											echo Helper::render_template( $item['saved_section'] );
 										}
 										break;
 									case 'saved_page':
@@ -130,7 +130,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 											return;
 										}
 										if(Helper::check_template($item['saved_pages']) !== ''){
-											echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_pages'] );
+											echo Helper::render_template( $item['saved_pages'] );
 										}
 										break;
 									case 'ae_template':
@@ -138,7 +138,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 											return;
 										}
 										if(Helper::check_template($item['ae_templates']) !== ''){
-											echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['ae_templates'] );
+											echo Helper::render_template( $item['ae_templates'] );
 										}
 										break;
 									case 'saved_container':
@@ -146,7 +146,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 											return;
 										}
 										if(Helper::check_template($item['saved_container']) !== ''){
-											echo EPlugin::instance()->frontend->get_builder_content_for_display( $item['saved_container'] );
+											echo Helper::render_template( $item['saved_container'] );
 										}
 										break;
 								}		

@@ -529,12 +529,12 @@ class ImageStack extends EAE_Widget_Base {
     
     $settings = $this->get_settings_for_display();
     //echo '<pre>';  print_r($settings); echo '</pre>';
+        $data= $this->prepareData($settings);
+        if(empty($data)){
+            return;
+        }
         ?>
         <div class="eae-image-stack"><?php
-            $data= $this->prepareData($settings);
-            if(empty($data)){
-                return;
-            }
             if(!EAE::$is_pro){
                 foreach($data as $key => $item){
                     $stackClasses =[];

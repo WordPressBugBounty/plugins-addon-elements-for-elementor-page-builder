@@ -159,7 +159,7 @@ class Module {
 			});
 			view.addRenderAttribute('_wrapper', 'data-color', colors);
 		#>
-		<div class="animated-gradient" data-angle="{{{ angle }}}deg" data-color="{{{ colors.join(',') }}}"></div>
+		<div class="animated-gradient" data-angle="{{ angle }}deg" data-color="{{{ colors.join(',') }}}"></div>
 		<?php
 		$slider_content = ob_get_contents();
 		ob_end_clean();

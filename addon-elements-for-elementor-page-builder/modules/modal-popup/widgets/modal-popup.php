@@ -1110,7 +1110,7 @@ class ModalPopup extends EAE_Widget_Base {
 					<?php } ?>
 					<div class="eae-modal-content">
 						<?php if(Helper::check_template($settings['saved_sections']) !== ''){
-							echo EPlugin::instance()->frontend->get_builder_content_for_display( $settings['saved_sections'] );
+							echo Helper::render_template( $settings['saved_sections'] );
 						} ?>
 					</div>
 					<?php
@@ -1123,7 +1123,7 @@ class ModalPopup extends EAE_Widget_Base {
 					<?php } ?>
 					<div class="eae-modal-content">
 						<?php if(Helper::check_template($settings['saved_pages']) !== ''){
-							echo EPlugin::instance()->frontend->get_builder_content_for_display( $settings['saved_pages'] );
+							echo Helper::render_template( $settings['saved_pages'] );
 						} ?> 
 					</div>
 					<?php
@@ -1136,7 +1136,7 @@ class ModalPopup extends EAE_Widget_Base {
 					<?php } ?>
 					<div class="eae-modal-content">
 						<?php if(Helper::check_template($settings['saved_ae_template']) !== ''){
-							echo EPlugin::instance()->frontend->get_builder_content_for_display( $settings['saved_ae_template'] );
+							echo Helper::render_template( $settings['saved_ae_template'] );
 						} ?>
 					</div>
 					<?php
@@ -1149,7 +1149,7 @@ class ModalPopup extends EAE_Widget_Base {
 					<?php } ?>
 					<div class="eae-modal-content">
 						<?php if(Helper::check_template($settings['saved_container']) !== ''){
-							echo EPlugin::instance()->frontend->get_builder_content_for_display( $settings['saved_container'] );
+							echo Helper::render_template( $settings['saved_container'] );
 						} ?>
 					</div>
 					<?php

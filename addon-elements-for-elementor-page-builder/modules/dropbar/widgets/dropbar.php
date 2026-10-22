@@ -821,7 +821,7 @@ class Dropbar extends EAE_Widget_Base {
 		}
 		$template_id = $settings[$content_type];
 		if( Helper::check_template($template_id) !== ''){
-			return EPlugin::instance()->frontend->get_builder_content_for_display($template_id);
+			return Helper::render_template( $template_id );
 		}
 		return '';
 	}

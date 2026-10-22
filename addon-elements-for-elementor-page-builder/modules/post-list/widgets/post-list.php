@@ -701,13 +701,13 @@ class PostList extends EAE_Widget_Base {
 							?>
 								<li>
 							<?php if ( $settings['show_title'] && ( $settings['title_on_top'] === 'top' ) ) { ?>
-										<h3 class="eae-pl-title"><a href="<?php echo esc_url(get_permalink()); ?>" title="<?php esc_attr(the_title()); ?>"><?php esc_html(the_title()); ?></a></h3>
+										<h3 class="eae-pl-title"><a href="<?php echo esc_url(get_permalink()); ?>" title="<?php echo esc_attr( get_the_title() ); ?>"><?php echo esc_html( get_the_title() ); ?></a></h3>
 									<?php } ?>
 							<?php 
 								//phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 								if ( $settings['show_image'] == 1 ) { ?>
 									<div class="eae-pl-image-wrapper">
-										<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php the_title(); ?>">
+										<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php echo esc_attr( get_the_title() ); ?>">
 											<?php the_post_thumbnail( $settings['image_size'] ); ?>
 										</a>
 									</div>
@@ -715,7 +715,7 @@ class PostList extends EAE_Widget_Base {
 									<div class="eae-pl-content-box-wrapper">
 
 									<?php if ( $settings['show_title'] && ( $settings['title_on_top'] !== 'top' ) ) { ?>
-										<h3 class="eae-pl-title"><a href="<?php echo get_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
+										<h3 class="eae-pl-title"><a href="<?php echo esc_url( get_permalink() ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>"><?php echo esc_html( get_the_title() ); ?></a></h3>
 									<?php } ?>
 
 									<?php if ( $settings['show_excrept'] ) { ?>
@@ -726,7 +726,7 @@ class PostList extends EAE_Widget_Base {
 
 									<?php if ( $settings['show_read_more'] ) { ?>
 										<div class="eae-pl-readmore">
-											<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php the_title(); ?>"><?php echo Helper::eae_wp_kses($settings['read_more_text']); ?></a>
+											<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php echo esc_attr( get_the_title() ); ?>"><?php echo Helper::eae_wp_kses($settings['read_more_text']); ?></a>
 										</div>
 									<?php } ?>
 									</div>

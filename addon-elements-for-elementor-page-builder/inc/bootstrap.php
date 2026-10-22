@@ -41,7 +41,11 @@ class Plugin {
 		add_action( 'elementor/elements/categories_registered', [ $this, 'register_category' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'eae_scripts' ] );
 		add_action( 'elementor/editor/wp_head', [ $this, 'eae_editor_enqueue_scripts' ] );
-		add_action( 'elementor/controls/controls_registered', [ $this, 'register_controls' ] );
+		$this->add_controls_hook();
+		Classes\Atomic_Template_Styles::register();
+		if ( is_admin() ) {
+			add_action( 'admin_init', [ $this, 'maybe_clear_cache_on_update' ] );
+		}
 		add_action( 'plugins_loaded', [ $this, '_plugins_loaded' ] );
 		if(!self::$is_pro){
 			add_filter('elementor/editor/localize_settings', [$this, 'eae_promote_pro_elements']);
@@ -56,6 +60,11 @@ class Plugin {
 		$this->_includes();
 
 		$this->module_manager = new Managers\Module_Manager();
+
+		// Angie / MCP widget discovery. This file is loaded during plugins_loaded, so
+		// other plugins' constants (ANGIE_VERSION) already exist. Not in _plugins_loaded():
+		// that callback is added while plugins_loaded@10 is running, so it never fires.
+		Classes\Angie\Integration::register();
 		//add_action( 'wp_enqueue_scripts', [ $this, 'pro_enqueue_scripts']);
 		// $wpv_notice = [];
 
@@ -303,6 +312,28 @@ class Plugin {
 			$admin_notice = new Admin_Notice();
 		}
 	}
+	/**
+	 * Regenerates Elementor's cached CSS and icon data once after EAE is updated,
+	 * so changed widget defaults and embedded template styles take effect.
+	 */
+	public function maybe_clear_cache_on_update() {
+		if ( get_option( 'eae_version' ) === EAE_VERSION ) {
+			return;
+		}
+
+		EPlugin::$instance->files_manager->clear_cache();
+		update_option( 'eae_version', EAE_VERSION, false );
+	}
+
+	public function add_controls_hook() {
+		// `elementor/controls/controls_registered` is deprecated since Elementor 3.5.
+		if ( version_compare( ELEMENTOR_VERSION, '3.5.0', '>=' ) ) {
+			add_action( 'elementor/controls/register', [ $this, 'register_controls' ] );
+		} else {
+			add_action( 'elementor/controls/controls_registered', [ $this, 'register_controls' ] );
+		}
+	}
+
 	public function register_controls( Elementor\Controls_Manager $controls_manager ) {
 
 		require_once EAE_PATH . 'controls/group/icon.php';

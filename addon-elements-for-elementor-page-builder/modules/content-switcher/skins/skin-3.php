@@ -46,7 +46,7 @@ class Skin_3 extends Skin_Base {
 							Icons_Manager::render_icon( $settings['content_list'][0]['icon'], [ 'aria-hidden' => 'true' ] );
 						}
 						?>
-						<h5 class="eae-cs-label"> <?php echo $settings['content_list'][0]['title']; ?></h5>
+						<h5 class="eae-cs-label"> <?php echo wp_kses_post( $settings['content_list'][0]['title'] ); ?></h5>
 						<?php
 						if ( ! empty( $settings['content_list'][0]['icon'] ) && $settings['content_list'][0]['icon_align'] === 'right' ) {
 							Icons_Manager::render_icon( $settings['content_list'][0]['icon'], [ 'aria-hidden' => 'true' ] );
@@ -69,7 +69,7 @@ class Skin_3 extends Skin_Base {
 							Icons_Manager::render_icon( $settings['content_list'][1]['icon'], [ 'aria-hidden' => 'true' ] );
 						}
 						?>
-						<h5 class="eae-cs-label"><?php echo $settings['content_list'][1]['title']; ?> </h5>
+						<h5 class="eae-cs-label"><?php echo wp_kses_post( $settings['content_list'][1]['title'] ); ?> </h5>
 						<?php
 						if ( ! empty( $settings['content_list'][1]['icon'] ) && $settings['content_list'][1]['icon_align'] === 'right' ) {
 							Icons_Manager::render_icon( $settings['content_list'][1]['icon'], [ 'aria-hidden' => 'true' ] );

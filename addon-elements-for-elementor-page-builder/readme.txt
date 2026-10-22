@@ -1,10 +1,10 @@
 === Addon Elements for Elementor (formerly Elementor Addon Elements) ===
-Contributors: wpvibes, hardiksharma, satishprajapati, webtechpooja, priyanshii5, jogendra12
+Contributors: wpvibes, hardiksharma, webtechpooja, priyanshii5
 Tags: elementor, addons, elements, elementor addon, elementor widget, page-builder, WordPress page builder, elementor extensions, elementor page builder
 Requires at least: 5.0
 Requires PHP: 7.0
-Tested up to: 6.9
-Stable tag: 1.14.5
+Tested up to: 7.1
+Stable tag: 1.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -134,6 +134,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 9. Addon Elements for Elementor Widgets Panel
 
 == Changelog ==
+
+= 1.14.6 =
+* New: Elementor V4 compatibility added.
+* New: Angie integration added.
+* Fix: Security issue fixed.
 
 = 1.14.5 =
 * Fixed security issue

@@ -32,6 +32,8 @@ class Module {
 		add_action( 'elementor/container/print_template', [ $this, '_print_template' ], 10, 2 );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'eae_add_js_css' ] );
+
+		Atomic_Bg_Slider::register();
 	}
 
 	public function eae_add_js_css() {

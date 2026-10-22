@@ -86,6 +86,10 @@ class ShapeSeparator extends EAE_Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings();
+		// Unset when a global color is used; the fill then comes from the selector CSS.
+		if ( ! isset( $settings['shape_color'] ) ) {
+			$settings['shape_color'] = '';
+		}
 		switch ( $settings['separator_shape'] ) {
 			case 'triangle-upper-left':
 				include EAE_PATH . 'modules/shape-separator/shapes/triangle-upper-left.php';

@@ -1852,6 +1852,35 @@ class Helper {
 		return $template_id;
 	}
 
+	/**
+	 * Renders an Elementor template, skipping one that is already being rendered
+	 * so templates that embed each other (A shows B, B shows A) cannot loop forever.
+	 *
+	 * @param int|string $template_id Template ID.
+	 * @param bool       $for_display Use get_builder_content_for_display() instead of get_builder_content().
+	 * @param bool       $with_css    Print the template's CSS inline (get_builder_content() only).
+	 * @return string
+	 */
+	public static function render_template( $template_id, $for_display = true, $with_css = false ) {
+		static $rendering = [];
+
+		$template_id = absint( $template_id );
+		if ( ! $template_id || isset( $rendering[ $template_id ] ) ) {
+			return '';
+		}
+
+		$rendering[ $template_id ] = true;
+
+		try {
+			$frontend = EPlugin::instance()->frontend;
+			$content  = $for_display ? $frontend->get_builder_content_for_display( $template_id ) : $frontend->get_builder_content( $template_id, $with_css );
+		} finally {
+			unset( $rendering[ $template_id ] );
+		}
+
+		return $content;
+	}
+
 	public static function validate_html_tag( $tag, $allowed_tags = [], $fallback = 'div' ) {
 
 		if ( empty( $allowed_tags ) ) {

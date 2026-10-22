@@ -21,6 +21,8 @@ class Module {
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'eae_add_particles' ] );
 		add_action( 'elementor/editor/wp_head', [ $this, 'eae_add_particles_admin' ] );
+
+		Atomic_Particles::register();
 	}
 
 	public function eae_add_particles() {

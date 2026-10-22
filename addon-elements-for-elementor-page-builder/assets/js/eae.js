@@ -487,49 +487,27 @@ var popupInstance = [];
         element_type = $scope.data("element_type");
         pdata = $scope.data("eae-particle");
         pdata_wrapper = $scope.find(".eae-particle-wrapper").data("eae-pdata");
+        // Build the wrapper via the DOM API so the element id is set as an
+        // attribute value and never parsed as markup.
+        var particleWrapper = function (className) {
+          return $("<div></div>")
+            .addClass(className)
+            .attr("id", "eae-particle-" + id);
+        };
         if (typeof pdata != "undefined" && pdata != "") {
           if ($scope.find(".eae-section-bs").length > 0) {
             $scope
               .find(".eae-section-bs")
-              .after(
-                '<div class="eae-particle-wrapper" id="eae-particle-' +
-                  id +
-                  '"></div>'
-              );
+              .after(particleWrapper("eae-particle-wrapper"));
             particlesJS("eae-particle-" + id, pdata);
           } else {
-            if (element_type == "column") {
-              $scope.prepend(
-                '<div class="eae-particle-wrapper" id="eae-particle-' +
-                  id +
-                  '"></div>'
-              );
-            } else {
-              $scope.prepend(
-                '<div class="eae-particle-wrapper " id="eae-particle-' +
-                  id +
-                  '"></div>'
-              );
-            }
+            $scope.prepend(particleWrapper("eae-particle-wrapper"));
             particlesJS("eae-particle-" + id, pdata);
           }
         } else if (typeof pdata_wrapper != "undefined" && pdata_wrapper != "") {
-          // console.log('Editor');
-          // $scope.prepend('<div class="eae-particle-wrapper" id="eae-particle-'+ id +'"></div>');
-          //console.log('calling particle js else', JSON.parse(pdata_wrapper));
-          if (element_type == "column") {
-            $scope.prepend(
-              '<div class="eae-particle-wrapper eae-particle-area" id="eae-particle-' +
-                id +
-                '"></div>'
-            );
-          } else {
-            $scope.prepend(
-              '<div class="eae-particle-wrapper eae-particle-area" id="eae-particle-' +
-                id +
-                '"></div>'
-            );
-          }
+          $scope.prepend(
+            particleWrapper("eae-particle-wrapper eae-particle-area")
+          );
 
           particlesJS("eae-particle-" + id, JSON.parse(pdata_wrapper));
         }
@@ -549,9 +527,10 @@ var popupInstance = [];
           gradient_color_editor =
             "linear-gradient(" + angle + "," + color + ")";
           $scope.prepend(
-            '<div class="animated-gradient" style="background-image : ' +
-              gradient_color_editor +
-              ' "></div>'
+            $('<div class="animated-gradient"></div>').css(
+              "background-image",
+              gradient_color_editor
+            )
           );
         }else{
           var gradient_color = "linear-gradient(" + angle + "," + color + ")";

@@ -1575,6 +1575,10 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 
 	public function render_content( $settings, $widget_base ) {
 		global $post;
+		// Don't expose excerpt/content of password-protected posts.
+		if ( post_password_required( $post ) ) {
+			return;
+		}
 		$post_excerpt = $post->post_excerpt;
 		$post_content = $post->post_content;
 		if ( $settings['enable_excerpt'] === 'yes' ) {

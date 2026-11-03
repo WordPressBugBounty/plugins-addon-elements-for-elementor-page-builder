@@ -148,10 +148,12 @@ class Helper {
 	public function eae_get_excerpt_by_id( $post_id, $excerpt_length ) {
 		$the_post = get_post( $post_id ); //Gets post ID
 
-		$the_excerpt = null;
-		if ( $the_post ) {
-			$the_excerpt = $the_post->post_excerpt ? $the_post->post_excerpt : $the_post->post_content;
+		// Don't expose excerpt/content of missing or password-protected posts.
+		if ( ! $the_post || post_password_required( $the_post ) ) {
+			return '';
 		}
+
+		$the_excerpt = $the_post->post_excerpt ? $the_post->post_excerpt : $the_post->post_content;
 
 		$the_excerpt = wp_strip_all_tags( strip_shortcodes( $the_excerpt ) ); //Strips tags and images
 		$words       = explode( ' ', $the_excerpt, $excerpt_length + 1 );

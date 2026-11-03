@@ -688,14 +688,16 @@ class RandomImage extends EAE_Widget_Base {
 				$image_post = get_post($random_item['image']['id']);
 				if ($image_post) {
 					// SECURITY FIX: Check if user can access the post before retrieving its content
-					if ($image_post && current_user_can('read_post', $image_post->ID)) {
+					// Also skip when the attachment or its parent post is password-protected.
+					// post_parent is checked only when set, since post_password_required( 0 ) falls back to the global post.
+					$is_protected = post_password_required( $image_post ) || ( $image_post->post_parent && post_password_required( $image_post->post_parent ) );
+					if ($image_post && ! $is_protected && current_user_can('read_post', $image_post->ID)) {
 						if ($settings['default_caption'] == 'caption') {
 							$caption = $image_post->post_excerpt; // Caption
 						} else {
 							$caption = $image_post->post_content; // Description
 						}
 					} else {
-						$caption = '';
 						$caption = $random_item['custom_caption'];
 					}
 				}

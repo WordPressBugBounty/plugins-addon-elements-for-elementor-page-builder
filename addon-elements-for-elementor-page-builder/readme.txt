@@ -2,9 +2,9 @@
 Contributors: wpvibes, hardiksharma, webtechpooja, priyanshii5
 Tags: elementor, addons, elements, elementor addon, elementor widget, page-builder, WordPress page builder, elementor extensions, elementor page builder
 Requires at least: 5.0
-Requires PHP: 7.0
-Tested up to: 7.1
-Stable tag: 1.15
+Requires PHP: 7.4
+Tested up to: 7.1.4
+Stable tag: 1.15.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,7 +135,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= 1.14.6 =
+= 1.15.1 =
+* Fix: Post List, Timeline and Random Image widgets no longer display the excerpt or content of password-protected posts.
+
+= 1.15 =
 * New: Elementor V4 compatibility added.
 * New: Angie integration added.
 * Fix: Security issue fixed.

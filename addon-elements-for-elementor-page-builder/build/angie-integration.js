@@ -2,9 +2,61 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 323
-(__unused_webpack_module, exports) {
+/***/ 79
+(module) {
 
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"http://json-schema.org/draft-07/schema#","$id":"http://json-schema.org/draft-07/schema#","title":"Core schema meta-schema","definitions":{"schemaArray":{"type":"array","minItems":1,"items":{"$ref":"#"}},"nonNegativeInteger":{"type":"integer","minimum":0},"nonNegativeIntegerDefault0":{"allOf":[{"$ref":"#/definitions/nonNegativeInteger"},{"default":0}]},"simpleTypes":{"enum":["array","boolean","integer","null","number","object","string"]},"stringArray":{"type":"array","items":{"type":"string"},"uniqueItems":true,"default":[]}},"type":["object","boolean"],"properties":{"$id":{"type":"string","format":"uri-reference"},"$schema":{"type":"string","format":"uri"},"$ref":{"type":"string","format":"uri-reference"},"$comment":{"type":"string"},"title":{"type":"string"},"description":{"type":"string"},"default":true,"readOnly":{"type":"boolean","default":false},"examples":{"type":"array","items":true},"multipleOf":{"type":"number","exclusiveMinimum":0},"maximum":{"type":"number"},"exclusiveMaximum":{"type":"number"},"minimum":{"type":"number"},"exclusiveMinimum":{"type":"number"},"maxLength":{"$ref":"#/definitions/nonNegativeInteger"},"minLength":{"$ref":"#/definitions/nonNegativeIntegerDefault0"},"pattern":{"type":"string","format":"regex"},"additionalItems":{"$ref":"#"},"items":{"anyOf":[{"$ref":"#"},{"$ref":"#/definitions/schemaArray"}],"default":true},"maxItems":{"$ref":"#/definitions/nonNegativeInteger"},"minItems":{"$ref":"#/definitions/nonNegativeIntegerDefault0"},"uniqueItems":{"type":"boolean","default":false},"contains":{"$ref":"#"},"maxProperties":{"$ref":"#/definitions/nonNegativeInteger"},"minProperties":{"$ref":"#/definitions/nonNegativeIntegerDefault0"},"required":{"$ref":"#/definitions/stringArray"},"additionalProperties":{"$ref":"#"},"definitions":{"type":"object","additionalProperties":{"$ref":"#"},"default":{}},"properties":{"type":"object","additionalProperties":{"$ref":"#"},"default":{}},"patternProperties":{"type":"object","additionalProperties":{"$ref":"#"},"propertyNames":{"format":"regex"},"default":{}},"dependencies":{"type":"object","additionalProperties":{"anyOf":[{"$ref":"#"},{"$ref":"#/definitions/stringArray"}]}},"propertyNames":{"$ref":"#"},"const":true,"enum":{"type":"array","items":true,"minItems":1,"uniqueItems":true},"type":{"anyOf":[{"$ref":"#/definitions/simpleTypes"},{"type":"array","items":{"$ref":"#/definitions/simpleTypes"},"minItems":1,"uniqueItems":true}]},"format":{"type":"string"},"contentMediaType":{"type":"string"},"contentEncoding":{"type":"string"},"if":{"$ref":"#"},"then":{"$ref":"#"},"else":{"$ref":"#"},"allOf":{"$ref":"#/definitions/schemaArray"},"anyOf":{"$ref":"#/definitions/schemaArray"},"oneOf":{"$ref":"#/definitions/schemaArray"},"not":{"$ref":"#"}},"default":true}');
+
+/***/ }
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	const __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		const cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		const module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/concatenation wrap */
+/******/ 	// wrap a concatenated module body as a lazy, memoized accessor; mod is
+/******/ 	// set before the body runs so re-entrant calls (require cycles) observe
+/******/ 	// the partial exports like Node.js
+/******/ 	__webpack_require__.cw = (body) => {
+/******/ 		var mod;
+/******/ 		return () => {
+/******/ 			if (body) {
+/******/ 				var fn = body;
+/******/ 				body = 0;
+/******/ 				mod = { exports: {} };
+/******/ 				fn.call(mod.exports, mod, mod.exports);
+/******/ 			}
+/******/ 			return mod.exports;
+/******/ 		};
+/******/ 	};
+/******/ 	
+/************************************************************************/
+
+// MODULE: ./node_modules/ajv-formats/dist/formats.js
+var formats_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
@@ -214,17 +266,15 @@ function regex(str) {
     }
 }
 //# sourceMappingURL=formats.js.map
+});
 
-/***/ },
-
-/***/ 5143
-(module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv-formats/dist/index.js
+var dist_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const formats_1 = __webpack_require__(323);
-const limit_1 = __webpack_require__(6492);
-const codegen_1 = __webpack_require__(9029);
+const formats_1 = (formats_namespaceFn());
+const limit_1 = (limit_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
 const fullName = new codegen_1.Name("fullFormats");
 const fastName = new codegen_1.Name("fastFormats");
 const formatsPlugin = (ajv, opts = { keywords: true }) => {
@@ -257,18 +307,16 @@ module.exports = exports = formatsPlugin;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports["default"] = formatsPlugin;
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 6492
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv-formats/dist/limit.js
+var limit_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.A = void 0;
-const ajv_1 = __webpack_require__(3282);
-const codegen_1 = __webpack_require__(9029);
+const ajv_1 = (ajv_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
 const ops = codegen_1.operators;
 const KWDs = {
     formatMaximum: { okStr: "<=", ok: ops.LTE, fail: ops.GT },
@@ -333,19 +381,17 @@ const formatLimitPlugin = (ajv) => {
 };
 exports["default"] = formatLimitPlugin;
 //# sourceMappingURL=limit.js.map
+});
 
-/***/ },
-
-/***/ 3282
-(module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/ajv.js
+var ajv_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.MissingRefError = exports.ValidationError = exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = exports.Ajv = void 0;
-const core_1 = __webpack_require__(4042);
-const draft7_1 = __webpack_require__(6144);
-const discriminator_1 = __webpack_require__(6653);
-const draft7MetaSchema = __webpack_require__(2079);
+const core_1 = (core_namespaceFn());
+const draft7_1 = (draft7_namespaceFn());
+const discriminator_1 = (discriminator_namespaceFn());
+const draft7MetaSchema = (json_schema_draft_07_namespaceFn());
 const META_SUPPORT_DATA = ["/properties"];
 const META_SCHEMA_ID = "http://json-schema.org/draft-07/schema";
 class Ajv extends core_1.default {
@@ -375,26 +421,24 @@ module.exports = exports = Ajv;
 module.exports.Ajv = Ajv;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports["default"] = Ajv;
-var validate_1 = __webpack_require__(2586);
+var validate_1 = (validate_namespaceFn());
 Object.defineProperty(exports, "KeywordCxt", ({ enumerable: true, get: function () { return validate_1.KeywordCxt; } }));
-var codegen_1 = __webpack_require__(9029);
+var codegen_1 = (codegen_namespaceFn());
 Object.defineProperty(exports, "_", ({ enumerable: true, get: function () { return codegen_1._; } }));
 Object.defineProperty(exports, "str", ({ enumerable: true, get: function () { return codegen_1.str; } }));
 Object.defineProperty(exports, "stringify", ({ enumerable: true, get: function () { return codegen_1.stringify; } }));
 Object.defineProperty(exports, "nil", ({ enumerable: true, get: function () { return codegen_1.nil; } }));
 Object.defineProperty(exports, "Name", ({ enumerable: true, get: function () { return codegen_1.Name; } }));
 Object.defineProperty(exports, "CodeGen", ({ enumerable: true, get: function () { return codegen_1.CodeGen; } }));
-var validation_error_1 = __webpack_require__(3558);
+var validation_error_1 = (validation_error_namespaceFn());
 Object.defineProperty(exports, "ValidationError", ({ enumerable: true, get: function () { return validation_error_1.default; } }));
-var ref_error_1 = __webpack_require__(4551);
+var ref_error_1 = (ref_error_namespaceFn());
 Object.defineProperty(exports, "MissingRefError", ({ enumerable: true, get: function () { return ref_error_1.default; } }));
 //# sourceMappingURL=ajv.js.map
+});
 
-/***/ },
-
-/***/ 1520
-(__unused_webpack_module, exports) {
-
+// MODULE: ./node_modules/ajv/dist/compile/codegen/code.js
+var code_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.regexpCode = exports.getEsmExportName = exports.getProperty = exports.safeStringify = exports.stringify = exports.strConcat = exports.addCodeArg = exports.str = exports._ = exports.nil = exports._Code = exports.Name = exports.IDENTIFIER = exports._CodeOrName = void 0;
@@ -551,18 +595,16 @@ function regexpCode(rx) {
 }
 exports.regexpCode = regexpCode;
 //# sourceMappingURL=code.js.map
+});
 
-/***/ },
-
-/***/ 9029
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/codegen/index.js
+var codegen_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.or = exports.and = exports.not = exports.CodeGen = exports.operators = exports.varKinds = exports.ValueScopeName = exports.ValueScope = exports.Scope = exports.Name = exports.regexpCode = exports.stringify = exports.getProperty = exports.nil = exports.strConcat = exports.str = exports._ = void 0;
-const code_1 = __webpack_require__(1520);
-const scope_1 = __webpack_require__(7845);
-var code_2 = __webpack_require__(1520);
+const code_1 = (code_namespaceFn());
+const scope_1 = (scope_namespaceFn());
+var code_2 = (code_namespaceFn());
 Object.defineProperty(exports, "_", ({ enumerable: true, get: function () { return code_2._; } }));
 Object.defineProperty(exports, "str", ({ enumerable: true, get: function () { return code_2.str; } }));
 Object.defineProperty(exports, "strConcat", ({ enumerable: true, get: function () { return code_2.strConcat; } }));
@@ -571,7 +613,7 @@ Object.defineProperty(exports, "getProperty", ({ enumerable: true, get: function
 Object.defineProperty(exports, "stringify", ({ enumerable: true, get: function () { return code_2.stringify; } }));
 Object.defineProperty(exports, "regexpCode", ({ enumerable: true, get: function () { return code_2.regexpCode; } }));
 Object.defineProperty(exports, "Name", ({ enumerable: true, get: function () { return code_2.Name; } }));
-var scope_2 = __webpack_require__(7845);
+var scope_2 = (scope_namespaceFn());
 Object.defineProperty(exports, "Scope", ({ enumerable: true, get: function () { return scope_2.Scope; } }));
 Object.defineProperty(exports, "ValueScope", ({ enumerable: true, get: function () { return scope_2.ValueScope; } }));
 Object.defineProperty(exports, "ValueScopeName", ({ enumerable: true, get: function () { return scope_2.ValueScopeName; } }));
@@ -1254,16 +1296,14 @@ function par(x) {
     return x instanceof code_1.Name ? x : (0, code_1._) `(${x})`;
 }
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 7845
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/codegen/scope.js
+var scope_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ValueScope = exports.ValueScopeName = exports.Scope = exports.varKinds = exports.UsedValueState = void 0;
-const code_1 = __webpack_require__(1520);
+const code_1 = (code_namespaceFn());
 class ValueError extends Error {
     constructor(name) {
         super(`CodeGen: "code" for ${name} not defined`);
@@ -1403,19 +1443,17 @@ class ValueScope extends Scope {
 }
 exports.ValueScope = ValueScope;
 //# sourceMappingURL=scope.js.map
+});
 
-/***/ },
-
-/***/ 8708
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/errors.js
+var errors_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.extendErrors = exports.resetErrorsCount = exports.reportExtraError = exports.reportError = exports.keyword$DataError = exports.y = void 0;
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const names_1 = __webpack_require__(2023);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const names_1 = (names_namespaceFn());
 exports.y = {
     message: ({ keyword }) => (0, codegen_1.str) `must pass "${keyword}" keyword validation`,
 };
@@ -1533,22 +1571,20 @@ function extraErrorProps(cxt, { params, message }, keyValues) {
         keyValues.push([E.propertyName, propertyName]);
 }
 //# sourceMappingURL=errors.js.map
+});
 
-/***/ },
-
-/***/ 3835
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/index.js
+var compile_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.resolveSchema = __webpack_unused_export__ = exports.resolveRef = exports.compileSchema = exports.SchemaEnv = void 0;
-const codegen_1 = __webpack_require__(9029);
-const validation_error_1 = __webpack_require__(3558);
-const names_1 = __webpack_require__(2023);
-const resolve_1 = __webpack_require__(6939);
-const util_1 = __webpack_require__(4227);
-const validate_1 = __webpack_require__(2586);
+const codegen_1 = (codegen_namespaceFn());
+const validation_error_1 = (validation_error_namespaceFn());
+const names_1 = (names_namespaceFn());
+const resolve_1 = (resolve_namespaceFn());
+const util_1 = (util_namespaceFn());
+const validate_1 = (validate_namespaceFn());
 class SchemaEnv {
     constructor(env) {
         var _a;
@@ -1782,16 +1818,14 @@ function getJsonPointer(parsedRef, { baseId, schema, root }) {
     return undefined;
 }
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 2023
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/names.js
+var names_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
+const codegen_1 = (codegen_namespaceFn());
 const names = {
     // validation function arguments
     data: new codegen_1.Name("data"), // data passed to validation function
@@ -1817,15 +1851,13 @@ const names = {
 };
 exports["default"] = names;
 //# sourceMappingURL=names.js.map
+});
 
-/***/ },
-
-/***/ 4551
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/ref_error.js
+var ref_error_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const resolve_1 = __webpack_require__(6939);
+const resolve_1 = (resolve_namespaceFn());
 class MissingRefError extends Error {
     constructor(resolver, baseId, ref, msg) {
         super(msg || `can't resolve reference ${ref} from id ${baseId}`);
@@ -1835,19 +1867,17 @@ class MissingRefError extends Error {
 }
 exports["default"] = MissingRefError;
 //# sourceMappingURL=ref_error.js.map
+});
 
-/***/ },
-
-/***/ 6939
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/resolve.js
+var resolve_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.getSchemaRefs = exports.resolveUrl = exports.normalizeId = exports._getFullPath = exports.getFullPath = exports.inlineRef = void 0;
-const util_1 = __webpack_require__(4227);
-const equal = __webpack_require__(2017);
-const traverse = __webpack_require__(7106);
+const util_1 = (util_namespaceFn());
+const equal = (fast_deep_equal_namespaceFn());
+const traverse = (json_schema_traverse_namespaceFn());
 // TODO refactor to use keyword definitions
 const SIMPLE_INLINED = new Set([
     "type",
@@ -1997,12 +2027,10 @@ function getSchemaRefs(schema, baseId) {
 }
 exports.getSchemaRefs = getSchemaRefs;
 //# sourceMappingURL=resolve.js.map
+});
 
-/***/ },
-
-/***/ 396
-(__unused_webpack_module, exports) {
-
+// MODULE: ./node_modules/ajv/dist/compile/rules.js
+var rules_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
@@ -2030,18 +2058,16 @@ function getRules() {
 }
 exports.getRules = getRules;
 //# sourceMappingURL=rules.js.map
+});
 
-/***/ },
-
-/***/ 4227
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/util.js
+var util_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.checkStrictMode = exports.getErrorPath = exports.Type = exports.useFunc = __webpack_unused_export__ = exports.evaluatedPropsToName = exports.mergeEvaluated = exports.eachItem = exports.unescapeJsonPointer = __webpack_unused_export__ = exports.escapeFragment = exports.unescapeFragment = exports.schemaRefOrVal = exports.schemaHasRulesButRef = __webpack_unused_export__ = exports.checkUnknownRules = exports.alwaysValidSchema = exports.toHash = void 0;
-const codegen_1 = __webpack_require__(9029);
-const code_1 = __webpack_require__(1520);
+const codegen_1 = (codegen_namespaceFn());
+const code_1 = (code_namespaceFn());
 // TODO refactor to use Set
 function toHash(arr) {
     const hash = {};
@@ -2215,12 +2241,10 @@ function checkStrictMode(it, msg, mode = it.opts.strictSchema) {
 }
 exports.checkStrictMode = checkStrictMode;
 //# sourceMappingURL=util.js.map
+});
 
-/***/ },
-
-/***/ 7887
-(__unused_webpack_module, exports) {
-
+// MODULE: ./node_modules/ajv/dist/compile/validate/applicability.js
+var applicability_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
@@ -2241,19 +2265,17 @@ function shouldUseRule(schema, rule) {
 }
 exports.shouldUseRule = shouldUseRule;
 //# sourceMappingURL=applicability.js.map
+});
 
-/***/ },
-
-/***/ 8727
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/validate/boolSchema.js
+var boolSchema_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.boolOrEmptySchema = exports.topBoolOrEmptySchema = void 0;
-const errors_1 = __webpack_require__(8708);
-const codegen_1 = __webpack_require__(9029);
-const names_1 = __webpack_require__(2023);
+const errors_1 = (errors_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
+const names_1 = (names_namespaceFn());
 const boolError = {
     message: "boolean schema is false",
 };
@@ -2298,21 +2320,19 @@ function falseSchemaError(it, overrideAllErrors) {
     (0, errors_1.reportError)(cxt, boolError, undefined, overrideAllErrors);
 }
 //# sourceMappingURL=boolSchema.js.map
+});
 
-/***/ },
-
-/***/ 208
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/validate/dataType.js
+var dataType_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.reportTypeError = exports.checkDataTypes = exports.checkDataType = exports.coerceAndCheckDataType = exports.getJSONTypes = exports.getSchemaTypes = exports.DataType = void 0;
-const rules_1 = __webpack_require__(396);
-const applicability_1 = __webpack_require__(7887);
-const errors_1 = __webpack_require__(8708);
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const rules_1 = (rules_namespaceFn());
+const applicability_1 = (applicability_namespaceFn());
+const errors_1 = (errors_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 var DataType;
 (function (DataType) {
     DataType[DataType["Correct"] = 0] = "Correct";
@@ -2508,18 +2528,16 @@ function getTypeErrorContext(it) {
     };
 }
 //# sourceMappingURL=dataType.js.map
+});
 
-/***/ },
-
-/***/ 7870
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/validate/defaults.js
+var defaults_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.assignDefaults = void 0;
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 function assignDefaults(it, ty) {
     const { properties, items } = it.schema;
     if (ty === "object" && properties) {
@@ -2550,27 +2568,25 @@ function assignDefault(it, prop, defaultValue) {
     gen.if(condition, (0, codegen_1._) `${childData} = ${(0, codegen_1.stringify)(defaultValue)}`);
 }
 //# sourceMappingURL=defaults.js.map
+});
 
-/***/ },
-
-/***/ 2586
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/validate/index.js
+var validate_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getData = exports.KeywordCxt = exports.validateFunctionCode = void 0;
-const boolSchema_1 = __webpack_require__(8727);
-const dataType_1 = __webpack_require__(208);
-const applicability_1 = __webpack_require__(7887);
-const dataType_2 = __webpack_require__(208);
-const defaults_1 = __webpack_require__(7870);
-const keyword_1 = __webpack_require__(3673);
-const subschema_1 = __webpack_require__(4495);
-const codegen_1 = __webpack_require__(9029);
-const names_1 = __webpack_require__(2023);
-const resolve_1 = __webpack_require__(6939);
-const util_1 = __webpack_require__(4227);
-const errors_1 = __webpack_require__(8708);
+const boolSchema_1 = (boolSchema_namespaceFn());
+const dataType_1 = (dataType_namespaceFn());
+const applicability_1 = (applicability_namespaceFn());
+const dataType_2 = (dataType_namespaceFn());
+const defaults_1 = (defaults_namespaceFn());
+const keyword_1 = (keyword_namespaceFn());
+const subschema_1 = (subschema_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
+const names_1 = (names_namespaceFn());
+const resolve_1 = (resolve_namespaceFn());
+const util_1 = (util_namespaceFn());
+const errors_1 = (errors_namespaceFn());
 // schema compilation - generates validation function, subschemaCode (below) is used for subschemas
 function validateFunctionCode(it) {
     if (isSchemaObj(it)) {
@@ -3076,20 +3092,18 @@ function getData($data, { dataLevel, dataNames, dataPathArr }) {
 }
 exports.getData = getData;
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 3673
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/validate/keyword.js
+var keyword_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.validateKeywordUsage = exports.validSchemaType = exports.funcKeywordCode = exports.macroKeywordCode = void 0;
-const codegen_1 = __webpack_require__(9029);
-const names_1 = __webpack_require__(2023);
-const code_1 = __webpack_require__(5765);
-const errors_1 = __webpack_require__(8708);
+const codegen_1 = (codegen_namespaceFn());
+const names_1 = (names_namespaceFn());
+const code_1 = (vocabularies_code_namespaceFn());
+const errors_1 = (errors_namespaceFn());
 function macroKeywordCode(cxt, def) {
     const { gen, keyword, schema, parentSchema, it } = cxt;
     const macroSchema = def.macro.call(it.self, schema, parentSchema, it);
@@ -3207,18 +3221,16 @@ function validateKeywordUsage({ schema, opts, self, errSchemaPath }, def, keywor
 }
 exports.validateKeywordUsage = validateKeywordUsage;
 //# sourceMappingURL=keyword.js.map
+});
 
-/***/ },
-
-/***/ 4495
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/compile/validate/subschema.js
+var subschema_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.extendSubschemaMode = exports.extendSubschemaData = exports.getSubschema = void 0;
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 function getSubschema(it, { keyword, schemaProp, schema, schemaPath, errSchemaPath, topSchemaRef }) {
     if (keyword !== undefined && schema !== undefined) {
         throw new Error('both "keyword" and "schema" passed, only one allowed');
@@ -3295,35 +3307,33 @@ function extendSubschemaMode(subschema, { jtdDiscriminator, jtdMetadata, composi
 }
 exports.extendSubschemaMode = extendSubschemaMode;
 //# sourceMappingURL=subschema.js.map
+});
 
-/***/ },
-
-/***/ 4042
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/core.js
+var core_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = __webpack_unused_export__ = void 0;
-var validate_1 = __webpack_require__(2586);
+var validate_1 = (validate_namespaceFn());
 __webpack_unused_export__ = ({ enumerable: true, get: function () { return validate_1.KeywordCxt; } });
-var codegen_1 = __webpack_require__(9029);
+var codegen_1 = (codegen_namespaceFn());
 __webpack_unused_export__ = ({ enumerable: true, get: function () { return codegen_1._; } });
 __webpack_unused_export__ = ({ enumerable: true, get: function () { return codegen_1.str; } });
 __webpack_unused_export__ = ({ enumerable: true, get: function () { return codegen_1.stringify; } });
 __webpack_unused_export__ = ({ enumerable: true, get: function () { return codegen_1.nil; } });
 __webpack_unused_export__ = ({ enumerable: true, get: function () { return codegen_1.Name; } });
 __webpack_unused_export__ = ({ enumerable: true, get: function () { return codegen_1.CodeGen; } });
-const validation_error_1 = __webpack_require__(3558);
-const ref_error_1 = __webpack_require__(4551);
-const rules_1 = __webpack_require__(396);
-const compile_1 = __webpack_require__(3835);
-const codegen_2 = __webpack_require__(9029);
-const resolve_1 = __webpack_require__(6939);
-const dataType_1 = __webpack_require__(208);
-const util_1 = __webpack_require__(4227);
-const $dataRefSchema = __webpack_require__(3837);
-const uri_1 = __webpack_require__(5944);
+const validation_error_1 = (validation_error_namespaceFn());
+const ref_error_1 = (ref_error_namespaceFn());
+const rules_1 = (rules_namespaceFn());
+const compile_1 = (compile_namespaceFn());
+const codegen_2 = (codegen_namespaceFn());
+const resolve_1 = (resolve_namespaceFn());
+const dataType_1 = (dataType_namespaceFn());
+const util_1 = (util_namespaceFn());
+const $dataRefSchema = (data_namespaceFn());
+const uri_1 = (uri_namespaceFn());
 const defaultRegExp = (str, flags) => new RegExp(str, flags);
 defaultRegExp.code = "new RegExp";
 const META_IGNORE_OPTIONS = ["removeAdditional", "useDefaults", "coerceTypes"];
@@ -3920,26 +3930,22 @@ function schemaOrData(schema) {
     return { anyOf: [schema, $dataRef] };
 }
 //# sourceMappingURL=core.js.map
+});
 
-/***/ },
-
-/***/ 6250
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/runtime/equal.js
+var equal_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 // https://github.com/ajv-validator/ajv/issues/889
-const equal = __webpack_require__(2017);
+const equal = (fast_deep_equal_namespaceFn());
 equal.code = 'require("ajv/dist/runtime/equal").default';
 exports["default"] = equal;
 //# sourceMappingURL=equal.js.map
+});
 
-/***/ },
-
-/***/ 3853
-(__unused_webpack_module, exports) {
-
+// MODULE: ./node_modules/ajv/dist/runtime/ucs2length.js
+var ucs2length_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
@@ -3965,25 +3971,21 @@ function ucs2length(str) {
 exports["default"] = ucs2length;
 ucs2length.code = 'require("ajv/dist/runtime/ucs2length").default';
 //# sourceMappingURL=ucs2length.js.map
+});
 
-/***/ },
-
-/***/ 5944
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/runtime/uri.js
+var uri_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const uri = __webpack_require__(8343);
+const uri = (fast_uri_namespaceFn());
 uri.code = 'require("ajv/dist/runtime/uri").default';
 exports["default"] = uri;
 //# sourceMappingURL=uri.js.map
+});
 
-/***/ },
-
-/***/ 3558
-(__unused_webpack_module, exports) {
-
+// MODULE: ./node_modules/ajv/dist/runtime/validation_error.js
+var validation_error_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 class ValidationError extends Error {
@@ -3995,18 +3997,16 @@ class ValidationError extends Error {
 }
 exports["default"] = ValidationError;
 //# sourceMappingURL=validation_error.js.map
+});
 
-/***/ },
-
-/***/ 5457
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/additionalItems.js
+var additionalItems_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.validateAdditionalItems = void 0;
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 const error = {
     message: ({ params: { len } }) => (0, codegen_1.str) `must NOT have more than ${len} items`,
     params: ({ params: { len } }) => (0, codegen_1._) `{limit: ${len}}`,
@@ -4051,19 +4051,17 @@ function validateAdditionalItems(cxt, items) {
 exports.validateAdditionalItems = validateAdditionalItems;
 exports["default"] = def;
 //# sourceMappingURL=additionalItems.js.map
+});
 
-/***/ },
-
-/***/ 8660
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/additionalProperties.js
+var additionalProperties_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const code_1 = __webpack_require__(5765);
-const codegen_1 = __webpack_require__(9029);
-const names_1 = __webpack_require__(2023);
-const util_1 = __webpack_require__(4227);
+const code_1 = (vocabularies_code_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
+const names_1 = (names_namespaceFn());
+const util_1 = (util_namespaceFn());
 const error = {
     message: "must NOT have additional properties",
     params: ({ params }) => (0, codegen_1._) `{additionalProperty: ${params.additionalProperty}}`,
@@ -4164,16 +4162,14 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=additionalProperties.js.map
+});
 
-/***/ },
-
-/***/ 5844
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/allOf.js
+var allOf_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const util_1 = __webpack_require__(4227);
+const util_1 = (util_namespaceFn());
 const def = {
     keyword: "allOf",
     schemaType: "array",
@@ -4194,16 +4190,14 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=allOf.js.map
+});
 
-/***/ },
-
-/***/ 6505
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/anyOf.js
+var anyOf_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const code_1 = __webpack_require__(5765);
+const code_1 = (vocabularies_code_namespaceFn());
 const def = {
     keyword: "anyOf",
     schemaType: "array",
@@ -4213,17 +4207,15 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=anyOf.js.map
+});
 
-/***/ },
-
-/***/ 2661
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/contains.js
+var contains_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 const error = {
     message: ({ params: { min, max } }) => max === undefined
         ? (0, codegen_1.str) `must contain at least ${min} valid item(s)`
@@ -4315,19 +4307,17 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=contains.js.map
+});
 
-/***/ },
-
-/***/ 3025
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/dependencies.js
+var dependencies_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 __webpack_unused_export__ = __webpack_unused_export__ = exports.z3 = void 0;
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const code_1 = __webpack_require__(5765);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const code_1 = (vocabularies_code_namespaceFn());
 exports.z3 = {
     message: ({ params: { property, depsCount, deps } }) => {
         const property_ies = depsCount === 1 ? "property" : "properties";
@@ -4407,17 +4397,15 @@ function validateSchemaDeps(cxt, schemaDeps = cxt.schema) {
 __webpack_unused_export__ = validateSchemaDeps;
 exports["default"] = def;
 //# sourceMappingURL=dependencies.js.map
+});
 
-/***/ },
-
-/***/ 1239
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/if.js
+var if_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 const error = {
     message: ({ params }) => (0, codegen_1.str) `must match "${params.ifClause}" schema`,
     params: ({ params }) => (0, codegen_1._) `{failingKeyword: ${params.ifClause}}`,
@@ -4480,31 +4468,29 @@ function hasSchema(it, keyword) {
 }
 exports["default"] = def;
 //# sourceMappingURL=if.js.map
+});
 
-/***/ },
-
-/***/ 6378
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/index.js
+var applicator_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const additionalItems_1 = __webpack_require__(5457);
-const prefixItems_1 = __webpack_require__(5354);
-const items_1 = __webpack_require__(494);
-const items2020_1 = __webpack_require__(3966);
-const contains_1 = __webpack_require__(2661);
-const dependencies_1 = __webpack_require__(3025);
-const propertyNames_1 = __webpack_require__(9713);
-const additionalProperties_1 = __webpack_require__(8660);
-const properties_1 = __webpack_require__(117);
-const patternProperties_1 = __webpack_require__(5333);
-const not_1 = __webpack_require__(7923);
-const anyOf_1 = __webpack_require__(6505);
-const oneOf_1 = __webpack_require__(6163);
-const allOf_1 = __webpack_require__(5844);
-const if_1 = __webpack_require__(1239);
-const thenElse_1 = __webpack_require__(4426);
+const additionalItems_1 = (additionalItems_namespaceFn());
+const prefixItems_1 = (prefixItems_namespaceFn());
+const items_1 = (items_namespaceFn());
+const items2020_1 = (items2020_namespaceFn());
+const contains_1 = (contains_namespaceFn());
+const dependencies_1 = (dependencies_namespaceFn());
+const propertyNames_1 = (propertyNames_namespaceFn());
+const additionalProperties_1 = (additionalProperties_namespaceFn());
+const properties_1 = (properties_namespaceFn());
+const patternProperties_1 = (patternProperties_namespaceFn());
+const not_1 = (not_namespaceFn());
+const anyOf_1 = (anyOf_namespaceFn());
+const oneOf_1 = (oneOf_namespaceFn());
+const allOf_1 = (allOf_namespaceFn());
+const if_1 = (if_namespaceFn());
+const thenElse_1 = (thenElse_namespaceFn());
 function getApplicator(draft2020 = false) {
     const applicator = [
         // any
@@ -4531,19 +4517,17 @@ function getApplicator(draft2020 = false) {
 }
 exports["default"] = getApplicator;
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 494
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/items.js
+var items_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.validateTuple = void 0;
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const code_1 = __webpack_require__(5765);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const code_1 = (vocabularies_code_namespaceFn());
 const def = {
     keyword: "items",
     type: "array",
@@ -4590,19 +4574,17 @@ function validateTuple(cxt, extraItems, schArr = cxt.schema) {
 exports.validateTuple = validateTuple;
 exports["default"] = def;
 //# sourceMappingURL=items.js.map
+});
 
-/***/ },
-
-/***/ 3966
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/items2020.js
+var items2020_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const code_1 = __webpack_require__(5765);
-const additionalItems_1 = __webpack_require__(5457);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const code_1 = (vocabularies_code_namespaceFn());
+const additionalItems_1 = (additionalItems_namespaceFn());
 const error = {
     message: ({ params: { len } }) => (0, codegen_1.str) `must NOT have more than ${len} items`,
     params: ({ params: { len } }) => (0, codegen_1._) `{limit: ${len}}`,
@@ -4627,16 +4609,14 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=items2020.js.map
+});
 
-/***/ },
-
-/***/ 7923
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/not.js
+var not_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const util_1 = __webpack_require__(4227);
+const util_1 = (util_namespaceFn());
 const def = {
     keyword: "not",
     schemaType: ["object", "boolean"],
@@ -4660,17 +4640,15 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=not.js.map
+});
 
-/***/ },
-
-/***/ 6163
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/oneOf.js
+var oneOf_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 const error = {
     message: "must match exactly one schema in oneOf",
     params: ({ params }) => (0, codegen_1._) `{passingSchemas: ${params.passing}}`,
@@ -4727,19 +4705,17 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=oneOf.js.map
+});
 
-/***/ },
-
-/***/ 5333
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/patternProperties.js
+var patternProperties_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const code_1 = __webpack_require__(5765);
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const util_2 = __webpack_require__(4227);
+const code_1 = (vocabularies_code_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const util_2 = (util_namespaceFn());
 const def = {
     keyword: "patternProperties",
     type: "object",
@@ -4809,16 +4785,14 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=patternProperties.js.map
+});
 
-/***/ },
-
-/***/ 5354
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/prefixItems.js
+var prefixItems_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const items_1 = __webpack_require__(494);
+const items_1 = (items_namespaceFn());
 const def = {
     keyword: "prefixItems",
     type: "array",
@@ -4828,19 +4802,17 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=prefixItems.js.map
+});
 
-/***/ },
-
-/***/ 117
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/properties.js
+var properties_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const validate_1 = __webpack_require__(2586);
-const code_1 = __webpack_require__(5765);
-const util_1 = __webpack_require__(4227);
-const additionalProperties_1 = __webpack_require__(8660);
+const validate_1 = (validate_namespaceFn());
+const code_1 = (vocabularies_code_namespaceFn());
+const util_1 = (util_namespaceFn());
+const additionalProperties_1 = (additionalProperties_namespaceFn());
 const def = {
     keyword: "properties",
     type: "object",
@@ -4889,17 +4861,15 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=properties.js.map
+});
 
-/***/ },
-
-/***/ 9713
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/propertyNames.js
+var propertyNames_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 const error = {
     message: "property name must be valid",
     params: ({ params }) => (0, codegen_1._) `{propertyName: ${params.propertyName}}`,
@@ -4934,16 +4904,14 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=propertyNames.js.map
+});
 
-/***/ },
-
-/***/ 4426
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/applicator/thenElse.js
+var thenElse_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const util_1 = __webpack_require__(4227);
+const util_1 = (util_namespaceFn());
 const def = {
     keyword: ["then", "else"],
     schemaType: ["object", "boolean"],
@@ -4954,20 +4922,18 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=thenElse.js.map
+});
 
-/***/ },
-
-/***/ 5765
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/code.js
+var vocabularies_code_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.validateUnion = exports.validateArray = exports.usePattern = exports.callValidateCode = __webpack_unused_export__ = exports.allSchemaProperties = exports.noPropertyInData = exports.propertyInData = exports.isOwnProperty = __webpack_unused_export__ = exports.reportMissingProp = exports.checkMissingProp = exports.checkReportMissingProp = void 0;
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const names_1 = __webpack_require__(2023);
-const util_2 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const names_1 = (names_namespaceFn());
+const util_2 = (util_namespaceFn());
 function checkReportMissingProp(cxt, prop) {
     const { gen, data, it } = cxt;
     gen.if(noPropertyInData(gen, data, prop, it.opts.ownProperties), () => {
@@ -5092,12 +5058,10 @@ function validateUnion(cxt) {
 }
 exports.validateUnion = validateUnion;
 //# sourceMappingURL=code.js.map
+});
 
-/***/ },
-
-/***/ 3463
-(__unused_webpack_module, exports) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/core/id.js
+var id_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
@@ -5109,17 +5073,15 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=id.js.map
+});
 
-/***/ },
-
-/***/ 2128
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/core/index.js
+var vocabularies_core_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const id_1 = __webpack_require__(3463);
-const ref_1 = __webpack_require__(3693);
+const id_1 = (id_namespaceFn());
+const ref_1 = (ref_namespaceFn());
 const core = [
     "$schema",
     "$id",
@@ -5132,22 +5094,20 @@ const core = [
 ];
 exports["default"] = core;
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 3693
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/core/ref.js
+var ref_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 __webpack_unused_export__ = __webpack_unused_export__ = void 0;
-const ref_error_1 = __webpack_require__(4551);
-const code_1 = __webpack_require__(5765);
-const codegen_1 = __webpack_require__(9029);
-const names_1 = __webpack_require__(2023);
-const compile_1 = __webpack_require__(3835);
-const util_1 = __webpack_require__(4227);
+const ref_error_1 = (ref_error_namespaceFn());
+const code_1 = (vocabularies_code_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
+const names_1 = (names_namespaceFn());
+const compile_1 = (compile_namespaceFn());
+const util_1 = (util_namespaceFn());
 const def = {
     keyword: "$ref",
     schemaType: "string",
@@ -5261,20 +5221,18 @@ function callRef(cxt, v, sch, $async) {
 __webpack_unused_export__ = callRef;
 exports["default"] = def;
 //# sourceMappingURL=ref.js.map
+});
 
-/***/ },
-
-/***/ 6653
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/discriminator/index.js
+var discriminator_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const types_1 = __webpack_require__(7652);
-const compile_1 = __webpack_require__(3835);
-const ref_error_1 = __webpack_require__(4551);
-const util_1 = __webpack_require__(4227);
+const codegen_1 = (codegen_namespaceFn());
+const types_1 = (types_namespaceFn());
+const compile_1 = (compile_namespaceFn());
+const ref_error_1 = (ref_error_namespaceFn());
+const util_1 = (util_namespaceFn());
 const error = {
     message: ({ params: { discrError, tagName } }) => discrError === types_1.DiscrError.Tag
         ? `tag "${tagName}" must be string`
@@ -5372,12 +5330,10 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 7652
-(__unused_webpack_module, exports) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/discriminator/types.js
+var types_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
@@ -5388,20 +5344,18 @@ var DiscrError;
     DiscrError["Mapping"] = "mapping";
 })(DiscrError || (exports.DiscrError = DiscrError = {}));
 //# sourceMappingURL=types.js.map
+});
 
-/***/ },
-
-/***/ 6144
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/draft7.js
+var draft7_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const core_1 = __webpack_require__(2128);
-const validation_1 = __webpack_require__(7060);
-const applicator_1 = __webpack_require__(6378);
-const format_1 = __webpack_require__(7532);
-const metadata_1 = __webpack_require__(9857);
+const core_1 = (vocabularies_core_namespaceFn());
+const validation_1 = (validation_namespaceFn());
+const applicator_1 = (applicator_namespaceFn());
+const format_1 = (vocabularies_format_namespaceFn());
+const metadata_1 = (metadata_namespaceFn());
 const draft7Vocabularies = [
     core_1.default,
     validation_1.default,
@@ -5412,16 +5366,14 @@ const draft7Vocabularies = [
 ];
 exports["default"] = draft7Vocabularies;
 //# sourceMappingURL=draft7.js.map
+});
 
-/***/ },
-
-/***/ 4737
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/format/format.js
+var format_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
+const codegen_1 = (codegen_namespaceFn());
 const error = {
     message: ({ schemaCode }) => (0, codegen_1.str) `must match format "${schemaCode}"`,
     params: ({ schemaCode }) => (0, codegen_1._) `{format: ${schemaCode}}`,
@@ -5511,25 +5463,21 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=format.js.map
+});
 
-/***/ },
-
-/***/ 7532
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/format/index.js
+var vocabularies_format_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const format_1 = __webpack_require__(4737);
+const format_1 = (format_namespaceFn());
 const format = [format_1.default];
 exports["default"] = format;
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 9857
-(__unused_webpack_module, exports) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/metadata.js
+var metadata_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
@@ -5549,18 +5497,16 @@ exports.contentVocabulary = [
     "contentSchema",
 ];
 //# sourceMappingURL=metadata.js.map
+});
 
-/***/ },
-
-/***/ 7935
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/const.js
+var const_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const equal_1 = __webpack_require__(6250);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const equal_1 = (equal_namespaceFn());
 const error = {
     message: "must be equal to constant",
     params: ({ schemaCode }) => (0, codegen_1._) `{allowedValue: ${schemaCode}}`,
@@ -5581,18 +5527,16 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=const.js.map
+});
 
-/***/ },
-
-/***/ 8643
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/enum.js
+var enum_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const equal_1 = __webpack_require__(6250);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const equal_1 = (equal_namespaceFn());
 const error = {
     message: "must be equal to one of the allowed values",
     params: ({ schemaCode }) => (0, codegen_1._) `{allowedValues: ${schemaCode}}`,
@@ -5636,25 +5580,23 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=enum.js.map
+});
 
-/***/ },
-
-/***/ 7060
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/index.js
+var validation_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const limitNumber_1 = __webpack_require__(5882);
-const multipleOf_1 = __webpack_require__(3439);
-const limitLength_1 = __webpack_require__(7307);
-const pattern_1 = __webpack_require__(422);
-const limitProperties_1 = __webpack_require__(4486);
-const required_1 = __webpack_require__(4003);
-const limitItems_1 = __webpack_require__(1163);
-const uniqueItems_1 = __webpack_require__(617);
-const const_1 = __webpack_require__(7935);
-const enum_1 = __webpack_require__(8643);
+const limitNumber_1 = (limitNumber_namespaceFn());
+const multipleOf_1 = (multipleOf_namespaceFn());
+const limitLength_1 = (limitLength_namespaceFn());
+const pattern_1 = (pattern_namespaceFn());
+const limitProperties_1 = (limitProperties_namespaceFn());
+const required_1 = (required_namespaceFn());
+const limitItems_1 = (limitItems_namespaceFn());
+const uniqueItems_1 = (uniqueItems_namespaceFn());
+const const_1 = (const_namespaceFn());
+const enum_1 = (enum_namespaceFn());
 const validation = [
     // number
     limitNumber_1.default,
@@ -5676,16 +5618,14 @@ const validation = [
 ];
 exports["default"] = validation;
 //# sourceMappingURL=index.js.map
+});
 
-/***/ },
-
-/***/ 1163
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/limitItems.js
+var limitItems_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
+const codegen_1 = (codegen_namespaceFn());
 const error = {
     message({ keyword, schemaCode }) {
         const comp = keyword === "maxItems" ? "more" : "fewer";
@@ -5707,18 +5647,16 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=limitItems.js.map
+});
 
-/***/ },
-
-/***/ 7307
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/limitLength.js
+var limitLength_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const ucs2length_1 = __webpack_require__(3853);
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const ucs2length_1 = (ucs2length_namespaceFn());
 const error = {
     message({ keyword, schemaCode }) {
         const comp = keyword === "maxLength" ? "more" : "fewer";
@@ -5741,16 +5679,14 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=limitLength.js.map
+});
 
-/***/ },
-
-/***/ 5882
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/limitNumber.js
+var limitNumber_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
+const codegen_1 = (codegen_namespaceFn());
 const ops = codegen_1.operators;
 const KWDs = {
     maximum: { okStr: "<=", ok: ops.LTE, fail: ops.GT },
@@ -5775,16 +5711,14 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=limitNumber.js.map
+});
 
-/***/ },
-
-/***/ 4486
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/limitProperties.js
+var limitProperties_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
+const codegen_1 = (codegen_namespaceFn());
 const error = {
     message({ keyword, schemaCode }) {
         const comp = keyword === "maxProperties" ? "more" : "fewer";
@@ -5806,16 +5740,14 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=limitProperties.js.map
+});
 
-/***/ },
-
-/***/ 3439
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/multipleOf.js
+var multipleOf_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const codegen_1 = __webpack_require__(9029);
+const codegen_1 = (codegen_namespaceFn());
 const error = {
     message: ({ schemaCode }) => (0, codegen_1.str) `must be multiple of ${schemaCode}`,
     params: ({ schemaCode }) => (0, codegen_1._) `{multipleOf: ${schemaCode}}`,
@@ -5839,18 +5771,16 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=multipleOf.js.map
+});
 
-/***/ },
-
-/***/ 422
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/pattern.js
+var pattern_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const code_1 = __webpack_require__(5765);
-const util_1 = __webpack_require__(4227);
-const codegen_1 = __webpack_require__(9029);
+const code_1 = (vocabularies_code_namespaceFn());
+const util_1 = (util_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
 const error = {
     message: ({ schemaCode }) => (0, codegen_1.str) `must match pattern "${schemaCode}"`,
     params: ({ schemaCode }) => (0, codegen_1._) `{pattern: ${schemaCode}}`,
@@ -5879,18 +5809,16 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=pattern.js.map
+});
 
-/***/ },
-
-/***/ 4003
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/required.js
+var required_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const code_1 = __webpack_require__(5765);
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
+const code_1 = (vocabularies_code_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
 const error = {
     message: ({ params: { missingProperty } }) => (0, codegen_1.str) `must have required property '${missingProperty}'`,
     params: ({ params: { missingProperty } }) => (0, codegen_1._) `{missingProperty: ${missingProperty}}`,
@@ -5965,19 +5893,17 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=required.js.map
+});
 
-/***/ },
-
-/***/ 617
-(__unused_webpack_module, exports, __webpack_require__) {
-
+// MODULE: ./node_modules/ajv/dist/vocabularies/validation/uniqueItems.js
+var uniqueItems_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const dataType_1 = __webpack_require__(208);
-const codegen_1 = __webpack_require__(9029);
-const util_1 = __webpack_require__(4227);
-const equal_1 = __webpack_require__(6250);
+const dataType_1 = (dataType_namespaceFn());
+const codegen_1 = (codegen_namespaceFn());
+const util_1 = (util_namespaceFn());
+const equal_1 = (equal_namespaceFn());
 const error = {
     message: ({ params: { i, j } }) => (0, codegen_1.str) `must NOT have duplicate items (items ## ${j} and ${i} are identical)`,
     params: ({ params: { i, j } }) => (0, codegen_1._) `{i: ${i}, j: ${j}}`,
@@ -6036,12 +5962,10 @@ const def = {
 };
 exports["default"] = def;
 //# sourceMappingURL=uniqueItems.js.map
+});
 
-/***/ },
-
-/***/ 2017
-(module) {
-
+// MODULE: ./node_modules/fast-deep-equal/index.js
+var fast_deep_equal_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 
 // do not edit .js files directly - edit src/index.jst
@@ -6089,12 +6013,10 @@ module.exports = function equal(a, b) {
   return a!==a && b!==b;
 };
 
+});
 
-/***/ },
-
-/***/ 7106
-(module) {
-
+// MODULE: ./node_modules/json-schema-traverse/index.js
+var json_schema_traverse_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 
 var traverse = module.exports = function (schema, opts, cb) {
@@ -6189,16 +6111,29 @@ function escapeJsonPtr(str) {
   return str.replace(/~/g, '~0').replace(/\//g, '~1');
 }
 
+});
 
-/***/ },
-
-/***/ 8343
-(module, __unused_webpack_exports, __webpack_require__) {
-
+// MODULE: ./node_modules/fast-uri/index.js
+var fast_uri_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 
-const { normalizeIPv6, removeDotSegments, recomposeAuthority, normalizePercentEncoding, normalizePathEncoding, escapePreservingEscapes, reescapeHostDelimiters, isIPv4, nonSimpleDomain } = __webpack_require__(4834)
-const { SCHEMES, getSchemeHandler } = __webpack_require__(343)
+const { normalizeIPv6, removeDotSegments, recomposeAuthority, normalizePercentEncoding, normalizePathEncoding, serializePathEncoding, normalizeQueryFragmentEncoding, encodeQuery, encodeFragment, reescapeHostDelimiters, isIPv4, nonSimpleDomain } = (utils_namespaceFn())
+const { SCHEMES, getSchemeHandler } = (schemes_namespaceFn())
+
+const VALID_SCHEME = /^[A-Za-z][A-Za-z0-9+.-]*$/u
+const MALFORMED_SCHEME_ERROR = 'URI scheme is malformed.'
+
+/**
+ * @param {string} scheme
+ * @returns {string}
+ */
+function decodeValidScheme (scheme) {
+  const decodedScheme = unescape(String(scheme))
+  if (!VALID_SCHEME.test(decodedScheme)) {
+    throw new TypeError(MALFORMED_SCHEME_ERROR)
+  }
+  return decodedScheme
+}
 
 /**
  * @template {import('./types/index').URIComponent|string} T
@@ -6223,12 +6158,50 @@ function normalize (uri, options) {
  */
 function resolve (baseURI, relativeURI, options) {
   const schemelessOptions = options ? Object.assign({ scheme: 'null' }, options) : { scheme: 'null' }
-  const { parsed: baseParsed, malformedAuthorityOrPort: baseMalformed } = parseWithStatus(baseURI, schemelessOptions)
-  const { parsed: relativeParsed, malformedAuthorityOrPort: relativeMalformed } = parseWithStatus(relativeURI, schemelessOptions)
-  if (baseMalformed || relativeMalformed) {
+  const {
+    parsed: baseParsed,
+    malformedAuthorityOrPort: baseMalformed,
+    malformedPercentEncoding: baseMalformedPercentEncoding,
+    malformedSchemeSpecific: baseMalformedSchemeSpecific,
+    malformedHost: baseMalformedHost,
+    malformedScheme: baseMalformedScheme
+  } = parseWithStatus(baseURI, schemelessOptions)
+  const {
+    parsed: relativeParsed,
+    malformedAuthorityOrPort: relativeMalformed,
+    malformedPercentEncoding: relativeMalformedPercentEncoding,
+    malformedSchemeSpecific: relativeMalformedSchemeSpecific,
+    malformedHost: relativeMalformedHost,
+    malformedScheme: relativeMalformedScheme
+  } = parseWithStatus(relativeURI, schemelessOptions)
+  if (
+    baseMalformed ||
+    relativeMalformed ||
+    baseMalformedPercentEncoding ||
+    relativeMalformedPercentEncoding ||
+    baseMalformedSchemeSpecific ||
+    relativeMalformedSchemeSpecific ||
+    baseMalformedHost ||
+    relativeMalformedHost ||
+    baseMalformedScheme ||
+    relativeMalformedScheme
+  ) {
     throw new Error(baseParsed.error || relativeParsed.error || 'URI is malformed.')
   }
   const resolved = resolveComponent(baseParsed, relativeParsed, schemelessOptions, true)
+  const resolvedSchemeHandler = getSchemeHandler((options && options.scheme) || resolved.scheme)
+  const resolvedHost = resolved.host
+  const resolvedHostIsIP = resolvedHost !== undefined && resolvedHost !== '' &&
+    (isIPv4(resolvedHost) || normalizeIPv6(resolvedHost).isIPV6)
+  canonicalizeHost(resolved, options || {}, resolvedSchemeHandler, resolvedHostIsIP)
+  // Percent escapes in an ASCII reg-name are encoded data. The WHATWG hostname
+  // parser can reject them even though fast-uri preserves them safely as RFC
+  // 3986 data. A raw non-ASCII host must still fail closed if conversion fails.
+  const encodedASCIIHost = resolvedHost && resolvedHost.indexOf('%') !== -1 &&
+    !/\P{ASCII}/u.test(resolvedHost)
+  if (resolved.error && !encodedASCIIHost) {
+    throw new Error(resolved.error)
+  }
   schemelessOptions.skipEscape = true
   return serialize(resolved, schemelessOptions)
 }
@@ -6311,7 +6284,7 @@ function equal (uriA, uriB, options) {
   const normalizedA = normalizeComparableURI(uriA, options)
   const normalizedB = normalizeComparableURI(uriB, options)
 
-  return normalizedA !== undefined && normalizedB !== undefined && normalizedA.toLowerCase() === normalizedB.toLowerCase()
+  return normalizedA !== undefined && normalizedB !== undefined && normalizedA === normalizedB
 }
 
 /**
@@ -6339,25 +6312,30 @@ function serialize (cmpts, opts) {
   const options = Object.assign({}, opts)
   const uriTokens = []
 
+  if (component.scheme) {
+    component.scheme = decodeValidScheme(component.scheme)
+  }
+
   // find scheme handler
   const schemeHandler = getSchemeHandler(options.scheme || component.scheme)
 
   // perform scheme specific serialization
   if (schemeHandler && schemeHandler.serialize) schemeHandler.serialize(component, options)
 
+  const hasAuthority = component.userinfo !== undefined || component.host !== undefined || component.port !== undefined
+  const pathNoScheme = !options.skipEscape && component.scheme === undefined && !hasAuthority
+
   if (component.path !== undefined) {
     if (!options.skipEscape) {
-      component.path = escapePreservingEscapes(component.path)
-
-      if (component.scheme !== undefined) {
-        component.path = component.path.split('%3A').join(':')
-      }
+      component.path = serializePathEncoding(component.path, pathNoScheme)
     } else {
       component.path = normalizePercentEncoding(component.path)
     }
   }
 
   if (options.reference !== 'suffix' && component.scheme) {
+    // Scheme handlers may replace the scheme during serialization.
+    component.scheme = decodeValidScheme(component.scheme)
     uriTokens.push(component.scheme, ':')
   }
 
@@ -6380,6 +6358,13 @@ function serialize (cmpts, opts) {
       s = removeDotSegments(s)
     }
 
+    // Dot-segment removal can expose a colon that was not originally in the
+    // first segment (for example, "./a:b"). Reapply path-noscheme encoding so
+    // the serialized relative reference cannot be reparsed as a URI scheme.
+    if (pathNoScheme) {
+      s = serializePathEncoding(s, true)
+    }
+
     if (
       authority === undefined &&
       s[0] === '/' &&
@@ -6393,11 +6378,11 @@ function serialize (cmpts, opts) {
   }
 
   if (component.query !== undefined) {
-    uriTokens.push('?', component.query)
+    uriTokens.push('?', encodeQuery(component.query))
   }
 
   if (component.fragment !== undefined) {
-    uriTokens.push('#', component.fragment)
+    uriTokens.push('#', encodeFragment(component.fragment))
   }
   return uriTokens.join('')
 }
@@ -6435,9 +6420,85 @@ function getParseError (parsed, matches) {
 }
 
 /**
+ * Checks percent syntax without decoding the represented octets. RFC 3986
+ * percent-encoding is byte-oriented, so sequences such as `%FF` are valid even
+ * though they are not independently valid UTF-8.
+ *
+ * @param {string|undefined} component
+ * @returns {boolean}
+ */
+function hasMalformedPercentEncoding (component) {
+  if (component === undefined) return false
+
+  let percent = component.indexOf('%')
+  while (percent !== -1) {
+    if (percent + 2 >= component.length || !/^[\da-f]{2}$/iu.test(component.slice(percent + 1, percent + 3))) {
+      return true
+    }
+    percent = component.indexOf('%', percent + 3)
+  }
+
+  return false
+}
+
+/**
+ * Whether the host is a bracketed IP literal (RFC 3986 `IP-literal`).
+ * An unterminated `[` is not a literal, so it must still be validated as a
+ * reg-name instead of being waved through as an IP.
+ *
+ * @param {string} host
+ * @returns {boolean}
+ */
+function isIPLiteral (host) {
+  return host[0] === '[' && host[host.length - 1] === ']'
+}
+
+/**
+ * @param {RegExpMatchArray} matches
+ * @returns {boolean}
+ */
+function hasMalformedComponentPercentEncoding (matches) {
+  // Bracketed IP literals use a raw "%" as the zone separator for historical
+  // compatibility. Their parsing is intentionally left to normalizeIPv6.
+  const host = matches[4]
+  return hasMalformedPercentEncoding(matches[3]) ||
+    (host !== undefined && !isIPLiteral(host) && hasMalformedPercentEncoding(host)) ||
+    hasMalformedPercentEncoding(matches[6]) ||
+    hasMalformedPercentEncoding(matches[7]) ||
+    hasMalformedPercentEncoding(matches[8])
+}
+
+/**
+ * @param {import('./types/index').URIComponent} parsed
+ * @param {import('./types/index').Options} options
+ * @param {{ domainHost?: boolean, unicodeSupport?: boolean }|undefined} schemeHandler
+ * @param {boolean} isIP
+ * @returns {boolean} whether host conversion failed
+ */
+function canonicalizeHost (parsed, options, schemeHandler, isIP) {
+  if (
+    !options.unicodeSupport &&
+    (!schemeHandler || !schemeHandler.unicodeSupport) &&
+    parsed.host &&
+    !isIPLiteral(parsed.host) &&
+    (options.domainHost || (schemeHandler && schemeHandler.domainHost)) &&
+    isIP === false &&
+    nonSimpleDomain(parsed.host)
+  ) {
+    try {
+      parsed.host = new URL('http://' + parsed.host).hostname
+    } catch (e) {
+      parsed.error = parsed.error || "Host's domain name can not be converted to ASCII: " + e
+      return true
+    }
+  }
+  return false
+}
+
+/**
  * @param {string} uri
  * @param {import('./types/index').Options} [opts]
- * @returns {{ parsed: import('./types/index').URIComponent, malformedAuthorityOrPort: boolean }}
+ * @returns {{ parsed: import('./types/index').URIComponent, malformedAuthorityOrPort: boolean, malformedPercentEncoding: boolean, malformedSchemeSpecific: boolean, malformedHost: boolean, malformedScheme: boolean }}
  */
 function parseWithStatus (uri, opts) {
   const options = Object.assign({}, opts)
@@ -6453,6 +6514,11 @@ function parseWithStatus (uri, opts) {
   }
 
   let malformedAuthorityOrPort = false
+  let malformedPercentEncoding = false
+  let malformedSchemeSpecific = false
+  let malformedHost = false
+  let malformedIPLiteral = false
+  let malformedScheme = false
 
   let isIP = false
   if (options.reference === 'suffix') {
@@ -6510,6 +6576,21 @@ function parseWithStatus (uri, opts) {
     parsed.query = matches[7]
     parsed.fragment = matches[8]
 
+    if (parsed.scheme !== undefined) {
+      const decodedScheme = unescape(parsed.scheme)
+      if (VALID_SCHEME.test(decodedScheme)) {
+        parsed.scheme = decodedScheme.toLowerCase()
+      } else {
+        parsed.error = parsed.error || MALFORMED_SCHEME_ERROR
+        malformedScheme = true
+      }
+    }
+
+    malformedPercentEncoding = hasMalformedComponentPercentEncoding(matches)
+    if (malformedPercentEncoding) {
+      parsed.error = parsed.error || 'URI contains malformed percent-encoding.'
+    }
+
     // fix port number
     if (isNaN(parsed.port)) {
       parsed.port = matches[5]
@@ -6524,9 +6605,17 @@ function parseWithStatus (uri, opts) {
     if (parsed.host) {
       const ipv4result = isIPv4(parsed.host)
       if (ipv4result === false) {
+        const bracketedIPLiteral = isIPLiteral(parsed.host)
+        const hasIPLiteralBracket = parsed.host.indexOf('[') !== -1 || parsed.host.indexOf(']') !== -1
         const ipv6result = normalizeIPv6(parsed.host)
-        parsed.host = ipv6result.host.toLowerCase()
-        isIP = ipv6result.isIPV6
+        isIP = ipv6result.isIPV6 || ipv6result.isIPVFuture === true
+        malformedIPLiteral = hasIPLiteralBracket && (!bracketedIPLiteral || ipv6result.error === true)
+        parsed.host = isIP ? ipv6result.host : ipv6result.host.toLowerCase()
+
+        if (malformedIPLiteral) {
+          parsed.error = parsed.error || 'URI host is malformed.'
+          malformedAuthorityOrPort = true
+        }
       } else {
         isIP = true
       }
@@ -6549,49 +6638,44 @@ function parseWithStatus (uri, opts) {
     // find scheme handler
     const schemeHandler = getSchemeHandler(options.scheme || parsed.scheme)
 
-    // check if scheme can't handle IRIs
-    if (!options.unicodeSupport && (!schemeHandler || !schemeHandler.unicodeSupport)) {
-      // if host component is a domain name
-      if (parsed.host && (options.domainHost || (schemeHandler && schemeHandler.domainHost)) && isIP === false && nonSimpleDomain(parsed.host)) {
-        // convert Unicode IDN -> ASCII IDN
-        try {
-          parsed.host = new URL('http://' + parsed.host).hostname
-        } catch (e) {
-          parsed.error = parsed.error || "Host's domain name can not be converted to ASCII: " + e
-        }
+    // convert Unicode IDN -> ASCII IDN when the effective scheme uses domain hosts
+    if (!malformedIPLiteral) {
+      malformedHost = canonicalizeHost(parsed, options, schemeHandler, isIP)
+    }
+
+    if (uri.indexOf('%') !== -1 && parsed.host !== undefined && !malformedIPLiteral) {
+      let host = isIP ? parsed.host : normalizePercentEncoding(parsed.host, true)
+      if (!isIP) {
+        // Fold reg-name case after decoding unreserved octets. The second
+        // pass only restores uppercase hex in escapes that remain encoded.
+        host = normalizePercentEncoding(host.toLowerCase())
       }
-      // convert IRI -> URI
+      parsed.host = reescapeHostDelimiters(host, isIP)
     }
 
     if (!schemeHandler || (schemeHandler && !schemeHandler.skipNormalize)) {
-      if (uri.indexOf('%') !== -1) {
-        if (parsed.scheme !== undefined) {
-          parsed.scheme = unescape(parsed.scheme)
-        }
-        if (parsed.host !== undefined) {
-          parsed.host = reescapeHostDelimiters(unescape(parsed.host), isIP)
-        }
-      }
       if (parsed.path) {
         parsed.path = normalizePathEncoding(parsed.path)
       }
+      if (parsed.query) {
+        parsed.query = normalizeQueryFragmentEncoding(parsed.query)
+      }
       if (parsed.fragment) {
-        try {
-          parsed.fragment = encodeURI(decodeURIComponent(parsed.fragment))
-        } catch {
-          parsed.error = parsed.error || 'URI malformed'
-        }
+        parsed.fragment = normalizeQueryFragmentEncoding(parsed.fragment)
       }
     }
 
     // perform scheme specific parsing
     if (schemeHandler && schemeHandler.parse) {
       schemeHandler.parse(parsed, options)
+      if (schemeHandler === SCHEMES.urn && parsed.nid === undefined) {
+        malformedSchemeSpecific = true
+      }
     }
   } else {
     parsed.error = parsed.error || 'URI can not be parsed.'
   }
-  return { parsed, malformedAuthorityOrPort }
+  return { parsed, malformedAuthorityOrPort, malformedPercentEncoding, malformedSchemeSpecific, malformedHost, malformedScheme }
 }
 
 /**
@@ -6615,13 +6699,17 @@ function normalizeString (uri, opts) {
 /**
  * @param {string} uri
  * @param {import('./types/index').Options} [opts]
- * @returns {{ normalized: string, malformedAuthorityOrPort: boolean }}
+ * @returns {{ normalized: string, malformedAuthorityOrPort: boolean, malformedPercentEncoding: boolean, malformedSchemeSpecific: boolean, malformedHost: boolean, malformedScheme: boolean }}
  */
 function normalizeStringWithStatus (uri, opts) {
-  const { parsed, malformedAuthorityOrPort } = parseWithStatus(uri, opts)
+  const { parsed, malformedAuthorityOrPort, malformedPercentEncoding, malformedSchemeSpecific, malformedHost, malformedScheme } = parseWithStatus(uri, opts)
   return {
-    normalized: malformedAuthorityOrPort ? uri : serialize(parsed, opts),
-    malformedAuthorityOrPort
+    normalized: malformedAuthorityOrPort || malformedPercentEncoding || malformedSchemeSpecific || malformedHost || malformedScheme ? uri : serialize(parsed, opts),
+    malformedAuthorityOrPort,
+    malformedPercentEncoding,
+    malformedSchemeSpecific,
+    malformedHost,
+    malformedScheme
   }
 }
 
@@ -6631,14 +6719,18 @@ function normalizeStringWithStatus (uri, opts) {
  * @returns {string|undefined}
  */
 function normalizeComparableURI (uri, opts) {
-  if (typeof uri === 'string') {
-    const { normalized, malformedAuthorityOrPort } = normalizeStringWithStatus(uri, opts)
-    return malformedAuthorityOrPort ? undefined : normalized
+  if (typeof uri !== 'string' && typeof uri !== 'object') {
+    return undefined
   }
 
-  if (typeof uri === 'object') {
-    return serialize(uri, opts)
+  let value
+  try {
+    value = typeof uri === 'string' ? uri : serialize(uri, opts)
+  } catch {
+    return undefined
   }
+  const { normalized, malformedAuthorityOrPort, malformedPercentEncoding, malformedSchemeSpecific, malformedHost, malformedScheme } = normalizeStringWithStatus(value, opts)
+  return malformedAuthorityOrPort || malformedPercentEncoding || malformedSchemeSpecific || malformedHost || malformedScheme ? undefined : normalized
 }
 
 const fastUri = {
@@ -6655,16 +6747,14 @@ module.exports = fastUri
 module.exports["default"] = fastUri
 module.exports.fastUri = fastUri
 
+});
 
-/***/ },
-
-/***/ 343
-(module, __unused_webpack_exports, __webpack_require__) {
-
+// MODULE: ./node_modules/fast-uri/lib/schemes.js
+var schemes_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 
-const { isUUID } = __webpack_require__(4834)
-const URN_REG = /([\da-z][\d\-a-z]{0,31}):((?:[\w!$'()*+,\-.:;=@]|%[\da-f]{2})+)/iu
+const { isUUID } = (utils_namespaceFn())
+const URN_REG = /^([\da-z][\d\-a-z]{0,31}):((?:[\w!$'()*+,\-./:;=@]|%[\da-f]{2})+)$/iu
 
 const supportedSchemeNames = /** @type {const} */ (['http', 'https', 'ws',
   'wss', 'urn', 'urn:uuid'])
@@ -6776,9 +6866,14 @@ function wsSerialize (wsComponent) {
 
   // reconstruct path from resource name
   if (wsComponent.resourceName) {
-    const [path, query] = wsComponent.resourceName.split('?')
+    const queryIndex = wsComponent.resourceName.indexOf('?')
+    const path = queryIndex === -1
+      ? wsComponent.resourceName
+      : wsComponent.resourceName.slice(0, queryIndex)
     wsComponent.path = (path && path !== '/' ? path : undefined)
-    wsComponent.query = query
+    wsComponent.query = queryIndex === -1
+      ? undefined
+      : wsComponent.resourceName.slice(queryIndex + 1)
     wsComponent.resourceName = undefined
   }
 
@@ -6795,7 +6890,7 @@ function urnParse (urnComponent, options) {
     return urnComponent
   }
   const matches = urnComponent.path.match(URN_REG)
-  if (matches) {
+  if (matches && matches[0] === urnComponent.path) {
     const scheme = options.scheme || urnComponent.scheme || 'urn'
     urnComponent.nid = matches[1].toLowerCase()
     urnComponent.nss = matches[2]
@@ -6923,18 +7018,16 @@ function getSchemeHandler (scheme) {
 }
 
 module.exports = {
-  wsIsSecure,
+  ...void (wsIsSecure),
   SCHEMES,
-  isValidSchemeName,
+  ...void (isValidSchemeName),
   getSchemeHandler,
 }
 
+});
 
-/***/ },
-
-/***/ 4834
-(module) {
-
+// MODULE: ./node_modules/fast-uri/lib/utils.js
+var utils_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
 
 
 /** @type {(value: string) => boolean} */
@@ -6944,13 +7037,45 @@ const isUUID = RegExp.prototype.test.bind(/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\d
 const isIPv4 = RegExp.prototype.test.bind(/^(?:(?:25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d|\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d|\d)$/u)
 
 /** @type {(value: string) => boolean} */
+const isPort = RegExp.prototype.test.bind(/^\d*$/u)
+
+/** @type {(value: string) => boolean} */
 const isHexPair = RegExp.prototype.test.bind(/^[\da-f]{2}$/iu)
 
 /** @type {(value: string) => boolean} */
 const isUnreserved = RegExp.prototype.test.bind(/^[\da-z\-._~]$/iu)
 
 /** @type {(value: string) => boolean} */
-const isPathCharacter = RegExp.prototype.test.bind(/^[\da-z\-._~!$&'()*+,;=:@/]$/iu)
+const isPathCharacter = RegExp.prototype.test.bind(/^[A-Za-z0-9\-._~!$&'()*+,;=:@/]$/u)
+
+/** @type {(value: string) => boolean} */
+const isQueryFragmentCharacter = RegExp.prototype.test.bind(/^[A-Za-z0-9\-._~!$&'()*+,;=:@/?]$/u)
+
+/** @type {(value: string) => boolean} */
+const isUserinfoCharacter = RegExp.prototype.test.bind(/^[A-Za-z0-9\-._~!$&'()*+,;=:]$/u)
+
+const BYTE_HEX = new Array(256)
+{
+  const HEX_DIGITS = '0123456789ABCDEF'
+  for (let i = 0; i < 256; i++) {
+    BYTE_HEX[i] = '%' + HEX_DIGITS[i >> 4] + HEX_DIGITS[i & 0xF]
+  }
+}
+function percentEncodeNonAscii (cp) {
+  if (cp < 0x800) {
+    return BYTE_HEX[0xC0 | (cp >> 6)] +
+           BYTE_HEX[0x80 | (cp & 0x3F)]
+  }
+  if (cp < 0x10000) {
+    return BYTE_HEX[0xE0 | (cp >> 12)] +
+           BYTE_HEX[0x80 | ((cp >> 6) & 0x3F)] +
+           BYTE_HEX[0x80 | (cp & 0x3F)]
+  }
+  return BYTE_HEX[0xF0 | (cp >> 18)] +
+         BYTE_HEX[0x80 | ((cp >> 12) & 0x3F)] +
+         BYTE_HEX[0x80 | ((cp >> 6) & 0x3F)] +
+         BYTE_HEX[0x80 | (cp & 0x3F)]
+}
 
 /**
  * @param {Array<string>} input
@@ -6983,12 +7108,14 @@ function stringArrayToHexStripped (input) {
   return acc
 }
 
-/**
- * @typedef {Object} GetIPV6Result
- * @property {boolean} error - Indicates if there was an error parsing the IPv6 address.
- * @property {string} address - The parsed IPv6 address.
- * @property {string} [zone] - The zone identifier, if present.
- */
+/** @type {(value: string) => boolean} */
+const isHextet = RegExp.prototype.test.bind(/^[\dA-Fa-f]{1,4}$/)
+
+/** @type {(value: string) => boolean} */
+const isIPvFuture = RegExp.prototype.test.bind(/^[vV][\dA-Fa-f]+\.[A-Za-z\d\-._~!$&'()*+,;=:]+$/)
+
+/** @type {(value: string) => boolean} */
+const isZoneCharacter = RegExp.prototype.test.bind(/^[A-Za-z\d\-._~]$/)
 
 /**
  * @param {string} value
@@ -6997,88 +7124,104 @@ function stringArrayToHexStripped (input) {
 const nonSimpleDomain = RegExp.prototype.test.bind(/[^!"$&'()*+,\-.;=_`a-z{}~]/u)
 
 /**
- * @param {Array<string>} buffer
+ * @param {string} zone
  * @returns {boolean}
  */
-function consumeIsZone (buffer) {
-  buffer.length = 0
-  return true
-}
+function isZoneIdentifier (zone) {
+  if (zone.length === 0) return false
 
-/**
- * @param {Array<string>} buffer
- * @param {Array<string>} address
- * @param {GetIPV6Result} output
- * @returns {boolean}
- */
-function consumeHextets (buffer, address, output) {
-  if (buffer.length) {
-    const hex = stringArrayToHexStripped(buffer)
-    if (hex !== '') {
-      address.push(hex)
-    } else {
-      output.error = true
-      return false
+  for (let i = 0; i < zone.length; i++) {
+    if (isZoneCharacter(zone[i])) continue
+    if (zone[i] === '%' && i + 2 < zone.length && isHexPair(zone.slice(i + 1, i + 3))) {
+      i += 2
+      continue
     }
-    buffer.length = 0
+    return false
   }
+
   return true
 }
 
 /**
+ * Compresses the longest run of zero hextets to "::" per RFC 5952. A run of a
+ * single zero hextet is left uncompressed. On ties the leftmost run wins.
+ *
+ * @param {string[]} hextets
+ * @returns {string}
+ */
+function compressIPv6ZeroRun (hextets) {
+  let bestStart = -1
+  let bestLength = 0
+  let runStart = -1
+  let runLength = 0
+  for (let i = 0; i < hextets.length; i++) {
+    if (hextets[i] === '0') {
+      if (runStart === -1) runStart = i
+      runLength++
+      if (runLength > bestLength) {
+        bestLength = runLength
+        bestStart = runStart
+      }
+    } else {
+      runStart = -1
+      runLength = 0
+    }
+  }
+
+  if (bestLength < 2) return hextets.join(':')
+
+  const head = hextets.slice(0, bestStart).join(':')
+  const tail = hextets.slice(bestStart + bestLength).join(':')
+  return head + '::' + tail
+}
+
+/**
+ * Validates an IPv6 address against the alternatives in RFC 3986 section
+ * 3.2.2 and returns the same address with leading hextet zeroes removed.
+ * An embedded IPv4 address counts as two hextets and is only valid at the end.
+ *
  * @param {string} input
- * @returns {GetIPV6Result}
+ * @returns {string|undefined}
  */
-function getIPV6 (input) {
-  let tokenCount = 0
-  const output = { error: false, address: '', zone: '' }
-  /** @type {Array<string>} */
-  const address = []
-  /** @type {Array<string>} */
-  const buffer = []
-  let endipv6Encountered = false
-  let endIpv6 = false
+function normalizeIPv6Address (input) {
+  const compression = input.indexOf('::')
+  if (compression !== -1 && input.indexOf('::', compression + 1) !== -1) return undefined
 
-  let consume = consumeHextets
+  const left = compression === -1 ? input.split(':') : input.slice(0, compression).split(':')
+  const right = compression === -1 ? [] : input.slice(compression + 2).split(':')
+  if (compression !== -1) {
+    if (left.length === 1 && left[0] === '') left.length = 0
+    if (right.length === 1 && right[0] === '') right.length = 0
+  }
 
-  for (let i = 0; i < input.length; i++) {
-    const cursor = input[i]
-    if (cursor === '[' || cursor === ']') { continue }
-    if (cursor === ':') {
-      if (endipv6Encountered === true) {
-        endIpv6 = true
-      }
-      if (!consume(buffer, address, output)) { break }
-      if (++tokenCount > 7) {
-        // not valid
-        output.error = true
-        break
-      }
-      if (i > 0 && input[i - 1] === ':') {
-        endipv6Encountered = true
-      }
-      address.push(':')
-      continue
-    } else if (cursor === '%') {
-      if (!consume(buffer, address, output)) { break }
-      // switch to zone detection
-      consume = consumeIsZone
-    } else {
-      buffer.push(cursor)
+  const parts = left.concat(right)
+  let hextetCount = 0
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i]
+    if (part === '') return undefined
+
+    if (part.indexOf('.') !== -1) {
+      if (i !== parts.length - 1 || (compression !== -1 && right.length === 0) || !isIPv4(part)) return undefined
+      hextetCount += 2
       continue
     }
+
+    if (!isHextet(part)) return undefined
+    parts[i] = parseInt(part, 16).toString(16)
+    hextetCount++
   }
-  if (buffer.length) {
-    if (consume === consumeIsZone) {
-      output.zone = buffer.join('')
-    } else if (endIpv6) {
-      address.push(buffer.join(''))
-    } else {
-      address.push(stringArrayToHexStripped(buffer))
-    }
+
+  if (compression === -1) {
+    if (hextetCount !== 8) return undefined
+    return compressIPv6ZeroRun(parts)
   }
-  output.address = address.join('')
-  return output
+  if (hextetCount >= 8) return undefined
+
+  // expand "::" then re-compress the longest run for a canonical result
+  const expanded = parts.slice(0, left.length)
+  for (let i = hextetCount; i < 8; i++) expanded.push('0')
+  for (let i = left.length; i < parts.length; i++) expanded.push(parts[i])
+  return compressIPv6ZeroRun(expanded)
 }
 
 /**
@@ -7086,26 +7229,49 @@ function getIPV6 (input) {
  * @property {string} host - The normalized host.
  * @property {string} [escapedHost] - The escaped host.
  * @property {boolean} isIPV6 - Indicates if the host is an IPv6 address.
+ * @property {boolean} [isIPVFuture] - Indicates if the host is an IPvFuture literal.
+ * @property {boolean} [error] - Indicates if a bracketed IP literal is malformed.
  */
 
 /**
+ * Validates and normalizes a bracketed IP literal. Raw zone separators remain
+ * accepted for backwards compatibility, while encoded separators and zone
+ * contents follow RFC 6874.
+ *
  * @param {string} host
  * @returns {NormalizeIPv6Result}
  */
 function normalizeIPv6 (host) {
-  if (findToken(host, ':') < 2) { return { host, isIPV6: false } }
-  const ipv6 = getIPV6(host)
+  const bracketed = host[0] === '[' && host[host.length - 1] === ']'
+  const hasBracket = host[0] === '[' || host[host.length - 1] === ']'
+  if (hasBracket && !bracketed) return { host, isIPV6: false, error: true }
 
-  if (!ipv6.error) {
-    let newHost = ipv6.address
-    let escapedHost = ipv6.address
-    if (ipv6.zone) {
-      newHost += '%' + ipv6.zone
-      escapedHost += '%25' + ipv6.zone
-    }
-    return { host: newHost, isIPV6: true, escapedHost }
-  } else {
-    return { host, isIPV6: false }
+  let input = bracketed ? host.slice(1, -1) : host
+  if (bracketed && isIPvFuture(input)) {
+    input = input.toLowerCase()
+    return { host: `[${input}]`, escapedHost: input, isIPV6: false, isIPVFuture: true }
+  }
+
+  if (findToken(input, ':') < 2) {
+    return { host, isIPV6: false, error: bracketed }
+  }
+
+  let zoneIdentifier = ''
+  const zoneSeparator = input.indexOf('%')
+  if (zoneSeparator !== -1) {
+    const separatorLength = input.slice(zoneSeparator, zoneSeparator + 3).toLowerCase() === '%25' ? 3 : 1
+    zoneIdentifier = input.slice(zoneSeparator + separatorLength)
+    if (!isZoneIdentifier(zoneIdentifier)) return { host, isIPV6: false, error: true }
+    input = input.slice(0, zoneSeparator)
+  }
+
+  const address = normalizeIPv6Address(input)
+  if (address === undefined) return { host, isIPV6: false, error: true }
+
+  return {
+    host: address + (zoneIdentifier ? '%' + zoneIdentifier : ''),
+    escapedHost: address + (zoneIdentifier ? '%25' + zoneIdentifier : ''),
+    isIPV6: true
   }
 }
 
@@ -7231,7 +7397,7 @@ function reescapeHostDelimiters (host, isIP) {
 
 /**
  * Normalizes percent escapes and optionally decodes only unreserved ASCII bytes.
- * Reserved delimiters such as `%2F` and `%2E` stay escaped.
+ * Reserved delimiters such as `%2F` stay escaped; `%2E` is unreserved.
  *
  * @param {string} input
  * @param {boolean} [decodeUnreserved=false]
@@ -7280,7 +7446,8 @@ function normalizePathEncoding (input) {
   let output = ''
 
   for (let i = 0; i < input.length; i++) {
-    if (input[i] === '%' && i + 2 < input.length) {
+    const ch = input[i]
+    if (ch === '%' && i + 2 < input.length) {
       const hex = input.slice(i + 1, i + 3)
       if (isHexPair(hex)) {
         const normalizedHex = hex.toUpperCase()
@@ -7297,10 +7464,225 @@ function normalizePathEncoding (input) {
       }
     }
 
-    if (isPathCharacter(input[i])) {
-      output += input[i]
+    if (isPathCharacter(ch)) {
+      output += ch
     } else {
-      output += escape(input[i])
+      const code = input.charCodeAt(i)
+      if (code < 0x80) {
+        output += isEscapeSafe(code) ? ch : BYTE_HEX[code]
+      } else if (code < 0xD800 || code > 0xDFFF) {
+        output += percentEncodeNonAscii(code)
+      } else if (code <= 0xDBFF && i + 1 < input.length) {
+        const low = input.charCodeAt(i + 1)
+        if (low >= 0xDC00 && low <= 0xDFFF) {
+          output += percentEncodeNonAscii(0x10000 + ((code - 0xD800) << 10) + (low - 0xDC00))
+          i++
+        } else {
+          output += percentEncodeNonAscii(0xFFFD)
+        }
+      } else {
+        output += percentEncodeNonAscii(0xFFFD)
+      }
+    }
+  }
+
+  return output
+}
+
+/**
+ * Serializes a path without rewriting reserved data. Raw RFC 3986 path
+ * characters remain literal, valid escapes are preserved and uppercased, and
+ * everything else is UTF-8 percent-encoded. In a path-noscheme, a colon in the
+ * first segment must be escaped so the result cannot be parsed as a scheme.
+ *
+ * @param {string} input
+ * @param {boolean} [pathNoScheme=false]
+ * @returns {string}
+ */
+function serializePathEncoding (input, pathNoScheme = false) {
+  let output = ''
+  let firstSegment = pathNoScheme && input[0] !== '/'
+
+  for (let i = 0; i < input.length; i++) {
+    const ch = input[i]
+    if (ch === '%' && i + 2 < input.length) {
+      const hex = input.slice(i + 1, i + 3)
+      if (isHexPair(hex)) {
+        output += '%' + hex.toUpperCase()
+        i += 2
+        continue
+      }
+    }
+
+    if (ch === '/') {
+      firstSegment = false
+    }
+
+    if (isPathCharacter(ch) && (ch !== ':' || !firstSegment)) {
+      output += ch
+    } else {
+      const code = input.charCodeAt(i)
+      if (code < 0x80) {
+        output += BYTE_HEX[code]
+      } else if (code < 0xD800 || code > 0xDFFF) {
+        output += percentEncodeNonAscii(code)
+      } else if (code <= 0xDBFF && i + 1 < input.length) {
+        const low = input.charCodeAt(i + 1)
+        if (low >= 0xDC00 && low <= 0xDFFF) {
+          output += percentEncodeNonAscii(0x10000 + ((code - 0xD800) << 10) + (low - 0xDC00))
+          i++
+        } else {
+          output += percentEncodeNonAscii(0xFFFD)
+        }
+      } else {
+        output += percentEncodeNonAscii(0xFFFD)
+      }
+    }
+  }
+
+  return output
+}
+
+/**
+ * Percent-encodes a URI component using its RFC 3986 literal character set.
+ * Existing valid escapes are preserved and normalized to uppercase hex.
+ *
+ * @param {string} input
+ * @param {(value: string) => boolean} isAllowed
+ * @returns {string}
+ */
+function encodeComponent (input, isAllowed) {
+  let output = ''
+
+  for (let i = 0; i < input.length; i++) {
+    const ch = input[i]
+    if (ch === '%' && i + 2 < input.length) {
+      const hex = input.slice(i + 1, i + 3)
+      if (isHexPair(hex)) {
+        output += '%' + hex.toUpperCase()
+        i += 2
+        continue
+      }
+    }
+
+    if (isAllowed(ch)) {
+      output += ch
+    } else {
+      const code = input.charCodeAt(i)
+      if (code < 0x80) {
+        output += BYTE_HEX[code]
+      } else if (code < 0xD800 || code > 0xDFFF) {
+        output += percentEncodeNonAscii(code)
+      } else if (code <= 0xDBFF && i + 1 < input.length) {
+        const low = input.charCodeAt(i + 1)
+        if (low >= 0xDC00 && low <= 0xDFFF) {
+          output += percentEncodeNonAscii(0x10000 + ((code - 0xD800) << 10) + (low - 0xDC00))
+          i++
+        } else {
+          output += percentEncodeNonAscii(0xFFFD)
+        }
+      } else {
+        output += percentEncodeNonAscii(0xFFFD)
+      }
+    }
+  }
+
+  return output
+}
+
+/**
+ * Encodes userinfo while preserving its RFC 3986 §3.2.1 literal characters.
+ * In particular, authority delimiters such as `@`, `/`, `?`, and `#` are data.
+ *
+ * @param {string} input
+ * @returns {string}
+ */
+function encodeUserinfo (input) {
+  return encodeComponent(input, isUserinfoCharacter)
+}
+
+/**
+ * Encodes query data using the RFC 3986 §3.4 grammar. A literal `#` must be
+ * escaped because it would otherwise begin the fragment component.
+ *
+ * @param {string} input
+ * @returns {string}
+ */
+function encodeQuery (input) {
+  return encodeComponent(input, isQueryFragmentCharacter)
+}
+
+/**
+ * Encodes fragment data using the RFC 3986 §3.5 grammar.
+ *
+ * @param {string} input
+ * @returns {string}
+ */
+function encodeFragment (input) {
+  return encodeComponent(input, isQueryFragmentCharacter)
+}
+
+function isEscapeSafe (cp) {
+  return (
+    (cp >= 0x30 && cp <= 0x39) ||
+    (cp >= 0x41 && cp <= 0x5A) ||
+    (cp >= 0x61 && cp <= 0x7A) ||
+    cp === 0x2A || cp === 0x2B || cp === 0x2D || cp === 0x2E ||
+    cp === 0x2F || cp === 0x40 || cp === 0x5F
+  )
+}
+
+/**
+ * Normalizes the percent-encoding of a query or fragment component.
+ *
+ * Like `normalizePathEncoding`, but uses the query/fragment character set
+ * (which additionally allows `?`) and decodes `.` since it has no dot-segment
+ * meaning outside of a path.
+ *
+ * @param {string} input
+ * @returns {string}
+ */
+function normalizeQueryFragmentEncoding (input) {
+  let output = ''
+
+  for (let i = 0; i < input.length; i++) {
+    const ch = input[i]
+    if (ch === '%' && i + 2 < input.length) {
+      const hex = input.slice(i + 1, i + 3)
+      if (isHexPair(hex)) {
+        const normalizedHex = hex.toUpperCase()
+        const decoded = String.fromCharCode(parseInt(normalizedHex, 16))
+
+        if (isUnreserved(decoded)) {
+          output += decoded
+        } else {
+          output += '%' + normalizedHex
+        }
+
+        i += 2
+        continue
+      }
+    }
+
+    if (isQueryFragmentCharacter(ch)) {
+      output += ch
+    } else {
+      const code = input.charCodeAt(i)
+      if (code < 0x80) {
+        output += isEscapeSafe(code) ? ch : BYTE_HEX[code]
+      } else if (code < 0xD800 || code > 0xDFFF) {
+        output += percentEncodeNonAscii(code)
+      } else if (code <= 0xDBFF && i + 1 < input.length) {
+        const low = input.charCodeAt(i + 1)
+        if (low >= 0xDC00 && low <= 0xDFFF) {
+          output += percentEncodeNonAscii(0x10000 + ((code - 0xD800) << 10) + (low - 0xDC00))
+          i++
+        } else {
+          output += percentEncodeNonAscii(0xFFFD)
+        }
+      } else {
+        output += percentEncodeNonAscii(0xFFFD)
+      }
     }
   }
 
@@ -7340,15 +7722,21 @@ function recomposeAuthority (component) {
   const uriTokens = []
 
   if (component.userinfo !== undefined) {
-    uriTokens.push(component.userinfo)
+    uriTokens.push(encodeUserinfo(component.userinfo))
     uriTokens.push('@')
   }
 
   if (component.host !== undefined) {
-    let host = unescape(component.host)
+    let host = component.host
     if (!isIPv4(host)) {
-      const ipV6res = normalizeIPv6(host)
-      if (ipV6res.isIPV6 === true) {
+      let ipV6res = normalizeIPv6(host)
+      if (ipV6res.isIPV6 !== true && ipV6res.isIPVFuture !== true) {
+        // Decode only unreserved bytes, once. In particular, keep %25 encoded
+        // so it cannot introduce a second escape during recomposition.
+        host = normalizePercentEncoding(host, true)
+        ipV6res = normalizeIPv6(host)
+      }
+      if (ipV6res.isIPV6 === true || ipV6res.isIPVFuture === true) {
         host = `[${ipV6res.escapedHost}]`
       } else {
         host = reescapeHostDelimiters(host, false)
@@ -7358,8 +7746,12 @@ function recomposeAuthority (component) {
   }
 
   if (typeof component.port === 'number' || typeof component.port === 'string') {
+    const port = String(component.port)
+    if (!isPort(port)) {
+      throw new TypeError('URI port is malformed.')
+    }
     uriTokens.push(':')
-    uriTokens.push(String(component.port))
+    uriTokens.push(port)
   }
 
   return uriTokens.length ? uriTokens.join('') : undefined
@@ -7371,59 +7763,31 @@ module.exports = {
   reescapeHostDelimiters,
   normalizePercentEncoding,
   normalizePathEncoding,
-  escapePreservingEscapes,
+  serializePathEncoding,
+  normalizeQueryFragmentEncoding,
+  ...void (encodeUserinfo),
+  encodeQuery,
+  encodeFragment,
+  ...void (escapePreservingEscapes),
   removeDotSegments,
   isIPv4,
   isUUID,
   normalizeIPv6,
-  stringArrayToHexStripped
+  ...void (stringArrayToHexStripped)
 }
 
+});
 
-/***/ },
+// MODULE: ./node_modules/ajv/dist/refs/data.json
+var data_namespaceFn = /*#__PURE__*/__webpack_require__.cw(function(module, exports) {
+const __WEBPACK_NAMESPACE_OBJECT__ = /*#__PURE__*/JSON.parse('{"$id":"https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#","description":"Meta-schema for $data reference (JSON AnySchema extension proposal)","type":"object","required":["$data"],"properties":{"$data":{"type":"string","anyOf":[{"format":"relative-json-pointer"},{"format":"json-pointer"}]}},"additionalProperties":false}');
+module.exports = __WEBPACK_NAMESPACE_OBJECT__;
+});
 
-/***/ 3837
-(module) {
-
-module.exports = /*#__PURE__*/JSON.parse('{"$id":"https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#","description":"Meta-schema for $data reference (JSON AnySchema extension proposal)","type":"object","required":["$data"],"properties":{"$data":{"type":"string","anyOf":[{"format":"relative-json-pointer"},{"format":"json-pointer"}]}},"additionalProperties":false}');
-
-/***/ },
-
-/***/ 2079
-(module) {
-
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"http://json-schema.org/draft-07/schema#","$id":"http://json-schema.org/draft-07/schema#","title":"Core schema meta-schema","definitions":{"schemaArray":{"type":"array","minItems":1,"items":{"$ref":"#"}},"nonNegativeInteger":{"type":"integer","minimum":0},"nonNegativeIntegerDefault0":{"allOf":[{"$ref":"#/definitions/nonNegativeInteger"},{"default":0}]},"simpleTypes":{"enum":["array","boolean","integer","null","number","object","string"]},"stringArray":{"type":"array","items":{"type":"string"},"uniqueItems":true,"default":[]}},"type":["object","boolean"],"properties":{"$id":{"type":"string","format":"uri-reference"},"$schema":{"type":"string","format":"uri"},"$ref":{"type":"string","format":"uri-reference"},"$comment":{"type":"string"},"title":{"type":"string"},"description":{"type":"string"},"default":true,"readOnly":{"type":"boolean","default":false},"examples":{"type":"array","items":true},"multipleOf":{"type":"number","exclusiveMinimum":0},"maximum":{"type":"number"},"exclusiveMaximum":{"type":"number"},"minimum":{"type":"number"},"exclusiveMinimum":{"type":"number"},"maxLength":{"$ref":"#/definitions/nonNegativeInteger"},"minLength":{"$ref":"#/definitions/nonNegativeIntegerDefault0"},"pattern":{"type":"string","format":"regex"},"additionalItems":{"$ref":"#"},"items":{"anyOf":[{"$ref":"#"},{"$ref":"#/definitions/schemaArray"}],"default":true},"maxItems":{"$ref":"#/definitions/nonNegativeInteger"},"minItems":{"$ref":"#/definitions/nonNegativeIntegerDefault0"},"uniqueItems":{"type":"boolean","default":false},"contains":{"$ref":"#"},"maxProperties":{"$ref":"#/definitions/nonNegativeInteger"},"minProperties":{"$ref":"#/definitions/nonNegativeIntegerDefault0"},"required":{"$ref":"#/definitions/stringArray"},"additionalProperties":{"$ref":"#"},"definitions":{"type":"object","additionalProperties":{"$ref":"#"},"default":{}},"properties":{"type":"object","additionalProperties":{"$ref":"#"},"default":{}},"patternProperties":{"type":"object","additionalProperties":{"$ref":"#"},"propertyNames":{"format":"regex"},"default":{}},"dependencies":{"type":"object","additionalProperties":{"anyOf":[{"$ref":"#"},{"$ref":"#/definitions/stringArray"}]}},"propertyNames":{"$ref":"#"},"const":true,"enum":{"type":"array","items":true,"minItems":1,"uniqueItems":true},"type":{"anyOf":[{"$ref":"#/definitions/simpleTypes"},{"type":"array","items":{"$ref":"#/definitions/simpleTypes"},"minItems":1,"uniqueItems":true}]},"format":{"type":"string"},"contentMediaType":{"type":"string"},"contentEncoding":{"type":"string"},"if":{"$ref":"#"},"then":{"$ref":"#"},"else":{"$ref":"#"},"allOf":{"$ref":"#/definitions/schemaArray"},"anyOf":{"$ref":"#/definitions/schemaArray"},"oneOf":{"$ref":"#/definitions/schemaArray"},"not":{"$ref":"#"}},"default":true}');
-
-/***/ }
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	const __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		const cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		const module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-let __webpack_exports__ = {};
+// EXTERNAL MODULE: ./node_modules/ajv/dist/refs/json-schema-draft-07.json
+var json_schema_draft_07_namespaceFn = () => {
+	return __webpack_require__(79);
+};
 
 ;// ./node_modules/zod/v4/core/core.js
 /** A special constant with type `never` */
@@ -7496,7 +7860,7 @@ const xid = /^[0-9a-vA-V]{20}$/;
 const ksuid = /^[A-Za-z0-9]{27}$/;
 const nanoid = /^[a-zA-Z0-9_-]{21}$/;
 /** ISO 8601-1 duration regex. Does not support the 8601-2 extensions like negative durations or fractional/negative components. */
-const duration = /^P(?:(\d+W)|(?!.*W)(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+([.,]\d+)?S)?)?)$/;
+const regexes_duration = /^P(?:(\d+W)|(?!.*W)(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+([.,]\d+)?S)?)?)$/;
 /** Implements ISO 8601-2 extensions like explicit +- prefixes, mixing weeks with other units, and fractional/negative components. */
 const extendedDuration = /^[-+]?P(?!$)(?:(?:[-+]?\d+Y)|(?:[-+]?\d+[.,]\d+Y$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:(?:[-+]?\d+W)|(?:[-+]?\d+[.,]\d+W$))?(?:(?:[-+]?\d+D)|(?:[-+]?\d+[.,]\d+D$))?(?:T(?=[\d+-])(?:(?:[-+]?\d+H)|(?:[-+]?\d+[.,]\d+H$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:[-+]?\d+(?:[.,]\d+)?S)?)??$/;
 /** A regex for any UUID-like identifier: 8-4-4-4-12 hex pattern */
@@ -7504,16 +7868,16 @@ const guid = /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9
 /** Returns a regex for validating an RFC 4122 UUID.
  *
  * @param version Optionally specify a version 1-8. If no version is specified, all versions are supported. */
-const uuid = (version) => {
+const regexes_uuid = (version) => {
     if (!version)
         return /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$/;
     return new RegExp(`^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-${version}[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$`);
 };
-const uuid4 = /*@__PURE__*/ (/* unused pure expression or super */ null && (uuid(4)));
-const uuid6 = /*@__PURE__*/ (/* unused pure expression or super */ null && (uuid(6)));
-const uuid7 = /*@__PURE__*/ (/* unused pure expression or super */ null && (uuid(7)));
+const uuid4 = /*@__PURE__*/ (/* unused pure expression or super */ null && (regexes_uuid(4)));
+const uuid6 = /*@__PURE__*/ (/* unused pure expression or super */ null && (regexes_uuid(6)));
+const uuid7 = /*@__PURE__*/ (/* unused pure expression or super */ null && (regexes_uuid(7)));
 /** Practical email validation */
-const email = /^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$/;
+const regexes_email = /^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$/;
 /** Equivalent to the HTML5 input[type=email] validation implemented by browsers. Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email */
 const html5Email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 /** The classic emailregex.com regex for RFC 5322-compliant emails */
@@ -7526,23 +7890,23 @@ const _emoji = `^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$`;
 function emoji() {
     return new RegExp(_emoji, "u");
 }
-const ipv4 = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/;
-const ipv6 = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::|([0-9a-fA-F]{1,4})?::([0-9a-fA-F]{1,4}:?){0,6})$/;
+const regexes_ipv4 = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/;
+const regexes_ipv6 = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::|([0-9a-fA-F]{1,4})?::([0-9a-fA-F]{1,4}:?){0,6})$/;
 const cidrv4 = /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\/([0-9]|[1-2][0-9]|3[0-2])$/;
 const cidrv6 = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::|([0-9a-fA-F]{1,4})?::([0-9a-fA-F]{1,4}:?){0,6})\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/;
 // https://stackoverflow.com/questions/7860392/determine-if-string-is-in-base64-using-javascript
-const base64 = /^$|^(?:[0-9a-zA-Z+/]{4})*(?:(?:[0-9a-zA-Z+/]{2}==)|(?:[0-9a-zA-Z+/]{3}=))?$/;
+const regexes_base64 = /^$|^(?:[0-9a-zA-Z+/]{4})*(?:(?:[0-9a-zA-Z+/]{2}==)|(?:[0-9a-zA-Z+/]{3}=))?$/;
 const base64url = /^[A-Za-z0-9_-]*$/;
 // based on https://stackoverflow.com/questions/106179/regular-expression-to-match-dns-hostname-or-ip-address
 // export const hostname: RegExp =
 //   /^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)+([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/;
-const hostname = /^([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+$/;
-const domain = /^([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+const regexes_hostname = /^([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+$/;
+const regexes_domain = /^([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
 // https://blog.stevenlevithan.com/archives/validate-phone-number#r4-3 (regex sans spaces)
 const e164 = /^\+(?:[0-9]){6,14}[0-9]$/;
 // const dateSource = `((\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-((0[13578]|1[02])-(0[1-9]|[12]\\d|3[01])|(0[469]|11)-(0[1-9]|[12]\\d|30)|(02)-(0[1-9]|1\\d|2[0-8])))`;
 const dateSource = `(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))`;
-const date = /*@__PURE__*/ new RegExp(`^${dateSource}$`);
+const regexes_date = /*@__PURE__*/ new RegExp(`^${dateSource}$`);
 function timeSource(args) {
     const hhmm = `(?:[01]\\d|2[0-3]):[0-5]\\d`;
     const regex = typeof args.precision === "number"
@@ -7554,7 +7918,7 @@ function timeSource(args) {
         : `${hhmm}(?::[0-5]\\d(?:\\.\\d+)?)?`;
     return regex;
 }
-function time(args) {
+function regexes_time(args) {
     return new RegExp(`^${timeSource(args)}$`);
 }
 // Adapted from https://stackoverflow.com/a/3143231
@@ -7568,13 +7932,13 @@ function datetime(args) {
     const timeRegex = `${time}(?:${opts.join("|")})`;
     return new RegExp(`^${dateSource}T(?:${timeRegex})$`);
 }
-const string = (params) => {
+const regexes_string = (params) => {
     const regex = params ? `[\\s\\S]{${params?.minimum ?? 0},${params?.maximum ?? ""}}` : `[\\s\\S]*`;
     return new RegExp(`^${regex}$`);
 };
 const bigint = /^\d+n?$/;
-const integer = /^\d+$/;
-const number = /^-?\d+(?:\.\d+)?/i;
+const regexes_integer = /^\d+$/;
+const regexes_number = /^-?\d+(?:\.\d+)?/i;
 const regexes_boolean = /true|false/i;
 const _null = /null/i;
 
@@ -7583,7 +7947,7 @@ const _undefined = /undefined/i;
 // regex for string with no uppercase letters
 const lowercase = /^[^A-Z]*$/;
 // regex for string with no lowercase letters
-const uppercase = /^[^a-z]*$/;
+const regexes_uppercase = /^[^a-z]*$/;
 
 ;// ./node_modules/zod/v4/core/util.js
 // functions
@@ -7613,7 +7977,7 @@ function jsonStringifyReplacer(_, value) {
         return value.toString();
     return value;
 }
-function cached(getter) {
+function util_cached(getter) {
     const set = false;
     return {
         get value() {
@@ -7704,7 +8068,7 @@ const captureStackTrace = Error.captureStackTrace
 function util_isObject(data) {
     return typeof data === "object" && data !== null && !Array.isArray(data);
 }
-const util_allowsEval = cached(() => {
+const util_allowsEval = util_cached(() => {
     if (typeof navigator !== "undefined" && navigator?.userAgent?.includes("Cloudflare")) {
         return false;
     }
@@ -7969,7 +8333,7 @@ function partial(Class, schema, mask) {
         checks: [],
     });
 }
-function required(Class, schema, mask) {
+function util_required(Class, schema, mask) {
     const oldShape = schema._zod.def.shape;
     const shape = { ...oldShape };
     if (mask) {
@@ -8081,8 +8445,8 @@ class Class {
 }
 
 ;// ./node_modules/zod/v4/core/checks.js
-/* unused harmony import specifier */ var core;
-/* unused harmony import specifier */ var util;
+/* unused harmony import specifier */ var checks_core;
+/* unused harmony import specifier */ var checks_util;
 // import { $ZodType } from "./schemas.js";
 
 
@@ -8191,7 +8555,7 @@ const $ZodCheckNumberFormat = /*@__PURE__*/ $constructor("$ZodCheckNumberFormat"
         bag.minimum = minimum;
         bag.maximum = maximum;
         if (isInt)
-            bag.pattern = integer;
+            bag.pattern = regexes_integer;
     });
     inst._zod.check = (payload) => {
         const input = payload.value;
@@ -8273,9 +8637,9 @@ const $ZodCheckNumberFormat = /*@__PURE__*/ $constructor("$ZodCheckNumberFormat"
         }
     };
 });
-const $ZodCheckBigIntFormat = /*@__PURE__*/ (/* unused pure expression or super */ null && (core.$constructor("$ZodCheckBigIntFormat", (inst, def) => {
+const $ZodCheckBigIntFormat = /*@__PURE__*/ (/* unused pure expression or super */ null && (checks_core.$constructor("$ZodCheckBigIntFormat", (inst, def) => {
     $ZodCheck.init(inst, def); // no format checks
-    const [minimum, maximum] = util.BIGINT_FORMAT_RANGES[def.format];
+    const [minimum, maximum] = checks_util.BIGINT_FORMAT_RANGES[def.format];
     inst._zod.onattach.push((inst) => {
         const bag = inst._zod.bag;
         bag.format = def.format;
@@ -8306,12 +8670,12 @@ const $ZodCheckBigIntFormat = /*@__PURE__*/ (/* unused pure expression or super 
         }
     };
 })));
-const $ZodCheckMaxSize = /*@__PURE__*/ (/* unused pure expression or super */ null && (core.$constructor("$ZodCheckMaxSize", (inst, def) => {
+const $ZodCheckMaxSize = /*@__PURE__*/ (/* unused pure expression or super */ null && (checks_core.$constructor("$ZodCheckMaxSize", (inst, def) => {
     var _a;
     $ZodCheck.init(inst, def);
     (_a = inst._zod.def).when ?? (_a.when = (payload) => {
         const val = payload.value;
-        return !util.nullish(val) && val.size !== undefined;
+        return !checks_util.nullish(val) && val.size !== undefined;
     });
     inst._zod.onattach.push((inst) => {
         const curr = (inst._zod.bag.maximum ?? Number.POSITIVE_INFINITY);
@@ -8324,7 +8688,7 @@ const $ZodCheckMaxSize = /*@__PURE__*/ (/* unused pure expression or super */ nu
         if (size <= def.maximum)
             return;
         payload.issues.push({
-            origin: util.getSizableOrigin(input),
+            origin: checks_util.getSizableOrigin(input),
             code: "too_big",
             maximum: def.maximum,
             input,
@@ -8333,12 +8697,12 @@ const $ZodCheckMaxSize = /*@__PURE__*/ (/* unused pure expression or super */ nu
         });
     };
 })));
-const $ZodCheckMinSize = /*@__PURE__*/ (/* unused pure expression or super */ null && (core.$constructor("$ZodCheckMinSize", (inst, def) => {
+const $ZodCheckMinSize = /*@__PURE__*/ (/* unused pure expression or super */ null && (checks_core.$constructor("$ZodCheckMinSize", (inst, def) => {
     var _a;
     $ZodCheck.init(inst, def);
     (_a = inst._zod.def).when ?? (_a.when = (payload) => {
         const val = payload.value;
-        return !util.nullish(val) && val.size !== undefined;
+        return !checks_util.nullish(val) && val.size !== undefined;
     });
     inst._zod.onattach.push((inst) => {
         const curr = (inst._zod.bag.minimum ?? Number.NEGATIVE_INFINITY);
@@ -8351,7 +8715,7 @@ const $ZodCheckMinSize = /*@__PURE__*/ (/* unused pure expression or super */ nu
         if (size >= def.minimum)
             return;
         payload.issues.push({
-            origin: util.getSizableOrigin(input),
+            origin: checks_util.getSizableOrigin(input),
             code: "too_small",
             minimum: def.minimum,
             input,
@@ -8360,12 +8724,12 @@ const $ZodCheckMinSize = /*@__PURE__*/ (/* unused pure expression or super */ nu
         });
     };
 })));
-const $ZodCheckSizeEquals = /*@__PURE__*/ (/* unused pure expression or super */ null && (core.$constructor("$ZodCheckSizeEquals", (inst, def) => {
+const $ZodCheckSizeEquals = /*@__PURE__*/ (/* unused pure expression or super */ null && (checks_core.$constructor("$ZodCheckSizeEquals", (inst, def) => {
     var _a;
     $ZodCheck.init(inst, def);
     (_a = inst._zod.def).when ?? (_a.when = (payload) => {
         const val = payload.value;
-        return !util.nullish(val) && val.size !== undefined;
+        return !checks_util.nullish(val) && val.size !== undefined;
     });
     inst._zod.onattach.push((inst) => {
         const bag = inst._zod.bag;
@@ -8380,7 +8744,7 @@ const $ZodCheckSizeEquals = /*@__PURE__*/ (/* unused pure expression or super */
             return;
         const tooBig = size > def.size;
         payload.issues.push({
-            origin: util.getSizableOrigin(input),
+            origin: checks_util.getSizableOrigin(input),
             ...(tooBig ? { code: "too_big", maximum: def.size } : { code: "too_small", minimum: def.size }),
             inclusive: true,
             exact: true,
@@ -8530,7 +8894,7 @@ const $ZodCheckLowerCase = /*@__PURE__*/ $constructor("$ZodCheckLowerCase", (ins
     $ZodCheckStringFormat.init(inst, def);
 });
 const $ZodCheckUpperCase = /*@__PURE__*/ $constructor("$ZodCheckUpperCase", (inst, def) => {
-    def.pattern ?? (def.pattern = uppercase);
+    def.pattern ?? (def.pattern = regexes_uppercase);
     $ZodCheckStringFormat.init(inst, def);
 });
 const $ZodCheckIncludes = /*@__PURE__*/ $constructor("$ZodCheckIncludes", (inst, def) => {
@@ -8608,10 +8972,10 @@ const $ZodCheckEndsWith = /*@__PURE__*/ $constructor("$ZodCheckEndsWith", (inst,
 ///////////////////////////////////
 function handleCheckPropertyResult(result, payload, property) {
     if (result.issues.length) {
-        payload.issues.push(...util.prefixIssues(property, result.issues));
+        payload.issues.push(...checks_util.prefixIssues(property, result.issues));
     }
 }
-const $ZodCheckProperty = /*@__PURE__*/ (/* unused pure expression or super */ null && (core.$constructor("$ZodCheckProperty", (inst, def) => {
+const $ZodCheckProperty = /*@__PURE__*/ (/* unused pure expression or super */ null && (checks_core.$constructor("$ZodCheckProperty", (inst, def) => {
     $ZodCheck.init(inst, def);
     inst._zod.check = (payload) => {
         const result = def.schema._zod.run({
@@ -8625,7 +8989,7 @@ const $ZodCheckProperty = /*@__PURE__*/ (/* unused pure expression or super */ n
         return;
     };
 })));
-const $ZodCheckMimeType = /*@__PURE__*/ (/* unused pure expression or super */ null && (core.$constructor("$ZodCheckMimeType", (inst, def) => {
+const $ZodCheckMimeType = /*@__PURE__*/ (/* unused pure expression or super */ null && (checks_core.$constructor("$ZodCheckMimeType", (inst, def) => {
     $ZodCheck.init(inst, def);
     const mimeSet = new Set(def.mime);
     inst._zod.onattach.push((inst) => {
@@ -8900,7 +9264,7 @@ const _parse = (_Err) => (schema, value, _ctx, _params) => {
     }
     return result.value;
 };
-const parse = /* @__PURE__*/ _parse($ZodRealError);
+const parse_parse = /* @__PURE__*/ _parse($ZodRealError);
 const _parseAsync = (_Err) => async (schema, value, _ctx, params) => {
     const ctx = _ctx ? Object.assign(_ctx, { async: true }) : { async: true };
     let result = schema._zod.run({ value, issues: [] }, ctx);
@@ -9056,7 +9420,7 @@ const $ZodType = /*@__PURE__*/ $constructor("$ZodType", (inst, def) => {
 
 const $ZodString = /*@__PURE__*/ $constructor("$ZodString", (inst, def) => {
     $ZodType.init(inst, def);
-    inst._zod.pattern = [...(inst?._zod.bag?.patterns ?? [])].pop() ?? string(inst._zod.bag);
+    inst._zod.pattern = [...(inst?._zod.bag?.patterns ?? [])].pop() ?? regexes_string(inst._zod.bag);
     inst._zod.parse = (payload, _) => {
         if (def.coerce)
             try {
@@ -9098,14 +9462,14 @@ const $ZodUUID = /*@__PURE__*/ $constructor("$ZodUUID", (inst, def) => {
         const v = versionMap[def.version];
         if (v === undefined)
             throw new Error(`Invalid UUID version: "${def.version}"`);
-        def.pattern ?? (def.pattern = uuid(v));
+        def.pattern ?? (def.pattern = regexes_uuid(v));
     }
     else
-        def.pattern ?? (def.pattern = uuid());
+        def.pattern ?? (def.pattern = regexes_uuid());
     $ZodStringFormat.init(inst, def);
 });
 const $ZodEmail = /*@__PURE__*/ $constructor("$ZodEmail", (inst, def) => {
-    def.pattern ?? (def.pattern = email);
+    def.pattern ?? (def.pattern = regexes_email);
     $ZodStringFormat.init(inst, def);
 });
 const $ZodURL = /*@__PURE__*/ $constructor("$ZodURL", (inst, def) => {
@@ -9122,7 +9486,7 @@ const $ZodURL = /*@__PURE__*/ $constructor("$ZodURL", (inst, def) => {
                         code: "invalid_format",
                         format: "url",
                         note: "Invalid hostname",
-                        pattern: hostname.source,
+                        pattern: regexes_hostname.source,
                         input: payload.value,
                         inst,
                         continue: !def.abort,
@@ -9196,19 +9560,19 @@ const $ZodISODateTime = /*@__PURE__*/ $constructor("$ZodISODateTime", (inst, def
     $ZodStringFormat.init(inst, def);
 });
 const $ZodISODate = /*@__PURE__*/ $constructor("$ZodISODate", (inst, def) => {
-    def.pattern ?? (def.pattern = date);
+    def.pattern ?? (def.pattern = regexes_date);
     $ZodStringFormat.init(inst, def);
 });
 const $ZodISOTime = /*@__PURE__*/ $constructor("$ZodISOTime", (inst, def) => {
-    def.pattern ?? (def.pattern = time(def));
+    def.pattern ?? (def.pattern = regexes_time(def));
     $ZodStringFormat.init(inst, def);
 });
 const $ZodISODuration = /*@__PURE__*/ $constructor("$ZodISODuration", (inst, def) => {
-    def.pattern ?? (def.pattern = duration);
+    def.pattern ?? (def.pattern = regexes_duration);
     $ZodStringFormat.init(inst, def);
 });
 const $ZodIPv4 = /*@__PURE__*/ $constructor("$ZodIPv4", (inst, def) => {
-    def.pattern ?? (def.pattern = ipv4);
+    def.pattern ?? (def.pattern = regexes_ipv4);
     $ZodStringFormat.init(inst, def);
     inst._zod.onattach.push((inst) => {
         const bag = inst._zod.bag;
@@ -9216,7 +9580,7 @@ const $ZodIPv4 = /*@__PURE__*/ $constructor("$ZodIPv4", (inst, def) => {
     });
 });
 const $ZodIPv6 = /*@__PURE__*/ $constructor("$ZodIPv6", (inst, def) => {
-    def.pattern ?? (def.pattern = ipv6);
+    def.pattern ?? (def.pattern = regexes_ipv6);
     $ZodStringFormat.init(inst, def);
     inst._zod.onattach.push((inst) => {
         const bag = inst._zod.bag;
@@ -9283,7 +9647,7 @@ function isValidBase64(data) {
     }
 }
 const $ZodBase64 = /*@__PURE__*/ $constructor("$ZodBase64", (inst, def) => {
-    def.pattern ?? (def.pattern = base64);
+    def.pattern ?? (def.pattern = regexes_base64);
     $ZodStringFormat.init(inst, def);
     inst._zod.onattach.push((inst) => {
         inst._zod.bag.contentEncoding = "base64";
@@ -9382,7 +9746,7 @@ const $ZodCustomStringFormat = /*@__PURE__*/ (/* unused pure expression or super
 })));
 const $ZodNumber = /*@__PURE__*/ $constructor("$ZodNumber", (inst, def) => {
     $ZodType.init(inst, def);
-    inst._zod.pattern = inst._zod.bag.pattern ?? number;
+    inst._zod.pattern = inst._zod.bag.pattern ?? regexes_number;
     inst._zod.parse = (payload, _ctx) => {
         if (def.coerce)
             try {
@@ -9645,7 +10009,7 @@ function handleOptionalObjectResult(result, final, key, input) {
 const $ZodObject = /*@__PURE__*/ $constructor("$ZodObject", (inst, def) => {
     // requires cast because technically $ZodObject doesn't extend
     $ZodType.init(inst, def);
-    const _normalized = cached(() => {
+    const _normalized = util_cached(() => {
         const keys = Object.keys(def.shape);
         for (const k of keys) {
             if (!(def.shape[k] instanceof $ZodType)) {
@@ -9905,7 +10269,7 @@ $constructor("$ZodDiscriminatedUnion", (inst, def) => {
         }
         return propValues;
     });
-    const disc = cached(() => {
+    const disc = util_cached(() => {
         const opts = def.options;
         const map = new Map();
         for (const o of opts) {
@@ -9966,7 +10330,7 @@ const $ZodIntersection = /*@__PURE__*/ $constructor("$ZodIntersection", (inst, d
         return handleIntersectionResults(payload, left, right);
     };
 });
-function mergeValues(a, b) {
+function schemas_mergeValues(a, b) {
     // const aType = parse.t(a);
     // const bType = parse.t(b);
     if (a === b) {
@@ -9980,7 +10344,7 @@ function mergeValues(a, b) {
         const sharedKeys = Object.keys(a).filter((key) => bKeys.indexOf(key) !== -1);
         const newObj = { ...a, ...b };
         for (const key of sharedKeys) {
-            const sharedValue = mergeValues(a[key], b[key]);
+            const sharedValue = schemas_mergeValues(a[key], b[key]);
             if (!sharedValue.valid) {
                 return {
                     valid: false,
@@ -9999,7 +10363,7 @@ function mergeValues(a, b) {
         for (let index = 0; index < a.length; index++) {
             const itemA = a[index];
             const itemB = b[index];
-            const sharedValue = mergeValues(itemA, itemB);
+            const sharedValue = schemas_mergeValues(itemA, itemB);
             if (!sharedValue.valid) {
                 return {
                     valid: false,
@@ -10021,7 +10385,7 @@ function handleIntersectionResults(result, left, right) {
     }
     if (aborted(result))
         return result;
-    const merged = mergeValues(left.value, right.value);
+    const merged = schemas_mergeValues(left.value, right.value);
     if (!merged.valid) {
         throw new Error(`Unmergable intersection. Error path: ` + `${JSON.stringify(merged.mergeErrorPath)}`);
     }
@@ -10727,7 +11091,7 @@ const globalRegistry = /*@__PURE__*/ registry();
 
 ;// ./node_modules/zod/v4/core/api.js
 /* unused harmony import specifier */ var api_checks;
-/* unused harmony import specifier */ var schemas;
+/* unused harmony import specifier */ var api_schemas;
 /* unused harmony import specifier */ var api_util;
 
 
@@ -11372,7 +11736,7 @@ function _intersection(Class, left, right) {
 //   params?: string | $ZodTupleParams
 // ): schemas.$ZodTuple<[], null>;
 function _tuple(Class, items, _paramsOrRest, _params) {
-    const hasRest = _paramsOrRest instanceof schemas.$ZodType;
+    const hasRest = _paramsOrRest instanceof api_schemas.$ZodType;
     const params = hasRest ? _params : _paramsOrRest;
     const rest = hasRest ? _paramsOrRest : null;
     return new Class({
@@ -11568,10 +11932,10 @@ function _stringbool(Classes, _params) {
     }
     const truthySet = new Set(truthyArray);
     const falsySet = new Set(falsyArray);
-    const _Pipe = Classes.Pipe ?? schemas.$ZodPipe;
-    const _Boolean = Classes.Boolean ?? schemas.$ZodBoolean;
-    const _String = Classes.String ?? schemas.$ZodString;
-    const _Transform = Classes.Transform ?? schemas.$ZodTransform;
+    const _Pipe = Classes.Pipe ?? api_schemas.$ZodPipe;
+    const _Boolean = Classes.Boolean ?? api_schemas.$ZodBoolean;
+    const _String = Classes.String ?? api_schemas.$ZodString;
+    const _Transform = Classes.Transform ?? api_schemas.$ZodTransform;
     const tx = new _Transform({
         type: "transform",
         transform: (input, payload) => {
@@ -11711,7 +12075,7 @@ const ZodRealError = $constructor("ZodError", errors_initializer, {
 ;// ./node_modules/zod/v4/classic/parse.js
 
 
-const parse_parse = /* @__PURE__ */ _parse(ZodRealError);
+const classic_parse_parse = /* @__PURE__ */ _parse(ZodRealError);
 const parse_parseAsync = /* @__PURE__ */ _parseAsync(ZodRealError);
 const parse_safeParse = /* @__PURE__ */ _safeParse(ZodRealError);
 const parse_safeParseAsync = /* @__PURE__ */ _safeParseAsync(ZodRealError);
@@ -11748,7 +12112,7 @@ const ZodType = /*@__PURE__*/ $constructor("ZodType", (inst, def) => {
         return inst;
     });
     // parsing
-    inst.parse = (data, params) => parse_parse(inst, data, params, { callee: inst.parse });
+    inst.parse = (data, params) => classic_parse_parse(inst, data, params, { callee: inst.parse });
     inst.safeParse = (data, params) => parse_safeParse(inst, data, params);
     inst.parseAsync = async (data, params) => parse_parseAsync(inst, data, params, { callee: inst.parseAsync });
     inst.safeParseAsync = async (data, params) => parse_safeParseAsync(inst, data, params);
@@ -11758,12 +12122,12 @@ const ZodType = /*@__PURE__*/ $constructor("ZodType", (inst, def) => {
     inst.superRefine = (refinement) => inst.check(superRefine(refinement));
     inst.overwrite = (fn) => inst.check(_overwrite(fn));
     // wrappers
-    inst.optional = () => optional(inst);
-    inst.nullable = () => nullable(inst);
-    inst.nullish = () => optional(nullable(inst));
+    inst.optional = () => schemas_optional(inst);
+    inst.nullable = () => schemas_nullable(inst);
+    inst.nullish = () => schemas_optional(schemas_nullable(inst));
     inst.nonoptional = (params) => nonoptional(inst, params);
-    inst.array = () => array(inst);
-    inst.or = (arg) => union([inst, arg]);
+    inst.array = () => schemas_array(inst);
+    inst.or = (arg) => schemas_union([inst, arg]);
     inst.and = (arg) => intersection(inst, arg);
     inst.transform = (tx) => pipe(inst, transform(tx));
     inst.default = (def) => schemas_default(inst, def);
@@ -11901,7 +12265,7 @@ const ZodURL = /*@__PURE__*/ $constructor("ZodURL", (inst, def) => {
     $ZodURL.init(inst, def);
     ZodStringFormat.init(inst, def);
 });
-function url(params) {
+function schemas_url(params) {
     return classic_schemas_core._url(ZodURL, params);
 }
 const ZodEmoji = /*@__PURE__*/ $constructor("ZodEmoji", (inst, def) => {
@@ -12074,7 +12438,7 @@ function float32(params) {
 function float64(params) {
     return classic_schemas_core._float64(ZodNumberFormat, params);
 }
-function int32(params) {
+function schemas_int32(params) {
     return classic_schemas_core._int32(ZodNumberFormat, params);
 }
 function uint32(params) {
@@ -12116,7 +12480,7 @@ const ZodBigIntFormat = /*@__PURE__*/ (/* unused pure expression or super */ nul
     ZodBigInt.init(inst, def);
 })));
 // int64
-function int64(params) {
+function schemas_int64(params) {
     return classic_schemas_core._int64(ZodBigIntFormat, params);
 }
 // uint64
@@ -12150,14 +12514,14 @@ const ZodAny = /*@__PURE__*/ (/* unused pure expression or super */ null && (cla
     classic_schemas_core.$ZodAny.init(inst, def);
     ZodType.init(inst, def);
 })));
-function any() {
+function schemas_any() {
     return classic_schemas_core._any(ZodAny);
 }
 const ZodUnknown = /*@__PURE__*/ $constructor("ZodUnknown", (inst, def) => {
     $ZodUnknown.init(inst, def);
     ZodType.init(inst, def);
 });
-function unknown() {
+function schemas_unknown() {
     return _unknown(ZodUnknown);
 }
 const ZodNever = /*@__PURE__*/ $constructor("ZodNever", (inst, def) => {
@@ -12197,13 +12561,13 @@ const ZodArray = /*@__PURE__*/ $constructor("ZodArray", (inst, def) => {
     inst.length = (len, params) => inst.check(_length(len, params));
     inst.unwrap = () => inst.element;
 });
-function array(element, params) {
+function schemas_array(element, params) {
     return _array(ZodArray, element, params);
 }
 // .keyof
 function keyof(schema) {
     const shape = schema._zod.def.shape;
-    return literal(Object.keys(shape));
+    return schemas_literal(Object.keys(shape));
 }
 const ZodObject = /*@__PURE__*/ $constructor("ZodObject", (inst, def) => {
     $ZodObject.init(inst, def);
@@ -12211,9 +12575,9 @@ const ZodObject = /*@__PURE__*/ $constructor("ZodObject", (inst, def) => {
     defineLazy(inst, "shape", () => def.shape);
     inst.keyof = () => schemas_enum(Object.keys(inst._zod.def.shape));
     inst.catchall = (catchall) => inst.clone({ ...inst._zod.def, catchall: catchall });
-    inst.passthrough = () => inst.clone({ ...inst._zod.def, catchall: unknown() });
+    inst.passthrough = () => inst.clone({ ...inst._zod.def, catchall: schemas_unknown() });
     // inst.nonstrict = () => inst.clone({ ...inst._zod.def, catchall: api.unknown() });
-    inst.loose = () => inst.clone({ ...inst._zod.def, catchall: unknown() });
+    inst.loose = () => inst.clone({ ...inst._zod.def, catchall: schemas_unknown() });
     inst.strict = () => inst.clone({ ...inst._zod.def, catchall: never() });
     inst.strip = () => inst.clone({ ...inst._zod.def, catchall: undefined });
     inst.extend = (incoming) => {
@@ -12223,9 +12587,9 @@ const ZodObject = /*@__PURE__*/ $constructor("ZodObject", (inst, def) => {
     inst.pick = (mask) => pick(inst, mask);
     inst.omit = (mask) => omit(inst, mask);
     inst.partial = (...args) => partial(ZodOptional, inst, args[0]);
-    inst.required = (...args) => required(ZodNonOptional, inst, args[0]);
+    inst.required = (...args) => util_required(ZodNonOptional, inst, args[0]);
 });
-function object(shape, params) {
+function schemas_object(shape, params) {
     const def = {
         type: "object",
         get shape() {
@@ -12256,7 +12620,7 @@ function looseObject(shape, params) {
             assignProp(this, "shape", { ...shape });
             return this.shape;
         },
-        catchall: unknown(),
+        catchall: schemas_unknown(),
         ...normalizeParams(params),
     });
 }
@@ -12265,7 +12629,7 @@ const ZodUnion = /*@__PURE__*/ $constructor("ZodUnion", (inst, def) => {
     ZodType.init(inst, def);
     inst.options = def.options;
 });
-function union(options, params) {
+function schemas_union(options, params) {
     return new ZodUnion({
         type: "union",
         options: options,
@@ -12304,7 +12668,7 @@ const ZodTuple = /*@__PURE__*/ (/* unused pure expression or super */ null && (c
         rest: rest,
     });
 })));
-function tuple(items, _paramsOrRest, _params) {
+function schemas_tuple(items, _paramsOrRest, _params) {
     const hasRest = _paramsOrRest instanceof classic_schemas_core.$ZodType;
     const params = hasRest ? _params : _paramsOrRest;
     const rest = hasRest ? _paramsOrRest : null;
@@ -12333,7 +12697,7 @@ function record(keyType, valueType, params) {
 function partialRecord(keyType, valueType, params) {
     return new ZodRecord({
         type: "record",
-        keyType: union([keyType, never()]),
+        keyType: schemas_union([keyType, never()]),
         valueType: valueType,
         ...classic_schemas_util.normalizeParams(params),
     });
@@ -12344,7 +12708,7 @@ const ZodMap = /*@__PURE__*/ (/* unused pure expression or super */ null && (cla
     inst.keyType = def.keyType;
     inst.valueType = def.valueType;
 })));
-function map(keyType, valueType, params) {
+function schemas_map(keyType, valueType, params) {
     return new ZodMap({
         type: "map",
         keyType: keyType,
@@ -12360,7 +12724,7 @@ const ZodSet = /*@__PURE__*/ (/* unused pure expression or super */ null && (cla
     inst.max = (...args) => inst.check(classic_schemas_core._maxSize(...args));
     inst.size = (...args) => inst.check(classic_schemas_core._size(...args));
 })));
-function set(valueType, params) {
+function schemas_set(valueType, params) {
     return new ZodSet({
         type: "set",
         valueType: valueType,
@@ -12442,7 +12806,7 @@ const ZodLiteral = /*@__PURE__*/ $constructor("ZodLiteral", (inst, def) => {
         },
     });
 });
-function literal(value, params) {
+function schemas_literal(value, params) {
     return new ZodLiteral({
         type: "literal",
         values: Array.isArray(value) ? value : [value],
@@ -12501,7 +12865,7 @@ const ZodOptional = /*@__PURE__*/ $constructor("ZodOptional", (inst, def) => {
     ZodType.init(inst, def);
     inst.unwrap = () => inst._zod.def.innerType;
 });
-function optional(innerType) {
+function schemas_optional(innerType) {
     return new ZodOptional({
         type: "optional",
         innerType: innerType,
@@ -12512,7 +12876,7 @@ const ZodNullable = /*@__PURE__*/ $constructor("ZodNullable", (inst, def) => {
     ZodType.init(inst, def);
     inst.unwrap = () => inst._zod.def.innerType;
 });
-function nullable(innerType) {
+function schemas_nullable(innerType) {
     return new ZodNullable({
         type: "nullable",
         innerType: innerType,
@@ -12520,7 +12884,7 @@ function nullable(innerType) {
 }
 // nullish
 function schemas_nullish(innerType) {
-    return optional(nullable(innerType));
+    return schemas_optional(schemas_nullable(innerType));
 }
 const ZodDefault = /*@__PURE__*/ $constructor("ZodDefault", (inst, def) => {
     $ZodDefault.init(inst, def);
@@ -12657,7 +13021,7 @@ const ZodCustom = /*@__PURE__*/ $constructor("ZodCustom", (inst, def) => {
     ZodType.init(inst, def);
 });
 // custom checks
-function check(fn) {
+function schemas_check(fn) {
     const ch = new $ZodCheck({
         check: "custom",
         // ...util.normalizeParams(params),
@@ -12673,7 +13037,7 @@ function refine(fn, _params = {}) {
 }
 // superRefine
 function superRefine(fn) {
-    const ch = check((payload) => {
+    const ch = schemas_check((payload) => {
         payload.addIssue = (issue) => {
             if (typeof issue === "string") {
                 payload.issues.push(util_issue(issue, payload.value, ch._zod.def));
@@ -12715,9 +13079,9 @@ const stringbool = (...args) => classic_schemas_core._stringbool({
     String: ZodString,
     Transform: ZodTransform,
 }, ...args);
-function json(params) {
+function schemas_json(params) {
     const jsonSchema = lazy(() => {
-        return union([schemas_string(params), schemas_number(), schemas_boolean(), schemas_null(), array(jsonSchema), record(schemas_string(), jsonSchema)]);
+        return schemas_union([schemas_string(params), schemas_number(), schemas_boolean(), schemas_null(), schemas_array(jsonSchema), record(schemas_string(), jsonSchema)]);
     });
     return jsonSchema;
 }
@@ -12744,7 +13108,7 @@ const AssertObjectSchema = custom((v) => v !== null && (typeof v === 'object' ||
 /**
  * A progress token, used to associate progress notifications with the original request.
  */
-const ProgressTokenSchema = union([schemas_string(), schemas_number().int()]);
+const ProgressTokenSchema = schemas_union([schemas_string(), schemas_number().int()]);
 /**
  * An opaque token used to represent a cursor for pagination.
  */
@@ -12762,14 +13126,14 @@ const TaskCreationParamsSchema = looseObject({
      */
     pollInterval: schemas_number().optional()
 });
-const TaskMetadataSchema = object({
+const TaskMetadataSchema = schemas_object({
     ttl: schemas_number().optional()
 });
 /**
  * Metadata for associating messages with a task.
  * Include this in the `_meta` field under the key `io.modelcontextprotocol/related-task`.
  */
-const RelatedTaskMetadataSchema = object({
+const RelatedTaskMetadataSchema = schemas_object({
     taskId: schemas_string()
 });
 const RequestMetaSchema = looseObject({
@@ -12785,7 +13149,7 @@ const RequestMetaSchema = looseObject({
 /**
  * Common params for any request.
  */
-const BaseRequestParamsSchema = object({
+const BaseRequestParamsSchema = schemas_object({
     /**
      * See [General fields: `_meta`](/specification/draft/basic/index#meta) for notes on `_meta` usage.
      */
@@ -12812,18 +13176,18 @@ const TaskAugmentedRequestParamsSchema = BaseRequestParamsSchema.extend({
  * @returns True if the value is a valid TaskAugmentedRequestParams, false otherwise.
  */
 const isTaskAugmentedRequestParams = (value) => TaskAugmentedRequestParamsSchema.safeParse(value).success;
-const RequestSchema = object({
+const RequestSchema = schemas_object({
     method: schemas_string(),
     params: BaseRequestParamsSchema.loose().optional()
 });
-const NotificationsParamsSchema = object({
+const NotificationsParamsSchema = schemas_object({
     /**
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
     _meta: RequestMetaSchema.optional()
 });
-const NotificationSchema = object({
+const NotificationSchema = schemas_object({
     method: schemas_string(),
     params: NotificationsParamsSchema.loose().optional()
 });
@@ -12837,12 +13201,12 @@ const ResultSchema = looseObject({
 /**
  * A uniquely identifying ID for a request in JSON-RPC.
  */
-const RequestIdSchema = union([schemas_string(), schemas_number().int()]);
+const RequestIdSchema = schemas_union([schemas_string(), schemas_number().int()]);
 /**
  * A request that expects a response.
  */
-const JSONRPCRequestSchema = object({
-    jsonrpc: literal(JSONRPC_VERSION),
+const JSONRPCRequestSchema = schemas_object({
+    jsonrpc: schemas_literal(JSONRPC_VERSION),
     id: RequestIdSchema,
     ...RequestSchema.shape
 })
@@ -12851,8 +13215,8 @@ const isJSONRPCRequest = (value) => JSONRPCRequestSchema.safeParse(value).succes
 /**
  * A notification which does not expect a response.
  */
-const JSONRPCNotificationSchema = object({
-    jsonrpc: literal(JSONRPC_VERSION),
+const JSONRPCNotificationSchema = schemas_object({
+    jsonrpc: schemas_literal(JSONRPC_VERSION),
     ...NotificationSchema.shape
 })
     .strict();
@@ -12860,8 +13224,8 @@ const isJSONRPCNotification = (value) => JSONRPCNotificationSchema.safeParse(val
 /**
  * A successful (non-error) response to a request.
  */
-const JSONRPCResultResponseSchema = object({
-    jsonrpc: literal(JSONRPC_VERSION),
+const JSONRPCResultResponseSchema = schemas_object({
+    jsonrpc: schemas_literal(JSONRPC_VERSION),
     id: RequestIdSchema,
     result: ResultSchema
 })
@@ -12899,10 +13263,10 @@ var ErrorCode;
 /**
  * A response to a request that indicates an error occurred.
  */
-const JSONRPCErrorResponseSchema = object({
-    jsonrpc: literal(JSONRPC_VERSION),
+const JSONRPCErrorResponseSchema = schemas_object({
+    jsonrpc: schemas_literal(JSONRPC_VERSION),
     id: RequestIdSchema.optional(),
-    error: object({
+    error: schemas_object({
         /**
          * The error type that occurred.
          */
@@ -12914,7 +13278,7 @@ const JSONRPCErrorResponseSchema = object({
         /**
          * Additional information about the error. The value of this member is defined by the sender (e.g. detailed error information, nested errors etc.).
          */
-        data: unknown().optional()
+        data: schemas_unknown().optional()
     })
 })
     .strict();
@@ -12933,13 +13297,13 @@ const isJSONRPCErrorResponse = (value) => JSONRPCErrorResponseSchema.safeParse(v
  * @deprecated Use {@link isJSONRPCErrorResponse} instead.
  */
 const isJSONRPCError = (/* unused pure expression or super */ null && (isJSONRPCErrorResponse));
-const JSONRPCMessageSchema = union([
+const JSONRPCMessageSchema = schemas_union([
     JSONRPCRequestSchema,
     JSONRPCNotificationSchema,
     JSONRPCResultResponseSchema,
     JSONRPCErrorResponseSchema
 ]);
-const JSONRPCResponseSchema = union([JSONRPCResultResponseSchema, JSONRPCErrorResponseSchema]);
+const JSONRPCResponseSchema = schemas_union([JSONRPCResultResponseSchema, JSONRPCErrorResponseSchema]);
 /* Empty result */
 /**
  * A response that indicates success but carries no data.
@@ -12968,14 +13332,14 @@ const CancelledNotificationParamsSchema = NotificationsParamsSchema.extend({
  * A client MUST NOT attempt to cancel its `initialize` request.
  */
 const CancelledNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/cancelled'),
+    method: schemas_literal('notifications/cancelled'),
     params: CancelledNotificationParamsSchema
 });
 /* Base Metadata */
 /**
  * Icon schema for use in tools, prompts, resources, and implementations.
  */
-const IconSchema = object({
+const IconSchema = schemas_object({
     /**
      * URL or data URI for the icon.
      */
@@ -12990,7 +13354,7 @@ const IconSchema = object({
      *
      * If not provided, the client should assume that the icon can be used at any size.
      */
-    sizes: array(schemas_string()).optional(),
+    sizes: schemas_array(schemas_string()).optional(),
     /**
      * Optional specifier for the theme this icon is designed for. `light` indicates
      * the icon is designed to be used with a light background, and `dark` indicates
@@ -13004,7 +13368,7 @@ const IconSchema = object({
  * Base schema to add `icons` property.
  *
  */
-const IconsSchema = object({
+const IconsSchema = schemas_object({
     /**
      * Optional set of sized icons that the client can display in a user interface.
      *
@@ -13016,12 +13380,12 @@ const IconsSchema = object({
      * - `image/svg+xml` - SVG images (scalable but requires security precautions)
      * - `image/webp` - WebP images (modern, efficient format)
      */
-    icons: array(IconSchema).optional()
+    icons: schemas_array(IconSchema).optional()
 });
 /**
  * Base metadata interface for common properties across resources, tools, prompts, and implementations.
  */
-const BaseMetadataSchema = object({
+const BaseMetadataSchema = schemas_object({
     /** Intended for programmatic or logical use, but used as a display name in past specs or fallback */
     name: schemas_string(),
     /**
@@ -13055,9 +13419,9 @@ const ImplementationSchema = BaseMetadataSchema.extend({
      */
     description: schemas_string().optional()
 });
-const FormElicitationCapabilitySchema = intersection(object({
+const FormElicitationCapabilitySchema = intersection(schemas_object({
     applyDefaults: schemas_boolean().optional()
-}), record(schemas_string(), unknown()));
+}), record(schemas_string(), schemas_unknown()));
 const ElicitationCapabilitySchema = preprocess(value => {
     if (value && typeof value === 'object' && !Array.isArray(value)) {
         if (Object.keys(value).length === 0) {
@@ -13065,10 +13429,10 @@ const ElicitationCapabilitySchema = preprocess(value => {
         }
     }
     return value;
-}, intersection(object({
+}, intersection(schemas_object({
     form: FormElicitationCapabilitySchema.optional(),
     url: AssertObjectSchema.optional()
-}), record(schemas_string(), unknown()).optional()));
+}), record(schemas_string(), schemas_unknown()).optional()));
 /**
  * Task capabilities for clients, indicating which request types support task creation.
  */
@@ -13131,7 +13495,7 @@ const ServerTasksCapabilitySchema = looseObject({
 /**
  * Capabilities a client may support. Known capabilities are defined here, in this schema, but this is not a closed set: any client can define its own, additional capabilities.
  */
-const ClientCapabilitiesSchema = object({
+const ClientCapabilitiesSchema = schemas_object({
     /**
      * Experimental, non-standard capabilities that the client supports.
      */
@@ -13139,7 +13503,7 @@ const ClientCapabilitiesSchema = object({
     /**
      * Present if the client supports sampling from an LLM.
      */
-    sampling: object({
+    sampling: schemas_object({
         /**
          * Present if the client supports context inclusion via includeContext parameter.
          * If not declared, servers SHOULD only use `includeContext: "none"` (or omit it).
@@ -13158,7 +13522,7 @@ const ClientCapabilitiesSchema = object({
     /**
      * Present if the client supports listing roots.
      */
-    roots: object({
+    roots: schemas_object({
         /**
          * Whether the client supports issuing notifications for changes to the roots list.
          */
@@ -13186,14 +13550,14 @@ const InitializeRequestParamsSchema = BaseRequestParamsSchema.extend({
  * This request is sent from the client to the server when it first connects, asking it to begin initialization.
  */
 const InitializeRequestSchema = RequestSchema.extend({
-    method: literal('initialize'),
+    method: schemas_literal('initialize'),
     params: InitializeRequestParamsSchema
 });
 const isInitializeRequest = (value) => InitializeRequestSchema.safeParse(value).success;
 /**
  * Capabilities that a server may support. Known capabilities are defined here, in this schema, but this is not a closed set: any server can define its own, additional capabilities.
  */
-const ServerCapabilitiesSchema = object({
+const ServerCapabilitiesSchema = schemas_object({
     /**
      * Experimental, non-standard capabilities that the server supports.
      */
@@ -13209,7 +13573,7 @@ const ServerCapabilitiesSchema = object({
     /**
      * Present if the server offers any prompt templates.
      */
-    prompts: object({
+    prompts: schemas_object({
         /**
          * Whether this server supports issuing notifications for changes to the prompt list.
          */
@@ -13219,7 +13583,7 @@ const ServerCapabilitiesSchema = object({
     /**
      * Present if the server offers any resources to read.
      */
-    resources: object({
+    resources: schemas_object({
         /**
          * Whether this server supports clients subscribing to resource updates.
          */
@@ -13233,7 +13597,7 @@ const ServerCapabilitiesSchema = object({
     /**
      * Present if the server offers any tools to call.
      */
-    tools: object({
+    tools: schemas_object({
         /**
          * Whether this server supports issuing notifications for changes to the tool list.
          */
@@ -13270,7 +13634,7 @@ const InitializeResultSchema = ResultSchema.extend({
  * This notification is sent from the client to the server after initialization has finished.
  */
 const InitializedNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/initialized'),
+    method: schemas_literal('notifications/initialized'),
     params: NotificationsParamsSchema.optional()
 });
 const isInitializedNotification = (value) => InitializedNotificationSchema.safeParse(value).success;
@@ -13279,11 +13643,11 @@ const isInitializedNotification = (value) => InitializedNotificationSchema.safeP
  * A ping, issued by either the server or the client, to check that the other party is still alive. The receiver must promptly respond, or else may be disconnected.
  */
 const PingRequestSchema = RequestSchema.extend({
-    method: literal('ping'),
+    method: schemas_literal('ping'),
     params: BaseRequestParamsSchema.optional()
 });
 /* Progress notifications */
-const ProgressSchema = object({
+const ProgressSchema = schemas_object({
     /**
      * The progress thus far. This should increase every time progress is made, even if the total is unknown.
      */
@@ -13291,13 +13655,13 @@ const ProgressSchema = object({
     /**
      * Total number of items to process (or total progress required), if known.
      */
-    total: optional(schemas_number()),
+    total: schemas_optional(schemas_number()),
     /**
      * An optional message describing the current progress.
      */
-    message: optional(schemas_string())
+    message: schemas_optional(schemas_string())
 });
-const ProgressNotificationParamsSchema = object({
+const ProgressNotificationParamsSchema = schemas_object({
     ...NotificationsParamsSchema.shape,
     ...ProgressSchema.shape,
     /**
@@ -13311,7 +13675,7 @@ const ProgressNotificationParamsSchema = object({
  * @category notifications/progress
  */
 const ProgressNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/progress'),
+    method: schemas_literal('notifications/progress'),
     params: ProgressNotificationParamsSchema
 });
 const PaginatedRequestParamsSchema = BaseRequestParamsSchema.extend({
@@ -13340,14 +13704,14 @@ const TaskStatusSchema = schemas_enum(['working', 'input_required', 'completed',
 /**
  * A pollable state object associated with a request.
  */
-const TaskSchema = object({
+const TaskSchema = schemas_object({
     taskId: schemas_string(),
     status: TaskStatusSchema,
     /**
      * Time in milliseconds to keep task results available after completion.
      * If null, the task has unlimited lifetime until manually cleaned up.
      */
-    ttl: union([schemas_number(), schemas_null()]),
+    ttl: schemas_union([schemas_number(), schemas_null()]),
     /**
      * ISO 8601 timestamp when the task was created.
      */
@@ -13356,11 +13720,11 @@ const TaskSchema = object({
      * ISO 8601 timestamp when the task was last updated.
      */
     lastUpdatedAt: schemas_string(),
-    pollInterval: optional(schemas_number()),
+    pollInterval: schemas_optional(schemas_number()),
     /**
      * Optional diagnostic message for failed tasks or other status information.
      */
-    statusMessage: optional(schemas_string())
+    statusMessage: schemas_optional(schemas_string())
 });
 /**
  * Result returned when a task is created, containing the task data wrapped in a task field.
@@ -13376,14 +13740,14 @@ const TaskStatusNotificationParamsSchema = NotificationsParamsSchema.merge(TaskS
  * A notification sent when a task's status changes.
  */
 const TaskStatusNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/tasks/status'),
+    method: schemas_literal('notifications/tasks/status'),
     params: TaskStatusNotificationParamsSchema
 });
 /**
  * A request to get the state of a specific task.
  */
 const GetTaskRequestSchema = RequestSchema.extend({
-    method: literal('tasks/get'),
+    method: schemas_literal('tasks/get'),
     params: BaseRequestParamsSchema.extend({
         taskId: schemas_string()
     })
@@ -13396,7 +13760,7 @@ const GetTaskResultSchema = ResultSchema.merge(TaskSchema);
  * A request to get the result of a specific task.
  */
 const GetTaskPayloadRequestSchema = RequestSchema.extend({
-    method: literal('tasks/result'),
+    method: schemas_literal('tasks/result'),
     params: BaseRequestParamsSchema.extend({
         taskId: schemas_string()
     })
@@ -13412,19 +13776,19 @@ const GetTaskPayloadResultSchema = ResultSchema.loose();
  * A request to list tasks.
  */
 const ListTasksRequestSchema = PaginatedRequestSchema.extend({
-    method: literal('tasks/list')
+    method: schemas_literal('tasks/list')
 });
 /**
  * The response to a tasks/list request.
  */
 const ListTasksResultSchema = PaginatedResultSchema.extend({
-    tasks: array(TaskSchema)
+    tasks: schemas_array(TaskSchema)
 });
 /**
  * A request to cancel a specific task.
  */
 const CancelTaskRequestSchema = RequestSchema.extend({
-    method: literal('tasks/cancel'),
+    method: schemas_literal('tasks/cancel'),
     params: BaseRequestParamsSchema.extend({
         taskId: schemas_string()
     })
@@ -13437,7 +13801,7 @@ const CancelTaskResultSchema = ResultSchema.merge(TaskSchema);
 /**
  * The contents of a specific resource or sub-resource.
  */
-const ResourceContentsSchema = object({
+const ResourceContentsSchema = schemas_object({
     /**
      * The URI of this resource.
      */
@@ -13445,12 +13809,12 @@ const ResourceContentsSchema = object({
     /**
      * The MIME type of this resource, if known.
      */
-    mimeType: optional(schemas_string()),
+    mimeType: schemas_optional(schemas_string()),
     /**
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 const TextResourceContentsSchema = ResourceContentsSchema.extend({
     /**
@@ -13487,11 +13851,11 @@ const RoleSchema = schemas_enum(['user', 'assistant']);
 /**
  * Optional annotations providing clients additional context about a resource.
  */
-const AnnotationsSchema = object({
+const AnnotationsSchema = schemas_object({
     /**
      * Intended audience(s) for the resource.
      */
-    audience: array(RoleSchema).optional(),
+    audience: schemas_array(RoleSchema).optional(),
     /**
      * Importance hint for the resource, from 0 (least) to 1 (most).
      */
@@ -13504,7 +13868,7 @@ const AnnotationsSchema = object({
 /**
  * A known resource that the server is capable of reading.
  */
-const ResourceSchema = object({
+const ResourceSchema = schemas_object({
     ...BaseMetadataSchema.shape,
     ...IconsSchema.shape,
     /**
@@ -13516,17 +13880,17 @@ const ResourceSchema = object({
      *
      * This can be used by clients to improve the LLM's understanding of available resources. It can be thought of like a "hint" to the model.
      */
-    description: optional(schemas_string()),
+    description: schemas_optional(schemas_string()),
     /**
      * The MIME type of this resource, if known.
      */
-    mimeType: optional(schemas_string()),
+    mimeType: schemas_optional(schemas_string()),
     /**
      * The size of the raw resource content, in bytes (i.e., before base64 encoding or any tokenization), if known.
      *
      * This can be used by Hosts to display file sizes and estimate context window usage.
      */
-    size: optional(schemas_number()),
+    size: schemas_optional(schemas_number()),
     /**
      * Optional annotations for the client.
      */
@@ -13535,12 +13899,12 @@ const ResourceSchema = object({
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: optional(looseObject({}))
+    _meta: schemas_optional(looseObject({}))
 });
 /**
  * A template description for resources available on the server.
  */
-const ResourceTemplateSchema = object({
+const ResourceTemplateSchema = schemas_object({
     ...BaseMetadataSchema.shape,
     ...IconsSchema.shape,
     /**
@@ -13552,11 +13916,11 @@ const ResourceTemplateSchema = object({
      *
      * This can be used by clients to improve the LLM's understanding of available resources. It can be thought of like a "hint" to the model.
      */
-    description: optional(schemas_string()),
+    description: schemas_optional(schemas_string()),
     /**
      * The MIME type for all resources that match this template. This should only be included if all resources matching this template have the same type.
      */
-    mimeType: optional(schemas_string()),
+    mimeType: schemas_optional(schemas_string()),
     /**
      * Optional annotations for the client.
      */
@@ -13565,31 +13929,31 @@ const ResourceTemplateSchema = object({
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: optional(looseObject({}))
+    _meta: schemas_optional(looseObject({}))
 });
 /**
  * Sent from the client to request a list of resources the server has.
  */
 const ListResourcesRequestSchema = PaginatedRequestSchema.extend({
-    method: literal('resources/list')
+    method: schemas_literal('resources/list')
 });
 /**
  * The server's response to a resources/list request from the client.
  */
 const ListResourcesResultSchema = PaginatedResultSchema.extend({
-    resources: array(ResourceSchema)
+    resources: schemas_array(ResourceSchema)
 });
 /**
  * Sent from the client to request a list of resource templates the server has.
  */
 const ListResourceTemplatesRequestSchema = PaginatedRequestSchema.extend({
-    method: literal('resources/templates/list')
+    method: schemas_literal('resources/templates/list')
 });
 /**
  * The server's response to a resources/templates/list request from the client.
  */
 const ListResourceTemplatesResultSchema = PaginatedResultSchema.extend({
-    resourceTemplates: array(ResourceTemplateSchema)
+    resourceTemplates: schemas_array(ResourceTemplateSchema)
 });
 const ResourceRequestParamsSchema = BaseRequestParamsSchema.extend({
     /**
@@ -13607,20 +13971,20 @@ const ReadResourceRequestParamsSchema = ResourceRequestParamsSchema;
  * Sent from the client to the server, to read a specific resource URI.
  */
 const ReadResourceRequestSchema = RequestSchema.extend({
-    method: literal('resources/read'),
+    method: schemas_literal('resources/read'),
     params: ReadResourceRequestParamsSchema
 });
 /**
  * The server's response to a resources/read request from the client.
  */
 const ReadResourceResultSchema = ResultSchema.extend({
-    contents: array(union([TextResourceContentsSchema, BlobResourceContentsSchema]))
+    contents: schemas_array(schemas_union([TextResourceContentsSchema, BlobResourceContentsSchema]))
 });
 /**
  * An optional notification from the server to the client, informing it that the list of resources it can read from has changed. This may be issued by servers without any previous subscription from the client.
  */
 const ResourceListChangedNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/resources/list_changed'),
+    method: schemas_literal('notifications/resources/list_changed'),
     params: NotificationsParamsSchema.optional()
 });
 const SubscribeRequestParamsSchema = ResourceRequestParamsSchema;
@@ -13628,7 +13992,7 @@ const SubscribeRequestParamsSchema = ResourceRequestParamsSchema;
  * Sent from the client to request resources/updated notifications from the server whenever a particular resource changes.
  */
 const SubscribeRequestSchema = RequestSchema.extend({
-    method: literal('resources/subscribe'),
+    method: schemas_literal('resources/subscribe'),
     params: SubscribeRequestParamsSchema
 });
 const UnsubscribeRequestParamsSchema = ResourceRequestParamsSchema;
@@ -13636,7 +14000,7 @@ const UnsubscribeRequestParamsSchema = ResourceRequestParamsSchema;
  * Sent from the client to request cancellation of resources/updated notifications from the server. This should follow a previous resources/subscribe request.
  */
 const UnsubscribeRequestSchema = RequestSchema.extend({
-    method: literal('resources/unsubscribe'),
+    method: schemas_literal('resources/unsubscribe'),
     params: UnsubscribeRequestParamsSchema
 });
 /**
@@ -13652,14 +14016,14 @@ const ResourceUpdatedNotificationParamsSchema = NotificationsParamsSchema.extend
  * A notification from the server to the client, informing it that a resource has changed and may need to be read again. This should only be sent if the client previously sent a resources/subscribe request.
  */
 const ResourceUpdatedNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/resources/updated'),
+    method: schemas_literal('notifications/resources/updated'),
     params: ResourceUpdatedNotificationParamsSchema
 });
 /* Prompts */
 /**
  * Describes an argument that a prompt can accept.
  */
-const PromptArgumentSchema = object({
+const PromptArgumentSchema = schemas_object({
     /**
      * The name of the argument.
      */
@@ -13667,43 +14031,43 @@ const PromptArgumentSchema = object({
     /**
      * A human-readable description of the argument.
      */
-    description: optional(schemas_string()),
+    description: schemas_optional(schemas_string()),
     /**
      * Whether this argument must be provided.
      */
-    required: optional(schemas_boolean())
+    required: schemas_optional(schemas_boolean())
 });
 /**
  * A prompt or prompt template that the server offers.
  */
-const PromptSchema = object({
+const PromptSchema = schemas_object({
     ...BaseMetadataSchema.shape,
     ...IconsSchema.shape,
     /**
      * An optional description of what this prompt provides
      */
-    description: optional(schemas_string()),
+    description: schemas_optional(schemas_string()),
     /**
      * A list of arguments to use for templating the prompt.
      */
-    arguments: optional(array(PromptArgumentSchema)),
+    arguments: schemas_optional(schemas_array(PromptArgumentSchema)),
     /**
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: optional(looseObject({}))
+    _meta: schemas_optional(looseObject({}))
 });
 /**
  * Sent from the client to request a list of prompts and prompt templates the server has.
  */
 const ListPromptsRequestSchema = PaginatedRequestSchema.extend({
-    method: literal('prompts/list')
+    method: schemas_literal('prompts/list')
 });
 /**
  * The server's response to a prompts/list request from the client.
  */
 const ListPromptsResultSchema = PaginatedResultSchema.extend({
-    prompts: array(PromptSchema)
+    prompts: schemas_array(PromptSchema)
 });
 /**
  * Parameters for a `prompts/get` request.
@@ -13722,14 +14086,14 @@ const GetPromptRequestParamsSchema = BaseRequestParamsSchema.extend({
  * Used by the client to get a prompt provided by the server.
  */
 const GetPromptRequestSchema = RequestSchema.extend({
-    method: literal('prompts/get'),
+    method: schemas_literal('prompts/get'),
     params: GetPromptRequestParamsSchema
 });
 /**
  * Text provided to or from an LLM.
  */
-const TextContentSchema = object({
-    type: literal('text'),
+const TextContentSchema = schemas_object({
+    type: schemas_literal('text'),
     /**
      * The text content of the message.
      */
@@ -13742,13 +14106,13 @@ const TextContentSchema = object({
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * An image provided to or from an LLM.
  */
-const ImageContentSchema = object({
-    type: literal('image'),
+const ImageContentSchema = schemas_object({
+    type: schemas_literal('image'),
     /**
      * The base64-encoded image data.
      */
@@ -13765,13 +14129,13 @@ const ImageContentSchema = object({
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * An Audio provided to or from an LLM.
  */
-const AudioContentSchema = object({
-    type: literal('audio'),
+const AudioContentSchema = schemas_object({
+    type: schemas_literal('audio'),
     /**
      * The base64-encoded audio data.
      */
@@ -13788,14 +14152,14 @@ const AudioContentSchema = object({
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * A tool call request from an assistant (LLM).
  * Represents the assistant's request to use a tool.
  */
-const ToolUseContentSchema = object({
-    type: literal('tool_use'),
+const ToolUseContentSchema = schemas_object({
+    type: schemas_literal('tool_use'),
     /**
      * The name of the tool to invoke.
      * Must match a tool name from the request's tools array.
@@ -13810,19 +14174,19 @@ const ToolUseContentSchema = object({
      * Arguments to pass to the tool.
      * Must conform to the tool's inputSchema.
      */
-    input: record(schemas_string(), unknown()),
+    input: record(schemas_string(), schemas_unknown()),
     /**
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * The contents of a resource, embedded into a prompt or tool call result.
  */
-const EmbeddedResourceSchema = object({
-    type: literal('resource'),
-    resource: union([TextResourceContentsSchema, BlobResourceContentsSchema]),
+const EmbeddedResourceSchema = schemas_object({
+    type: schemas_literal('resource'),
+    resource: schemas_union([TextResourceContentsSchema, BlobResourceContentsSchema]),
     /**
      * Optional annotations for the client.
      */
@@ -13831,7 +14195,7 @@ const EmbeddedResourceSchema = object({
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * A resource that the server is capable of reading, included in a prompt or tool call result.
@@ -13839,12 +14203,12 @@ const EmbeddedResourceSchema = object({
  * Note: resource links returned by tools are not guaranteed to appear in the results of `resources/list` requests.
  */
 const ResourceLinkSchema = ResourceSchema.extend({
-    type: literal('resource_link')
+    type: schemas_literal('resource_link')
 });
 /**
  * A content block that can be used in prompts and tool results.
  */
-const ContentBlockSchema = union([
+const ContentBlockSchema = schemas_union([
     TextContentSchema,
     ImageContentSchema,
     AudioContentSchema,
@@ -13854,7 +14218,7 @@ const ContentBlockSchema = union([
 /**
  * Describes a message returned as part of a prompt.
  */
-const PromptMessageSchema = object({
+const PromptMessageSchema = schemas_object({
     role: RoleSchema,
     content: ContentBlockSchema
 });
@@ -13866,13 +14230,13 @@ const GetPromptResultSchema = ResultSchema.extend({
      * An optional description for the prompt.
      */
     description: schemas_string().optional(),
-    messages: array(PromptMessageSchema)
+    messages: schemas_array(PromptMessageSchema)
 });
 /**
  * An optional notification from the server to the client, informing it that the list of prompts it offers has changed. This may be issued by servers without any previous subscription from the client.
  */
 const PromptListChangedNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/prompts/list_changed'),
+    method: schemas_literal('notifications/prompts/list_changed'),
     params: NotificationsParamsSchema.optional()
 });
 /* Tools */
@@ -13886,7 +14250,7 @@ const PromptListChangedNotificationSchema = NotificationSchema.extend({
  * Clients should never make tool use decisions based on ToolAnnotations
  * received from untrusted servers.
  */
-const ToolAnnotationsSchema = object({
+const ToolAnnotationsSchema = schemas_object({
     /**
      * A human-readable title for the tool.
      */
@@ -13928,7 +14292,7 @@ const ToolAnnotationsSchema = object({
 /**
  * Execution-related properties for a tool.
  */
-const ToolExecutionSchema = object({
+const ToolExecutionSchema = schemas_object({
     /**
      * Indicates the tool's preference for task-augmented execution.
      * - "required": Clients MUST invoke the tool as a task
@@ -13942,7 +14306,7 @@ const ToolExecutionSchema = object({
 /**
  * Definition for a tool the client can call.
  */
-const ToolSchema = object({
+const ToolSchema = schemas_object({
     ...BaseMetadataSchema.shape,
     ...IconsSchema.shape,
     /**
@@ -13953,23 +14317,23 @@ const ToolSchema = object({
      * A JSON Schema 2020-12 object defining the expected parameters for the tool.
      * Must have type: 'object' at the root level per MCP spec.
      */
-    inputSchema: object({
-        type: literal('object'),
+    inputSchema: schemas_object({
+        type: schemas_literal('object'),
         properties: record(schemas_string(), AssertObjectSchema).optional(),
-        required: array(schemas_string()).optional()
+        required: schemas_array(schemas_string()).optional()
     })
-        .catchall(unknown()),
+        .catchall(schemas_unknown()),
     /**
      * An optional JSON Schema 2020-12 object defining the structure of the tool's output
      * returned in the structuredContent field of a CallToolResult.
      * Must have type: 'object' at the root level per MCP spec.
      */
-    outputSchema: object({
-        type: literal('object'),
+    outputSchema: schemas_object({
+        type: schemas_literal('object'),
         properties: record(schemas_string(), AssertObjectSchema).optional(),
-        required: array(schemas_string()).optional()
+        required: schemas_array(schemas_string()).optional()
     })
-        .catchall(unknown())
+        .catchall(schemas_unknown())
         .optional(),
     /**
      * Optional additional tool information.
@@ -13983,19 +14347,19 @@ const ToolSchema = object({
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * Sent from the client to request a list of tools the server has.
  */
 const ListToolsRequestSchema = PaginatedRequestSchema.extend({
-    method: literal('tools/list')
+    method: schemas_literal('tools/list')
 });
 /**
  * The server's response to a tools/list request from the client.
  */
 const ListToolsResultSchema = PaginatedResultSchema.extend({
-    tools: array(ToolSchema)
+    tools: schemas_array(ToolSchema)
 });
 /**
  * The server's response to a tool call.
@@ -14007,13 +14371,13 @@ const CallToolResultSchema = ResultSchema.extend({
      * If the Tool does not define an outputSchema, this field MUST be present in the result.
      * For backwards compatibility, this field is always present, but it may be empty.
      */
-    content: array(ContentBlockSchema).default([]),
+    content: schemas_array(ContentBlockSchema).default([]),
     /**
      * An object containing structured tool output.
      *
      * If the Tool defines an outputSchema, this field MUST be present in the result, and contain a JSON object that matches the schema.
      */
-    structuredContent: record(schemas_string(), unknown()).optional(),
+    structuredContent: record(schemas_string(), schemas_unknown()).optional(),
     /**
      * Whether the tool call ended in an error.
      *
@@ -14034,7 +14398,7 @@ const CallToolResultSchema = ResultSchema.extend({
  * CallToolResultSchema extended with backwards compatibility to protocol version 2024-10-07.
  */
 const CompatibilityCallToolResultSchema = CallToolResultSchema.or(ResultSchema.extend({
-    toolResult: unknown()
+    toolResult: schemas_unknown()
 }));
 /**
  * Parameters for a `tools/call` request.
@@ -14047,27 +14411,27 @@ const CallToolRequestParamsSchema = TaskAugmentedRequestParamsSchema.extend({
     /**
      * Arguments to pass to the tool.
      */
-    arguments: record(schemas_string(), unknown()).optional()
+    arguments: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * Used by the client to invoke a tool provided by the server.
  */
 const CallToolRequestSchema = RequestSchema.extend({
-    method: literal('tools/call'),
+    method: schemas_literal('tools/call'),
     params: CallToolRequestParamsSchema
 });
 /**
  * An optional notification from the server to the client, informing it that the list of tools it offers has changed. This may be issued by servers without any previous subscription from the client.
  */
 const ToolListChangedNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/tools/list_changed'),
+    method: schemas_literal('notifications/tools/list_changed'),
     params: NotificationsParamsSchema.optional()
 });
 /**
  * Base schema for list changed subscription options (without callback).
  * Used internally for Zod validation of autoRefresh and debounceMs.
  */
-const ListChangedOptionsBaseSchema = object({
+const ListChangedOptionsBaseSchema = schemas_object({
     /**
      * If true, the list will be refreshed automatically when a list changed notification is received.
      * The callback will be called with the updated list.
@@ -14105,7 +14469,7 @@ const SetLevelRequestParamsSchema = BaseRequestParamsSchema.extend({
  * A request from the client to the server, to enable or adjust logging.
  */
 const SetLevelRequestSchema = RequestSchema.extend({
-    method: literal('logging/setLevel'),
+    method: schemas_literal('logging/setLevel'),
     params: SetLevelRequestParamsSchema
 });
 /**
@@ -14123,20 +14487,20 @@ const LoggingMessageNotificationParamsSchema = NotificationsParamsSchema.extend(
     /**
      * The data to be logged, such as a string message or an object. Any JSON serializable type is allowed here.
      */
-    data: unknown()
+    data: schemas_unknown()
 });
 /**
  * Notification of a log message passed from server to client. If no logging/setLevel request has been sent from the client, the server MAY decide which messages to send automatically.
  */
 const LoggingMessageNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/message'),
+    method: schemas_literal('notifications/message'),
     params: LoggingMessageNotificationParamsSchema
 });
 /* Sampling */
 /**
  * Hints to use for model selection.
  */
-const ModelHintSchema = object({
+const ModelHintSchema = schemas_object({
     /**
      * A hint for a model name.
      */
@@ -14145,11 +14509,11 @@ const ModelHintSchema = object({
 /**
  * The server's preferences for model selection, requested of the client during sampling.
  */
-const ModelPreferencesSchema = object({
+const ModelPreferencesSchema = schemas_object({
     /**
      * Optional hints to use for model selection.
      */
-    hints: array(ModelHintSchema).optional(),
+    hints: schemas_array(ModelHintSchema).optional(),
     /**
      * How much to prioritize cost when selecting a model.
      */
@@ -14166,7 +14530,7 @@ const ModelPreferencesSchema = object({
 /**
  * Controls tool usage behavior in sampling requests.
  */
-const ToolChoiceSchema = object({
+const ToolChoiceSchema = schemas_object({
     /**
      * Controls when tools are used:
      * - "auto": Model decides whether to use tools (default)
@@ -14179,17 +14543,17 @@ const ToolChoiceSchema = object({
  * The result of a tool execution, provided by the user (server).
  * Represents the outcome of invoking a tool requested via ToolUseContent.
  */
-const ToolResultContentSchema = object({
-    type: literal('tool_result'),
+const ToolResultContentSchema = schemas_object({
+    type: schemas_literal('tool_result'),
     toolUseId: schemas_string().describe('The unique identifier for the corresponding tool call.'),
-    content: array(ContentBlockSchema).default([]),
-    structuredContent: object({}).loose().optional(),
+    content: schemas_array(ContentBlockSchema).default([]),
+    structuredContent: schemas_object({}).loose().optional(),
     isError: schemas_boolean().optional(),
     /**
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * Basic content types for sampling responses (without tool use).
@@ -14210,20 +14574,20 @@ const SamplingMessageContentBlockSchema = discriminatedUnion('type', [
 /**
  * Describes a message issued to or received from an LLM API.
  */
-const SamplingMessageSchema = object({
+const SamplingMessageSchema = schemas_object({
     role: RoleSchema,
-    content: union([SamplingMessageContentBlockSchema, array(SamplingMessageContentBlockSchema)]),
+    content: schemas_union([SamplingMessageContentBlockSchema, schemas_array(SamplingMessageContentBlockSchema)]),
     /**
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * Parameters for a `sampling/createMessage` request.
  */
 const CreateMessageRequestParamsSchema = TaskAugmentedRequestParamsSchema.extend({
-    messages: array(SamplingMessageSchema),
+    messages: schemas_array(SamplingMessageSchema),
     /**
      * The server's preferences for which model to select. The client MAY modify or omit this request.
      */
@@ -14247,7 +14611,7 @@ const CreateMessageRequestParamsSchema = TaskAugmentedRequestParamsSchema.extend
      * The client MAY choose to sample fewer tokens than the requested maximum.
      */
     maxTokens: schemas_number().int(),
-    stopSequences: array(schemas_string()).optional(),
+    stopSequences: schemas_array(schemas_string()).optional(),
     /**
      * Optional metadata to pass through to the LLM provider. The format of this metadata is provider-specific.
      */
@@ -14256,7 +14620,7 @@ const CreateMessageRequestParamsSchema = TaskAugmentedRequestParamsSchema.extend
      * Tools that the model may use during generation.
      * The client MUST return an error if this field is provided but ClientCapabilities.sampling.tools is not declared.
      */
-    tools: array(ToolSchema).optional(),
+    tools: schemas_array(ToolSchema).optional(),
     /**
      * Controls how the model uses tools.
      * The client MUST return an error if this field is provided but ClientCapabilities.sampling.tools is not declared.
@@ -14268,7 +14632,7 @@ const CreateMessageRequestParamsSchema = TaskAugmentedRequestParamsSchema.extend
  * A request from the server to sample an LLM via the client. The client has full discretion over which model to select. The client should also inform the user before beginning sampling, to allow them to inspect the request (human in the loop) and decide whether to approve it.
  */
 const CreateMessageRequestSchema = RequestSchema.extend({
-    method: literal('sampling/createMessage'),
+    method: schemas_literal('sampling/createMessage'),
     params: CreateMessageRequestParamsSchema
 });
 /**
@@ -14291,7 +14655,7 @@ const CreateMessageResultSchema = ResultSchema.extend({
      *
      * This field is an open string to allow for provider-specific stop reasons.
      */
-    stopReason: optional(schemas_enum(['endTurn', 'stopSequence', 'maxTokens']).or(schemas_string())),
+    stopReason: schemas_optional(schemas_enum(['endTurn', 'stopSequence', 'maxTokens']).or(schemas_string())),
     role: RoleSchema,
     /**
      * Response content. Single content block (text, image, or audio).
@@ -14318,19 +14682,19 @@ const CreateMessageResultWithToolsSchema = ResultSchema.extend({
      *
      * This field is an open string to allow for provider-specific stop reasons.
      */
-    stopReason: optional(schemas_enum(['endTurn', 'stopSequence', 'maxTokens', 'toolUse']).or(schemas_string())),
+    stopReason: schemas_optional(schemas_enum(['endTurn', 'stopSequence', 'maxTokens', 'toolUse']).or(schemas_string())),
     role: RoleSchema,
     /**
      * Response content. May be a single block or array. May include ToolUseContent if stopReason is "toolUse".
      */
-    content: union([SamplingMessageContentBlockSchema, array(SamplingMessageContentBlockSchema)])
+    content: schemas_union([SamplingMessageContentBlockSchema, schemas_array(SamplingMessageContentBlockSchema)])
 });
 /* Elicitation */
 /**
  * Primitive schema definition for boolean fields.
  */
-const BooleanSchemaSchema = object({
-    type: literal('boolean'),
+const BooleanSchemaSchema = schemas_object({
+    type: schemas_literal('boolean'),
     title: schemas_string().optional(),
     description: schemas_string().optional(),
     default: schemas_boolean().optional()
@@ -14338,8 +14702,8 @@ const BooleanSchemaSchema = object({
 /**
  * Primitive schema definition for string fields.
  */
-const StringSchemaSchema = object({
-    type: literal('string'),
+const StringSchemaSchema = schemas_object({
+    type: schemas_literal('string'),
     title: schemas_string().optional(),
     description: schemas_string().optional(),
     minLength: schemas_number().optional(),
@@ -14350,7 +14714,7 @@ const StringSchemaSchema = object({
 /**
  * Primitive schema definition for number fields.
  */
-const NumberSchemaSchema = object({
+const NumberSchemaSchema = schemas_object({
     type: schemas_enum(['number', 'integer']),
     title: schemas_string().optional(),
     description: schemas_string().optional(),
@@ -14361,21 +14725,21 @@ const NumberSchemaSchema = object({
 /**
  * Schema for single-selection enumeration without display titles for options.
  */
-const UntitledSingleSelectEnumSchemaSchema = object({
-    type: literal('string'),
+const UntitledSingleSelectEnumSchemaSchema = schemas_object({
+    type: schemas_literal('string'),
     title: schemas_string().optional(),
     description: schemas_string().optional(),
-    enum: array(schemas_string()),
+    enum: schemas_array(schemas_string()),
     default: schemas_string().optional()
 });
 /**
  * Schema for single-selection enumeration with display titles for each option.
  */
-const TitledSingleSelectEnumSchemaSchema = object({
-    type: literal('string'),
+const TitledSingleSelectEnumSchemaSchema = schemas_object({
+    type: schemas_literal('string'),
     title: schemas_string().optional(),
     description: schemas_string().optional(),
-    oneOf: array(object({
+    oneOf: schemas_array(schemas_object({
         const: schemas_string(),
         title: schemas_string()
     })),
@@ -14385,60 +14749,60 @@ const TitledSingleSelectEnumSchemaSchema = object({
  * Use TitledSingleSelectEnumSchema instead.
  * This interface will be removed in a future version.
  */
-const LegacyTitledEnumSchemaSchema = object({
-    type: literal('string'),
+const LegacyTitledEnumSchemaSchema = schemas_object({
+    type: schemas_literal('string'),
     title: schemas_string().optional(),
     description: schemas_string().optional(),
-    enum: array(schemas_string()),
-    enumNames: array(schemas_string()).optional(),
+    enum: schemas_array(schemas_string()),
+    enumNames: schemas_array(schemas_string()).optional(),
     default: schemas_string().optional()
 });
 // Combined single selection enumeration
-const SingleSelectEnumSchemaSchema = union([UntitledSingleSelectEnumSchemaSchema, TitledSingleSelectEnumSchemaSchema]);
+const SingleSelectEnumSchemaSchema = schemas_union([UntitledSingleSelectEnumSchemaSchema, TitledSingleSelectEnumSchemaSchema]);
 /**
  * Schema for multiple-selection enumeration without display titles for options.
  */
-const UntitledMultiSelectEnumSchemaSchema = object({
-    type: literal('array'),
+const UntitledMultiSelectEnumSchemaSchema = schemas_object({
+    type: schemas_literal('array'),
     title: schemas_string().optional(),
     description: schemas_string().optional(),
     minItems: schemas_number().optional(),
     maxItems: schemas_number().optional(),
-    items: object({
-        type: literal('string'),
-        enum: array(schemas_string())
+    items: schemas_object({
+        type: schemas_literal('string'),
+        enum: schemas_array(schemas_string())
     }),
-    default: array(schemas_string()).optional()
+    default: schemas_array(schemas_string()).optional()
 });
 /**
  * Schema for multiple-selection enumeration with display titles for each option.
  */
-const TitledMultiSelectEnumSchemaSchema = object({
-    type: literal('array'),
+const TitledMultiSelectEnumSchemaSchema = schemas_object({
+    type: schemas_literal('array'),
     title: schemas_string().optional(),
     description: schemas_string().optional(),
     minItems: schemas_number().optional(),
     maxItems: schemas_number().optional(),
-    items: object({
-        anyOf: array(object({
+    items: schemas_object({
+        anyOf: schemas_array(schemas_object({
             const: schemas_string(),
             title: schemas_string()
         }))
     }),
-    default: array(schemas_string()).optional()
+    default: schemas_array(schemas_string()).optional()
 });
 /**
  * Combined schema for multiple-selection enumeration
  */
-const MultiSelectEnumSchemaSchema = union([UntitledMultiSelectEnumSchemaSchema, TitledMultiSelectEnumSchemaSchema]);
+const MultiSelectEnumSchemaSchema = schemas_union([UntitledMultiSelectEnumSchemaSchema, TitledMultiSelectEnumSchemaSchema]);
 /**
  * Primitive schema definition for enum fields.
  */
-const EnumSchemaSchema = union([LegacyTitledEnumSchemaSchema, SingleSelectEnumSchemaSchema, MultiSelectEnumSchemaSchema]);
+const EnumSchemaSchema = schemas_union([LegacyTitledEnumSchemaSchema, SingleSelectEnumSchemaSchema, MultiSelectEnumSchemaSchema]);
 /**
  * Union of all primitive schema definitions.
  */
-const PrimitiveSchemaDefinitionSchema = union([EnumSchemaSchema, BooleanSchemaSchema, StringSchemaSchema, NumberSchemaSchema]);
+const PrimitiveSchemaDefinitionSchema = schemas_union([EnumSchemaSchema, BooleanSchemaSchema, StringSchemaSchema, NumberSchemaSchema]);
 /**
  * Parameters for an `elicitation/create` request for form-based elicitation.
  */
@@ -14448,7 +14812,7 @@ const ElicitRequestFormParamsSchema = TaskAugmentedRequestParamsSchema.extend({
      *
      * Optional for backward compatibility. Clients MUST treat missing mode as "form".
      */
-    mode: literal('form').optional(),
+    mode: schemas_literal('form').optional(),
     /**
      * The message to present to the user describing what information is being requested.
      */
@@ -14457,10 +14821,10 @@ const ElicitRequestFormParamsSchema = TaskAugmentedRequestParamsSchema.extend({
      * A restricted subset of JSON Schema.
      * Only top-level properties are allowed, without nesting.
      */
-    requestedSchema: object({
-        type: literal('object'),
+    requestedSchema: schemas_object({
+        type: schemas_literal('object'),
         properties: record(schemas_string(), PrimitiveSchemaDefinitionSchema),
-        required: array(schemas_string()).optional()
+        required: schemas_array(schemas_string()).optional()
     })
 });
 /**
@@ -14470,7 +14834,7 @@ const ElicitRequestURLParamsSchema = TaskAugmentedRequestParamsSchema.extend({
     /**
      * The elicitation mode.
      */
-    mode: literal('url'),
+    mode: schemas_literal('url'),
     /**
      * The message to present to the user explaining why the interaction is needed.
      */
@@ -14488,14 +14852,14 @@ const ElicitRequestURLParamsSchema = TaskAugmentedRequestParamsSchema.extend({
 /**
  * The parameters for a request to elicit additional information from the user via the client.
  */
-const ElicitRequestParamsSchema = union([ElicitRequestFormParamsSchema, ElicitRequestURLParamsSchema]);
+const ElicitRequestParamsSchema = schemas_union([ElicitRequestFormParamsSchema, ElicitRequestURLParamsSchema]);
 /**
  * A request from the server to elicit user input via the client.
  * The client should present the message and form fields to the user (form mode)
  * or navigate to a URL (URL mode).
  */
 const ElicitRequestSchema = RequestSchema.extend({
-    method: literal('elicitation/create'),
+    method: schemas_literal('elicitation/create'),
     params: ElicitRequestParamsSchema
 });
 /**
@@ -14515,7 +14879,7 @@ const ElicitationCompleteNotificationParamsSchema = NotificationsParamsSchema.ex
  * @category notifications/elicitation/complete
  */
 const ElicitationCompleteNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/elicitation/complete'),
+    method: schemas_literal('notifications/elicitation/complete'),
     params: ElicitationCompleteNotificationParamsSchema
 });
 /**
@@ -14535,14 +14899,14 @@ const ElicitResultSchema = ResultSchema.extend({
      * Per MCP spec, content is "typically omitted" for decline/cancel actions.
      * We normalize null to undefined for leniency while maintaining type compatibility.
      */
-    content: preprocess(val => (val === null ? undefined : val), record(schemas_string(), union([schemas_string(), schemas_number(), schemas_boolean(), array(schemas_string())])).optional())
+    content: preprocess(val => (val === null ? undefined : val), record(schemas_string(), schemas_union([schemas_string(), schemas_number(), schemas_boolean(), schemas_array(schemas_string())])).optional())
 });
 /* Autocomplete */
 /**
  * A reference to a resource or resource template definition.
  */
-const ResourceTemplateReferenceSchema = object({
-    type: literal('ref/resource'),
+const ResourceTemplateReferenceSchema = schemas_object({
+    type: schemas_literal('ref/resource'),
     /**
      * The URI or URI template of the resource.
      */
@@ -14555,8 +14919,8 @@ const ResourceReferenceSchema = (/* unused pure expression or super */ null && (
 /**
  * Identifies a prompt.
  */
-const PromptReferenceSchema = object({
-    type: literal('ref/prompt'),
+const PromptReferenceSchema = schemas_object({
+    type: schemas_literal('ref/prompt'),
     /**
      * The name of the prompt or prompt template
      */
@@ -14566,11 +14930,11 @@ const PromptReferenceSchema = object({
  * Parameters for a `completion/complete` request.
  */
 const CompleteRequestParamsSchema = BaseRequestParamsSchema.extend({
-    ref: union([PromptReferenceSchema, ResourceTemplateReferenceSchema]),
+    ref: schemas_union([PromptReferenceSchema, ResourceTemplateReferenceSchema]),
     /**
      * The argument's information
      */
-    argument: object({
+    argument: schemas_object({
         /**
          * The name of the argument
          */
@@ -14580,7 +14944,7 @@ const CompleteRequestParamsSchema = BaseRequestParamsSchema.extend({
          */
         value: schemas_string()
     }),
-    context: object({
+    context: schemas_object({
         /**
          * Previously-resolved variables in a URI template or prompt.
          */
@@ -14592,7 +14956,7 @@ const CompleteRequestParamsSchema = BaseRequestParamsSchema.extend({
  * A request from the client to the server, to ask for completion options.
  */
 const CompleteRequestSchema = RequestSchema.extend({
-    method: literal('completion/complete'),
+    method: schemas_literal('completion/complete'),
     params: CompleteRequestParamsSchema
 });
 function assertCompleteRequestPrompt(request) {
@@ -14615,22 +14979,22 @@ const CompleteResultSchema = ResultSchema.extend({
         /**
          * An array of completion values. Must not exceed 100 items.
          */
-        values: array(schemas_string()).max(100),
+        values: schemas_array(schemas_string()).max(100),
         /**
          * The total number of completion options available. This can exceed the number of values actually sent in the response.
          */
-        total: optional(schemas_number().int()),
+        total: schemas_optional(schemas_number().int()),
         /**
          * Indicates whether there are additional completion options beyond those provided in the current response, even if the exact total is unknown.
          */
-        hasMore: optional(schemas_boolean())
+        hasMore: schemas_optional(schemas_boolean())
     })
 });
 /* Roots */
 /**
  * Represents a root directory or file that the server can operate on.
  */
-const RootSchema = object({
+const RootSchema = schemas_object({
     /**
      * The URI identifying the root. This *must* start with file:// for now.
      */
@@ -14643,30 +15007,30 @@ const RootSchema = object({
      * See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/basic/index.mdx#general-fields)
      * for notes on _meta usage.
      */
-    _meta: record(schemas_string(), unknown()).optional()
+    _meta: record(schemas_string(), schemas_unknown()).optional()
 });
 /**
  * Sent from the server to request a list of root URIs from the client.
  */
 const ListRootsRequestSchema = RequestSchema.extend({
-    method: literal('roots/list'),
+    method: schemas_literal('roots/list'),
     params: BaseRequestParamsSchema.optional()
 });
 /**
  * The client's response to a roots/list request from the server.
  */
 const ListRootsResultSchema = ResultSchema.extend({
-    roots: array(RootSchema)
+    roots: schemas_array(RootSchema)
 });
 /**
  * A notification from the client to the server, informing it that the list of roots has changed.
  */
 const RootsListChangedNotificationSchema = NotificationSchema.extend({
-    method: literal('notifications/roots/list_changed'),
+    method: schemas_literal('notifications/roots/list_changed'),
     params: NotificationsParamsSchema.optional()
 });
 /* Client messages */
-const ClientRequestSchema = union([
+const ClientRequestSchema = schemas_union([
     PingRequestSchema,
     InitializeRequestSchema,
     CompleteRequestSchema,
@@ -14685,14 +15049,14 @@ const ClientRequestSchema = union([
     ListTasksRequestSchema,
     CancelTaskRequestSchema
 ]);
-const ClientNotificationSchema = union([
+const ClientNotificationSchema = schemas_union([
     CancelledNotificationSchema,
     ProgressNotificationSchema,
     InitializedNotificationSchema,
     RootsListChangedNotificationSchema,
     TaskStatusNotificationSchema
 ]);
-const ClientResultSchema = union([
+const ClientResultSchema = schemas_union([
     EmptyResultSchema,
     CreateMessageResultSchema,
     CreateMessageResultWithToolsSchema,
@@ -14703,7 +15067,7 @@ const ClientResultSchema = union([
     CreateTaskResultSchema
 ]);
 /* Server messages */
-const ServerRequestSchema = union([
+const ServerRequestSchema = schemas_union([
     PingRequestSchema,
     CreateMessageRequestSchema,
     ElicitRequestSchema,
@@ -14713,7 +15077,7 @@ const ServerRequestSchema = union([
     ListTasksRequestSchema,
     CancelTaskRequestSchema
 ]);
-const ServerNotificationSchema = union([
+const ServerNotificationSchema = schemas_union([
     CancelledNotificationSchema,
     ProgressNotificationSchema,
     LoggingMessageNotificationSchema,
@@ -14724,7 +15088,7 @@ const ServerNotificationSchema = union([
     TaskStatusNotificationSchema,
     ElicitationCompleteNotificationSchema
 ]);
-const ServerResultSchema = union([
+const ServerResultSchema = schemas_union([
     EmptyResultSchema,
     InitializeResultSchema,
     CompleteResultSchema,
@@ -14777,9 +15141,9 @@ class UrlElicitationRequiredError extends McpError {
 }
 //# sourceMappingURL=types.js.map
 ;// ./node_modules/@elementor/angie-sdk/dist/index.js
-const t={none:0,error:1,warn:2,info:3,debug:4},i={error:"error",warn:"warn",info:"info",log:"info",debug:"debug"},n=(e,i)=>t[e]<=t[i],s=e=>"string"==typeof e?e:JSON.stringify(e),r=(e,t)=>`${s(e)} > ${s(t)}`,o=(e,t)=>{let i=`[${s(e)}]`;return typeof window<"u"?{text:`%c${i}`,style:`color: ${t.color||"#00bcd4"}; font-weight: bold;`}:{text:i}},a=(e,t,s,r)=>(...a)=>{if(!n(i[e],r()))return;if(!t)return void console[e](...a);let{text:c,style:d}=o(t,s);d?console[e](c,d,...a):console[e](c,...a)},c=(e,t)=>{let i=t.logLevel??"debug",n=()=>i;return{log:a("log",e,t,n),info:a("info",e,t,n),warn:a("warn",e,t,n),error:a("error",e,t,n),debug:a("debug",e,t,n),setLogLevel:e=>{i=e},extend:n=>c(e?r(e,n):n,{...t,logLevel:i})}},d=(e,t)=>c(e,{color:"#00bcd4",logLevel:"debug",...t}),l=d("angie-sdk",{color:"#00BCD4",logLevel:"error"}),g=e=>l.extend(e);var u,h,p,_,w,m,f,y;!function(e){e.POST_MESSAGE="postMessage"}(u||(u={})),function(e){e.POST_MESSAGE="postMessage"}(h||(h={})),function(e){e.STREAMABLE_HTTP="streamableHttp",e.SSE="sse"}(p||(p={})),function(e){e.LOCAL="local",e.REMOTE="remote"}(_||(_={})),function(e){e.AGENT="agent",e.PLAN="plan",e.ASK="ask",e.SUPER_ADMIN="super-admin"}(w||(w={})),function(e){e.SDK_ANGIE_READY_PING="sdk-angie-ready-ping",e.SDK_ANGIE_REFRESH_PING="sdk-angie-refresh-ping",e.SDK_ANGIE_ALL_SERVERS_REGISTERED="sdk-angie-all-servers-registered",e.SDK_REQUEST_CLIENT_CREATION="sdk-request-client-creation",e.SDK_REQUEST_INIT_SERVER="sdk-request-init-server",e.SDK_TRIGGER_ANGIE="sdk-trigger-angie",e.SDK_TRIGGER_ANGIE_RESPONSE="sdk-trigger-angie-response",e.ANGIE_SIDEBAR_RESIZED="angie-sidebar-resized",e.ANGIE_SIDEBAR_TOGGLED="angie-sidebar-toggled",e.ANGIE_CHAT_TOGGLE="angie-chat-toggle",e.ANGIE_STUDIO_TOGGLE="angie-studio-toggle",e.ANGIE_NAVIGATE_TO_URL="angie/navigate-to-url",e.ANGIE_PAGE_RELOAD="angie/page-reload",e.ANGIE_DISABLE_NAVIGATION_PREVENTION="angie/disable-navigation-prevention",e.ANGIE_NAVIGATE_AFTER_RESPONSE="angie/navigate-after-response",e.ANGIE_SET_INTERACTION_MODE="angie/set-interaction-mode"}(m||(m={})),function(e){e.SET="ANGIE_SET_LOCALSTORAGE",e.GET="ANGIE_GET_LOCALSTORAGE"}(f||(f={})),function(e){e.RESET_HASH="reset-hash",e.HOST_READY="host/ready",e.ANGIE_LOADED="angie/loaded",e.ANGIE_READY="angie/ready"}(y||(y={}));const S=g("angie-detector");class b{isAngieReady=!1;readyPromise;readyResolve;getInstanceId;constructor(e){if(this.getInstanceId=e,this.readyPromise=new Promise(e=>{this.readyResolve=e}),"undefined"==typeof window)return;let t=0;const i=()=>{if(this.isAngieReady||t>=500)return void(!this.isAngieReady&&t>=500&&this.handleDetectionTimeout());const e=new MessageChannel;e.port1.onmessage=t=>{this.handleAngieReady(t.data),e.port1.close(),e.port2.close()};const n={type:m.SDK_ANGIE_READY_PING,payload:{instanceId:this.getInstanceId?.()},timestamp:Date.now()};window.postMessage(n,window.location.origin,[e.port2]),t++,setTimeout(i,500)};i()}handleAngieReady(e){this.isAngieReady=!0;const t={isReady:!0,version:e.version,capabilities:e.capabilities};this.readyResolve&&this.readyResolve(t)}handleDetectionTimeout(){this.readyResolve&&this.readyResolve({isReady:!1}),S.warn("Detection timeout - Angie may not be available")}isReady(){return this.isAngieReady}async waitForReady(){return this.readyPromise}async waitUntilReady(e){return this.isAngieReady?this.readyPromise:Promise.race([this.readyPromise,new Promise(t=>{setTimeout(()=>t({isReady:!1}),e)})])}}class v{sessionId;onmessage;onerror;onclose;_port;_started=!1;_closed=!1;constructor(t){if(!t)throw new Error("MessagePort is required");this._port=t,this._port.onmessage=t=>{try{const i=JSONRPCMessageSchema.parse(t.data);this.onmessage?.(i)}catch(e){const t=new Error(`Failed to parse message: ${e}`);this.onerror?.(t)}},this._port.onmessageerror=e=>{const t=new Error(`MessagePort error: ${JSON.stringify(e)}`);this.onerror?.(t)}}async start(){if(this._started)throw new Error("BrowserContextTransport already started! If using Client or Server class, note that connect() calls start() automatically.");if(this._closed)throw new Error("Cannot start a closed BrowserContextTransport");this._started=!0,this._port.start()}async send(e){if(this._closed)throw new Error("Cannot send on a closed BrowserContextTransport");return new Promise((t,i)=>{try{this._port.postMessage(e),t()}catch(e){const t=e instanceof Error?e:new Error(String(e));this.onerror?.(t),i(t)}})}async close(){this._closed||(this._closed=!0,this._port.close(),this.onclose?.())}}class I{async requestClientCreation(e){const{config:t}=e,i={serverId:e.id,serverName:t.name,serverTitle:t.title,serverVersion:t.version,description:t.description,transport:t.transport||h.POST_MESSAGE,capabilities:t.capabilities,instanceId:e.instanceId};return"type"in t&&"remote"===t.type&&(i.remote={url:t.url}),new Promise((e,t)=>{const n=new MessageChannel,s=setTimeout(()=>{t(new Error("Client creation request timed out after 15000ms"))},15e3);n.port1.onmessage=t=>{clearTimeout(s),e(t.data)};const r={type:m.SDK_REQUEST_CLIENT_CREATION,payload:i,timestamp:Date.now()};window.postMessage(r,window.location.origin,[n.port2])})}}const E="angie-sidebar-container",k="angie-iframe",T=()=>({open:!1,iframe:null,iframeUrlObject:null,containerId:E,instanceId:"",appId:void 0,layout:"",iframeElementId:k}),R=T();class A extends Error{}A.prototype.name="InvalidTokenError";var C,x,P,O={debug:()=>{},info:()=>{},warn:()=>{},error:()=>{}},U=(e=>(e[e.NONE=0]="NONE",e[e.ERROR=1]="ERROR",e[e.WARN=2]="WARN",e[e.INFO=3]="INFO",e[e.DEBUG=4]="DEBUG",e))(U||{});(P=U||(U={})).reset=function(){C=3,x=O},P.setLevel=function(e){if(!(0<=e&&e<=4))throw new Error("Invalid log level");C=e},P.setLogger=function(e){x=e};var L=class e{constructor(e){this._name=e}debug(...t){C>=4&&x.debug(e._format(this._name,this._method),...t)}info(...t){C>=3&&x.info(e._format(this._name,this._method),...t)}warn(...t){C>=2&&x.warn(e._format(this._name,this._method),...t)}error(...t){C>=1&&x.error(e._format(this._name,this._method),...t)}throw(e){throw this.error(e),e}create(e){const t=Object.create(this);return t._method=e,t.debug("begin"),t}static createStatic(t,i){const n=new e(`${t}.${i}`);return n.debug("begin"),n}static _format(e,t){const i=`[${e}]`;return t?`${i} ${t}:`:i}static debug(t,...i){C>=4&&x.debug(e._format(t),...i)}static info(t,...i){C>=3&&x.info(e._format(t),...i)}static warn(t,...i){C>=2&&x.warn(e._format(t),...i)}static error(t,...i){C>=1&&x.error(e._format(t),...i)}};U.reset();var D=class{static decode(e){try{return function(e,t){if("string"!=typeof e)throw new A("Invalid token specified: must be a string");t||(t={});const i=!0===t.header?0:1,n=e.split(".")[i];if("string"!=typeof n)throw new A(`Invalid token specified: missing part #${i+1}`);let s;try{s=function(e){let t=e.replace(/-/g,"+").replace(/_/g,"/");switch(t.length%4){case 0:break;case 2:t+="==";break;case 3:t+="=";break;default:throw new Error("base64 string is not of the correct length")}try{return function(e){return decodeURIComponent(atob(e).replace(/(.)/g,(e,t)=>{let i=t.charCodeAt(0).toString(16).toUpperCase();return i.length<2&&(i="0"+i),"%"+i}))}(t)}catch(e){return atob(t)}}(n)}catch(e){throw new A(`Invalid token specified: invalid base64 for part #${i+1} (${e.message})`)}try{return JSON.parse(s)}catch(e){throw new A(`Invalid token specified: invalid json for part #${i+1} (${e.message})`)}}(e)}catch(e){throw L.error("JwtUtils.decode",e),e}}static async generateSignedJwt(e,t,i){const n=`${$.encodeBase64Url((new TextEncoder).encode(JSON.stringify(e)))}.${$.encodeBase64Url((new TextEncoder).encode(JSON.stringify(t)))}`,s=await window.crypto.subtle.sign({name:"ECDSA",hash:{name:"SHA-256"}},i,(new TextEncoder).encode(n));return`${n}.${$.encodeBase64Url(new Uint8Array(s))}`}static async generateSignedJwtWithHmac(e,t,i){const n=`${$.encodeBase64Url((new TextEncoder).encode(JSON.stringify(e)))}.${$.encodeBase64Url((new TextEncoder).encode(JSON.stringify(t)))}`,s=await window.crypto.subtle.sign("HMAC",i,(new TextEncoder).encode(n));return`${n}.${$.encodeBase64Url(new Uint8Array(s))}`}},N=e=>btoa([...new Uint8Array(e)].map(e=>String.fromCharCode(e)).join("")),q=class e{static _randomWord(){const e=new Uint32Array(1);return crypto.getRandomValues(e),e[0]}static generateUUIDv4(){const t="10000000-1000-4000-8000-100000000000".replace(/[018]/g,t=>(+t^e._randomWord()&15>>+t/4).toString(16));return t.replace(/-/g,"")}static generateCodeVerifier(){return e.generateUUIDv4()+e.generateUUIDv4()+e.generateUUIDv4()}static async generateCodeChallenge(e){if(!crypto.subtle)throw new Error("Crypto.subtle is available only in secure contexts (HTTPS).");try{const t=(new TextEncoder).encode(e),i=await crypto.subtle.digest("SHA-256",t);return N(i).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}catch(e){throw L.error("CryptoUtils.generateCodeChallenge",e),e}}static generateBasicAuth(e,t){const i=(new TextEncoder).encode([e,t].join(":"));return N(i)}static async hash(e,t){const i=(new TextEncoder).encode(t),n=await crypto.subtle.digest(e,i);return new Uint8Array(n)}static async customCalculateJwkThumbprint(t){let i;switch(t.kty){case"RSA":i={e:t.e,kty:t.kty,n:t.n};break;case"EC":i={crv:t.crv,kty:t.kty,x:t.x,y:t.y};break;case"OKP":i={crv:t.crv,kty:t.kty,x:t.x};break;case"oct":i={crv:t.k,kty:t.kty};break;default:throw new Error("Unknown jwk type")}const n=await e.hash("SHA-256",JSON.stringify(i));return e.encodeBase64Url(n)}static async generateDPoPProof({url:t,accessToken:i,httpMethod:n,keyPair:s,nonce:r}){let o,a;const c={jti:window.crypto.randomUUID(),htm:null!=n?n:"GET",htu:t,iat:Math.floor(Date.now()/1e3)};i&&(o=await e.hash("SHA-256",i),a=e.encodeBase64Url(o),c.ath=a),r&&(c.nonce=r);try{const e=await crypto.subtle.exportKey("jwk",s.publicKey),t={alg:"ES256",typ:"dpop+jwt",jwk:{crv:e.crv,kty:e.kty,x:e.x,y:e.y}};return await D.generateSignedJwt(t,c,s.privateKey)}catch(e){throw e instanceof TypeError?new Error(`Error exporting dpop public key: ${e.message}`):e}}static async generateDPoPJkt(t){try{const i=await crypto.subtle.exportKey("jwk",t.publicKey);return await e.customCalculateJwkThumbprint(i)}catch(e){throw e instanceof TypeError?new Error(`Could not retrieve dpop keys from storage: ${e.message}`):e}}static async generateDPoPKeys(){return await window.crypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},!1,["sign","verify"])}static async generateClientAssertionJwt(t,i,n,s="HS256"){const r=Math.floor(Date.now()/1e3),o={alg:s,typ:"JWT"},a={iss:t,sub:t,aud:n,jti:e.generateUUIDv4(),exp:r+300,iat:r},c={HS256:"SHA-256",HS384:"SHA-384",HS512:"SHA-512"}[s];if(!c)throw new Error(`Unsupported algorithm: ${s}. Supported algorithms are: HS256, HS384, HS512`);const d=new TextEncoder,l=await crypto.subtle.importKey("raw",d.encode(i),{name:"HMAC",hash:c},!1,["sign"]);return await D.generateSignedJwtWithHmac(o,a,l)}};q.encodeBase64Url=e=>N(e).replace(/=/g,"").replace(/\+/g,"-").replace(/\//g,"_");var $=q,M=class{constructor(e){this._name=e,this._callbacks=[],this._logger=new L(`Event('${this._name}')`)}addHandler(e){return this._callbacks.push(e),()=>this.removeHandler(e)}removeHandler(e){const t=this._callbacks.lastIndexOf(e);t>=0&&this._callbacks.splice(t,1)}async raise(...e){this._logger.debug("raise:",...e);for(const t of this._callbacks)await t(...e)}},H=class{static center({...e}){var t;return null==e.width&&(e.width=null!=(t=[800,720,600,480].find(e=>e<=window.outerWidth/1.618))?t:360),null!=e.left||(e.left=Math.max(0,Math.round(window.screenX+(window.outerWidth-e.width)/2))),null!=e.height&&(null!=e.top||(e.top=Math.max(0,Math.round(window.screenY+(window.outerHeight-e.height)/2)))),e}static serialize(e){return Object.entries(e).filter(([,e])=>null!=e).map(([e,t])=>`${e}=${"boolean"!=typeof t?t:t?"yes":"no"}`).join(",")}},j=class e extends M{constructor(){super(...arguments),this._logger=new L(`Timer('${this._name}')`),this._timerHandle=null,this._expiration=0,this._callback=()=>{const t=this._expiration-e.getEpochTime();this._logger.debug("timer completes in",t),this._expiration<=e.getEpochTime()&&(this.cancel(),super.raise())}}static getEpochTime(){return Math.floor(Date.now()/1e3)}init(t){const i=this._logger.create("init");t=Math.max(Math.floor(t),1);const n=e.getEpochTime()+t;if(this.expiration===n&&this._timerHandle)return void i.debug("skipping since already initialized for expiration at",this.expiration);this.cancel(),i.debug("using duration",t),this._expiration=n;const s=Math.min(t,5);this._timerHandle=setInterval(this._callback,1e3*s)}get expiration(){return this._expiration}cancel(){this._logger.create("cancel"),this._timerHandle&&(clearInterval(this._timerHandle),this._timerHandle=null)}},G=class{static readParams(e,t="query"){if(!e)throw new TypeError("Invalid URL");const i=new URL(e,"http://127.0.0.1")["fragment"===t?"hash":"search"];return new URLSearchParams(i.slice(1))}},z=";",W=class extends Error{constructor(e,t){var i,n,s;if(super(e.error_description||e.error||""),this.form=t,this.name="ErrorResponse",!e.error)throw L.error("ErrorResponse","No error passed"),new Error("No error passed");this.error=e.error,this.error_description=null!=(i=e.error_description)?i:null,this.error_uri=null!=(n=e.error_uri)?n:null,this.state=e.userState,this.session_state=null!=(s=e.session_state)?s:null,this.url_state=e.url_state}},B=class extends Error{constructor(e){super(e),this.name="ErrorTimeout"}},F=class{constructor(e){this._logger=new L("AccessTokenEvents"),this._expiringTimer=new j("Access token expiring"),this._expiredTimer=new j("Access token expired"),this._expiringNotificationTimeInSeconds=e.expiringNotificationTimeInSeconds}async load(e){const t=this._logger.create("load");if(e.access_token&&void 0!==e.expires_in){const i=e.expires_in;if(t.debug("access token present, remaining duration:",i),i>0){let e=i-this._expiringNotificationTimeInSeconds;e<=0&&(e=1),t.debug("registering expiring timer, raising in",e,"seconds"),this._expiringTimer.init(e)}else t.debug("canceling existing expiring timer because we're past expiration."),this._expiringTimer.cancel();const n=i+1;t.debug("registering expired timer, raising in",n,"seconds"),this._expiredTimer.init(n)}else this._expiringTimer.cancel(),this._expiredTimer.cancel()}async unload(){this._logger.debug("unload: canceling existing access token timers"),this._expiringTimer.cancel(),this._expiredTimer.cancel()}addAccessTokenExpiring(e){return this._expiringTimer.addHandler(e)}removeAccessTokenExpiring(e){this._expiringTimer.removeHandler(e)}addAccessTokenExpired(e){return this._expiredTimer.addHandler(e)}removeAccessTokenExpired(e){this._expiredTimer.removeHandler(e)}},K=class{constructor(e,t,i,n,s){this._callback=e,this._client_id=t,this._intervalInSeconds=n,this._stopOnError=s,this._logger=new L("CheckSessionIFrame"),this._timer=null,this._session_state=null,this._message=e=>{e.origin===this._frame_origin&&e.source===this._frame.contentWindow&&("error"===e.data?(this._logger.error("error message from check session op iframe"),this._stopOnError&&this.stop()):"changed"===e.data?(this._logger.debug("changed message from check session op iframe"),this.stop(),this._callback()):this._logger.debug(e.data+" message from check session op iframe"))};const r=new URL(i);this._frame_origin=r.origin,this._frame=window.document.createElement("iframe"),this._frame.style.visibility="hidden",this._frame.style.position="fixed",this._frame.style.left="-1000px",this._frame.style.top="0",this._frame.width="0",this._frame.height="0",this._frame.src=r.href}load(){return new Promise(e=>{this._frame.onload=()=>{e()},window.document.body.appendChild(this._frame),window.addEventListener("message",this._message,!1)})}start(e){if(this._session_state===e)return;this._logger.create("start"),this.stop(),this._session_state=e;const t=()=>{this._frame.contentWindow&&this._session_state&&this._frame.contentWindow.postMessage(this._client_id+" "+this._session_state,this._frame_origin)};t(),this._timer=setInterval(t,1e3*this._intervalInSeconds)}stop(){this._logger.create("stop"),this._session_state=null,this._timer&&(clearInterval(this._timer),this._timer=null)}},J=class{constructor(){this._logger=new L("InMemoryWebStorage"),this._data={}}clear(){this._logger.create("clear"),this._data={}}getItem(e){return this._logger.create(`getItem('${e}')`),this._data[e]}setItem(e,t){this._logger.create(`setItem('${e}')`),this._data[e]=t}removeItem(e){this._logger.create(`removeItem('${e}')`),delete this._data[e]}get length(){return Object.getOwnPropertyNames(this._data).length}key(e){return Object.getOwnPropertyNames(this._data)[e]}},V=class extends Error{constructor(e,t){super(t),this.name="ErrorDPoPNonce",this.nonce=e}},Q=class{constructor(e=[],t=null,i={}){this._jwtHandler=t,this._extraHeaders=i,this._logger=new L("JsonService"),this._contentTypes=[],this._contentTypes.push(...e,"application/json"),t&&this._contentTypes.push("application/jwt")}async fetchWithTimeout(e,t={}){const{timeoutInSeconds:i,...n}=t;if(!i)return await fetch(e,n);const s=new AbortController,r=setTimeout(()=>s.abort(),1e3*i);try{return await fetch(e,{...t,signal:s.signal})}catch(e){if(e instanceof DOMException&&"AbortError"===e.name)throw new B("Network timed out");throw e}finally{clearTimeout(r)}}async getJson(e,{token:t,credentials:i,timeoutInSeconds:n}={}){const s=this._logger.create("getJson"),r={Accept:this._contentTypes.join(", ")};let o;t&&(s.debug("token passed, setting Authorization header"),r.Authorization="Bearer "+t),this._appendExtraHeaders(r);try{s.debug("url:",e),o=await this.fetchWithTimeout(e,{method:"GET",headers:r,timeoutInSeconds:n,credentials:i})}catch(e){throw s.error("Network Error"),e}s.debug("HTTP response received, status",o.status);const a=o.headers.get("Content-Type");if(a&&!this._contentTypes.find(e=>a.startsWith(e))&&s.throw(new Error(`Invalid response Content-Type: ${null!=a?a:"undefined"}, from URL: ${e}`)),o.ok&&this._jwtHandler&&(null==a?void 0:a.startsWith("application/jwt")))return await this._jwtHandler(await o.text());let c;try{c=await o.json()}catch(e){if(s.error("Error parsing JSON response",e),o.ok)throw e;throw new Error(`${o.statusText} (${o.status})`)}if(!o.ok){if(s.error("Error from server:",c),c.error)throw new W(c);throw new Error(`${o.statusText} (${o.status}): ${JSON.stringify(c)}`)}return c}async postForm(e,{body:t,basicAuth:i,timeoutInSeconds:n,initCredentials:s,extraHeaders:r}){const o=this._logger.create("postForm"),a={Accept:this._contentTypes.join(", "),"Content-Type":"application/x-www-form-urlencoded",...r};let c;void 0!==i&&(a.Authorization="Basic "+i),this._appendExtraHeaders(a);try{o.debug("url:",e),c=await this.fetchWithTimeout(e,{method:"POST",headers:a,body:t,timeoutInSeconds:n,credentials:s})}catch(e){throw o.error("Network error"),e}o.debug("HTTP response received, status",c.status);const d=c.headers.get("Content-Type");if(d&&!this._contentTypes.find(e=>d.startsWith(e)))throw new Error(`Invalid response Content-Type: ${null!=d?d:"undefined"}, from URL: ${e}`);const l=await c.text();let g={};if(l)try{g=JSON.parse(l)}catch(e){if(o.error("Error parsing JSON response",e),c.ok)throw e;throw new Error(`${c.statusText} (${c.status})`)}if(!c.ok){if(o.error("Error from server:",g),c.headers.has("dpop-nonce")){const e=c.headers.get("dpop-nonce");throw new V(e,`${JSON.stringify(g)}`)}if(g.error)throw new W(g,t);throw new Error(`${c.statusText} (${c.status}): ${JSON.stringify(g)}`)}return g}_appendExtraHeaders(e){const t=this._logger.create("appendExtraHeaders"),i=Object.keys(this._extraHeaders),n=["accept","content-type"],s=["authorization"];0!==i.length&&i.forEach(i=>{if(n.includes(i.toLocaleLowerCase()))return void t.warn("Protected header could not be set",i,n);if(s.includes(i.toLocaleLowerCase())&&Object.keys(e).includes(i))return void t.warn("Header could not be overridden",i,s);const r="function"==typeof this._extraHeaders[i]?this._extraHeaders[i]():this._extraHeaders[i];r&&""!==r&&(e[i]=r)})}},X=class{constructor(e){this._settings=e,this._logger=new L("MetadataService"),this._signingKeys=null,this._metadata=null,this._metadataUrl=this._settings.metadataUrl,this._jsonService=new Q(["application/jwk-set+json"],null,this._settings.extraHeaders),this._settings.signingKeys&&(this._logger.debug("using signingKeys from settings"),this._signingKeys=this._settings.signingKeys),this._settings.metadata&&(this._logger.debug("using metadata from settings"),this._metadata=this._settings.metadata),this._settings.fetchRequestCredentials&&(this._logger.debug("using fetchRequestCredentials from settings"),this._fetchRequestCredentials=this._settings.fetchRequestCredentials)}resetSigningKeys(){this._signingKeys=null}async getMetadata(){const e=this._logger.create("getMetadata");if(this._metadata)return e.debug("using cached values"),this._metadata;if(!this._metadataUrl)throw e.throw(new Error("No authority or metadataUrl configured on settings")),null;e.debug("getting metadata from",this._metadataUrl);const t=await this._jsonService.getJson(this._metadataUrl,{credentials:this._fetchRequestCredentials,timeoutInSeconds:this._settings.requestTimeoutInSeconds});return e.debug("merging remote JSON with seed metadata"),this._metadata=Object.assign({},t,this._settings.metadataSeed),this._metadata}getIssuer(){return this._getMetadataProperty("issuer")}getAuthorizationEndpoint(){return this._getMetadataProperty("authorization_endpoint")}getUserInfoEndpoint(){return this._getMetadataProperty("userinfo_endpoint")}getTokenEndpoint(e=!0){return this._getMetadataProperty("token_endpoint",e)}getCheckSessionIframe(){return this._getMetadataProperty("check_session_iframe",!0)}getEndSessionEndpoint(){return this._getMetadataProperty("end_session_endpoint",!0)}getRevocationEndpoint(e=!0){return this._getMetadataProperty("revocation_endpoint",e)}getKeysEndpoint(e=!0){return this._getMetadataProperty("jwks_uri",e)}async _getMetadataProperty(e,t=!1){const i=this._logger.create(`_getMetadataProperty('${e}')`),n=await this.getMetadata();if(i.debug("resolved"),void 0===n[e]){if(!0===t)return void i.warn("Metadata does not contain optional property");i.throw(new Error("Metadata does not contain property "+e))}return n[e]}async getSigningKeys(){const e=this._logger.create("getSigningKeys");if(this._signingKeys)return e.debug("returning signingKeys from cache"),this._signingKeys;const t=await this.getKeysEndpoint(!1);e.debug("got jwks_uri",t);const i=await this._jsonService.getJson(t,{timeoutInSeconds:this._settings.requestTimeoutInSeconds});if(e.debug("got key set",i),!Array.isArray(i.keys))throw e.throw(new Error("Missing keys on keyset")),null;return this._signingKeys=i.keys,this._signingKeys}},Y=class{constructor({prefix:e="oidc.",store:t=localStorage}={}){this._logger=new L("WebStorageStateStore"),this._store=t,this._prefix=e}async set(e,t){this._logger.create(`set('${e}')`),e=this._prefix+e,await this._store.setItem(e,t)}async get(e){return this._logger.create(`get('${e}')`),e=this._prefix+e,await this._store.getItem(e)}async remove(e){this._logger.create(`remove('${e}')`),e=this._prefix+e;const t=await this._store.getItem(e);return await this._store.removeItem(e),t}async getAllKeys(){this._logger.create("getAllKeys");const e=await this._store.length,t=[];for(let i=0;i<e;i++){const e=await this._store.key(i);e&&0===e.indexOf(this._prefix)&&t.push(e.substr(this._prefix.length))}return t}},Z=class{constructor({authority:e,metadataUrl:t,metadata:i,signingKeys:n,metadataSeed:s,client_id:r,client_secret:o,response_type:a="code",scope:c="openid",redirect_uri:d,post_logout_redirect_uri:l,client_authentication:g="client_secret_post",token_endpoint_auth_signing_alg:u="HS256",prompt:h,display:p,max_age:_,ui_locales:w,acr_values:m,resource:f,response_mode:y,filterProtocolClaims:S=!0,loadUserInfo:b=!1,requestTimeoutInSeconds:v,staleStateAgeInSeconds:I=900,mergeClaimsStrategy:E={array:"replace"},disablePKCE:k=!1,stateStore:T,revokeTokenAdditionalContentTypes:R,fetchRequestCredentials:A,refreshTokenAllowedScope:C,extraQueryParams:x={},extraTokenParams:P={},extraHeaders:O={},dpop:U,omitScopeWhenRequesting:L=!1}){var D;if(this.authority=e,t?this.metadataUrl=t:(this.metadataUrl=e,e&&(this.metadataUrl.endsWith("/")||(this.metadataUrl+="/"),this.metadataUrl+=".well-known/openid-configuration")),this.metadata=i,this.metadataSeed=s,this.signingKeys=n,this.client_id=r,this.client_secret=o,this.response_type=a,this.scope=c,this.redirect_uri=d,this.post_logout_redirect_uri=l,this.client_authentication=g,this.token_endpoint_auth_signing_alg=u,this.prompt=h,this.display=p,this.max_age=_,this.ui_locales=w,this.acr_values=m,this.resource=f,this.response_mode=y,this.filterProtocolClaims=null==S||S,this.loadUserInfo=!!b,this.staleStateAgeInSeconds=I,this.mergeClaimsStrategy=E,this.omitScopeWhenRequesting=L,this.disablePKCE=!!k,this.revokeTokenAdditionalContentTypes=R,this.fetchRequestCredentials=A||"same-origin",this.requestTimeoutInSeconds=v,T)this.stateStore=T;else{const e="undefined"!=typeof window?window.localStorage:new J;this.stateStore=new Y({store:e})}if(this.refreshTokenAllowedScope=C,this.extraQueryParams=x,this.extraTokenParams=P,this.extraHeaders=O,this.dpop=U,this.dpop&&!(null==(D=this.dpop)?void 0:D.store))throw new Error("A DPoPStore is required when dpop is enabled")}},ee=class{constructor(e,t){this._settings=e,this._metadataService=t,this._logger=new L("UserInfoService"),this._getClaimsFromJwt=async e=>{const t=this._logger.create("_getClaimsFromJwt");try{const i=D.decode(e);return t.debug("JWT decoding successful"),i}catch(e){throw t.error("Error parsing JWT response"),e}},this._jsonService=new Q(void 0,this._getClaimsFromJwt,this._settings.extraHeaders)}async getClaims(e){const t=this._logger.create("getClaims");e||this._logger.throw(new Error("No token passed"));const i=await this._metadataService.getUserInfoEndpoint();t.debug("got userinfo url",i);const n=await this._jsonService.getJson(i,{token:e,credentials:this._settings.fetchRequestCredentials,timeoutInSeconds:this._settings.requestTimeoutInSeconds});return t.debug("got claims",n),n}},te=class{constructor(e,t){this._settings=e,this._metadataService=t,this._logger=new L("TokenClient"),this._jsonService=new Q(this._settings.revokeTokenAdditionalContentTypes,null,this._settings.extraHeaders)}async exchangeCode({grant_type:e="authorization_code",redirect_uri:t=this._settings.redirect_uri,client_id:i=this._settings.client_id,client_secret:n=this._settings.client_secret,extraHeaders:s,...r}){const o=this._logger.create("exchangeCode");i||o.throw(new Error("A client_id is required")),t||o.throw(new Error("A redirect_uri is required")),r.code||o.throw(new Error("A code is required"));const a=new URLSearchParams({grant_type:e,redirect_uri:t});for(const[e,t]of Object.entries(r))null!=t&&a.set(e,t);if(("client_secret_basic"===this._settings.client_authentication||"client_secret_jwt"===this._settings.client_authentication)&&null==n)throw o.throw(new Error("A client_secret is required")),null;let c;const d=await this._metadataService.getTokenEndpoint(!1);switch(this._settings.client_authentication){case"client_secret_basic":c=$.generateBasicAuth(i,n);break;case"client_secret_post":a.append("client_id",i),n&&a.append("client_secret",n);break;case"client_secret_jwt":{const e=await $.generateClientAssertionJwt(i,n,d,this._settings.token_endpoint_auth_signing_alg);a.append("client_id",i),a.append("client_assertion_type","urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),a.append("client_assertion",e);break}}o.debug("got token endpoint");const l=await this._jsonService.postForm(d,{body:a,basicAuth:c,timeoutInSeconds:this._settings.requestTimeoutInSeconds,initCredentials:this._settings.fetchRequestCredentials,extraHeaders:s});return o.debug("got response"),l}async exchangeCredentials({grant_type:e="password",client_id:t=this._settings.client_id,client_secret:i=this._settings.client_secret,scope:n=this._settings.scope,...s}){const r=this._logger.create("exchangeCredentials");t||r.throw(new Error("A client_id is required"));const o=new URLSearchParams({grant_type:e});this._settings.omitScopeWhenRequesting||o.set("scope",n);for(const[e,t]of Object.entries(s))null!=t&&o.set(e,t);if(("client_secret_basic"===this._settings.client_authentication||"client_secret_jwt"===this._settings.client_authentication)&&null==i)throw r.throw(new Error("A client_secret is required")),null;let a;const c=await this._metadataService.getTokenEndpoint(!1);switch(this._settings.client_authentication){case"client_secret_basic":a=$.generateBasicAuth(t,i);break;case"client_secret_post":o.append("client_id",t),i&&o.append("client_secret",i);break;case"client_secret_jwt":{const e=await $.generateClientAssertionJwt(t,i,c,this._settings.token_endpoint_auth_signing_alg);o.append("client_id",t),o.append("client_assertion_type","urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),o.append("client_assertion",e);break}}r.debug("got token endpoint");const d=await this._jsonService.postForm(c,{body:o,basicAuth:a,timeoutInSeconds:this._settings.requestTimeoutInSeconds,initCredentials:this._settings.fetchRequestCredentials});return r.debug("got response"),d}async exchangeRefreshToken({grant_type:e="refresh_token",client_id:t=this._settings.client_id,client_secret:i=this._settings.client_secret,timeoutInSeconds:n,extraHeaders:s,...r}){const o=this._logger.create("exchangeRefreshToken");t||o.throw(new Error("A client_id is required")),r.refresh_token||o.throw(new Error("A refresh_token is required"));const a=new URLSearchParams({grant_type:e});for(const[e,t]of Object.entries(r))Array.isArray(t)?t.forEach(t=>a.append(e,t)):null!=t&&a.set(e,t);if(("client_secret_basic"===this._settings.client_authentication||"client_secret_jwt"===this._settings.client_authentication)&&null==i)throw o.throw(new Error("A client_secret is required")),null;let c;const d=await this._metadataService.getTokenEndpoint(!1);switch(this._settings.client_authentication){case"client_secret_basic":c=$.generateBasicAuth(t,i);break;case"client_secret_post":a.append("client_id",t),i&&a.append("client_secret",i);break;case"client_secret_jwt":{const e=await $.generateClientAssertionJwt(t,i,d,this._settings.token_endpoint_auth_signing_alg);a.append("client_id",t),a.append("client_assertion_type","urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),a.append("client_assertion",e);break}}o.debug("got token endpoint");const l=await this._jsonService.postForm(d,{body:a,basicAuth:c,timeoutInSeconds:n,initCredentials:this._settings.fetchRequestCredentials,extraHeaders:s});return o.debug("got response"),l}async revoke(e){var t;const i=this._logger.create("revoke");e.token||i.throw(new Error("A token is required"));const n=await this._metadataService.getRevocationEndpoint(!1);i.debug(`got revocation endpoint, revoking ${null!=(t=e.token_type_hint)?t:"default token type"}`);const s=new URLSearchParams;for(const[t,i]of Object.entries(e))null!=i&&s.set(t,i);s.set("client_id",this._settings.client_id),this._settings.client_secret&&s.set("client_secret",this._settings.client_secret),await this._jsonService.postForm(n,{body:s,timeoutInSeconds:this._settings.requestTimeoutInSeconds}),i.debug("got response")}},ie=class{constructor(e,t,i){this._settings=e,this._metadataService=t,this._claimsService=i,this._logger=new L("ResponseValidator"),this._userInfoService=new ee(this._settings,this._metadataService),this._tokenClient=new te(this._settings,this._metadataService)}async validateSigninResponse(e,t,i){const n=this._logger.create("validateSigninResponse");this._processSigninState(e,t),n.debug("state processed"),await this._processCode(e,t,i),n.debug("code processed"),e.isOpenId&&this._validateIdTokenAttributes(e),n.debug("tokens validated"),await this._processClaims(e,null==t?void 0:t.skipUserInfo,e.isOpenId),n.debug("claims processed")}async validateCredentialsResponse(e,t){const i=this._logger.create("validateCredentialsResponse"),n=e.isOpenId&&!!e.id_token;n&&this._validateIdTokenAttributes(e),i.debug("tokens validated"),await this._processClaims(e,t,n),i.debug("claims processed")}async validateRefreshResponse(e,t){const i=this._logger.create("validateRefreshResponse");e.userState=t.data,null!=e.session_state||(e.session_state=t.session_state),null!=e.scope||(e.scope=t.scope),e.isOpenId&&e.id_token&&(this._validateIdTokenAttributes(e,t.id_token),i.debug("ID Token validated")),e.id_token||(e.id_token=t.id_token,e.profile=t.profile);const n=e.isOpenId&&!!e.id_token;await this._processClaims(e,!1,n),i.debug("claims processed")}validateSignoutResponse(e,t){const i=this._logger.create("validateSignoutResponse");if(t.id!==e.state&&i.throw(new Error("State does not match")),i.debug("state validated"),e.userState=t.data,e.error)throw i.warn("Response was error",e.error),new W(e)}_processSigninState(e,t){const i=this._logger.create("_processSigninState");if(t.id!==e.state&&i.throw(new Error("State does not match")),t.client_id||i.throw(new Error("No client_id on state")),t.authority||i.throw(new Error("No authority on state")),this._settings.authority!==t.authority&&i.throw(new Error("authority mismatch on settings vs. signin state")),this._settings.client_id&&this._settings.client_id!==t.client_id&&i.throw(new Error("client_id mismatch on settings vs. signin state")),i.debug("state validated"),e.userState=t.data,e.url_state=t.url_state,null!=e.scope||(e.scope=t.scope),e.error)throw i.warn("Response was error",e.error),new W(e);t.code_verifier&&!e.code&&i.throw(new Error("Expected code in response"))}async _processClaims(e,t=!1,i=!0){const n=this._logger.create("_processClaims");if(e.profile=this._claimsService.filterProtocolClaims(e.profile),t||!this._settings.loadUserInfo||!e.access_token)return void n.debug("not loading user info");n.debug("loading user info");const s=await this._userInfoService.getClaims(e.access_token);n.debug("user info claims received from user info endpoint"),i&&s.sub!==e.profile.sub&&n.throw(new Error("subject from UserInfo response does not match subject in ID Token")),e.profile=this._claimsService.mergeClaims(e.profile,this._claimsService.filterProtocolClaims(s)),n.debug("user info claims received, updated profile:",e.profile)}async _processCode(e,t,i){const n=this._logger.create("_processCode");if(e.code){n.debug("Validating code");const s=await this._tokenClient.exchangeCode({client_id:t.client_id,client_secret:t.client_secret,code:e.code,redirect_uri:t.redirect_uri,code_verifier:t.code_verifier,extraHeaders:i,...t.extraTokenParams});Object.assign(e,s)}else n.debug("No code to process")}_validateIdTokenAttributes(e,t){var i;const n=this._logger.create("_validateIdTokenAttributes");n.debug("decoding ID Token JWT");const s=D.decode(null!=(i=e.id_token)?i:"");if(s.sub||n.throw(new Error("ID Token is missing a subject claim")),t){const e=D.decode(t);s.sub!==e.sub&&n.throw(new Error("sub in id_token does not match current sub")),s.auth_time&&s.auth_time!==e.auth_time&&n.throw(new Error("auth_time in id_token does not match original auth_time")),s.azp&&s.azp!==e.azp&&n.throw(new Error("azp in id_token does not match original azp")),!s.azp&&e.azp&&n.throw(new Error("azp not in id_token, but present in original id_token"))}e.profile=s}},ne=class e{constructor(e){this.id=e.id||$.generateUUIDv4(),this.data=e.data,e.created&&e.created>0?this.created=e.created:this.created=j.getEpochTime(),this.request_type=e.request_type,this.url_state=e.url_state}toStorageString(){return new L("State").create("toStorageString"),JSON.stringify({id:this.id,data:this.data,created:this.created,request_type:this.request_type,url_state:this.url_state})}static fromStorageString(t){return L.createStatic("State","fromStorageString"),Promise.resolve(new e(JSON.parse(t)))}static async clearStaleState(t,i){const n=L.createStatic("State","clearStaleState"),s=j.getEpochTime()-i,r=await t.getAllKeys();n.debug("got keys",r);for(let i=0;i<r.length;i++){const o=r[i],a=await t.get(o);let c=!1;if(a)try{const t=await e.fromStorageString(a);n.debug("got item from key:",o,t.created),t.created<=s&&(c=!0)}catch(e){n.error("Error parsing state for key:",o,e),c=!0}else n.debug("no item in storage for key:",o),c=!0;c&&(n.debug("removed item for key:",o),t.remove(o))}}},se=class e extends ne{constructor(e){super(e),this.code_verifier=e.code_verifier,this.code_challenge=e.code_challenge,this.authority=e.authority,this.client_id=e.client_id,this.redirect_uri=e.redirect_uri,this.scope=e.scope,this.client_secret=e.client_secret,this.extraTokenParams=e.extraTokenParams,this.response_mode=e.response_mode,this.skipUserInfo=e.skipUserInfo}static async create(t){const i=!0===t.code_verifier?$.generateCodeVerifier():t.code_verifier||void 0,n=i?await $.generateCodeChallenge(i):void 0;return new e({...t,code_verifier:i,code_challenge:n})}toStorageString(){return new L("SigninState").create("toStorageString"),JSON.stringify({id:this.id,data:this.data,created:this.created,request_type:this.request_type,url_state:this.url_state,code_verifier:this.code_verifier,authority:this.authority,client_id:this.client_id,redirect_uri:this.redirect_uri,scope:this.scope,client_secret:this.client_secret,extraTokenParams:this.extraTokenParams,response_mode:this.response_mode,skipUserInfo:this.skipUserInfo})}static fromStorageString(t){L.createStatic("SigninState","fromStorageString");const i=JSON.parse(t);return e.create(i)}},re=class e{constructor(e){this.url=e.url,this.state=e.state}static async create({url:t,authority:i,client_id:n,redirect_uri:s,response_type:r,scope:o,state_data:a,response_mode:c,request_type:d,client_secret:l,nonce:g,url_state:u,resource:h,skipUserInfo:p,extraQueryParams:_,extraTokenParams:w,disablePKCE:m,dpopJkt:f,omitScopeWhenRequesting:y,...S}){if(!t)throw this._logger.error("create: No url passed"),new Error("url");if(!n)throw this._logger.error("create: No client_id passed"),new Error("client_id");if(!s)throw this._logger.error("create: No redirect_uri passed"),new Error("redirect_uri");if(!r)throw this._logger.error("create: No response_type passed"),new Error("response_type");if(!o)throw this._logger.error("create: No scope passed"),new Error("scope");if(!i)throw this._logger.error("create: No authority passed"),new Error("authority");const b=await se.create({data:a,request_type:d,url_state:u,code_verifier:!m,client_id:n,authority:i,redirect_uri:s,response_mode:c,client_secret:l,scope:o,extraTokenParams:w,skipUserInfo:p}),v=new URL(t);v.searchParams.append("client_id",n),v.searchParams.append("redirect_uri",s),v.searchParams.append("response_type",r),y||v.searchParams.append("scope",o),g&&v.searchParams.append("nonce",g),f&&v.searchParams.append("dpop_jkt",f);let I=b.id;u&&(I=`${I}${z}${u}`),v.searchParams.append("state",I),b.code_challenge&&(v.searchParams.append("code_challenge",b.code_challenge),v.searchParams.append("code_challenge_method","S256")),h&&(Array.isArray(h)?h:[h]).forEach(e=>v.searchParams.append("resource",e));for(const[e,t]of Object.entries({response_mode:c,...S,..._}))null!=t&&v.searchParams.append(e,t.toString());return new e({url:v.href,state:b})}};re._logger=new L("SigninRequest");var oe=re,ae=class{constructor(e){if(this.access_token="",this.token_type="",this.profile={},this.state=e.get("state"),this.session_state=e.get("session_state"),this.state){const e=decodeURIComponent(this.state).split(z);this.state=e[0],e.length>1&&(this.url_state=e.slice(1).join(z))}this.error=e.get("error"),this.error_description=e.get("error_description"),this.error_uri=e.get("error_uri"),this.code=e.get("code")}get expires_in(){if(void 0!==this.expires_at)return this.expires_at-j.getEpochTime()}set expires_in(e){"string"==typeof e&&(e=Number(e)),void 0!==e&&e>=0&&(this.expires_at=Math.floor(e)+j.getEpochTime())}get isOpenId(){var e;return(null==(e=this.scope)?void 0:e.split(" ").includes("openid"))||!!this.id_token}},ce=class{constructor({url:e,state_data:t,id_token_hint:i,post_logout_redirect_uri:n,extraQueryParams:s,request_type:r,client_id:o,url_state:a}){if(this._logger=new L("SignoutRequest"),!e)throw this._logger.error("ctor: No url passed"),new Error("url");const c=new URL(e);if(i&&c.searchParams.append("id_token_hint",i),o&&c.searchParams.append("client_id",o),n&&(c.searchParams.append("post_logout_redirect_uri",n),t||a)){this.state=new ne({data:t,request_type:r,url_state:a});let e=this.state.id;a&&(e=`${e}${z}${a}`),c.searchParams.append("state",e)}for(const[e,t]of Object.entries({...s}))null!=t&&c.searchParams.append(e,t.toString());this.url=c.href}},de=class{constructor(e){if(this.state=e.get("state"),this.state){const e=decodeURIComponent(this.state).split(z);this.state=e[0],e.length>1&&(this.url_state=e.slice(1).join(z))}this.error=e.get("error"),this.error_description=e.get("error_description"),this.error_uri=e.get("error_uri")}},le=["nbf","jti","auth_time","nonce","acr","amr","azp","at_hash"],ge=["sub","iss","aud","exp","iat"],ue=class{constructor(e){this._settings=e,this._logger=new L("ClaimsService")}filterProtocolClaims(e){const t={...e};if(this._settings.filterProtocolClaims){let e;e=Array.isArray(this._settings.filterProtocolClaims)?this._settings.filterProtocolClaims:le;for(const i of e)ge.includes(i)||delete t[i]}return t}mergeClaims(e,t){const i={...e};for(const[e,n]of Object.entries(t))if(i[e]!==n)if(Array.isArray(i[e])||Array.isArray(n))if("replace"==this._settings.mergeClaimsStrategy.array)i[e]=n;else{const t=Array.isArray(i[e])?i[e]:[i[e]];for(const e of Array.isArray(n)?n:[n])t.includes(e)||t.push(e);i[e]=t}else"object"==typeof i[e]&&"object"==typeof n?i[e]=this.mergeClaims(i[e],n):i[e]=n;return i}},he=class{constructor(e,t){this.keys=e,this.nonce=t}},pe=class{constructor(e,t){this._logger=new L("OidcClient"),this.settings=e instanceof Z?e:new Z(e),this.metadataService=null!=t?t:new X(this.settings),this._claimsService=new ue(this.settings),this._validator=new ie(this.settings,this.metadataService,this._claimsService),this._tokenClient=new te(this.settings,this.metadataService)}async createSigninRequest({state:e,request:t,request_uri:i,request_type:n,id_token_hint:s,login_hint:r,skipUserInfo:o,nonce:a,url_state:c,response_type:d=this.settings.response_type,scope:l=this.settings.scope,redirect_uri:g=this.settings.redirect_uri,prompt:u=this.settings.prompt,display:h=this.settings.display,max_age:p=this.settings.max_age,ui_locales:_=this.settings.ui_locales,acr_values:w=this.settings.acr_values,resource:m=this.settings.resource,response_mode:f=this.settings.response_mode,extraQueryParams:y=this.settings.extraQueryParams,extraTokenParams:S=this.settings.extraTokenParams,dpopJkt:b,omitScopeWhenRequesting:v=this.settings.omitScopeWhenRequesting}){const I=this._logger.create("createSigninRequest");if("code"!==d)throw new Error("Only the Authorization Code flow (with PKCE) is supported");const E=await this.metadataService.getAuthorizationEndpoint();I.debug("Received authorization endpoint",E);const k=await oe.create({url:E,authority:this.settings.authority,client_id:this.settings.client_id,redirect_uri:g,response_type:d,scope:l,state_data:e,url_state:c,prompt:u,display:h,max_age:p,ui_locales:_,id_token_hint:s,login_hint:r,acr_values:w,dpopJkt:b,resource:m,request:t,request_uri:i,extraQueryParams:y,extraTokenParams:S,request_type:n,response_mode:f,client_secret:this.settings.client_secret,skipUserInfo:o,nonce:a,disablePKCE:this.settings.disablePKCE,omitScopeWhenRequesting:v});await this.clearStaleState();const T=k.state;return await this.settings.stateStore.set(T.id,T.toStorageString()),k}async readSigninResponseState(e,t=!1){const i=this._logger.create("readSigninResponseState"),n=new ae(G.readParams(e,this.settings.response_mode));if(!n.state)throw i.throw(new Error("No state in response")),null;const s=await this.settings.stateStore[t?"remove":"get"](n.state);if(!s)throw i.throw(new Error("No matching state found in storage")),null;return{state:await se.fromStorageString(s),response:n}}async processSigninResponse(e,t,i=!0){const n=this._logger.create("processSigninResponse"),{state:s,response:r}=await this.readSigninResponseState(e,i);if(n.debug("received state from storage; validating response"),this.settings.dpop&&this.settings.dpop.store){const e=await this.getDpopProof(this.settings.dpop.store);t={...t,DPoP:e}}try{await this._validator.validateSigninResponse(r,s,t)}catch(e){if(!(e instanceof V&&this.settings.dpop))throw e;{const i=await this.getDpopProof(this.settings.dpop.store,e.nonce);t.DPoP=i,await this._validator.validateSigninResponse(r,s,t)}}return r}async getDpopProof(e,t){let i,n;return(await e.getAllKeys()).includes(this.settings.client_id)?(n=await e.get(this.settings.client_id),n.nonce!==t&&t&&(n.nonce=t,await e.set(this.settings.client_id,n))):(i=await $.generateDPoPKeys(),n=new he(i,t),await e.set(this.settings.client_id,n)),await $.generateDPoPProof({url:await this.metadataService.getTokenEndpoint(!1),httpMethod:"POST",keyPair:n.keys,nonce:n.nonce})}async processResourceOwnerPasswordCredentials({username:e,password:t,skipUserInfo:i=!1,extraTokenParams:n={}}){const s=await this._tokenClient.exchangeCredentials({username:e,password:t,...n}),r=new ae(new URLSearchParams);return Object.assign(r,s),await this._validator.validateCredentialsResponse(r,i),r}async useRefreshToken({state:e,redirect_uri:t,resource:i,timeoutInSeconds:n,extraHeaders:s,extraTokenParams:r}){var o;const a=this._logger.create("useRefreshToken");let c,d;if(void 0===this.settings.refreshTokenAllowedScope)c=e.scope;else{const t=this.settings.refreshTokenAllowedScope.split(" ");c=((null==(o=e.scope)?void 0:o.split(" "))||[]).filter(e=>t.includes(e)).join(" ")}if(this.settings.dpop&&this.settings.dpop.store){const e=await this.getDpopProof(this.settings.dpop.store);s={...s,DPoP:e}}try{d=await this._tokenClient.exchangeRefreshToken({refresh_token:e.refresh_token,scope:c,redirect_uri:t,resource:i,timeoutInSeconds:n,extraHeaders:s,...r})}catch(o){if(!(o instanceof V&&this.settings.dpop))throw o;s.DPoP=await this.getDpopProof(this.settings.dpop.store,o.nonce),d=await this._tokenClient.exchangeRefreshToken({refresh_token:e.refresh_token,scope:c,redirect_uri:t,resource:i,timeoutInSeconds:n,extraHeaders:s,...r})}const l=new ae(new URLSearchParams);return Object.assign(l,d),a.debug("validating response",l),await this._validator.validateRefreshResponse(l,{...e,scope:c}),l}async createSignoutRequest({state:e,id_token_hint:t,client_id:i,request_type:n,url_state:s,post_logout_redirect_uri:r=this.settings.post_logout_redirect_uri,extraQueryParams:o=this.settings.extraQueryParams}={}){const a=this._logger.create("createSignoutRequest"),c=await this.metadataService.getEndSessionEndpoint();if(!c)throw a.throw(new Error("No end session endpoint")),null;a.debug("Received end session endpoint",c),i||!r||t||(i=this.settings.client_id);const d=new ce({url:c,id_token_hint:t,client_id:i,post_logout_redirect_uri:r,state_data:e,extraQueryParams:o,request_type:n,url_state:s});await this.clearStaleState();const l=d.state;return l&&(a.debug("Signout request has state to persist"),await this.settings.stateStore.set(l.id,l.toStorageString())),d}async readSignoutResponseState(e,t=!1){const i=this._logger.create("readSignoutResponseState"),n=new de(G.readParams(e,this.settings.response_mode));if(!n.state){if(i.debug("No state in response"),n.error)throw i.warn("Response was error:",n.error),new W(n);return{state:void 0,response:n}}const s=await this.settings.stateStore[t?"remove":"get"](n.state);if(!s)throw i.throw(new Error("No matching state found in storage")),null;return{state:await ne.fromStorageString(s),response:n}}async processSignoutResponse(e){const t=this._logger.create("processSignoutResponse"),{state:i,response:n}=await this.readSignoutResponseState(e,!0);return i?(t.debug("Received state from storage; validating response"),this._validator.validateSignoutResponse(n,i)):t.debug("No state from storage; skipping response validation"),n}clearStaleState(){return this._logger.create("clearStaleState"),ne.clearStaleState(this.settings.stateStore,this.settings.staleStateAgeInSeconds)}async revokeToken(e,t){return this._logger.create("revokeToken"),await this._tokenClient.revoke({token:e,token_type_hint:t})}},_e=class{constructor(e){this._userManager=e,this._logger=new L("SessionMonitor"),this._start=async e=>{const t=e.session_state;if(!t)return;const i=this._logger.create("_start");if(e.profile?(this._sub=e.profile.sub,i.debug("session_state",t,", sub",this._sub)):(this._sub=void 0,i.debug("session_state",t,", anonymous user")),this._checkSessionIFrame)this._checkSessionIFrame.start(t);else try{const e=await this._userManager.metadataService.getCheckSessionIframe();if(e){i.debug("initializing check session iframe");const n=this._userManager.settings.client_id,s=this._userManager.settings.checkSessionIntervalInSeconds,r=this._userManager.settings.stopCheckSessionOnError,o=new K(this._callback,n,e,s,r);await o.load(),this._checkSessionIFrame=o,o.start(t)}else i.warn("no check session iframe found in the metadata")}catch(e){i.error("Error from getCheckSessionIframe:",e instanceof Error?e.message:e)}},this._stop=()=>{const e=this._logger.create("_stop");if(this._sub=void 0,this._checkSessionIFrame&&this._checkSessionIFrame.stop(),this._userManager.settings.monitorAnonymousSession){const t=setInterval(async()=>{clearInterval(t);try{const e=await this._userManager.querySessionStatus();if(e){const t={session_state:e.session_state,profile:e.sub?{sub:e.sub}:null};this._start(t)}}catch(t){e.error("error from querySessionStatus",t instanceof Error?t.message:t)}},1e3)}},this._callback=async()=>{const e=this._logger.create("_callback");try{const t=await this._userManager.querySessionStatus();let i=!0;t&&this._checkSessionIFrame?t.sub===this._sub?(i=!1,this._checkSessionIFrame.start(t.session_state),e.debug("same sub still logged in at OP, session state has changed, restarting check session iframe; session_state",t.session_state),await this._userManager.events._raiseUserSessionChanged()):e.debug("different subject signed into OP",t.sub):e.debug("subject no longer signed into OP"),i?this._sub?await this._userManager.events._raiseUserSignedOut():await this._userManager.events._raiseUserSignedIn():e.debug("no change in session detected, no event to raise")}catch(t){this._sub&&(e.debug("Error calling queryCurrentSigninSession; raising signed out event",t),await this._userManager.events._raiseUserSignedOut())}},e||this._logger.throw(new Error("No user manager passed")),this._userManager.events.addUserLoaded(this._start),this._userManager.events.addUserUnloaded(this._stop),this._init().catch(e=>{this._logger.error(e)})}async _init(){this._logger.create("_init");const e=await this._userManager.getUser();if(e)this._start(e);else if(this._userManager.settings.monitorAnonymousSession){const e=await this._userManager.querySessionStatus();if(e){const t={session_state:e.session_state,profile:e.sub?{sub:e.sub}:null};this._start(t)}}}},we=class e{constructor(e){var t;this.id_token=e.id_token,this.session_state=null!=(t=e.session_state)?t:null,this.access_token=e.access_token,this.refresh_token=e.refresh_token,this.token_type=e.token_type,this.scope=e.scope,this.profile=e.profile,this.expires_at=e.expires_at,this.state=e.userState,this.url_state=e.url_state}get expires_in(){if(void 0!==this.expires_at)return this.expires_at-j.getEpochTime()}set expires_in(e){void 0!==e&&(this.expires_at=Math.floor(e)+j.getEpochTime())}get expired(){const e=this.expires_in;if(void 0!==e)return e<=0}get scopes(){var e,t;return null!=(t=null==(e=this.scope)?void 0:e.split(" "))?t:[]}toStorageString(){return new L("User").create("toStorageString"),JSON.stringify({id_token:this.id_token,session_state:this.session_state,access_token:this.access_token,refresh_token:this.refresh_token,token_type:this.token_type,scope:this.scope,profile:this.profile,expires_at:this.expires_at})}static fromStorageString(t){return L.createStatic("User","fromStorageString"),new e(JSON.parse(t))}},me="oidc-client",fe=class{constructor(){this._abort=new M("Window navigation aborted"),this._disposeHandlers=new Set,this._window=null}async navigate(e){const t=this._logger.create("navigate");if(!this._window)throw new Error("Attempted to navigate on a disposed window");t.debug("setting URL in window"),this._window.location.replace(e.url);const{url:i,keepOpen:n}=await new Promise((i,n)=>{const s=s=>{var r;const o=s.data,a=null!=(r=e.scriptOrigin)?r:window.location.origin;if(s.origin===a&&(null==o?void 0:o.source)===me){try{const i=G.readParams(o.url,e.response_mode).get("state");if(i||t.warn("no state found in response url"),s.source!==this._window&&i!==e.state)return}catch{this._dispose(),n(new Error("Invalid response from window"))}i(o)}};window.addEventListener("message",s,!1),this._disposeHandlers.add(()=>window.removeEventListener("message",s,!1));const r=new BroadcastChannel(`oidc-client-popup-${e.state}`);r.addEventListener("message",s,!1),this._disposeHandlers.add(()=>r.close()),this._disposeHandlers.add(this._abort.addHandler(e=>{this._dispose(),n(e)}))});return t.debug("got response from window"),this._dispose(),n||this.close(),{url:i}}_dispose(){this._logger.create("_dispose");for(const e of this._disposeHandlers)e();this._disposeHandlers.clear()}static _notifyParent(e,t,i=!1,n=window.location.origin){const s={source:me,url:t,keepOpen:i},r=new L("_notifyParent");if(e)r.debug("With parent. Using parent.postMessage."),e.postMessage(s,n);else{r.debug("No parent. Using BroadcastChannel.");const e=new URL(t).searchParams.get("state");if(!e)throw new Error("No parent and no state in URL. Can't complete notification.");const i=new BroadcastChannel(`oidc-client-popup-${e}`);i.postMessage(s),i.close()}}},ye={location:!1,toolbar:!1,height:640,closePopupWindowAfterInSeconds:-1},Se="_blank",be=60,ve=2,Ie=class extends Z{constructor(e){const{popup_redirect_uri:t=e.redirect_uri,popup_post_logout_redirect_uri:i=e.post_logout_redirect_uri,popupWindowFeatures:n=ye,popupWindowTarget:s=Se,redirectMethod:r="assign",redirectTarget:o="self",iframeNotifyParentOrigin:a=e.iframeNotifyParentOrigin,iframeScriptOrigin:c=e.iframeScriptOrigin,requestTimeoutInSeconds:d,silent_redirect_uri:l=e.redirect_uri,silentRequestTimeoutInSeconds:g,automaticSilentRenew:u=!0,validateSubOnSilentRenew:h=!0,includeIdTokenInSilentRenew:p=!1,monitorSession:_=!1,monitorAnonymousSession:w=!1,checkSessionIntervalInSeconds:m=ve,query_status_response_type:f="code",stopCheckSessionOnError:y=!0,revokeTokenTypes:S=["access_token","refresh_token"],revokeTokensOnSignout:b=!1,includeIdTokenInSilentSignout:v=!1,accessTokenExpiringNotificationTimeInSeconds:I=be,userStore:E}=e;if(super(e),this.popup_redirect_uri=t,this.popup_post_logout_redirect_uri=i,this.popupWindowFeatures=n,this.popupWindowTarget=s,this.redirectMethod=r,this.redirectTarget=o,this.iframeNotifyParentOrigin=a,this.iframeScriptOrigin=c,this.silent_redirect_uri=l,this.silentRequestTimeoutInSeconds=g||d||10,this.automaticSilentRenew=u,this.validateSubOnSilentRenew=h,this.includeIdTokenInSilentRenew=p,this.monitorSession=_,this.monitorAnonymousSession=w,this.checkSessionIntervalInSeconds=m,this.stopCheckSessionOnError=y,this.query_status_response_type=f,this.revokeTokenTypes=S,this.revokeTokensOnSignout=b,this.includeIdTokenInSilentSignout=v,this.accessTokenExpiringNotificationTimeInSeconds=I,E)this.userStore=E;else{const e="undefined"!=typeof window?window.sessionStorage:new J;this.userStore=new Y({store:e})}}},Ee=class e extends fe{constructor({silentRequestTimeoutInSeconds:t=10}){super(),this._logger=new L("IFrameWindow"),this._timeoutInSeconds=t,this._frame=e.createHiddenIframe(),this._window=this._frame.contentWindow}static createHiddenIframe(){const e=window.document.createElement("iframe");return e.style.visibility="hidden",e.style.position="fixed",e.style.left="-1000px",e.style.top="0",e.width="0",e.height="0",window.document.body.appendChild(e),e}async navigate(e){this._logger.debug("navigate: Using timeout of:",this._timeoutInSeconds);const t=setTimeout(()=>{this._abort.raise(new B("IFrame timed out without a response"))},1e3*this._timeoutInSeconds);return this._disposeHandlers.add(()=>clearTimeout(t)),await super.navigate(e)}close(){var e;this._frame&&(this._frame.parentNode&&(this._frame.addEventListener("load",e=>{var t;const i=e.target;null==(t=i.parentNode)||t.removeChild(i),this._abort.raise(new Error("IFrame removed from DOM"))},!0),null==(e=this._frame.contentWindow)||e.location.replace("about:blank")),this._frame=null),this._window=null}static notifyParent(e,t){return super._notifyParent(window.parent,e,!1,t)}},ke=class{constructor(e){this._settings=e,this._logger=new L("IFrameNavigator")}async prepare({silentRequestTimeoutInSeconds:e=this._settings.silentRequestTimeoutInSeconds}){return new Ee({silentRequestTimeoutInSeconds:e})}async callback(e){this._logger.create("callback"),Ee.notifyParent(e,this._settings.iframeNotifyParentOrigin)}},Te=class extends fe{constructor({popupWindowTarget:e=Se,popupWindowFeatures:t={},popupSignal:i,popupAbortOnClose:n}){super(),this._logger=new L("PopupWindow");const s=H.center({...ye,...t});this._window=window.open(void 0,e,H.serialize(s)),this.abortOnClose=Boolean(n),i&&i.addEventListener("abort",()=>{var e;this._abort.raise(new Error(null!=(e=i.reason)?e:"Popup aborted"))}),t.closePopupWindowAfterInSeconds&&t.closePopupWindowAfterInSeconds>0&&setTimeout(()=>{this._window&&"boolean"==typeof this._window.closed&&!this._window.closed?this.close():this._abort.raise(new Error("Popup blocked by user"))},1e3*t.closePopupWindowAfterInSeconds)}async navigate(e){var t;null==(t=this._window)||t.focus();const i=setInterval(()=>{this._window&&!this._window.closed||(this._logger.debug("Popup closed by user or isolated by redirect"),n(),this._disposeHandlers.delete(n),this.abortOnClose&&this._abort.raise(new Error("Popup closed by user")))},500),n=()=>clearInterval(i);return this._disposeHandlers.add(n),await super.navigate(e)}close(){this._window&&(this._window.closed||(this._window.close(),this._abort.raise(new Error("Popup closed")))),this._window=null}static notifyOpener(e,t){super._notifyParent(window.opener,e,t),t||window.opener||window.close()}},Re=class{constructor(e){this._settings=e,this._logger=new L("PopupNavigator")}async prepare({popupWindowFeatures:e=this._settings.popupWindowFeatures,popupWindowTarget:t=this._settings.popupWindowTarget,popupSignal:i,popupAbortOnClose:n}){return new Te({popupWindowFeatures:e,popupWindowTarget:t,popupSignal:i,popupAbortOnClose:n})}async callback(e,{keepOpen:t=!1}){this._logger.create("callback"),Te.notifyOpener(e,t)}},Ae=class{constructor(e){this._settings=e,this._logger=new L("RedirectNavigator")}async prepare({redirectMethod:e=this._settings.redirectMethod,redirectTarget:t=this._settings.redirectTarget}){var i;this._logger.create("prepare");let n=window.self;"top"===t&&(n=null!=(i=window.top)?i:window.self);const s=n.location[e].bind(n.location);let r;return{navigate:async e=>{this._logger.create("navigate");const t=new Promise((t,i)=>{r=i,window.addEventListener("pageshow",()=>t(window.location.href)),s(e.url)});return await t},close:()=>{this._logger.create("close"),null==r||r(new Error("Redirect aborted")),n.stop()}}}async callback(){}},Ce=class extends F{constructor(e){super({expiringNotificationTimeInSeconds:e.accessTokenExpiringNotificationTimeInSeconds}),this._logger=new L("UserManagerEvents"),this._userLoaded=new M("User loaded"),this._userUnloaded=new M("User unloaded"),this._silentRenewError=new M("Silent renew error"),this._userSignedIn=new M("User signed in"),this._userSignedOut=new M("User signed out"),this._userSessionChanged=new M("User session changed")}async load(e,t=!0){await super.load(e),t&&await this._userLoaded.raise(e)}async unload(){await super.unload(),await this._userUnloaded.raise()}addUserLoaded(e){return this._userLoaded.addHandler(e)}removeUserLoaded(e){return this._userLoaded.removeHandler(e)}addUserUnloaded(e){return this._userUnloaded.addHandler(e)}removeUserUnloaded(e){return this._userUnloaded.removeHandler(e)}addSilentRenewError(e){return this._silentRenewError.addHandler(e)}removeSilentRenewError(e){return this._silentRenewError.removeHandler(e)}async _raiseSilentRenewError(e){await this._silentRenewError.raise(e)}addUserSignedIn(e){return this._userSignedIn.addHandler(e)}removeUserSignedIn(e){this._userSignedIn.removeHandler(e)}async _raiseUserSignedIn(){await this._userSignedIn.raise()}addUserSignedOut(e){return this._userSignedOut.addHandler(e)}removeUserSignedOut(e){this._userSignedOut.removeHandler(e)}async _raiseUserSignedOut(){await this._userSignedOut.raise()}addUserSessionChanged(e){return this._userSessionChanged.addHandler(e)}removeUserSessionChanged(e){this._userSessionChanged.removeHandler(e)}async _raiseUserSessionChanged(){await this._userSessionChanged.raise()}},xe=class{constructor(e){this._userManager=e,this._logger=new L("SilentRenewService"),this._isStarted=!1,this._retryTimer=new j("Retry Silent Renew"),this._tokenExpiring=async()=>{const e=this._logger.create("_tokenExpiring");try{await this._userManager.signinSilent(),e.debug("silent token renewal successful")}catch(t){if(t instanceof B)return e.warn("ErrorTimeout from signinSilent:",t,"retry in 5s"),void this._retryTimer.init(5);e.error("Error from signinSilent:",t),await this._userManager.events._raiseSilentRenewError(t)}}}async start(){const e=this._logger.create("start");if(!this._isStarted){this._isStarted=!0,this._userManager.events.addAccessTokenExpiring(this._tokenExpiring),this._retryTimer.addHandler(this._tokenExpiring);try{await this._userManager.getUser()}catch(t){e.error("getUser error",t)}}}stop(){this._isStarted&&(this._retryTimer.cancel(),this._retryTimer.removeHandler(this._tokenExpiring),this._userManager.events.removeAccessTokenExpiring(this._tokenExpiring),this._isStarted=!1)}},Pe=class{constructor(e){this.refresh_token=e.refresh_token,this.id_token=e.id_token,this.session_state=e.session_state,this.scope=e.scope,this.profile=e.profile,this.data=e.state}},Oe=class{constructor(e,t,i,n){this._logger=new L("UserManager"),this.settings=new Ie(e),this._client=new pe(e),this._redirectNavigator=null!=t?t:new Ae(this.settings),this._popupNavigator=null!=i?i:new Re(this.settings),this._iframeNavigator=null!=n?n:new ke(this.settings),this._events=new Ce(this.settings),this._silentRenewService=new xe(this),this.settings.automaticSilentRenew&&this.startSilentRenew(),this._sessionMonitor=null,this.settings.monitorSession&&(this._sessionMonitor=new _e(this))}get events(){return this._events}get metadataService(){return this._client.metadataService}async getUser(e=!1){const t=this._logger.create("getUser"),i=await this._loadUser();return i?(t.info("user loaded"),await this._events.load(i,e),i):(t.info("user not found in storage"),null)}async removeUser(){const e=this._logger.create("removeUser");await this.storeUser(null),e.info("user removed from storage"),await this._events.unload()}async signinRedirect(e={}){var t;this._logger.create("signinRedirect");const{redirectMethod:i,...n}=e;let s;(null==(t=this.settings.dpop)?void 0:t.bind_authorization_code)&&(s=await this.generateDPoPJkt(this.settings.dpop));const r=await this._redirectNavigator.prepare({redirectMethod:i});await this._signinStart({request_type:"si:r",dpopJkt:s,...n},r)}async signinRedirectCallback(e=window.location.href){const t=this._logger.create("signinRedirectCallback"),i=await this._signinEnd(e);return i.profile&&i.profile.sub?t.info("success, signed in subject",i.profile.sub):t.info("no subject"),i}async signinResourceOwnerCredentials({username:e,password:t,skipUserInfo:i=!1}){const n=this._logger.create("signinResourceOwnerCredential"),s=await this._client.processResourceOwnerPasswordCredentials({username:e,password:t,skipUserInfo:i,extraTokenParams:this.settings.extraTokenParams});n.debug("got signin response");const r=await this._buildUser(s);return r.profile&&r.profile.sub?n.info("success, signed in subject",r.profile.sub):n.info("no subject"),r}async signinPopup(e={}){var t;const i=this._logger.create("signinPopup");let n;(null==(t=this.settings.dpop)?void 0:t.bind_authorization_code)&&(n=await this.generateDPoPJkt(this.settings.dpop));const{popupWindowFeatures:s,popupWindowTarget:r,popupSignal:o,popupAbortOnClose:a,...c}=e,d=this.settings.popup_redirect_uri;d||i.throw(new Error("No popup_redirect_uri configured"));const l=await this._popupNavigator.prepare({popupWindowFeatures:s,popupWindowTarget:r,popupSignal:o,popupAbortOnClose:a}),g=await this._signin({request_type:"si:p",redirect_uri:d,display:"popup",dpopJkt:n,...c},l);return g&&(g.profile&&g.profile.sub?i.info("success, signed in subject",g.profile.sub):i.info("no subject")),g}async signinPopupCallback(e=window.location.href,t=!1){const i=this._logger.create("signinPopupCallback");await this._popupNavigator.callback(e,{keepOpen:t}),i.info("success")}async signinSilent(e={}){var t,i;const n=this._logger.create("signinSilent"),{silentRequestTimeoutInSeconds:s,...r}=e;let o,a=await this._loadUser();if(!e.forceIframeAuth&&(null==a?void 0:a.refresh_token)){n.debug("using refresh token");const e=new Pe(a);return await this._useRefreshToken({state:e,redirect_uri:r.redirect_uri,resource:r.resource,extraTokenParams:r.extraTokenParams,timeoutInSeconds:s})}(null==(t=this.settings.dpop)?void 0:t.bind_authorization_code)&&(o=await this.generateDPoPJkt(this.settings.dpop));const c=this.settings.silent_redirect_uri;let d;c||n.throw(new Error("No silent_redirect_uri configured")),a&&this.settings.validateSubOnSilentRenew&&(n.debug("subject prior to silent renew:",a.profile.sub),d=a.profile.sub);const l=await this._iframeNavigator.prepare({silentRequestTimeoutInSeconds:s});return a=await this._signin({request_type:"si:s",redirect_uri:c,prompt:"none",id_token_hint:this.settings.includeIdTokenInSilentRenew?null==a?void 0:a.id_token:void 0,dpopJkt:o,...r},l,d),a&&((null==(i=a.profile)?void 0:i.sub)?n.info("success, signed in subject",a.profile.sub):n.info("no subject")),a}async _useRefreshToken(e){const t=await this._client.useRefreshToken({timeoutInSeconds:this.settings.silentRequestTimeoutInSeconds,...e}),i=new we({...e.state,...t});return await this.storeUser(i),await this._events.load(i),i}async signinSilentCallback(e=window.location.href){const t=this._logger.create("signinSilentCallback");await this._iframeNavigator.callback(e),t.info("success")}async signinCallback(e=window.location.href){const{state:t}=await this._client.readSigninResponseState(e);switch(t.request_type){case"si:r":return await this.signinRedirectCallback(e);case"si:p":await this.signinPopupCallback(e);break;case"si:s":await this.signinSilentCallback(e);break;default:throw new Error("invalid response_type in state")}}async signoutCallback(e=window.location.href,t=!1){const{state:i}=await this._client.readSignoutResponseState(e);if(i)switch(i.request_type){case"so:r":return await this.signoutRedirectCallback(e);case"so:p":await this.signoutPopupCallback(e,t);break;case"so:s":await this.signoutSilentCallback(e);break;default:throw new Error("invalid response_type in state")}}async querySessionStatus(e={}){const t=this._logger.create("querySessionStatus"),{silentRequestTimeoutInSeconds:i,...n}=e,s=this.settings.silent_redirect_uri;s||t.throw(new Error("No silent_redirect_uri configured"));const r=await this._loadUser(),o=await this._iframeNavigator.prepare({silentRequestTimeoutInSeconds:i}),a=await this._signinStart({request_type:"si:s",redirect_uri:s,prompt:"none",id_token_hint:this.settings.includeIdTokenInSilentRenew?null==r?void 0:r.id_token:void 0,response_type:this.settings.query_status_response_type,scope:"openid",skipUserInfo:!0,...n},o);try{const e={},i=await this._client.processSigninResponse(a.url,e);return t.debug("got signin response"),i.session_state&&i.profile.sub?(t.info("success for subject",i.profile.sub),{session_state:i.session_state,sub:i.profile.sub}):(t.info("success, user not authenticated"),null)}catch(e){if(this.settings.monitorAnonymousSession&&e instanceof W)switch(e.error){case"login_required":case"consent_required":case"interaction_required":case"account_selection_required":return t.info("success for anonymous user"),{session_state:e.session_state}}throw e}}async _signin(e,t,i){const n=await this._signinStart(e,t);return await this._signinEnd(n.url,i)}async _signinStart(e,t){const i=this._logger.create("_signinStart");try{const n=await this._client.createSigninRequest(e);return i.debug("got signin request"),await t.navigate({url:n.url,state:n.state.id,response_mode:n.state.response_mode,scriptOrigin:this.settings.iframeScriptOrigin})}catch(e){throw i.debug("error after preparing navigator, closing navigator window"),t.close(),e}}async _signinEnd(e,t){const i=this._logger.create("_signinEnd"),n=await this._client.processSigninResponse(e,{});return i.debug("got signin response"),await this._buildUser(n,t)}async _buildUser(e,t){const i=this._logger.create("_buildUser"),n=new we(e);if(t){if(t!==n.profile.sub)throw i.debug("current user does not match user returned from signin. sub from signin:",n.profile.sub),new W({...e,error:"login_required"});i.debug("current user matches user returned from signin")}return await this.storeUser(n),i.debug("user stored"),await this._events.load(n),n}async signoutRedirect(e={}){const t=this._logger.create("signoutRedirect"),{redirectMethod:i,...n}=e,s=await this._redirectNavigator.prepare({redirectMethod:i});await this._signoutStart({request_type:"so:r",post_logout_redirect_uri:this.settings.post_logout_redirect_uri,...n},s),t.info("success")}async signoutRedirectCallback(e=window.location.href){const t=this._logger.create("signoutRedirectCallback"),i=await this._signoutEnd(e);return t.info("success"),i}async signoutPopup(e={}){const t=this._logger.create("signoutPopup"),{popupWindowFeatures:i,popupWindowTarget:n,popupSignal:s,...r}=e,o=this.settings.popup_post_logout_redirect_uri,a=await this._popupNavigator.prepare({popupWindowFeatures:i,popupWindowTarget:n,popupSignal:s});await this._signout({request_type:"so:p",post_logout_redirect_uri:o,state:null==o?void 0:{},...r},a),t.info("success")}async signoutPopupCallback(e=window.location.href,t=!1){const i=this._logger.create("signoutPopupCallback");await this._popupNavigator.callback(e,{keepOpen:t}),i.info("success")}async _signout(e,t){const i=await this._signoutStart(e,t);return await this._signoutEnd(i.url)}async _signoutStart(e={},t){var i;const n=this._logger.create("_signoutStart");try{const s=await this._loadUser();n.debug("loaded current user from storage"),this.settings.revokeTokensOnSignout&&await this._revokeInternal(s);const r=e.id_token_hint||s&&s.id_token;r&&(n.debug("setting id_token_hint in signout request"),e.id_token_hint=r),await this.removeUser(),n.debug("user removed, creating signout request");const o=await this._client.createSignoutRequest(e);return n.debug("got signout request"),await t.navigate({url:o.url,state:null==(i=o.state)?void 0:i.id,scriptOrigin:this.settings.iframeScriptOrigin})}catch(e){throw n.debug("error after preparing navigator, closing navigator window"),t.close(),e}}async _signoutEnd(e){const t=this._logger.create("_signoutEnd"),i=await this._client.processSignoutResponse(e);return t.debug("got signout response"),i}async signoutSilent(e={}){var t;const i=this._logger.create("signoutSilent"),{silentRequestTimeoutInSeconds:n,...s}=e,r=this.settings.includeIdTokenInSilentSignout?null==(t=await this._loadUser())?void 0:t.id_token:void 0,o=this.settings.popup_post_logout_redirect_uri,a=await this._iframeNavigator.prepare({silentRequestTimeoutInSeconds:n});await this._signout({request_type:"so:s",post_logout_redirect_uri:o,id_token_hint:r,...s},a),i.info("success")}async signoutSilentCallback(e=window.location.href){const t=this._logger.create("signoutSilentCallback");await this._iframeNavigator.callback(e),t.info("success")}async revokeTokens(e){const t=await this._loadUser();await this._revokeInternal(t,e)}async _revokeInternal(e,t=this.settings.revokeTokenTypes){const i=this._logger.create("_revokeInternal");if(!e)return;const n=t.filter(t=>"string"==typeof e[t]);if(n.length){for(const t of n)await this._client.revokeToken(e[t],t),i.info(`${t} revoked successfully`),"access_token"!==t&&(e[t]=null);await this.storeUser(e),i.debug("user stored"),await this._events.load(e)}else i.debug("no need to revoke due to no token(s)")}startSilentRenew(){this._logger.create("startSilentRenew"),this._silentRenewService.start()}stopSilentRenew(){this._silentRenewService.stop()}get _userStoreKey(){return`user:${this.settings.authority}:${this.settings.client_id}`}async _loadUser(){const e=this._logger.create("_loadUser"),t=await this.settings.userStore.get(this._userStoreKey);return t?(e.debug("user storageString loaded"),we.fromStorageString(t)):(e.debug("no user storageString"),null)}async storeUser(e){const t=this._logger.create("storeUser");if(e){t.debug("storing user");const i=e.toStorageString();await this.settings.userStore.set(this._userStoreKey,i)}else this._logger.debug("removing user"),await this.settings.userStore.remove(this._userStoreKey),this.settings.dpop&&await this.settings.dpop.store.remove(this.settings.client_id)}async clearStaleState(){await this._client.clearStaleState()}async dpopProof(e,t,i,n){var s,r;const o=await(null==(r=null==(s=this.settings.dpop)?void 0:s.store)?void 0:r.get(this.settings.client_id));if(o)return await $.generateDPoPProof({url:e,accessToken:null==t?void 0:t.access_token,httpMethod:i,keyPair:o.keys,nonce:n})}async generateDPoPJkt(e){let t=await e.store.get(this.settings.client_id);if(!t){const i=await $.generateDPoPKeys();t=new he(i),await e.store.set(this.settings.client_id,t)}return await $.generateDPoPJkt(t.keys)}};const Ue="OAUTH2_LOGIN_FLOW_COMPLETE_EVENT",Le="OAUTH_GET_TOP_URL",De="OAUTH_REDIRECT_TOP_WINDOW",Ne="OAUTH_UPDATE_URL",qe="OAUTH2_CHECK_PENDING",$e="oauth2_top_origin",Me="oauth2_login_success",He="oauth2_state",je=60,Ge=Math.max(je-15,20),ze=d("oidc-auth",{color:"green"}),We=e=>ze.extend(e);d("oidc-auth-utils");const Be=()=>"undefined"==typeof window?"":new URLSearchParams(window.location.search).get("origin")||"";class Fe{static instance=null;settings=null;constructor(){}static getInstance(){return Fe.instance||(Fe.instance=new Fe),Fe.instance}configure(e){this.settings=e}isConfigured(){return null!==this.settings}getSettings(){if(!this.settings)throw new Error("OidcAuthConfig not configured. Call configure() or pass settings to OidcAuthClient.initialize().");return this.settings}getAuthOrigin(){const{authOrigin:e,authEndpoint:t}=this.getSettings();return e||new URL(t).origin}isAccessTokenProactiveRefreshEnabled(){return this.settings?.accessTokenProactiveRefreshEnabled??!0}getOidcSettings(){const e="undefined"==typeof window?"":window.location.origin,{clientId:t,authEndpoint:i}=this.getSettings(),n=this.getAuthOrigin(),s="undefined"!=typeof window?new Y({store:window.localStorage}):void 0,{accessTokenExpiringNotificationTimeInSeconds:r=je}=this.getSettings();return{client_id:t,authority:n,redirect_uri:`${e}/login/oauth-callback`,post_logout_redirect_uri:e,response_type:"code",scope:"openid offline_access",automaticSilentRenew:!1,accessTokenExpiringNotificationTimeInSeconds:r,stateStore:s,userStore:s,metadata:{issuer:n,authorization_endpoint:i,token_endpoint:`${n}/connect/api/v1/oauth2/token`,end_session_endpoint:`${n}/logout/`}}}getAccessTokenExpiringNotificationTimeInSeconds(){return this.getSettings().accessTokenExpiringNotificationTimeInSeconds??je}getAccessTokenFreshnessThresholdInSeconds(){return this.getSettings().accessTokenFreshnessThresholdInSeconds??Ge}getAllowedParentOrigins(){return this.settings?.allowedParentOrigins}}const Ke=Fe.getInstance(),Je=We("oidc-auth:host-api"),Ve=async e=>new Promise((t,i)=>{const n=new MessageChannel;let s=!1;const r=()=>{s=!0,n.port1.close()},o=setTimeout(()=>{s||(r(),i(new Error(`Host message timeout: ${e.type}`)))},1e4);n.port1.onmessage=e=>{clearTimeout(o),r(),"success"!==e.data.status?i(e.data.payload):t(e.data.payload)};const a=new URLSearchParams(window.location.search).get("origin")||"";if(!function(e){if(!e.startsWith("http://")&&!e.startsWith("https://"))return!1;const t=Ke.getAllowedParentOrigins();return!t||0===t.length||t.includes(e)}(a))return clearTimeout(o),r(),void i(new Error("Origin not allowed"));Je.log("posting message to host",e),window.top.postMessage({type:e.type,payload:e.payload,...e.data||{}},a,[n.port2])}),Qe=We("oidc-auth:OidcAuthTimer");class Xe{timerHandle=null;expiration=null;initialized=!1;callback=()=>{};constructor(){this.timerHandle=null}init(e,t,i){const n=e-this.getEpochTime(),s=Math.max(n-t,10);this.cancel(),this.expiration=s,this.callback=i,Qe.debug("OIDC: timer - using expiration",s,n,t,e,n-t),this.timerHandle=setTimeout(this.callback,1e3*s),this.initialized=!0}cancel(){this.timerHandle&&(clearTimeout(this.timerHandle),this.timerHandle=null),this.expiration=null}getEpochTime(){return Math.floor(Date.now()/1e3)}isInitialized(){return this.initialized}}const Ye=We("oidc-auth:OidcAuthClient");class Ze{static instance=null;userManager=null;initialized=!1;accessTokenExpiringTimer=null;retryTimers=new Set;constructor(){}static getInstance(){return Ze.instance||(Ze.instance=new Ze),Ze.instance}isInitialized(){return this.initialized}ensureInitialized(){if(!this.userManager)throw new Error("OidcAuthClient not initialized. Call initialize() first.");return this.userManager}initialize(e){if(e&&(this.initialized=!1,Ke.configure(e)),this.initialized)Ye.info("OIDC: initialize() - already initialized, skipping");else if("undefined"!=typeof window)if(Ke.isConfigured())try{Ye.info("OIDC: initialize() - starting initialization");const e=Ke.getOidcSettings();this.userManager=new Oe(e),U.setLogger(Ye),U.setLevel(U.ERROR),this.initAccessTokenExpiringTimer(),this.initialized=!0}catch(e){throw Ye.error("OIDC: initialize() - FAILED:",e),e}else Ye.warn("OIDC: initialize() - skipped, config not set");else Ye.warn("OidcAuthClient cannot initialize on server side")}async initAccessTokenExpiringTimer(){Ke.isAccessTokenProactiveRefreshEnabled()?this.getUser().then(e=>{const t=e?.expires_at;t&&(this.accessTokenExpiringTimer||(this.accessTokenExpiringTimer=new Xe),this.accessTokenExpiringTimer.init(t,Ke.getAccessTokenExpiringNotificationTimeInSeconds(),async()=>{Ye.info("OIDC: timer proactive refresh access token expiring timer fired",t),this.proactiveRefreshWithRetry()}))}).catch(e=>{Ye.error("OIDC: initAccessTokenExpiringTimer - FAILED:",e)}):Ye.warn("OIDC: timer - not starting, access token proactive refresh is disabled")}async getUser(){if(!this.userManager)return null;try{return await this.userManager.getUser()}catch(e){return Ye.error("OIDC: getUser - FAILED:",e),null}}async storeUser(e){const t=this.ensureInitialized();await t.storeUser(e)}async getAccessToken(){const e=await this.getUser();if(!e)return Ye.info("OIDC: getAccessToken - no user found"),null;if(e.expired)try{const e=await this.signinSilent();return e?.access_token||null}catch(e){return Ye.error("OIDC: getAccessToken - silent renew failed:",e),null}return this.isTokenFresh(e)||this.signinSilent().catch(e=>{Ye.error("OIDC: getAccessToken - background refresh failed:",e)}),e.access_token}getUserData(){if("undefined"==typeof window)return null;try{const e=Ke.getOidcSettings(),t=`oidc.user:${e.authority}:${e.client_id}`,i=localStorage.getItem(t);if(!i)return null;const n=JSON.parse(i),s=n?.profile;return s?.sub?(Ye.info("OIDC: USER:",{profile:s}),{id:s.sub,email:s.email||"",first_name:s.given_name,last_name:s.family_name}):null}catch(e){return Ye.error("OIDC: getUserData - FAILED:",e),null}}async isAuthenticated(){const e=await this.getUser();return null!==e&&!e.expired}async signinRedirect(e){const t=this.ensureInitialized();await t.signinRedirect({state:e?{data:e}:void 0,prompt:"login"})}async signinCallback(){const e=this.ensureInitialized(),t=await e.signinCallback();if(!t)throw Ye.error("OIDC: signinCallback - FAILED: no user returned"),new Error("Signin callback failed: no user returned");return t}async signinSilent(e){return this.ensureInitialized(),"undefined"!=typeof navigator&&navigator.locks?navigator.locks.request("oidc-token-refresh",async()=>{const t=await this.getUser();return t&&this.isTokenFresh(t,e)?t:this.doSigninSilent()}):(Ye.warn("OIDC: signinSilent - navigator.locks not available, proceeding without lock"),this.doSigninSilent())}isTokenFresh(e,t){if(!e.expires_at)return!1;const i=t??Ke.getAccessTokenFreshnessThresholdInSeconds(),n=Math.floor(Date.now()/1e3);return e.expires_at-n>i}async doSigninSilent(){const e=this.ensureInitialized();try{return await e.signinSilent()}catch(e){throw Ye.error("OIDC: doSigninSilent - FAILED:",e),e}}proactiveRefreshWithRetry(e=1){if("undefined"!=typeof document&&"hidden"===document.visibilityState){Ye.info("OIDC: tab is hidden, deferring proactive refresh until visible");const t=()=>{"visible"===document.visibilityState&&(document.removeEventListener("visibilitychange",t),this.proactiveRefreshWithRetry(e))};return void document.addEventListener("visibilitychange",t)}this.signinSilent(Ke.getAccessTokenExpiringNotificationTimeInSeconds()).then(()=>{this.initAccessTokenExpiringTimer()}).catch(t=>{if(Ye.error(`OIDC: proactive refresh failed (attempt ${e}/2):`,t),e<2){const t=setTimeout(()=>{this.retryTimers.delete(t),this.proactiveRefreshWithRetry(e+1)},3e3);this.retryTimers.add(t)}else Ye.error("OIDC: proactive refresh exhausted all retries")})}async removeUser(){const e=this.ensureInitialized();this.accessTokenExpiringTimer?.cancel(),this.retryTimers.forEach(clearTimeout),this.retryTimers.clear(),await e.removeUser()}onUserLoaded(e){this.ensureInitialized().events.addUserLoaded(e)}offUserLoaded(e){this.ensureInitialized().events.removeUserLoaded(e)}onUserUnloaded(e){this.ensureInitialized().events.addUserUnloaded(e)}offUserUnloaded(e){this.ensureInitialized().events.removeUserUnloaded(e)}onSilentRenewError(e){this.ensureInitialized().events.addSilentRenewError(e)}offSilentRenewError(e){this.ensureInitialized().events.removeSilentRenewError(e)}onAccessTokenExpiring(e){this.ensureInitialized().events.addAccessTokenExpiring(e)}offAccessTokenExpiring(e){this.ensureInitialized().events.removeAccessTokenExpiring(e)}onAccessTokenExpired(e){this.ensureInitialized().events.addAccessTokenExpired(e)}offAccessTokenExpired(e){this.ensureInitialized().events.removeAccessTokenExpired(e)}getLogoutUrl(e,t){const i=new URL(function(e){return`${Ke.getAuthOrigin()}${e.logoutPath}`}(e));return t&&i.searchParams.set("redirect_to",t),i.toString()}getWindowOriginParam(){const e=new URL(window.location.href).searchParams.get("origin");if(!e)throw new Error("iframe origin param is required");return e}async getTopUrl(){return(await Ve({type:Le})).topUrl}async isOAuthFlowPending(){try{return(await Ve({type:qe})).isPending}catch(e){return Ye.warn("OIDC: isOAuthFlowPending() - failed to check, assuming not pending:",e),!1}}async triggerLoginFlowViaParent({loginPath:e,windowPath:t}){Ye.info("OIDC: triggerLoginFlowViaParent() - starting");const i=await this.getTopUrl(),n=new URL(i).origin,s=`${n}${t}`,r=new URL(`${window.location.origin}${e}`);r.searchParams.set($e,n),r.searchParams.set("oauth2_top_wp_url",s),Ye.info("OIDC: triggerLoginFlowViaParent() - redirecting parent to:",r.toString()),await Ve({type:De,payload:{url:r.toString()}})}async handleLoginFlowComplete(e,t){if(!t)throw new Error("oauthUserState is required");const i=this.getWindowOriginParam(),n=t.state,s=n?.data?.[$e];if(i!==s)throw Ye.error("OIDC: handleLoginFlowComplete - origin mismatch:",i,"!==",s),new Error("Invalid origin in OAuth state");try{const e=new we(t);await this.storeUser(e),this.initAccessTokenExpiringTimer(),window.dispatchEvent(new CustomEvent("oidc-auth-completed"))}catch(t){Ye.error("OIDC: handleLoginFlowComplete - FAILED to store user:",t),await this.triggerLoginFlowViaParent(e)}}async triggerLogoutViaParent(e,t=!0){const i=await this.getTopUrl(),n=new URL(i).origin,s=t?`${n}${e.windowPath}`:n;await this.removeUser();const r=this.getLogoutUrl(e,s);await Ve({type:De,payload:{url:r}})}async cleanOAuthParamsFromUrl(){try{const e=await this.getTopUrl(),t=new URL(e);t.searchParams.delete("oauth_code"),t.searchParams.delete("oauth_state"),t.searchParams.delete("start-oauth"),t.searchParams.delete(Me),t.searchParams.delete(He),await Ve({type:Ne,payload:{url:t.toString()}})}catch(e){Ye.warn("Failed to clean OAuth params from URL:",e)}}setupLoginFlowMessageListener(e){let t=!1;const i=i=>{if(i.data?.type!==Ue)return;if(i.origin!==Be())return void Ye.error("OIDC: origin mismatch - expected:",Be(),"received:",i.origin);if(t)return void Ye.debug("OIDC: LOGIN_FLOW_COMPLETE already processed, ignoring duplicate");const n=i.data.payload;n?.oauthState?(t=!0,this.handleLoginFlowComplete(e,n.oauthState).catch(e=>{Ye.error("OIDC: Failed to handle login flow complete:",e),t=!1})):Ye.warn("OIDC: LOGIN_FLOW_COMPLETE but no oauthState in payload")};return window.addEventListener("message",i),()=>{window.removeEventListener("message",i)}}async getTokenExpirationInfo(){const e=await this.getUser();if(!e||!e.expires_at)return{expiresAt:null,expiresInSeconds:null,isExpired:!0};const t=new Date(1e3*e.expires_at),i=Date.now(),n=Math.floor((1e3*e.expires_at-i)/1e3);return{expiresAt:t,expiresInSeconds:n,isExpired:n<=0}}async forceTokenRefresh(){return Ye.info("OIDC: forceTokenRefresh() - manually triggering token refresh"),this.signinSilent()}}const et=Ze.getInstance();"undefined"!=typeof window&&(window.oidcAuthClient=et);const tt=We("oidc-auth:oidc-auth-redirect");function it(e,t){e.postMessage({status:"success",payload:t})}function nt(e,t){e.postMessage({status:"error",payload:t})}function st({targets:e,onSuccess:t,attempt:i=1}){const n=new URLSearchParams(window.location.search);if(!n.get(Me))return void tt.warn("OIDC: No login_success param found, skipping");const s=n.get(He);if(s){if(!e.window?.contentWindow||!e.windowURL)return tt.warn("Cannot forward OIDC state: iframe not available"),void(i<5?setTimeout(()=>{st({targets:e,onSuccess:t,attempt:i+1})},500):tt.error("OIDC: Failed to forward login flow after",5,"attempts - iframe never became available"));try{const i=JSON.parse(s),n=i.state?.data?.[$e];if(n&&n!==window.location.origin)return void tt.error("Origin mismatch in OIDC state:",n,"vs",window.location.origin);!function(e,t){const i=t.window?.contentWindow,n=t.windowURL?.origin;i&&n?i.postMessage({type:Ue,payload:e},n):tt.warn("Cannot send OIDC state: window or origin not available")}({oauthState:i},e);const r=new URL(window.location.href);r.searchParams.delete(Me),r.searchParams.delete(He),history.replaceState({},"",r.toString()),t?.()}catch(e){tt.error("Failed to parse or forward OIDC state:",e)}}else tt.warn("OIDC login complete but no state found in URL")}const rt=g("iframe-utils");let ot=null;const at=e=>!!e&&document.contains(e),ct=e=>{try{return new URL(e.src).origin}catch(e){return rt.error("Error parsing iframe URL:",e),null}},dt=(e,t,i)=>!!e?.contentWindow&&(t?(e.contentWindow.postMessage(i,t),!0):(rt.error("Could not determine target origin for Angie iframe"),!1)),lt=e=>at(e.iframe)?e.iframe:null,gt=(e,t)=>dt(lt(e),(e=>{if(e.iframeUrlObject)return e.iframeUrlObject.origin;const t=lt(e);return t?ct(t):null})(e),t),ut=()=>lt(R)||(at(ot)||(ot=document.querySelector('iframe[src*="angie/"]')),ot),ht=(e,t)=>(rt.log("postMessageToAngieIframe",e,t),dt(ut(),t||(()=>{const e=ut();return e?ct(e):null})(),e)),pt=(e,t,i)=>{const n=document.getElementById(i??R.containerId);n&&n.setAttribute("aria-hidden",t?"false":"true"),t?e.removeAttribute("tabindex"):e.setAttribute("tabindex","-1")},_t=(e,t)=>{const i=t?.contentWindow;return!i||!e.source||e.source===i},wt=(e,t,i)=>e.origin===t&&_t(e,i),mt=()=>Math.random().toString(36).substring(2,8),ft=(e,t)=>{e.postMessage({status:"success",payload:t})},yt=(e,t)=>{e.postMessage({status:"error",payload:t})},St=()=>new Promise(e=>{"loading"===document.readyState?document.addEventListener("DOMContentLoaded",e):e(null)}),bt=g("sidebar");let vt=!1;const It="open",Et="closed",kt="angie_sidebar_state",Tt="angie_sidebar_width";function Rt(){if("undefined"==typeof window)return 370;try{const e=window.localStorage.getItem(Tt);if(e){const t=parseInt(e,10);if(t>=350&&t<=590)return t}}catch(e){bt.warn("localStorage not available")}return 370}function At(){return"undefined"==typeof window?null:localStorage.getItem(kt)}function Ct(e){try{localStorage.setItem(kt,e)}catch(e){bt.warn("localStorage not available")}}function xt(e){try{localStorage.setItem(Tt,e.toString())}catch(e){bt.warn("localStorage not available")}}function Pt(e){document.documentElement.style.setProperty("--angie-sidebar-width",`${e}px`)}function Ot(e=It){!function(){if("undefined"==typeof window)return!1;const e=new URLSearchParams(window.location.search);return e.has(Me)||e.has(He)||e.has($e)}()?Ut(At()||e):function(){Ut(Et);try{localStorage.setItem(kt,Et)}catch(e){bt.warn("localStorage not available")}}()}function Ut(e){"undefined"!=typeof window&&window.toggleAngieSidebar&&window.toggleAngieSidebar(e===It,!0)}function Lt(e=R){const t=document.getElementById(e.containerId);if(!t)return;let i=!1,n=0,s=0;t.addEventListener("mousedown",e=>{const r=t.getBoundingClientRect();("rtl"===document.documentElement.dir?e.clientX<=r.left+4:e.clientX>=r.right-4)&&(i=!0,n=e.clientX,s=r.width,t.classList.add("angie-resizing"),document.body.style.cursor="ew-resize",document.body.style.userSelect="none",e.preventDefault(),e.stopPropagation())}),document.addEventListener("mousemove",e=>{if(!i)return;let t;t="rtl"===document.documentElement.dir?n-e.clientX:e.clientX-n,Pt(Math.max(350,Math.min(590,s+t))),e.preventDefault(),e.stopPropagation()}),document.addEventListener("mouseup",n=>{if(i){i=!1,t.classList.remove("angie-resizing"),document.body.style.cursor="",document.body.style.userSelect="";const r=parseInt(getComputedStyle(document.documentElement).getPropertyValue("--angie-sidebar-width"),10);xt(r),gt(e,{type:m.ANGIE_SIDEBAR_RESIZED,payload:{initialWidth:s,width:r}}),n.preventDefault(),n.stopPropagation()}}),Pt(Rt())}let Dt=!1;function Nt(e){e?.skipDefaultCss||function(){if("undefined"==typeof document||vt)return;const e="angie-sidebar-styles";if(document.getElementById(e))return void(vt=!0);const t=document.createElement("style");t.id=e,t.textContent="/* Angie Sidebar - CSS Variables */\n:root {\n    --angie-sidebar-z-index: 1200; /* below MUI popups, elementor popups and media library modal */\n    --angie-sidebar-width: 330px;\n    --angie-sidebar-transition: margin 0.3s ease-in-out, transform 0.3s ease-in-out;\n    /* Direction-aware transform values for sidebar positioning */\n    --angie-sidebar-hide-transform: translateX(-100%); /* LTR: hide to the left */\n    --angie-sidebar-show-transform: translateX(0);\n}\n\n/* RTL-specific transform values */\n[dir=\"rtl\"] {\n    --angie-sidebar-hide-transform: translateX(100%); /* RTL: hide to the right */\n}\n\n/* Respect user's motion preferences */\n@media (prefers-reduced-motion: reduce) {\n    :root {\n        --angie-sidebar-transition: none;\n    }\n}\n\n/* Apply transitions only when user is actively toggling */\nbody.angie-sidebar-transitioning {\n    transition: var(--angie-sidebar-transition) !important;\n}\n\nbody.angie-sidebar-transitioning #angie-sidebar-container {\n    transition: var(--angie-sidebar-transition) !important;\n}\n\n/* Layout (default) - Push content */\n@media (min-width: 768px) {\n    body.angie-sidebar-active {\n        padding-inline-start: var(--angie-sidebar-width) !important;\n    }\n\n    #angie-sidebar-container {\n        position: fixed;\n        top: 0;\n        inset-inline-start: 0;\n        width: var(--angie-sidebar-width);\n        height: 100vh;\n        z-index: var(--angie-sidebar-z-index) !important; /* below elementor popups and media library modal */\n        background: #FCFCFC;\n        transform: var(--angie-sidebar-hide-transform);\n        outline: none;\n        overflow: hidden;\n        /* No default transition - only when transitioning */\n    }\n\n    /* Resize handle */\n    #angie-sidebar-container::after {\n        content: '';\n        position: absolute;\n        top: 0;\n        inset-inline-end: 0;\n        width: 4px;\n        height: 100%;\n        cursor: ew-resize;\n        background: transparent;\n        z-index: 1000001;\n    }\n\n    /* Pink border during resize */\n    #angie-sidebar-container.angie-resizing {\n        border-inline-end-color: #ff69b4 !important;\n        border-inline-end-width: 2px !important;\n    }\n\n    /* Disable iframe pointer events during resize */\n    #angie-sidebar-container.angie-resizing iframe#angie-iframe {\n        pointer-events: none !important;\n    }\n}\n\n/* Active states */\nbody.angie-sidebar-active #angie-sidebar-container {\n    transform: var(--angie-sidebar-show-transform);\n}\n\n/* Studio mode - sidebar takes full width */\n@media (min-width: 768px) {\n    html.angie-studio-active body.angie-sidebar-active #angie-sidebar-container {\n        width: 100%;\n    }\n}\n\n/* High contrast mode support */\n@media (prefers-contrast: high) {\n    #angie-sidebar-container {\n        border-color: #000;\n        box-shadow: none;\n    }\n}\n\n/* Screen reader only class */\n.angie-sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    margin: -1px;\n    overflow: hidden;\n    clip: rect(0, 0, 0, 0);\n    white-space: nowrap;\n    border: 0;\n}\n\n/* Plugin conflict resolution */\nbody.angie-sidebar-active {\n    /* Reset common conflicting styles */\n    box-sizing: border-box !important;\n    position: relative !important;\n}\n\n#angie-sidebar-toggle {\n    z-index: 99999 !important;\n}\n";const i=document.head||document.getElementsByTagName("head")[0];i.insertBefore(t,i.firstChild),vt=!0}();const t=e?.instance??R;"undefined"!=typeof window&&(window.toggleAngieSidebar=function(e,t=R){return function(i,n){const s=document.body,r=document.getElementById(t.containerId);if(!r)return void bt.warn("Required elements not found!");const o=s.classList.contains("angie-sidebar-active"),a=void 0!==i?i:!o;n||(s.classList.add("angie-sidebar-transitioning"),setTimeout(function(){s.classList.remove("angie-sidebar-transitioning")},300)),a?s.classList.add("angie-sidebar-active"):s.classList.remove("angie-sidebar-active"),t.iframe&&pt(t.iframe,a,t.containerId),function(e,t,i=R){e&&setTimeout(function(){gt(i,{type:"focusInput"})},t)}(a,n?0:300,t),e&&e(a,r,n),Ct(a?It:Et);const c=new CustomEvent("angieSidebarToggle",{detail:{isOpen:a,sidebar:r,skipTransition:n}});document.dispatchEvent(c),gt(t,{type:m.ANGIE_SIDEBAR_TOGGLED,payload:{state:a?"opened":"closed"}})}}(e?.onToggle,t),function(e=R){Dt||(Dt=!0,window.addEventListener("message",function(t){if("toggleAngieSidebar"!==t.data?.type)return;const i=e.iframeUrlObject?.origin;if(!(i?wt(t,i,e.iframe):_t(t,e.iframe)))return;const{force:n,skipTransition:s}=t.data.payload||{};window.toggleAngieSidebar&&window.toggleAngieSidebar(n,s);const r=t.ports?.[0];r&&ft(r)}))}(t))}const qt="angie_return_url",$t=g("referrer-redirect");function Mt(e){try{return new URL(e,window.location.origin).origin===window.location.origin}catch{return!1}}function Ht(e,t){if(!Mt(e))return $t.warn("Invalid redirect URL rejected:",e),!1;try{const i={url:e};return t&&(i.prompt=t),localStorage.setItem(qt,JSON.stringify(i)),!0}catch(e){return $t.warn("localStorage not available"),!1}}function jt(){try{const e=localStorage.getItem(qt);if(!e)return null;let t;try{t=JSON.parse(e)}catch{return $t.warn("Stored redirect data is not valid JSON, returning null"),null}return t.url&&"string"==typeof t.url?Mt(t.url)?t:($t.warn("Stored redirect URL is invalid, returning null:",t.url),null):($t.warn("Stored redirect data missing url field, returning null"),null)}catch(e){return $t.warn("localStorage not available"),null}}function Gt(){try{localStorage.removeItem(qt)}catch(e){$t.warn("localStorage not available")}}function zt(e,t){return t?`${e}#angie-prompt=${encodeURIComponent(t)}`:e}function Wt(){const e=jt();return!!e&&(Gt(),window.location.href=zt(e.url,e.prompt),!0)}const Bt=g("oauth"),Ft=[];let Kt=!1,Jt=!1;const Vt=()=>{(()=>{try{const e=new URL(window.location.href,window.location.origin).searchParams;return e.has("start-oauth")&&"angie-app"===e.get("page")}catch{return!1}})()&&(Bt.log("Post-consent flow detected, checking for referrer redirect"),Wt())};function Qt(){const e=jt();if(e)return Gt(),void(window.location.href=zt(e.url,e.prompt));try{localStorage.setItem(kt,"open")}catch(e){Bt.warn("localStorage not available")}setTimeout(()=>{window.toggleAngieSidebar(!0)},500)}const Xt=e=>{Ft.includes(e)||Ft.push(e)},Yt=()=>{for(const e of Ft.flatMap(e=>e.iframe&&e.iframeUrlObject?[{window:e.iframe,windowURL:e.iframeUrlObject}]:[]))st({targets:e,onSuccess:Qt})},Zt="sidebar",ei="floatingChat",ti=[],ii=()=>ti.length,ni=e=>ti.find(t=>t.instanceId===e)??null,si=()=>ti.some(e=>e.layout===Zt),ri=g("sdk");var oi;(oi||(oi={})).POST_MESSAGE="postMessage";const ai=new Map,ci=[];let di=null;const li=()=>{0===ci.length||di||(di=e=>{const t=(e=>{if(e.origin===window.location.origin)return ci.find(t=>((e,t)=>!((!t||t!==e.instanceId)&&(t&&ni(t)||t&&null===ni(t)&&ii()>=1||(()=>{const e=ti.find(e=>null!==e.iframe);return e||(0===ti.length&&R.iframe?R:null)})()!==e)))(t,e?.data?.payload?.instanceId))??null;const t=ci.find(t=>t.iframe?.contentWindow===e.source);return t&&wt(e,t.iframeUrlObject?.origin,t.iframe)?t:null})(e);if(t)switch(e?.data?.type){case m.SDK_ANGIE_ALL_SERVERS_REGISTERED:break;case m.SDK_ANGIE_READY_PING:{const t=e.ports[0];ri.log("Angie is ready",e),ft(t,{message:"Angie is ready"});break}case m.SDK_REQUEST_CLIENT_CREATION:{const i=e.data.payload,n=e.ports[0];((e,t)=>{if(e.iframe)return void t();let i=ai.get(e);i||(i=[],ai.set(e,i)),i.push(t)})(t,()=>{try{const s=new MessageChannel;s.port1.onmessage=e=>{n.postMessage({success:!0,data:e.data})};const r={type:m.SDK_REQUEST_CLIENT_CREATION,payload:{success:!0,...i,clientId:`dynamic-client-${i.serverName}-${i.serverVersion}`,requestId:e.data.payload.requestId},timestamp:Date.now()};t.iframe?.contentWindow?.postMessage(r,t.iframeUrlObject?.origin||"",[s.port2])}catch(e){ri.error(`Failed to create client for SDK server "${i.serverName}":`,e)}});break}case m.SDK_TRIGGER_ANGIE:ri.log("SDK Trigger Angie received",e.data);try{const{requestId:i,prompt:n,context:s,contextAttachment:r,suggestions:o,options:a}=e.data.payload;if(!t.iframe)throw new Error("Iframe not found");t.iframe.contentWindow?.postMessage({type:m.SDK_TRIGGER_ANGIE,payload:{requestId:i,prompt:n,context:s,contextAttachment:r,suggestions:o,options:a}},t.iframeUrlObject?.origin||""),window.postMessage({type:m.SDK_TRIGGER_ANGIE_RESPONSE,payload:{success:!0,requestId:i,response:"Angie triggered successfully"}},window.location.origin)}catch(t){ri.error("Failed to trigger Angie:",t),window.postMessage({type:m.SDK_TRIGGER_ANGIE_RESPONSE,payload:{success:!1,requestId:e.data.payload?.requestId,error:t instanceof Error?t.message:"Unknown error"}},window.location.origin)}}},window.addEventListener("message",di))},gi=e=>{ci.includes(e)||ci.push(e)},ui=g("iframe"),hi=[];let pi=null;const _i=e=>{if(e.includes("://")||e.startsWith("//"))return!1;try{const t="https://test.com";return new URL(e,t).origin===t}catch{return!1}},wi=async(e=R)=>{if(e.iframe?.contentWindow&&e.iframeUrlObject)try{ui.log("Disabling navigation prevention in Angie iframe"),e.iframe.contentWindow.postMessage({type:m.ANGIE_DISABLE_NAVIGATION_PREVENTION},e.iframeUrlObject.origin),await new Promise(e=>setTimeout(e,100))}catch(e){throw ui.error("Failed to disable navigation prevention:",e),e}else ui.warn("Cannot disable navigation prevention: iframe or origin not available")},mi=e=>{hi.push(e),pi||(pi=e=>{const t=hi.find(t=>_t(e,t.instance.iframe));t&&t.trustedOrigins.includes(e.origin)&&(async(e,t)=>{if(e?.data?.type===m.ANGIE_CHAT_TOGGLE)t.open=e.data.open,t.iframe&&pt(t.iframe,t.open,t.containerId);else if(e?.data?.type===m.ANGIE_STUDIO_TOGGLE){const i=e.data.isStudioOpen;if(!t.iframe)return;if(i)document.documentElement.classList.add("angie-studio-active");else{const e=Rt();document.documentElement.style.setProperty("--angie-sidebar-width",`${e}px`),document.documentElement.classList.remove("angie-studio-active")}}else if(e?.data?.type===m.ANGIE_NAVIGATE_TO_URL){const{url:i="",confirmed:n=!1}=e.data.payload||{};if(!n)return void ui.log("Navigation requires user confirmation");((e,t=[])=>{const i=0===t.length&&"undefined"!=typeof window?[window.location.origin]:t;if(!e.startsWith("http"))return!1;try{const t=new URL(e);return i.includes(t.origin)}catch{return!1}})(i)?(await wi(t),window.location.assign(i)):ui.error("Navigation blocked: Invalid or unsafe URL",{url:i})}else if(e?.data?.type===m.ANGIE_PAGE_RELOAD){const{confirmed:i=!1}=e.data.payload||{};if(!i)return void ui.log("Page reload requires user confirmation");ui.log("Page reload confirmed - disabling navigation prevention and reloading"),await wi(t),setTimeout(()=>{window.location.reload()},50)}else e?.data?.type===y.RESET_HASH&&(window.location.hash="",ft(e.ports[0],{message:"Hash reset successfully"}))})(e,t.instance)},window.addEventListener("message",pi))},fi=async(e,t=R)=>{if(window.screen.availWidth<=768)return void ui.log("Mobile detected, skipping iframe injection");const i=t.containerId;let n=document.getElementById(i);if(!n){const e=performance.now();if(ui.log("⏱️ Waiting for sidebar container..."),await new Promise(e=>{let t=0;const s=setInterval(()=>{n=document.getElementById(i),t++,(n||t>20)&&(clearInterval(s),n&&e())},100);setTimeout(()=>{if(clearInterval(s),n)return void e();const t=new MutationObserver(()=>{n=document.getElementById(i),n&&(t.disconnect(),e())});t.observe(document.body,{childList:!0,subtree:!0}),setTimeout(()=>{t.disconnect(),e()},8e3)},2e3)}),ui.log(`⏱️ Sidebar container detection took: ${(performance.now()-e).toFixed(2)}ms`),!n)return void ui.error("Sidebar container not found")}const{iframe:s,iframeUrlObject:r}=await(async e=>{const t=e.origin,i=new URL(e.path,t),n=e.instanceId||mt(),s=i.pathname.slice(1).replace(/\//,"--")+"-"+n;return new Promise(n=>{const r=new URL(t);r.pathname=i.pathname;const o=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(r.searchParams.append("colorScheme",e.uiTheme||o||"light"),r.searchParams.append("sdkVersion",e.sdkVersion),r.searchParams.append("instanceId",s),r.searchParams.append("origin",window.location.origin),e.isRTL&&r.searchParams.append("isRTL",e.isRTL?"true":"false"),e.appId&&r.searchParams.append("appId",e.appId),"localhost"===window.location.hostname&&window.location.search.includes("debug_error")){const e=new URLSearchParams(window.location.search).get("debug_error");e&&r.searchParams.append("debug_error",e)}i.searchParams.forEach((e,t)=>{r.searchParams.set(t,e)}),r.searchParams.set("ver",(new Date).getTime().toString());const a=e.parent||document,c=a.createElement("iframe"),d={"background-color":"transparent","color-scheme":"normal",...e.css};window.addEventListener("message",async t=>{if(wt(t,r.origin,c))switch(t.data.type){case y.ANGIE_READY:n({iframe:c,iframeUrlObject:r});break;case y.ANGIE_LOADED:c.contentWindow?.postMessage({type:y.HOST_READY,instanceId:s,...e.embeddedConfig?{embedded:e.embeddedConfig}:{}},r.origin)}}),c.setAttribute("src",r.href),c.id=e.iframeElementId||"angie-iframe",c.setAttribute("frameborder","0"),c.setAttribute("scrolling","no"),c.setAttribute("style",Object.entries(d).map(([e,t])=>`${e}: ${t}`).join("; ")),c.setAttribute("allow","clipboard-write; clipboard-read"),e.insertCallback?e.insertCallback(c):a.body.appendChild(c)})})({origin:e.origin||"https://angie.elementor.com",path:e.path&&_i(e.path)?e.path:"angie/wp-admin",insertCallback:e=>{ui.log("Injecting Angie iframe into sidebar container"),e.setAttribute("title","Angie AI Assistant"),e.setAttribute("role","application"),e.setAttribute("aria-label","Angie AI Assistant Interface");const t=document.getElementById("angie-sidebar-loading");t&&(t.textContent=""),n?.appendChild(e)},embeddedConfig:e.embeddedConfig,css:{width:"100%",height:"100%",border:"none",outline:"none"},uiTheme:e.uiTheme,isRTL:e.isRTL,sdkVersion:"1.7.7",iframeElementId:t.iframeElementId,instanceId:t.instanceId,appId:t.appId});return t.iframe=s,t.iframeUrlObject=r,(e=>{li();const t=ai.get(e);t?.length&&(ai.delete(e),t.forEach(e=>e()))})(t),gi(t),li(),((e=R)=>{Xt(e),Kt||(Kt=!0,function({trustedOrigin:e,onOAuthParamsCleared:t}){window.addEventListener("message",i=>{if(i.origin!==e)return;const n=i.ports?.[0];switch(i.data.type){case Le:if(!n)return;it(n,{topUrl:window.location.href});break;case De:window.location.href=i.data.payload.url;break;case Ne:{if(!n)return;const e=i.data.payload.url;if(!history?.replaceState)return void nt(n,{message:"URL update not supported in this browser"});try{const i=window.location.href;history.replaceState({},"",e),function(e,t){const i=new URL(e).searchParams,n=new URL(t).searchParams,s=[Me,He,$e];return s.some(e=>i.has(e))&&!s.some(e=>n.has(e))}(i,e)&&t?.(),it(n,{message:"URL updated successfully"})}catch(e){nt(n,{message:"URL update failed: "+(e instanceof Error?e.message:"Unknown error")})}break}case qe:if(!n)return;it(n,{isPending:"true"===new URLSearchParams(window.location.search).get(Me)})}})}({trustedOrigin:e.iframeUrlObject?.origin??"",onOAuthParamsCleared:Qt}))})(t),((e=R)=>{Xt(e),Yt(),Jt||(Jt=!0,window.addEventListener("load",()=>{Bt.log("OIDC: Window load event fired, forwarding OIDC state if present"),Yt()}))})(t),mi({instance:t,trustedOrigins:[window.location.origin,e.origin||"https://angie.elementor.com"]}),{iframe:s,iframeOrigin:r.origin}},yi=g("registration-queue");class Si{queue=[];isProcessing=!1;add(e){const t={id:this.generateId(e),config:e,timestamp:Date.now(),status:"pending"};return this.queue.push(t),yi.log(`Added server "${e.name}" to queue`),t}getAll(){return[...this.queue]}getPending(){return this.queue.filter(e=>"pending"===e.status)}updateStatus(e,t,i){const n=this.queue.find(t=>t.id===e);n&&(n.status=t,i?n.error=i:"pending"!==t&&"registered"!==t||delete n.error,yi.log(`Updated server ${e} status to ${t}`))}async processQueue(e){if(this.isProcessing)return void yi.log("Already processing queue");this.isProcessing=!0;const t=this.getPending();yi.log(`Processing ${t.length} pending registrations`);try{for(const i of t)try{await e(i),this.updateStatus(i.id,"registered")}catch(e){const t=e instanceof Error?e.message:String(e);this.updateStatus(i.id,"failed",t),yi.error(`Failed to process registration ${i.id}:`,t)}}finally{this.isProcessing=!1}}clear(){this.queue=[],yi.log("Cleared all registrations")}resetAllToPending(){if(this.isProcessing)return yi.log("Cannot reset to pending - processing in progress"),!1;const e=this.queue.filter(e=>"registered"===e.status).length,t=this.queue.filter(e=>"failed"===e.status).length;return this.queue.forEach(e=>{"pending"!==e.status&&(e.status="pending",delete e.error)}),yi.log(`Reset ${e+t} registrations to pending`),!0}remove(e){const t=this.queue.findIndex(t=>t.id===e);return-1!==t&&(this.queue.splice(t,1),yi.log(`Removed registration ${e}`),!0)}generateId(e){return`reg_${e.name}_${e.version}_${Date.now()}`}}const bi={layout:Zt,styleTheme:"",create:!0,skipDefaultCss:!1,persistOpenState:!0,resizable:!0,chatToggleButtonEnabled:!1},vi="#angie-widget-toggle",Ii={boot:{allowInIframe:!1},container:{layout:bi.layout,styleTheme:bi.styleTheme,create:bi.create,skipDefaultCss:bi.skipDefaultCss,persistOpenState:bi.persistOpenState,resizable:bi.resizable,chatToggleButtonSelector:vi},iframe:{origin:"https://angie.elementor.com",path:"angie/embedded",uiTheme:"light"}},Ei=new Map;let ki=!1;const Ti=async(e,t,i)=>{if(t)try{ft(e,{payload:await t()})}catch(t){yt(e,{message:t instanceof Error?t.message:String(t)})}else ft(e,i())},Ri=(e,t)=>e&&t?`${e}::__angie::${t}`:e,Ai=(e,t)=>{const i=Ri(e,t);try{const t=window.localStorage.getItem(i);return null!==t?t:i===e?null:window.localStorage.getItem(e)}catch{return null}},Ci=async e=>{const t=(e=>{const t=[...Ei.values()].filter(t=>t.iframeOrigin===e.origin);return t.length<=1?t[0]??null:t.find(t=>t.instance.iframe?.contentWindow===e.source)??null})(e);if(!t)return;const i=e.data?.type,n=e.ports?.[0];switch(i){case"GET_EXTERNAL_HEADERS":if(!n)return;await(async(e,t)=>{try{const i=t?await t():{};ft(e,(e=>Object.fromEntries(Object.entries(e).filter(([,e])=>void 0!==e)))(i))}catch(t){yt(e,{message:t instanceof Error?t.message:String(t)})}})(n,t.getExternalHeaders);break;case"angie/context/get-website-context":if(!n)return;await Ti(n,t.getWebsiteContext,()=>{return e=t.host,{payload:{name:document.title,tagline:"",homeUrl:window.location.origin,siteLang:document.documentElement.lang,docTitle:document.title,platform:"frontend",timezone:Intl.DateTimeFormat().resolvedOptions().timeZone,today:(new Date).toISOString().split("T")[0],...e?.website}};// removed by dead control flow
- var e; });break;case"angie/context/get-analytics-context":if(!n)return;await Ti(n,t.getAnalyticsContext,()=>{return e=t.host,{payload:{screenPath:window.location.pathname,...e?.analytics}};// removed by dead control flow
- var e; });break;case f.GET:if(!n)return;n.postMessage({value:Ai(e.data.key,t.host?.instanceId)});break;case f.SET:((e,t,i)=>{try{window.localStorage.setItem(Ri(e,i),t)}catch{}})(e.data.key,e.data.value,t.host?.instanceId)}},xi="data-angie-toggle-wired",Pi=(e,t)=>{const i=document.querySelector(e);i&&(i.setAttribute("aria-expanded",t?"true":"false"),i.setAttribute("aria-label",t?"Close Angie":"Open Angie"))},Oi=e=>{const t=document.querySelector(e.toggleButtonSelector);t&&"true"!==t.getAttribute(xi)&&(t.setAttribute(xi,"true"),t.addEventListener("click",e.onClick))},Ui=new Set;let Li=!1;const Di=e=>{for(const t of Ui)t(e)},Ni="angie-widget-toggle",qi="angie-widget-hidden",$i="angie-widget-fullscreen",Mi="angie-widget-container",Hi="angie-chat-widget-styles",ji=/^#([^\s#.[:]+)$/,Gi=/^\[([^\]=]+)(?:="([^"]*)")?\]$/,zi=e=>document.querySelector(e),Wi=new Map,Bi=e=>{const t=document.getElementById(e.containerId);t&&(e.isOpen?t.classList.remove(qi):t.classList.add(qi),e.instance.iframe&&pt(e.instance.iframe,e.isOpen,e.containerId),Pi(e.toggleButtonSelector,e.isOpen))},Fi=(e,t)=>{Bi({containerId:e.containerId,toggleButtonSelector:e.toggleButtonSelector,isOpen:t,instance:e.instance})},Ki=(e,t)=>{const i=t?.force;if(void 0!==i)return Fi(e,i),void(i||e.onClose?.());const n=(e=>{const t=document.getElementById(e);return!!t&&!t.classList.contains(qi)})(e.containerId);Fi(e,!n),n&&e.onClose?.()},Ji=e=>{const{instance:t}=e;var i;Wi.get(t)?.(),Wi.set(t,(i=i=>{if(!wt(i,e.iframeOrigin,t.iframe))return;const n=i.ports?.[0],{type:s,payload:r}=i.data||{};switch(s){case m.ANGIE_SIDEBAR_TOGGLED:case"toggleAngieSidebar":Ki(e,r),n&&ft(n);break;case m.ANGIE_STUDIO_TOGGLE:{const t=!!i.data.isStudioOpen;((e,t)=>{const i=document.getElementById(e);i&&(t?i.classList.add($i):i.classList.remove($i))})(e.containerId,t),t&&Fi(e,!0),n&&ft(n);break}}},Ui.add(i),Li||(Li=!0,window.addEventListener("message",Di)),()=>{Ui.delete(i)}))},Vi=e=>{const t=(e=>e===E?Hi:`${Hi}-${e}`)(e);if(document.getElementById(t))return;const i=document.createElement("style");i.id=t,i.textContent=(e=>`\n#${e}.${Mi} {\n\t--angie-widget-width: 400px;\n\t--angie-widget-height: 600px;\n\t--angie-widget-z-index: 99999;\n\n\tposition: fixed !important;\n\ttop: auto !important;\n\tbottom: 20px !important;\n\tinset-inline-start: auto !important;\n\tinset-inline-end: 20px !important;\n\twidth: var(--angie-widget-width) !important;\n\theight: var(--angie-widget-height) !important;\n\tmax-height: calc(100vh - 40px) !important;\n\tmax-width: calc(100vw - 40px) !important;\n\tz-index: var(--angie-widget-z-index) !important;\n\ttransform: none !important;\n\tborder-radius: 12px !important;\n\toverflow: hidden !important;\n\tbox-shadow: 0 4px 24px rgba(0, 0, 0, 0.15) !important;\n\ttransition: opacity 0.2s ease, transform 0.2s ease !important;\n}\n\n#${e}.${Mi}.${qi} {\n\tdisplay: none !important;\n}\n\n#${e}.${Mi} iframe {\n\twidth: 100% !important;\n\theight: 100% !important;\n\tborder: none !important;\n\tborder-radius: 12px !important;\n}\n\n\n.${Ni} {\n\t--angie-toggle-size: 56px;\n\t--angie-widget-z-index: 99999;\n\n\tposition: fixed;\n\tbottom: 20px;\n\tinset-inline-end: 20px;\n\twidth: var(--angie-toggle-size);\n\theight: var(--angie-toggle-size);\n\tborder-radius: 50%;\n\tborder: none;\n\tbackground: #EB8EFB;\n\tcolor: white;\n\tcursor: pointer;\n\tz-index: var(--angie-widget-z-index);\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n\ttransition: background 0.2s ease, transform 0.15s ease;\n\tpadding: 0;\n}\n\n.${Ni}:hover {\n\tbackground: #E070F5;\n\ttransform: scale(1.05);\n}\n\n.${Ni}:active {\n\ttransform: scale(0.95);\n}\n\n.${Ni}[aria-expanded="true"] {\n\tdisplay: none;\n}\n\n\n#${e}.${Mi}.${$i} {\n\tbottom: 0 !important;\n\tinset-inline-end: 0 !important;\n\twidth: 100vw !important;\n\theight: 100vh !important;\n\tmax-height: 100vh !important;\n\tmax-width: 100vw !important;\n\tborder-radius: 0 !important;\n}\n\n#${e}.${Mi}.${$i} iframe {\n\tborder-radius: 0 !important;\n}\n\n@media (max-width: 480px) {\n\t#${e}.${Mi} {\n\t\tbottom: 0 !important;\n\t\tinset-inline-end: 0 !important;\n\t\twidth: 100vw !important;\n\t\theight: 100vh !important;\n\t\tmax-height: 100vh !important;\n\t\tmax-width: 100vw !important;\n\t\tborder-radius: 0 !important;\n\t}\n\n\t#${e}.${Mi} iframe {\n\t\tborder-radius: 0 !important;\n\t}\n}\n`)(e),document.head.appendChild(i)},Qi=e=>{const t=document.getElementById(e);t&&(t.classList.add(Mi,qi),t.setAttribute("role","complementary"),t.setAttribute("aria-label","Angie"),t.setAttribute("aria-hidden","true"),t.setAttribute("tabindex","-1"))};let Xi=!1;const Yi={initShell:({config:e,instance:t})=>{((e,t,i=R)=>{const n=e.chatToggleButton.enabled?e.chatToggleButton.selector:void 0;Nt({instance:i,skipDefaultCss:e.skipDefaultCss,onToggle:e=>{n&&Pi(n,e),t.onToggle?.(e),!e&&t.onClose&&t.onClose()}}),(e=>{if("wordpress"!==e||"undefined"==typeof document)return;const t="angie-sidebar-wordpress-styles";if(document.getElementById(t)||(Xi=!1),Xi)return;const i=document.createElement("style");i.id=t,i.textContent="body.admin-bar {\n    --angie-sidebar-z-index: 99999;\n}\n\n#angie-body-top-padding {\n    height: 0;\n    transition: height 0.3s ease-in-out;\n}\n\nbody.angie-sidebar-transitioning #wpadminbar {\n    transition: var(--angie-sidebar-transition) !important;\n}\n\n@media (min-width: 768px) {\n    body.angie-sidebar-active #angie-body-top-padding {\n        width: 100%;\n        height: 0;\n    }\n\n    body.angie-sidebar-active #wpadminbar {\n        inset-inline-start: var(--angie-sidebar-width) !important;\n        inset-inline-end: 0 !important;\n        width: calc(100% - var(--angie-sidebar-width)) !important;\n        margin-top: 0;\n    }\n}\n\n@media (max-width: 768px) {\n    body.angie-sidebar-active #wpadminbar {\n        inset-inline-start: 0 !important;\n        inset-inline-end: 0 !important;\n        width: 100% !important;\n    }\n}\n\nbody:not(.wp-admin) #angie-sidebar-container {\n    margin-top: 3px;\n}\n",(document.head||document.getElementsByTagName("head")[0]).appendChild(i),Xi=!0})(e.styleTheme),n&&Oi({toggleButtonSelector:n,onClick:e=>{e.preventDefault(),window.toggleAngieSidebar?.()}})})(e.container,e.callbacks,t)},beforeOpenIframe:({config:e})=>{var t;(t=e.container).chatToggleButton.enabled&&(t.persistOpenState&&At()===It||Ut(Et))},afterOpenIframe:({config:e,instance:t})=>{((e,t=R)=>{e.persistOpenState&&Ot(e.chatToggleButton.enabled?Et:It),e.resizable&&Lt(t)})(e.container,t)}},Zi={initShell:({config:e,instance:t})=>{const{chatToggleButton:i}=e.container;var n;n={containerId:e.container.id,iframeOrigin:e.iframe.origin,onClose:e.callbacks.onClose,toggleButtonSelector:i.selector,injectToggleButton:i.enabled,instance:t},Vi(n.containerId),Qi(n.containerId),n.injectToggleButton&&(e=>{if(zi(e))return;const t=document.createElement("button");((e,t)=>{const i=t.match(ji);if(i)return void(e.id=i[1]);const n=t.match(Gi);n&&e.setAttribute(n[1],n[2]??"")})(t,e),t.className=Ni,t.setAttribute("aria-label","Open Angie"),t.setAttribute("aria-expanded","false"),t.type="button",t.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none">\n\t<path d="M15.0998 8.00414L14.622 8.18282C13.4991 8.60516 12.8142 9.50669 12.4001 10.6519L12.2249 11.1392L12.0497 10.6519C11.6356 9.50669 10.9109 8.60516 9.78801 8.18282L9.31018 8.00414L9.78801 7.82546C10.9109 7.40312 11.6356 6.50159 12.0497 5.3564L12.2249 4.86909L12.4001 5.3564C12.8142 6.50159 13.4991 7.40312 14.622 7.82546L15.0998 8.00414Z" fill="white"/>\n\t<path d="M2 8.42721C5.5608 8.42721 8.44479 11.3685 8.44479 15" stroke="white" stroke-width="2.05092" stroke-miterlimit="10"/>\n\t<path d="M2 7.57275C5.5608 7.57275 8.44479 4.6315 8.44479 0.999991" stroke="white" stroke-width="2.05092" stroke-miterlimit="10"/>\n</svg>',document.body.appendChild(t)})(n.toggleButtonSelector),(e=>{(e=>{Oi({toggleButtonSelector:e.toggleButtonSelector,onClick:()=>{const t=zi(e.toggleButtonSelector),i="true"===t?.getAttribute("aria-expanded");Fi(e,!i),i&&e.onClose?.()}})})(e),Ji(e),si()||(window.toggleAngieSidebar=t=>{Ki(e,{force:t})})})({containerId:n.containerId,iframeOrigin:n.iframeOrigin,onClose:n.onClose,toggleButtonSelector:n.toggleButtonSelector,instance:n.instance})},afterOpenIframe:({config:e})=>{Qi(e.container.id)}},en={[Zt]:Yi,[ei]:Zi},tn={layout:ei,styleTheme:"",create:!0,skipDefaultCss:!1,persistOpenState:!1,resizable:!1,chatToggleButtonEnabled:!0},nn={closeButton:"collapse"},sn=(e,t)=>e===ei?{closeButton:"close",...t}:t?{...nn,...t}:nn,rn=async e=>{Vt();const t={browserUiTheme:"undefined"!=typeof window&&"function"==typeof window.matchMedia?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":Ii.iframe.uiTheme,isInIframe:"undefined"!=typeof window&&window!==window.top,isRTL:"undefined"!=typeof document&&"rtl"===document.documentElement.dir},i=((e,t)=>{const i=e.boot??{},n=e.container??{},s=e.iframe??{},r=e.callbacks??{},o=n.layout??Ii.container.layout,a=(e=>e===ei?tn:bi)(o),c=n.chatToggleButton?.enabled??a.chatToggleButtonEnabled;return{host:{appId:e.host.appId,instanceId:e.host.instanceId,aiContext:e.host.aiContext,website:e.host.website,analytics:e.host.analytics},boot:{allowInIframe:i.allowInIframe??Ii.boot.allowInIframe},container:{id:n.id?.trim()||E,layout:o,styleTheme:n.styleTheme??a.styleTheme,create:n.create??a.create,skipDefaultCss:n.skipDefaultCss??a.skipDefaultCss,persistOpenState:n.persistOpenState??a.persistOpenState,resizable:n.resizable??a.resizable,chatToggleButton:{enabled:c,selector:n.chatToggleButton?.selector?.trim()||Ii.container.chatToggleButtonSelector}},iframe:{origin:s.origin?.trim()||Ii.iframe.origin,path:s.path?.trim()||Ii.iframe.path,uiTheme:s.uiTheme??t.browserUiTheme,isRTL:s.isRTL??t.isRTL},callbacks:{onClose:r.onClose,onToggle:r.onToggle,getExternalHeaders:r.getExternalHeaders,getWebsiteContext:r.getWebsiteContext,getAnalyticsContext:r.getAnalyticsContext},widgetConfig:sn(o,e.widgetConfig)}})(e,t);if(!((e,t)=>!(!e.boot.allowInIframe&&t.isInIframe))(i,t))return;if(i.container.layout===Zt&&si())throw new Error('Angie SDK: only one sidebar layout instance is supported on a page. Use container.layout "floatingChat" for the extra instance.');if(n=i.container.id,ti.find(e=>e.containerId===n))throw new Error(`Angie SDK: container id "${i.container.id}" is already used by another Angie instance. Give this instance its own container.id.`);var n;const s=i.host.instanceId||e.sdkInstanceId||mt();if(ni(s))throw new Error(`Angie SDK: instance id "${s}" is already used by another Angie instance. Give this instance its own host.instanceId.`);ti[0]&&i.container.chatToggleButton.selector===vi&&(i.container.chatToggleButton.selector=`${vi}-${s}`);const r=(e=>{const t=0===ti.length,i={...T(),...e,iframeElementId:t?k:`${k}-${e.instanceId}`},n=t?Object.assign(R,i):i;return ti.push(n),n})({containerId:i.container.id,instanceId:s,appId:e.appId,layout:i.container.layout});var o;gi(r),li(),o={iframeOrigin:i.iframe.origin,host:i.host,getExternalHeaders:i.callbacks.getExternalHeaders,getWebsiteContext:i.callbacks.getWebsiteContext,getAnalyticsContext:i.callbacks.getAnalyticsContext,instance:r},Ei.set(o.instance,o),ki||(ki=!0,window.addEventListener("message",e=>{Ci(e)})),i.container.create&&((e,t)=>{if(document.getElementById(e))return;const i=document.createElement("div");i.id=e,i.dir=t?"rtl":"ltr";const n=document.createElement("div");n.id="angie-sidebar-loading",n.setAttribute("aria-live","polite"),n.className="angie-sr-only",i.appendChild(n),document.body.appendChild(i)})(i.container.id,t.isRTL);const a=en[i.container.layout],c={config:i,env:t,instance:r};a.initShell(c),a.beforeOpenIframe?.(c);const d={aiContext:(l=i.host).aiContext,appId:l.appId,configVersion:2,telemetry:{screenPath:window.location.pathname},website:{docTitle:document.title,homeUrl:window.location.origin,name:document.title,platform:"frontend",siteLang:document.documentElement.lang,tagline:"",...l.website}};var l;const g=await(async e=>{const t=e.instance??R;return!!await fi({isRTL:e.iframe.isRTL,origin:e.iframe.origin,path:e.iframe.path,uiTheme:e.iframe.uiTheme,embeddedConfig:e.embeddedConfig},t)&&(e.container.layout===ei&&e.container.chatToggleButton.enabled?(Bi({containerId:e.container.id,toggleButtonSelector:e.container.chatToggleButton.selector,isOpen:!1,instance:t}),!0):(t.iframe&&pt(t.iframe,!1,t.containerId),e.container.chatToggleButton.enabled&&Pi(e.container.chatToggleButton.selector,!1),!0))})({container:i.container,iframe:i.iframe,embeddedConfig:d,instance:r});a.afterOpenIframe?.(c),g&&(((e,t=R)=>{gt(t,{payload:e,type:"sdk-embedded-config"})})(d,r),i.widgetConfig&&((e,t=R)=>{gt(t,{payload:e,type:"sdk-widget-config"})})(i.widgetConfig,r))},on="angie-prompt",an=[],cn={origin:"https://angie.elementor.com",uiTheme:"light",isRTL:!1,containerId:E,skipDefaultCss:!1,path:"angie/wp-admin"};class dn{appId;angieDetector;clientManager;logger;registrationQueue;isInitialized=!1;instanceId;sidebarV2BootPromise=null;promptHashListenerAttached=!1;constructor(e){this.appId=e?.appId?.trim()||void 0,this.instanceId=mt(),this.logger=g({instanceId:this.instanceId}),this.logger.log("Constructor called - initializing SDK"),this.angieDetector=new b(()=>this.instanceId),this.registrationQueue=new Si,this.clientManager=new I,this.logger.log("Setting up event handlers"),this.setupAngieReadyHandler(),this.setupServerInitHandler(),this.setupReRegistrationHandler(),this.logger.log("SDK initialization complete")}async loadSidebar(e){Vt();const{widgetConfig:t,...i}=e||{},n={...cn,...i};R.containerId=n.containerId,R.instanceId=this.instanceId,R.appId=this.appId,Nt({skipDefaultCss:n.skipDefaultCss});const s=await fi(n);s&&window.addEventListener("message",e=>{if(e.origin===R.iframeUrlObject?.origin)switch(e.data.type){case f.SET:window.localStorage.setItem(e.data.key,e.data.value);break;case f.GET:{const t=e.ports[0],i=window.localStorage.getItem(e.data.key);t.postMessage({value:i});break}}}),s&&t&&s.iframe.contentWindow?.postMessage({type:"sdk-widget-config",payload:t},s.iframeOrigin),this.setupPromptHashDetection()}loadSidebarV2(e){return e.host.instanceId&&(this.instanceId=e.host.instanceId),this.sidebarV2BootPromise=rn({...e,sdkInstanceId:this.instanceId,appId:this.appId}),this.setupPromptHashDetection(),this.sidebarV2BootPromise}isRefreshPingForThisInstance(e,t){const i=e.data?.payload?.instanceId;if(i)return i===this.instanceId;const n=t?.iframe?.contentWindow;return n&&e.source?e.source===n:ii()<2}setupReRegistrationHandler(){window.addEventListener("message",e=>{if(e.data?.type===m.SDK_ANGIE_REFRESH_PING){const t=ni(this.instanceId),i=t?.iframeUrlObject?.origin;if(i&&e.origin!==i)return void this.logger.log(`Ignoring refresh ping from unexpected origin. Event origin: ${e.origin}, iframe origin: ${i}`);if(!this.isRefreshPingForThisInstance(e,t))return;if(this.logger.log("Angie refresh ping received"),this.registrationQueue.resetAllToPending()){const e=this.registrationQueue.getPending().length;this.logger.log(`Successfully reset ${e} registrations, processing queue`),this.handleAngieReady()}else this.logger.log("Skipping queue reset - processing already in progress")}})}setupAngieReadyHandler(){this.angieDetector.waitForReady().then(e=>{e.isReady?this.handleAngieReady():this.logger.warn("Angie not detected - servers will remain queued")}).catch(e=>{this.logger.error("Error waiting for Angie:",e)})}async handleAngieReady(){this.logger.log("Angie is ready, processing queued registrations");try{await this.registrationQueue.processQueue(async e=>{this.logger.log(`processQueue callback called for "${e.config.name}"`),await this.processRegistration(e)}),this.isInitialized=!0,this.logger.log("Initialization complete")}catch(e){this.logger.error("Error processing registration queue:",e)}}async processRegistration(e){this.logger.log(`Processing registration for server "${e.config.name}" (ID: ${e.id})`);try{this.logger.log(`Calling clientManager.requestClientCreation for "${e.config.name}"`);const t={...e,instanceId:this.instanceId};await this.clientManager.requestClientCreation(t),this.logger.log(`Successfully registered server "${e.config.name}"`)}catch(t){throw this.logger.error(`Failed to register server "${e.config.name}":`,t),t}}registerLocalServer(e){return e.type=_.LOCAL,e.transport=h.POST_MESSAGE,this.registerServer(e)}registerRemoteServer(e){return e.type=_.REMOTE,this.registerServer(e)}isLocalServerConfig(e){return e.type===_.LOCAL||!e.type&&"server"in e}isRemoteServerConfig(e){return e.type===_.REMOTE&&"url"in e}async registerServer(e){if(!e.type)return this.logger.warn("For a local server, please use registerLocalServer instead of registerServer"),void this.registerLocalServer(e);if(this.logger.log(`registerServer called for "${e.name}"`),!e.name)throw new Error("Server name is required");if(!e.description)throw new Error("Server description is required");if(this.isLocalServerConfig(e)&&!e.server)throw new Error("Server instance is required for local servers");this.logger.log(`Registering server "${e.name}"`);const t=this.registrationQueue.add(e);if(this.logger.log(`Added registration to queue: ${t.id}`),this.angieDetector.isReady())try{await this.processRegistration(t),this.registrationQueue.updateStatus(t.id,"registered"),this.logger.log(`Server "${e.name}" registered successfully`)}catch(e){const i=e instanceof Error?e.message:String(e);throw this.registrationQueue.updateStatus(t.id,"failed",i),e}else this.logger.log(`Server "${e.name}" queued until Angie is ready`)}getRegistrations(){return this.registrationQueue.getAll()}getPendingRegistrations(){return this.registrationQueue.getPending()}isAngieReady(){return this.angieDetector.isReady()}isReady(){return this.isInitialized}async waitForReady(){if(this.sidebarV2BootPromise)await this.sidebarV2BootPromise;else for(;!R.iframe;)await new Promise(e=>setTimeout(e,100));if(!(await this.angieDetector.waitForReady()).isReady)throw new Error("Angie is not available");for(;!this.isInitialized;)await new Promise(e=>setTimeout(e,100))}async triggerAngie(e){if(!this.isAngieReady())throw new Error("Angie is not ready. Please wait for Angie to be available before triggering.");const t=this.generateRequestId(),i=e.options?.timeout||3e4;return new Promise((n,s)=>{const r=setTimeout(()=>{s(new Error("Angie trigger request timed out"))},i),o=e=>{e.data?.type===m.SDK_TRIGGER_ANGIE_RESPONSE&&e.data?.payload?.requestId===t&&(clearTimeout(r),window.removeEventListener("message",o),n(e.data.payload))};window.addEventListener("message",o);const a={type:m.SDK_TRIGGER_ANGIE,payload:{requestId:t,instanceId:this.instanceId,prompt:e.prompt,options:e.options,contextAttachment:e.contextAttachment,suggestions:e.suggestions,context:{pageUrl:window.location.href,pageTitle:document.title,...e.context}},timestamp:Date.now()};this.logger.log(`Triggering Angie with prompt (Request ID: ${t})`),window.postMessage(a,window.location.origin)})}destroy(){this.registrationQueue.clear(),this.logger.log("SDK destroyed")}setupServerInitHandler(){window.addEventListener("message",e=>{e.data?.type===m.SDK_REQUEST_INIT_SERVER&&(this.logger.log("Server init request received"),this.handleServerInitRequest(e))})}handleServerInitRequest(e){const{clientId:t,serverId:i,instanceId:n}=e.data.payload||{};if(t&&i)if(this.logger.log(`Server init request received - Request instanceId: ${n}, This instanceId: ${this.instanceId}`),n&&n!==this.instanceId)this.logger.log(`Ignoring server init request for different instance. Request instanceId: ${n}, this instanceId: ${this.instanceId}`);else{this.logger.log(`Handling server init request for clientId: ${t}, serverId: ${i}`);try{const t=this.registrationQueue.getAll().find(e=>e.id===i);if(!t)return void this.logger.log(`No registration found for serverId: ${i} (likely belongs to another instance)`);if("type"in t.config&&"remote"===t.config.type)return void this.logger.log("Remote server registration detected; skipping local connect");const n=e.ports[0];if(!n)return void this.logger.error("No port provided in server init request");const s=t.config.server;this.migrateInstructionsCompat(s);const r=new v(n);s.connect(r),this.logger.log(`Server "${t.config.name}" initialized successfully`)}catch(e){this.logger.error(`Error initializing server for clientId ${t}:`,e)}}else this.logger.error("Invalid server init request - missing clientId or serverId")}migrateInstructionsCompat(e){try{const t="server"in e&&e.server?e.server:e,i=t._serverInfo,n=t._instructions;i?.instructions&&!n&&(t._instructions=i.instructions,this.logger.log("Migrated instructions from serverInfo to serverOptions (backward compat)"))}catch{}}generateRequestId(){return`${this.instanceId}-${Date.now()}-${Math.random().toString(36).substring(2,8)}`}parseHashParams(e){const t=e.startsWith("#")?e.substring(1):e;return new URLSearchParams(t)}shouldHandlePromptHash(e){const t=e.get("angie-instance");return t?t===this.instanceId:0===an.length||an[0]===this}async handlePromptHash(){const e=window.location.hash;if(e.includes(`${on}=`))try{const t=this.parseHashParams(e);if(!this.shouldHandlePromptHash(t))return;const i=t.get(on)||"";if(!i)return void this.logger.warn("Empty prompt detected in hash");const n="true"===t.get("angie-new-chat");this.logger.log("Detected prompt in hash:",{prompt:i,newChat:n}),await this.waitForReady();const s=await this.triggerAngie({prompt:i,context:{source:"hash-parameter",pageUrl:window.location.href,timestamp:(new Date).toISOString()},options:{newChat:n}});this.logger.log("Triggered successfully from hash:",s),window.location.hash=""}catch(e){this.logger.error("Failed to trigger from hash:",e)}}setupPromptHashDetection(){this.promptHashListenerAttached||(this.promptHashListenerAttached=!0,an.push(this),window.addEventListener("hashchange",()=>this.handlePromptHash())),this.handlePromptHash()}}let ln=null;const gn=e=>new Promise(t=>setTimeout(t,e)),un=()=>(ln||(ln=new b),ln),hn=()=>"undefined"!=typeof window&&!0===window.angiePlugin?.available,pn=()=>!!hn()&&un().isReady(),_n=async(e=3e3)=>"undefined"!=typeof window&&(async(e,t,i=50)=>{for(;Date.now()<e;){if(t())return!0;await gn(i)}return t()})(Date.now()+e,hn),wn=async(e=3e3)=>{if("undefined"==typeof window)return!1;const t=Date.now();if(!await _n(e))return!1;const i=Math.max(0,e-(Date.now()-t));return(await un().waitUntilReady(i)).isReady},mn=g("navigation"),fn=(e,t,i)=>{if(i?.iframe??ut()){t.isOpen&&window.toggleAngieSidebar&&window.toggleAngieSidebar(!0);const n={type:"angie-route-navigation",path:e,payload:t},s=i?gt(i,n):ht(n);return s||mn.error("Failed to post navigation message to Angie iframe"),s}return mn.error("Angie iframe not found"),!1},yn=g("interaction-mode"),Sn=e=>ut()?!!ht({type:m.ANGIE_SET_INTERACTION_MODE,payload:{mode:e}})||(yn.error("Failed to post interaction mode message to Angie iframe"),!1):(yn.error("Angie iframe not found"),!1),bn="angie/requiredResources",vn="angie/modelPreferences",In="angie/extendedTimeout",En="readOnlyHint";var kn;!function(e){e.Inline="inline",e.EndOfTurn="end-of-turn"}(kn||(kn={}));
+const dist_t={none:0,error:1,warn:2,info:3,debug:4},dist_i={error:"error",warn:"warn",info:"info",log:"info",debug:"debug"},dist_n=(e,i)=>dist_t[e]<=dist_t[i],dist_s=e=>"string"==typeof e?e:JSON.stringify(e),dist_r=(e,t)=>`${dist_s(e)} > ${dist_s(t)}`,dist_o=(e,t)=>{let i=`[${dist_s(e)}]`;return typeof window<"u"?{text:`%c${i}`,style:`color: ${t.color||"#00bcd4"}; font-weight: bold;`}:{text:i}},dist_a=(e,t,s,r)=>(...a)=>{if(!dist_n(dist_i[e],r()))return;if(!t)return void console[e](...a);let{text:c,style:d}=dist_o(t,s);d?console[e](c,d,...a):console[e](c,...a)},dist_c=(e,t)=>{let i=t.logLevel??"debug",n=()=>i;return{log:dist_a("log",e,t,n),info:dist_a("info",e,t,n),warn:dist_a("warn",e,t,n),error:dist_a("error",e,t,n),debug:dist_a("debug",e,t,n),setLogLevel:e=>{i=e},extend:n=>dist_c(e?dist_r(e,n):n,{...t,logLevel:i})}},dist_d=(e,t)=>dist_c(e,{color:"#00bcd4",logLevel:"debug",...t}),dist_l=dist_d("angie-sdk",{color:"#00BCD4",logLevel:"error"}),dist_g=e=>dist_l.extend(e);var dist_u,h,dist_p,dist_,m,dist_w,dist_f,dist_y;!function(e){e.POST_MESSAGE="postMessage"}(dist_u||(dist_u={})),function(e){e.POST_MESSAGE="postMessage"}(h||(h={})),function(e){e.STREAMABLE_HTTP="streamableHttp",e.SSE="sse"}(dist_p||(dist_p={})),function(e){e.LOCAL="local",e.REMOTE="remote"}(dist_||(dist_={})),function(e){e.AGENT="agent",e.PLAN="plan",e.ASK="ask",e.SUPER_ADMIN="super-admin"}(m||(m={})),function(e){e.SDK_ANGIE_READY_PING="sdk-angie-ready-ping",e.SDK_ANGIE_REFRESH_PING="sdk-angie-refresh-ping",e.SDK_ANGIE_ALL_SERVERS_REGISTERED="sdk-angie-all-servers-registered",e.SDK_REQUEST_CLIENT_CREATION="sdk-request-client-creation",e.SDK_REQUEST_INIT_SERVER="sdk-request-init-server",e.SDK_INIT_TRIGGER_ANGIE="sdk-init-trigger-angie",e.SDK_TRIGGER_ANGIE="sdk-trigger-angie",e.SDK_TRIGGER_ANGIE_RESPONSE="sdk-trigger-angie-response",e.ANGIE_SIDEBAR_RESIZED="angie-sidebar-resized",e.ANGIE_SIDEBAR_TOGGLED="angie-sidebar-toggled",e.ANGIE_CHAT_TOGGLE="angie-chat-toggle",e.ANGIE_STUDIO_TOGGLE="angie-studio-toggle",e.ANGIE_NAVIGATE_TO_URL="angie/navigate-to-url",e.ANGIE_PAGE_RELOAD="angie/page-reload",e.ANGIE_DISABLE_NAVIGATION_PREVENTION="angie/disable-navigation-prevention",e.ANGIE_NAVIGATE_AFTER_RESPONSE="angie/navigate-after-response",e.ANGIE_SET_INTERACTION_MODE="angie/set-interaction-mode"}(dist_w||(dist_w={})),function(e){e.SET="ANGIE_SET_LOCALSTORAGE",e.GET="ANGIE_GET_LOCALSTORAGE"}(dist_f||(dist_f={})),function(e){e.RESET_HASH="reset-hash",e.HOST_READY="host/ready",e.ANGIE_LOADED="angie/loaded",e.ANGIE_READY="angie/ready"}(dist_y||(dist_y={}));const dist_S=dist_g("angie-detector");class dist_b{isAngieReady=!1;readyPromise;readyResolve;getInstanceId;constructor(e){if(this.getInstanceId=e,this.readyPromise=new Promise(e=>{this.readyResolve=e}),"undefined"==typeof window)return;let t=0;const i=()=>{if(this.isAngieReady||t>=500)return void(!this.isAngieReady&&t>=500&&this.handleDetectionTimeout());const e=new MessageChannel;e.port1.onmessage=t=>{this.handleAngieReady(t.data),e.port1.close(),e.port2.close()};const n={type:dist_w.SDK_ANGIE_READY_PING,payload:{instanceId:this.getInstanceId?.()},timestamp:Date.now()};window.postMessage(n,window.location.origin,[e.port2]),t++,setTimeout(i,500)};i()}handleAngieReady(e){this.isAngieReady=!0;const t={isReady:!0,version:e.version,capabilities:e.capabilities};this.readyResolve&&this.readyResolve(t)}handleDetectionTimeout(){this.readyResolve&&this.readyResolve({isReady:!1}),dist_S.warn("Detection timeout - Angie may not be available")}isReady(){return this.isAngieReady}async waitForReady(){return this.readyPromise}async waitUntilReady(e){return this.isAngieReady?this.readyPromise:Promise.race([this.readyPromise,new Promise(t=>{setTimeout(()=>t({isReady:!1}),e)})])}}class dist_v{sessionId;onmessage;onerror;onclose;_port;_started=!1;_closed=!1;constructor(t){if(!t)throw new Error("MessagePort is required");this._port=t,this._port.onmessage=t=>{try{const i=JSONRPCMessageSchema.parse(t.data);this.onmessage?.(i)}catch(e){const t=new Error(`Failed to parse message: ${e}`);this.onerror?.(t)}},this._port.onmessageerror=e=>{const t=new Error(`MessagePort error: ${JSON.stringify(e)}`);this.onerror?.(t)}}async start(){if(this._started)throw new Error("BrowserContextTransport already started! If using Client or Server class, note that connect() calls start() automatically.");if(this._closed)throw new Error("Cannot start a closed BrowserContextTransport");this._started=!0,this._port.start()}async send(e){if(this._closed)throw new Error("Cannot send on a closed BrowserContextTransport");return new Promise((t,i)=>{try{this._port.postMessage(e),t()}catch(e){const t=e instanceof Error?e:new Error(String(e));this.onerror?.(t),i(t)}})}async close(){this._closed||(this._closed=!0,this._port.close(),this.onclose?.())}}class I{async requestClientCreation(e){const{config:t}=e,i={serverId:e.id,serverName:t.name,serverTitle:t.title,serverVersion:t.version,description:t.description,transport:t.transport||h.POST_MESSAGE,capabilities:t.capabilities,instanceId:e.instanceId};return"type"in t&&"remote"===t.type&&(i.remote={url:t.url}),new Promise((e,t)=>{const n=new MessageChannel,s=setTimeout(()=>{t(new Error("Client creation request timed out after 15000ms"))},15e3);n.port1.onmessage=t=>{clearTimeout(s),e(t.data)};const r={type:dist_w.SDK_REQUEST_CLIENT_CREATION,payload:i,timestamp:Date.now()};window.postMessage(r,window.location.origin,[n.port2])})}}const dist_E="angie-sidebar-container",dist_k="angie-iframe",dist_T=()=>({open:!1,iframe:null,iframeUrlObject:null,containerId:dist_E,instanceId:"",appId:void 0,layout:"",iframeElementId:dist_k}),R=dist_T();class dist_A extends Error{}dist_A.prototype.name="InvalidTokenError";var dist_C,dist_x,dist_P,O={debug:()=>{},info:()=>{},warn:()=>{},error:()=>{}},dist_U=(e=>(e[e.NONE=0]="NONE",e[e.ERROR=1]="ERROR",e[e.WARN=2]="WARN",e[e.INFO=3]="INFO",e[e.DEBUG=4]="DEBUG",e))(dist_U||{});(dist_P=dist_U||(dist_U={})).reset=function(){dist_C=3,dist_x=O},dist_P.setLevel=function(e){if(!(0<=e&&e<=4))throw new Error("Invalid log level");dist_C=e},dist_P.setLogger=function(e){dist_x=e};var L=class e{constructor(e){this._name=e}debug(...t){dist_C>=4&&dist_x.debug(e._format(this._name,this._method),...t)}info(...t){dist_C>=3&&dist_x.info(e._format(this._name,this._method),...t)}warn(...t){dist_C>=2&&dist_x.warn(e._format(this._name,this._method),...t)}error(...t){dist_C>=1&&dist_x.error(e._format(this._name,this._method),...t)}throw(e){throw this.error(e),e}create(e){const t=Object.create(this);return t._method=e,t.debug("begin"),t}static createStatic(t,i){const n=new e(`${t}.${i}`);return n.debug("begin"),n}static _format(e,t){const i=`[${e}]`;return t?`${i} ${t}:`:i}static debug(t,...i){dist_C>=4&&dist_x.debug(e._format(t),...i)}static info(t,...i){dist_C>=3&&dist_x.info(e._format(t),...i)}static warn(t,...i){dist_C>=2&&dist_x.warn(e._format(t),...i)}static error(t,...i){dist_C>=1&&dist_x.error(e._format(t),...i)}};dist_U.reset();var dist_D=class{static decode(e){try{return function(e,t){if("string"!=typeof e)throw new dist_A("Invalid token specified: must be a string");t||(t={});const i=!0===t.header?0:1,n=e.split(".")[i];if("string"!=typeof n)throw new dist_A(`Invalid token specified: missing part #${i+1}`);let s;try{s=function(e){let t=e.replace(/-/g,"+").replace(/_/g,"/");switch(t.length%4){case 0:break;case 2:t+="==";break;case 3:t+="=";break;default:throw new Error("base64 string is not of the correct length")}try{return function(e){return decodeURIComponent(atob(e).replace(/(.)/g,(e,t)=>{let i=t.charCodeAt(0).toString(16).toUpperCase();return i.length<2&&(i="0"+i),"%"+i}))}(t)}catch(e){return atob(t)}}(n)}catch(e){throw new dist_A(`Invalid token specified: invalid base64 for part #${i+1} (${e.message})`)}try{return JSON.parse(s)}catch(e){throw new dist_A(`Invalid token specified: invalid json for part #${i+1} (${e.message})`)}}(e)}catch(e){throw L.error("JwtUtils.decode",e),e}}static async generateSignedJwt(e,t,i){const n=`${dist_M.encodeBase64Url((new TextEncoder).encode(JSON.stringify(e)))}.${dist_M.encodeBase64Url((new TextEncoder).encode(JSON.stringify(t)))}`,s=await window.crypto.subtle.sign({name:"ECDSA",hash:{name:"SHA-256"}},i,(new TextEncoder).encode(n));return`${n}.${dist_M.encodeBase64Url(new Uint8Array(s))}`}static async generateSignedJwtWithHmac(e,t,i){const n=`${dist_M.encodeBase64Url((new TextEncoder).encode(JSON.stringify(e)))}.${dist_M.encodeBase64Url((new TextEncoder).encode(JSON.stringify(t)))}`,s=await window.crypto.subtle.sign("HMAC",i,(new TextEncoder).encode(n));return`${n}.${dist_M.encodeBase64Url(new Uint8Array(s))}`}},N=e=>btoa([...new Uint8Array(e)].map(e=>String.fromCharCode(e)).join("")),q=class e{static _randomWord(){const e=new Uint32Array(1);return crypto.getRandomValues(e),e[0]}static generateUUIDv4(){const t="10000000-1000-4000-8000-100000000000".replace(/[018]/g,t=>(+t^e._randomWord()&15>>+t/4).toString(16));return t.replace(/-/g,"")}static generateCodeVerifier(){return e.generateUUIDv4()+e.generateUUIDv4()+e.generateUUIDv4()}static async generateCodeChallenge(e){if(!crypto.subtle)throw new Error("Crypto.subtle is available only in secure contexts (HTTPS).");try{const t=(new TextEncoder).encode(e),i=await crypto.subtle.digest("SHA-256",t);return N(i).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}catch(e){throw L.error("CryptoUtils.generateCodeChallenge",e),e}}static generateBasicAuth(e,t){const i=(new TextEncoder).encode([e,t].join(":"));return N(i)}static async hash(e,t){const i=(new TextEncoder).encode(t),n=await crypto.subtle.digest(e,i);return new Uint8Array(n)}static async customCalculateJwkThumbprint(t){let i;switch(t.kty){case"RSA":i={e:t.e,kty:t.kty,n:t.n};break;case"EC":i={crv:t.crv,kty:t.kty,x:t.x,y:t.y};break;case"OKP":i={crv:t.crv,kty:t.kty,x:t.x};break;case"oct":i={crv:t.k,kty:t.kty};break;default:throw new Error("Unknown jwk type")}const n=await e.hash("SHA-256",JSON.stringify(i));return e.encodeBase64Url(n)}static async generateDPoPProof({url:t,accessToken:i,httpMethod:n,keyPair:s,nonce:r}){let o,a;const c={jti:window.crypto.randomUUID(),htm:null!=n?n:"GET",htu:t,iat:Math.floor(Date.now()/1e3)};i&&(o=await e.hash("SHA-256",i),a=e.encodeBase64Url(o),c.ath=a),r&&(c.nonce=r);try{const e=await crypto.subtle.exportKey("jwk",s.publicKey),t={alg:"ES256",typ:"dpop+jwt",jwk:{crv:e.crv,kty:e.kty,x:e.x,y:e.y}};return await dist_D.generateSignedJwt(t,c,s.privateKey)}catch(e){throw e instanceof TypeError?new Error(`Error exporting dpop public key: ${e.message}`):e}}static async generateDPoPJkt(t){try{const i=await crypto.subtle.exportKey("jwk",t.publicKey);return await e.customCalculateJwkThumbprint(i)}catch(e){throw e instanceof TypeError?new Error(`Could not retrieve dpop keys from storage: ${e.message}`):e}}static async generateDPoPKeys(){return await window.crypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},!1,["sign","verify"])}static async generateClientAssertionJwt(t,i,n,s="HS256"){const r=Math.floor(Date.now()/1e3),o={alg:s,typ:"JWT"},a={iss:t,sub:t,aud:n,jti:e.generateUUIDv4(),exp:r+300,iat:r},c={HS256:"SHA-256",HS384:"SHA-384",HS512:"SHA-512"}[s];if(!c)throw new Error(`Unsupported algorithm: ${s}. Supported algorithms are: HS256, HS384, HS512`);const d=new TextEncoder,l=await crypto.subtle.importKey("raw",d.encode(i),{name:"HMAC",hash:c},!1,["sign"]);return await dist_D.generateSignedJwtWithHmac(o,a,l)}};q.encodeBase64Url=e=>N(e).replace(/=/g,"").replace(/\+/g,"-").replace(/\//g,"_");var dist_M=q,dist_$=class{constructor(e){this._name=e,this._callbacks=[],this._logger=new L(`Event('${this._name}')`)}addHandler(e){return this._callbacks.push(e),()=>this.removeHandler(e)}removeHandler(e){const t=this._callbacks.lastIndexOf(e);t>=0&&this._callbacks.splice(t,1)}async raise(...e){this._logger.debug("raise:",...e);for(const t of this._callbacks)await t(...e)}},dist_H=class{static center({...e}){var t;return null==e.width&&(e.width=null!=(t=[800,720,600,480].find(e=>e<=window.outerWidth/1.618))?t:360),null!=e.left||(e.left=Math.max(0,Math.round(window.screenX+(window.outerWidth-e.width)/2))),null!=e.height&&(null!=e.top||(e.top=Math.max(0,Math.round(window.screenY+(window.outerHeight-e.height)/2)))),e}static serialize(e){return Object.entries(e).filter(([,e])=>null!=e).map(([e,t])=>`${e}=${"boolean"!=typeof t?t:t?"yes":"no"}`).join(",")}},G=class e extends dist_${constructor(){super(...arguments),this._logger=new L(`Timer('${this._name}')`),this._timerHandle=null,this._expiration=0,this._callback=()=>{const t=this._expiration-e.getEpochTime();this._logger.debug("timer completes in",t),this._expiration<=e.getEpochTime()&&(this.cancel(),super.raise())}}static getEpochTime(){return Math.floor(Date.now()/1e3)}init(t){const i=this._logger.create("init");t=Math.max(Math.floor(t),1);const n=e.getEpochTime()+t;if(this.expiration===n&&this._timerHandle)return void i.debug("skipping since already initialized for expiration at",this.expiration);this.cancel(),i.debug("using duration",t),this._expiration=n;const s=Math.min(t,5);this._timerHandle=setInterval(this._callback,1e3*s)}get expiration(){return this._expiration}cancel(){this._logger.create("cancel"),this._timerHandle&&(clearInterval(this._timerHandle),this._timerHandle=null)}},dist_j=class{static readParams(e,t="query"){if(!e)throw new TypeError("Invalid URL");const i=new URL(e,"http://127.0.0.1")["fragment"===t?"hash":"search"];return new URLSearchParams(i.slice(1))}},dist_z=";",dist_W=class extends Error{constructor(e,t){var i,n,s;if(super(e.error_description||e.error||""),this.form=t,this.name="ErrorResponse",!e.error)throw L.error("ErrorResponse","No error passed"),new Error("No error passed");this.error=e.error,this.error_description=null!=(i=e.error_description)?i:null,this.error_uri=null!=(n=e.error_uri)?n:null,this.state=e.userState,this.session_state=null!=(s=e.session_state)?s:null,this.url_state=e.url_state}},B=class extends Error{constructor(e){super(e),this.name="ErrorTimeout"}},dist_F=class{constructor(e){this._logger=new L("AccessTokenEvents"),this._expiringTimer=new G("Access token expiring"),this._expiredTimer=new G("Access token expired"),this._expiringNotificationTimeInSeconds=e.expiringNotificationTimeInSeconds}async load(e){const t=this._logger.create("load");if(e.access_token&&void 0!==e.expires_in){const i=e.expires_in;if(t.debug("access token present, remaining duration:",i),i>0){let e=i-this._expiringNotificationTimeInSeconds;e<=0&&(e=1),t.debug("registering expiring timer, raising in",e,"seconds"),this._expiringTimer.init(e)}else t.debug("canceling existing expiring timer because we're past expiration."),this._expiringTimer.cancel();const n=i+1;t.debug("registering expired timer, raising in",n,"seconds"),this._expiredTimer.init(n)}else this._expiringTimer.cancel(),this._expiredTimer.cancel()}async unload(){this._logger.debug("unload: canceling existing access token timers"),this._expiringTimer.cancel(),this._expiredTimer.cancel()}addAccessTokenExpiring(e){return this._expiringTimer.addHandler(e)}removeAccessTokenExpiring(e){this._expiringTimer.removeHandler(e)}addAccessTokenExpired(e){return this._expiredTimer.addHandler(e)}removeAccessTokenExpired(e){this._expiredTimer.removeHandler(e)}},K=class{constructor(e,t,i,n,s){this._callback=e,this._client_id=t,this._intervalInSeconds=n,this._stopOnError=s,this._logger=new L("CheckSessionIFrame"),this._timer=null,this._session_state=null,this._message=e=>{e.origin===this._frame_origin&&e.source===this._frame.contentWindow&&("error"===e.data?(this._logger.error("error message from check session op iframe"),this._stopOnError&&this.stop()):"changed"===e.data?(this._logger.debug("changed message from check session op iframe"),this.stop(),this._callback()):this._logger.debug(e.data+" message from check session op iframe"))};const r=new URL(i);this._frame_origin=r.origin,this._frame=window.document.createElement("iframe"),this._frame.style.visibility="hidden",this._frame.style.position="fixed",this._frame.style.left="-1000px",this._frame.style.top="0",this._frame.width="0",this._frame.height="0",this._frame.src=r.href}load(){return new Promise(e=>{this._frame.onload=()=>{e()},window.document.body.appendChild(this._frame),window.addEventListener("message",this._message,!1)})}start(e){if(this._session_state===e)return;this._logger.create("start"),this.stop(),this._session_state=e;const t=()=>{this._frame.contentWindow&&this._session_state&&this._frame.contentWindow.postMessage(this._client_id+" "+this._session_state,this._frame_origin)};t(),this._timer=setInterval(t,1e3*this._intervalInSeconds)}stop(){this._logger.create("stop"),this._session_state=null,this._timer&&(clearInterval(this._timer),this._timer=null)}},J=class{constructor(){this._logger=new L("InMemoryWebStorage"),this._data={}}clear(){this._logger.create("clear"),this._data={}}getItem(e){return this._logger.create(`getItem('${e}')`),this._data[e]}setItem(e,t){this._logger.create(`setItem('${e}')`),this._data[e]=t}removeItem(e){this._logger.create(`removeItem('${e}')`),delete this._data[e]}get length(){return Object.getOwnPropertyNames(this._data).length}key(e){return Object.getOwnPropertyNames(this._data)[e]}},V=class extends Error{constructor(e,t){super(t),this.name="ErrorDPoPNonce",this.nonce=e}},Q=class{constructor(e=[],t=null,i={}){this._jwtHandler=t,this._extraHeaders=i,this._logger=new L("JsonService"),this._contentTypes=[],this._contentTypes.push(...e,"application/json"),t&&this._contentTypes.push("application/jwt")}async fetchWithTimeout(e,t={}){const{timeoutInSeconds:i,...n}=t;if(!i)return await fetch(e,n);const s=new AbortController,r=setTimeout(()=>s.abort(),1e3*i);try{return await fetch(e,{...t,signal:s.signal})}catch(e){if(e instanceof DOMException&&"AbortError"===e.name)throw new B("Network timed out");throw e}finally{clearTimeout(r)}}async getJson(e,{token:t,credentials:i,timeoutInSeconds:n}={}){const s=this._logger.create("getJson"),r={Accept:this._contentTypes.join(", ")};let o;t&&(s.debug("token passed, setting Authorization header"),r.Authorization="Bearer "+t),this._appendExtraHeaders(r);try{s.debug("url:",e),o=await this.fetchWithTimeout(e,{method:"GET",headers:r,timeoutInSeconds:n,credentials:i})}catch(e){throw s.error("Network Error"),e}s.debug("HTTP response received, status",o.status);const a=o.headers.get("Content-Type");if(a&&!this._contentTypes.find(e=>a.startsWith(e))&&s.throw(new Error(`Invalid response Content-Type: ${null!=a?a:"undefined"}, from URL: ${e}`)),o.ok&&this._jwtHandler&&(null==a?void 0:a.startsWith("application/jwt")))return await this._jwtHandler(await o.text());let c;try{c=await o.json()}catch(e){if(s.error("Error parsing JSON response",e),o.ok)throw e;throw new Error(`${o.statusText} (${o.status})`)}if(!o.ok){if(s.error("Error from server:",c),c.error)throw new dist_W(c);throw new Error(`${o.statusText} (${o.status}): ${JSON.stringify(c)}`)}return c}async postForm(e,{body:t,basicAuth:i,timeoutInSeconds:n,initCredentials:s,extraHeaders:r}){const o=this._logger.create("postForm"),a={Accept:this._contentTypes.join(", "),"Content-Type":"application/x-www-form-urlencoded",...r};let c;void 0!==i&&(a.Authorization="Basic "+i),this._appendExtraHeaders(a);try{o.debug("url:",e),c=await this.fetchWithTimeout(e,{method:"POST",headers:a,body:t,timeoutInSeconds:n,credentials:s})}catch(e){throw o.error("Network error"),e}o.debug("HTTP response received, status",c.status);const d=c.headers.get("Content-Type");if(d&&!this._contentTypes.find(e=>d.startsWith(e)))throw new Error(`Invalid response Content-Type: ${null!=d?d:"undefined"}, from URL: ${e}`);const l=await c.text();let g={};if(l)try{g=JSON.parse(l)}catch(e){if(o.error("Error parsing JSON response",e),c.ok)throw e;throw new Error(`${c.statusText} (${c.status})`)}if(!c.ok){if(o.error("Error from server:",g),c.headers.has("dpop-nonce")){const e=c.headers.get("dpop-nonce");throw new V(e,`${JSON.stringify(g)}`)}if(g.error)throw new dist_W(g,t);throw new Error(`${c.statusText} (${c.status}): ${JSON.stringify(g)}`)}return g}_appendExtraHeaders(e){const t=this._logger.create("appendExtraHeaders"),i=Object.keys(this._extraHeaders),n=["accept","content-type"],s=["authorization"];0!==i.length&&i.forEach(i=>{if(n.includes(i.toLocaleLowerCase()))return void t.warn("Protected header could not be set",i,n);if(s.includes(i.toLocaleLowerCase())&&Object.keys(e).includes(i))return void t.warn("Header could not be overridden",i,s);const r="function"==typeof this._extraHeaders[i]?this._extraHeaders[i]():this._extraHeaders[i];r&&""!==r&&(e[i]=r)})}},X=class{constructor(e){this._settings=e,this._logger=new L("MetadataService"),this._signingKeys=null,this._metadata=null,this._metadataUrl=this._settings.metadataUrl,this._jsonService=new Q(["application/jwk-set+json"],null,this._settings.extraHeaders),this._settings.signingKeys&&(this._logger.debug("using signingKeys from settings"),this._signingKeys=this._settings.signingKeys),this._settings.metadata&&(this._logger.debug("using metadata from settings"),this._metadata=this._settings.metadata),this._settings.fetchRequestCredentials&&(this._logger.debug("using fetchRequestCredentials from settings"),this._fetchRequestCredentials=this._settings.fetchRequestCredentials)}resetSigningKeys(){this._signingKeys=null}async getMetadata(){const e=this._logger.create("getMetadata");if(this._metadata)return e.debug("using cached values"),this._metadata;if(!this._metadataUrl)throw e.throw(new Error("No authority or metadataUrl configured on settings")),null;e.debug("getting metadata from",this._metadataUrl);const t=await this._jsonService.getJson(this._metadataUrl,{credentials:this._fetchRequestCredentials,timeoutInSeconds:this._settings.requestTimeoutInSeconds});return e.debug("merging remote JSON with seed metadata"),this._metadata=Object.assign({},t,this._settings.metadataSeed),this._metadata}getIssuer(){return this._getMetadataProperty("issuer")}getAuthorizationEndpoint(){return this._getMetadataProperty("authorization_endpoint")}getUserInfoEndpoint(){return this._getMetadataProperty("userinfo_endpoint")}getTokenEndpoint(e=!0){return this._getMetadataProperty("token_endpoint",e)}getCheckSessionIframe(){return this._getMetadataProperty("check_session_iframe",!0)}getEndSessionEndpoint(){return this._getMetadataProperty("end_session_endpoint",!0)}getRevocationEndpoint(e=!0){return this._getMetadataProperty("revocation_endpoint",e)}getKeysEndpoint(e=!0){return this._getMetadataProperty("jwks_uri",e)}async _getMetadataProperty(e,t=!1){const i=this._logger.create(`_getMetadataProperty('${e}')`),n=await this.getMetadata();if(i.debug("resolved"),void 0===n[e]){if(!0===t)return void i.warn("Metadata does not contain optional property");i.throw(new Error("Metadata does not contain property "+e))}return n[e]}async getSigningKeys(){const e=this._logger.create("getSigningKeys");if(this._signingKeys)return e.debug("returning signingKeys from cache"),this._signingKeys;const t=await this.getKeysEndpoint(!1);e.debug("got jwks_uri",t);const i=await this._jsonService.getJson(t,{timeoutInSeconds:this._settings.requestTimeoutInSeconds});if(e.debug("got key set",i),!Array.isArray(i.keys))throw e.throw(new Error("Missing keys on keyset")),null;return this._signingKeys=i.keys,this._signingKeys}},dist_Y=class{constructor({prefix:e="oidc.",store:t=localStorage}={}){this._logger=new L("WebStorageStateStore"),this._store=t,this._prefix=e}async set(e,t){this._logger.create(`set('${e}')`),e=this._prefix+e,await this._store.setItem(e,t)}async get(e){return this._logger.create(`get('${e}')`),e=this._prefix+e,await this._store.getItem(e)}async remove(e){this._logger.create(`remove('${e}')`),e=this._prefix+e;const t=await this._store.getItem(e);return await this._store.removeItem(e),t}async getAllKeys(){this._logger.create("getAllKeys");const e=await this._store.length,t=[];for(let i=0;i<e;i++){const e=await this._store.key(i);e&&0===e.indexOf(this._prefix)&&t.push(e.substr(this._prefix.length))}return t}},dist_Z=class{constructor({authority:e,metadataUrl:t,metadata:i,signingKeys:n,metadataSeed:s,client_id:r,client_secret:o,response_type:a="code",scope:c="openid",redirect_uri:d,post_logout_redirect_uri:l,client_authentication:g="client_secret_post",token_endpoint_auth_signing_alg:u="HS256",prompt:h,display:p,max_age:_,ui_locales:m,acr_values:w,resource:f,response_mode:y,filterProtocolClaims:S=!0,loadUserInfo:b=!1,requestTimeoutInSeconds:v,staleStateAgeInSeconds:I=900,mergeClaimsStrategy:E={array:"replace"},disablePKCE:k=!1,stateStore:T,revokeTokenAdditionalContentTypes:R,fetchRequestCredentials:A,refreshTokenAllowedScope:C,extraQueryParams:x={},extraTokenParams:P={},extraHeaders:O={},dpop:U,omitScopeWhenRequesting:L=!1}){var D;if(this.authority=e,t?this.metadataUrl=t:(this.metadataUrl=e,e&&(this.metadataUrl.endsWith("/")||(this.metadataUrl+="/"),this.metadataUrl+=".well-known/openid-configuration")),this.metadata=i,this.metadataSeed=s,this.signingKeys=n,this.client_id=r,this.client_secret=o,this.response_type=a,this.scope=c,this.redirect_uri=d,this.post_logout_redirect_uri=l,this.client_authentication=g,this.token_endpoint_auth_signing_alg=u,this.prompt=h,this.display=p,this.max_age=_,this.ui_locales=m,this.acr_values=w,this.resource=f,this.response_mode=y,this.filterProtocolClaims=null==S||S,this.loadUserInfo=!!b,this.staleStateAgeInSeconds=I,this.mergeClaimsStrategy=E,this.omitScopeWhenRequesting=L,this.disablePKCE=!!k,this.revokeTokenAdditionalContentTypes=R,this.fetchRequestCredentials=A||"same-origin",this.requestTimeoutInSeconds=v,T)this.stateStore=T;else{const e="undefined"!=typeof window?window.localStorage:new J;this.stateStore=new dist_Y({store:e})}if(this.refreshTokenAllowedScope=C,this.extraQueryParams=x,this.extraTokenParams=P,this.extraHeaders=O,this.dpop=U,this.dpop&&!(null==(D=this.dpop)?void 0:D.store))throw new Error("A DPoPStore is required when dpop is enabled")}},ee=class{constructor(e,t){this._settings=e,this._metadataService=t,this._logger=new L("UserInfoService"),this._getClaimsFromJwt=async e=>{const t=this._logger.create("_getClaimsFromJwt");try{const i=dist_D.decode(e);return t.debug("JWT decoding successful"),i}catch(e){throw t.error("Error parsing JWT response"),e}},this._jsonService=new Q(void 0,this._getClaimsFromJwt,this._settings.extraHeaders)}async getClaims(e){const t=this._logger.create("getClaims");e||this._logger.throw(new Error("No token passed"));const i=await this._metadataService.getUserInfoEndpoint();t.debug("got userinfo url",i);const n=await this._jsonService.getJson(i,{token:e,credentials:this._settings.fetchRequestCredentials,timeoutInSeconds:this._settings.requestTimeoutInSeconds});return t.debug("got claims",n),n}},te=class{constructor(e,t){this._settings=e,this._metadataService=t,this._logger=new L("TokenClient"),this._jsonService=new Q(this._settings.revokeTokenAdditionalContentTypes,null,this._settings.extraHeaders)}async exchangeCode({grant_type:e="authorization_code",redirect_uri:t=this._settings.redirect_uri,client_id:i=this._settings.client_id,client_secret:n=this._settings.client_secret,extraHeaders:s,...r}){const o=this._logger.create("exchangeCode");i||o.throw(new Error("A client_id is required")),t||o.throw(new Error("A redirect_uri is required")),r.code||o.throw(new Error("A code is required"));const a=new URLSearchParams({grant_type:e,redirect_uri:t});for(const[e,t]of Object.entries(r))null!=t&&a.set(e,t);if(("client_secret_basic"===this._settings.client_authentication||"client_secret_jwt"===this._settings.client_authentication)&&null==n)throw o.throw(new Error("A client_secret is required")),null;let c;const d=await this._metadataService.getTokenEndpoint(!1);switch(this._settings.client_authentication){case"client_secret_basic":c=dist_M.generateBasicAuth(i,n);break;case"client_secret_post":a.append("client_id",i),n&&a.append("client_secret",n);break;case"client_secret_jwt":{const e=await dist_M.generateClientAssertionJwt(i,n,d,this._settings.token_endpoint_auth_signing_alg);a.append("client_id",i),a.append("client_assertion_type","urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),a.append("client_assertion",e);break}}o.debug("got token endpoint");const l=await this._jsonService.postForm(d,{body:a,basicAuth:c,timeoutInSeconds:this._settings.requestTimeoutInSeconds,initCredentials:this._settings.fetchRequestCredentials,extraHeaders:s});return o.debug("got response"),l}async exchangeCredentials({grant_type:e="password",client_id:t=this._settings.client_id,client_secret:i=this._settings.client_secret,scope:n=this._settings.scope,...s}){const r=this._logger.create("exchangeCredentials");t||r.throw(new Error("A client_id is required"));const o=new URLSearchParams({grant_type:e});this._settings.omitScopeWhenRequesting||o.set("scope",n);for(const[e,t]of Object.entries(s))null!=t&&o.set(e,t);if(("client_secret_basic"===this._settings.client_authentication||"client_secret_jwt"===this._settings.client_authentication)&&null==i)throw r.throw(new Error("A client_secret is required")),null;let a;const c=await this._metadataService.getTokenEndpoint(!1);switch(this._settings.client_authentication){case"client_secret_basic":a=dist_M.generateBasicAuth(t,i);break;case"client_secret_post":o.append("client_id",t),i&&o.append("client_secret",i);break;case"client_secret_jwt":{const e=await dist_M.generateClientAssertionJwt(t,i,c,this._settings.token_endpoint_auth_signing_alg);o.append("client_id",t),o.append("client_assertion_type","urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),o.append("client_assertion",e);break}}r.debug("got token endpoint");const d=await this._jsonService.postForm(c,{body:o,basicAuth:a,timeoutInSeconds:this._settings.requestTimeoutInSeconds,initCredentials:this._settings.fetchRequestCredentials});return r.debug("got response"),d}async exchangeRefreshToken({grant_type:e="refresh_token",client_id:t=this._settings.client_id,client_secret:i=this._settings.client_secret,timeoutInSeconds:n,extraHeaders:s,...r}){const o=this._logger.create("exchangeRefreshToken");t||o.throw(new Error("A client_id is required")),r.refresh_token||o.throw(new Error("A refresh_token is required"));const a=new URLSearchParams({grant_type:e});for(const[e,t]of Object.entries(r))Array.isArray(t)?t.forEach(t=>a.append(e,t)):null!=t&&a.set(e,t);if(("client_secret_basic"===this._settings.client_authentication||"client_secret_jwt"===this._settings.client_authentication)&&null==i)throw o.throw(new Error("A client_secret is required")),null;let c;const d=await this._metadataService.getTokenEndpoint(!1);switch(this._settings.client_authentication){case"client_secret_basic":c=dist_M.generateBasicAuth(t,i);break;case"client_secret_post":a.append("client_id",t),i&&a.append("client_secret",i);break;case"client_secret_jwt":{const e=await dist_M.generateClientAssertionJwt(t,i,d,this._settings.token_endpoint_auth_signing_alg);a.append("client_id",t),a.append("client_assertion_type","urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),a.append("client_assertion",e);break}}o.debug("got token endpoint");const l=await this._jsonService.postForm(d,{body:a,basicAuth:c,timeoutInSeconds:n,initCredentials:this._settings.fetchRequestCredentials,extraHeaders:s});return o.debug("got response"),l}async revoke(e){var t;const i=this._logger.create("revoke");e.token||i.throw(new Error("A token is required"));const n=await this._metadataService.getRevocationEndpoint(!1);i.debug(`got revocation endpoint, revoking ${null!=(t=e.token_type_hint)?t:"default token type"}`);const s=new URLSearchParams;for(const[t,i]of Object.entries(e))null!=i&&s.set(t,i);s.set("client_id",this._settings.client_id),this._settings.client_secret&&s.set("client_secret",this._settings.client_secret),await this._jsonService.postForm(n,{body:s,timeoutInSeconds:this._settings.requestTimeoutInSeconds}),i.debug("got response")}},ie=class{constructor(e,t,i){this._settings=e,this._metadataService=t,this._claimsService=i,this._logger=new L("ResponseValidator"),this._userInfoService=new ee(this._settings,this._metadataService),this._tokenClient=new te(this._settings,this._metadataService)}async validateSigninResponse(e,t,i){const n=this._logger.create("validateSigninResponse");this._processSigninState(e,t),n.debug("state processed"),await this._processCode(e,t,i),n.debug("code processed"),e.isOpenId&&this._validateIdTokenAttributes(e),n.debug("tokens validated"),await this._processClaims(e,null==t?void 0:t.skipUserInfo,e.isOpenId),n.debug("claims processed")}async validateCredentialsResponse(e,t){const i=this._logger.create("validateCredentialsResponse"),n=e.isOpenId&&!!e.id_token;n&&this._validateIdTokenAttributes(e),i.debug("tokens validated"),await this._processClaims(e,t,n),i.debug("claims processed")}async validateRefreshResponse(e,t){const i=this._logger.create("validateRefreshResponse");e.userState=t.data,null!=e.session_state||(e.session_state=t.session_state),null!=e.scope||(e.scope=t.scope),e.isOpenId&&e.id_token&&(this._validateIdTokenAttributes(e,t.id_token),i.debug("ID Token validated")),e.id_token||(e.id_token=t.id_token,e.profile=t.profile);const n=e.isOpenId&&!!e.id_token;await this._processClaims(e,!1,n),i.debug("claims processed")}validateSignoutResponse(e,t){const i=this._logger.create("validateSignoutResponse");if(t.id!==e.state&&i.throw(new Error("State does not match")),i.debug("state validated"),e.userState=t.data,e.error)throw i.warn("Response was error",e.error),new dist_W(e)}_processSigninState(e,t){const i=this._logger.create("_processSigninState");if(t.id!==e.state&&i.throw(new Error("State does not match")),t.client_id||i.throw(new Error("No client_id on state")),t.authority||i.throw(new Error("No authority on state")),this._settings.authority!==t.authority&&i.throw(new Error("authority mismatch on settings vs. signin state")),this._settings.client_id&&this._settings.client_id!==t.client_id&&i.throw(new Error("client_id mismatch on settings vs. signin state")),i.debug("state validated"),e.userState=t.data,e.url_state=t.url_state,null!=e.scope||(e.scope=t.scope),e.error)throw i.warn("Response was error",e.error),new dist_W(e);t.code_verifier&&!e.code&&i.throw(new Error("Expected code in response"))}async _processClaims(e,t=!1,i=!0){const n=this._logger.create("_processClaims");if(e.profile=this._claimsService.filterProtocolClaims(e.profile),t||!this._settings.loadUserInfo||!e.access_token)return void n.debug("not loading user info");n.debug("loading user info");const s=await this._userInfoService.getClaims(e.access_token);n.debug("user info claims received from user info endpoint"),i&&s.sub!==e.profile.sub&&n.throw(new Error("subject from UserInfo response does not match subject in ID Token")),e.profile=this._claimsService.mergeClaims(e.profile,this._claimsService.filterProtocolClaims(s)),n.debug("user info claims received, updated profile:",e.profile)}async _processCode(e,t,i){const n=this._logger.create("_processCode");if(e.code){n.debug("Validating code");const s=await this._tokenClient.exchangeCode({client_id:t.client_id,client_secret:t.client_secret,code:e.code,redirect_uri:t.redirect_uri,code_verifier:t.code_verifier,extraHeaders:i,...t.extraTokenParams});Object.assign(e,s)}else n.debug("No code to process")}_validateIdTokenAttributes(e,t){var i;const n=this._logger.create("_validateIdTokenAttributes");n.debug("decoding ID Token JWT");const s=dist_D.decode(null!=(i=e.id_token)?i:"");if(s.sub||n.throw(new Error("ID Token is missing a subject claim")),t){const e=dist_D.decode(t);s.sub!==e.sub&&n.throw(new Error("sub in id_token does not match current sub")),s.auth_time&&s.auth_time!==e.auth_time&&n.throw(new Error("auth_time in id_token does not match original auth_time")),s.azp&&s.azp!==e.azp&&n.throw(new Error("azp in id_token does not match original azp")),!s.azp&&e.azp&&n.throw(new Error("azp not in id_token, but present in original id_token"))}e.profile=s}},ne=class e{constructor(e){this.id=e.id||dist_M.generateUUIDv4(),this.data=e.data,e.created&&e.created>0?this.created=e.created:this.created=G.getEpochTime(),this.request_type=e.request_type,this.url_state=e.url_state}toStorageString(){return new L("State").create("toStorageString"),JSON.stringify({id:this.id,data:this.data,created:this.created,request_type:this.request_type,url_state:this.url_state})}static fromStorageString(t){return L.createStatic("State","fromStorageString"),Promise.resolve(new e(JSON.parse(t)))}static async clearStaleState(t,i){const n=L.createStatic("State","clearStaleState"),s=G.getEpochTime()-i,r=await t.getAllKeys();n.debug("got keys",r);for(let i=0;i<r.length;i++){const o=r[i],a=await t.get(o);let c=!1;if(a)try{const t=await e.fromStorageString(a);n.debug("got item from key:",o,t.created),t.created<=s&&(c=!0)}catch(e){n.error("Error parsing state for key:",o,e),c=!0}else n.debug("no item in storage for key:",o),c=!0;c&&(n.debug("removed item for key:",o),t.remove(o))}}},se=class e extends ne{constructor(e){super(e),this.code_verifier=e.code_verifier,this.code_challenge=e.code_challenge,this.authority=e.authority,this.client_id=e.client_id,this.redirect_uri=e.redirect_uri,this.scope=e.scope,this.client_secret=e.client_secret,this.extraTokenParams=e.extraTokenParams,this.response_mode=e.response_mode,this.skipUserInfo=e.skipUserInfo}static async create(t){const i=!0===t.code_verifier?dist_M.generateCodeVerifier():t.code_verifier||void 0,n=i?await dist_M.generateCodeChallenge(i):void 0;return new e({...t,code_verifier:i,code_challenge:n})}toStorageString(){return new L("SigninState").create("toStorageString"),JSON.stringify({id:this.id,data:this.data,created:this.created,request_type:this.request_type,url_state:this.url_state,code_verifier:this.code_verifier,authority:this.authority,client_id:this.client_id,redirect_uri:this.redirect_uri,scope:this.scope,client_secret:this.client_secret,extraTokenParams:this.extraTokenParams,response_mode:this.response_mode,skipUserInfo:this.skipUserInfo})}static fromStorageString(t){L.createStatic("SigninState","fromStorageString");const i=JSON.parse(t);return e.create(i)}},dist_re=class e{constructor(e){this.url=e.url,this.state=e.state}static async create({url:t,authority:i,client_id:n,redirect_uri:s,response_type:r,scope:o,state_data:a,response_mode:c,request_type:d,client_secret:l,nonce:g,url_state:u,resource:h,skipUserInfo:p,extraQueryParams:_,extraTokenParams:m,disablePKCE:w,dpopJkt:f,omitScopeWhenRequesting:y,...S}){if(!t)throw this._logger.error("create: No url passed"),new Error("url");if(!n)throw this._logger.error("create: No client_id passed"),new Error("client_id");if(!s)throw this._logger.error("create: No redirect_uri passed"),new Error("redirect_uri");if(!r)throw this._logger.error("create: No response_type passed"),new Error("response_type");if(!o)throw this._logger.error("create: No scope passed"),new Error("scope");if(!i)throw this._logger.error("create: No authority passed"),new Error("authority");const b=await se.create({data:a,request_type:d,url_state:u,code_verifier:!w,client_id:n,authority:i,redirect_uri:s,response_mode:c,client_secret:l,scope:o,extraTokenParams:m,skipUserInfo:p}),v=new URL(t);v.searchParams.append("client_id",n),v.searchParams.append("redirect_uri",s),v.searchParams.append("response_type",r),y||v.searchParams.append("scope",o),g&&v.searchParams.append("nonce",g),f&&v.searchParams.append("dpop_jkt",f);let I=b.id;u&&(I=`${I}${dist_z}${u}`),v.searchParams.append("state",I),b.code_challenge&&(v.searchParams.append("code_challenge",b.code_challenge),v.searchParams.append("code_challenge_method","S256")),h&&(Array.isArray(h)?h:[h]).forEach(e=>v.searchParams.append("resource",e));for(const[e,t]of Object.entries({response_mode:c,...S,..._}))null!=t&&v.searchParams.append(e,t.toString());return new e({url:v.href,state:b})}};dist_re._logger=new L("SigninRequest");var oe=dist_re,ae=class{constructor(e){if(this.access_token="",this.token_type="",this.profile={},this.state=e.get("state"),this.session_state=e.get("session_state"),this.state){const e=decodeURIComponent(this.state).split(dist_z);this.state=e[0],e.length>1&&(this.url_state=e.slice(1).join(dist_z))}this.error=e.get("error"),this.error_description=e.get("error_description"),this.error_uri=e.get("error_uri"),this.code=e.get("code")}get expires_in(){if(void 0!==this.expires_at)return this.expires_at-G.getEpochTime()}set expires_in(e){"string"==typeof e&&(e=Number(e)),void 0!==e&&e>=0&&(this.expires_at=Math.floor(e)+G.getEpochTime())}get isOpenId(){var e;return(null==(e=this.scope)?void 0:e.split(" ").includes("openid"))||!!this.id_token}},ce=class{constructor({url:e,state_data:t,id_token_hint:i,post_logout_redirect_uri:n,extraQueryParams:s,request_type:r,client_id:o,url_state:a}){if(this._logger=new L("SignoutRequest"),!e)throw this._logger.error("ctor: No url passed"),new Error("url");const c=new URL(e);if(i&&c.searchParams.append("id_token_hint",i),o&&c.searchParams.append("client_id",o),n&&(c.searchParams.append("post_logout_redirect_uri",n),t||a)){this.state=new ne({data:t,request_type:r,url_state:a});let e=this.state.id;a&&(e=`${e}${dist_z}${a}`),c.searchParams.append("state",e)}for(const[e,t]of Object.entries({...s}))null!=t&&c.searchParams.append(e,t.toString());this.url=c.href}},de=class{constructor(e){if(this.state=e.get("state"),this.state){const e=decodeURIComponent(this.state).split(dist_z);this.state=e[0],e.length>1&&(this.url_state=e.slice(1).join(dist_z))}this.error=e.get("error"),this.error_description=e.get("error_description"),this.error_uri=e.get("error_uri")}},le=["nbf","jti","auth_time","nonce","acr","amr","azp","at_hash"],ge=["sub","iss","aud","exp","iat"],ue=class{constructor(e){this._settings=e,this._logger=new L("ClaimsService")}filterProtocolClaims(e){const t={...e};if(this._settings.filterProtocolClaims){let e;e=Array.isArray(this._settings.filterProtocolClaims)?this._settings.filterProtocolClaims:le;for(const i of e)ge.includes(i)||delete t[i]}return t}mergeClaims(e,t){const i={...e};for(const[e,n]of Object.entries(t))if(i[e]!==n)if(Array.isArray(i[e])||Array.isArray(n))if("replace"==this._settings.mergeClaimsStrategy.array)i[e]=n;else{const t=Array.isArray(i[e])?i[e]:[i[e]];for(const e of Array.isArray(n)?n:[n])t.includes(e)||t.push(e);i[e]=t}else"object"==typeof i[e]&&"object"==typeof n?i[e]=this.mergeClaims(i[e],n):i[e]=n;return i}},he=class{constructor(e,t){this.keys=e,this.nonce=t}},pe=class{constructor(e,t){this._logger=new L("OidcClient"),this.settings=e instanceof dist_Z?e:new dist_Z(e),this.metadataService=null!=t?t:new X(this.settings),this._claimsService=new ue(this.settings),this._validator=new ie(this.settings,this.metadataService,this._claimsService),this._tokenClient=new te(this.settings,this.metadataService)}async createSigninRequest({state:e,request:t,request_uri:i,request_type:n,id_token_hint:s,login_hint:r,skipUserInfo:o,nonce:a,url_state:c,response_type:d=this.settings.response_type,scope:l=this.settings.scope,redirect_uri:g=this.settings.redirect_uri,prompt:u=this.settings.prompt,display:h=this.settings.display,max_age:p=this.settings.max_age,ui_locales:_=this.settings.ui_locales,acr_values:m=this.settings.acr_values,resource:w=this.settings.resource,response_mode:f=this.settings.response_mode,extraQueryParams:y=this.settings.extraQueryParams,extraTokenParams:S=this.settings.extraTokenParams,dpopJkt:b,omitScopeWhenRequesting:v=this.settings.omitScopeWhenRequesting}){const I=this._logger.create("createSigninRequest");if("code"!==d)throw new Error("Only the Authorization Code flow (with PKCE) is supported");const E=await this.metadataService.getAuthorizationEndpoint();I.debug("Received authorization endpoint",E);const k=await oe.create({url:E,authority:this.settings.authority,client_id:this.settings.client_id,redirect_uri:g,response_type:d,scope:l,state_data:e,url_state:c,prompt:u,display:h,max_age:p,ui_locales:_,id_token_hint:s,login_hint:r,acr_values:m,dpopJkt:b,resource:w,request:t,request_uri:i,extraQueryParams:y,extraTokenParams:S,request_type:n,response_mode:f,client_secret:this.settings.client_secret,skipUserInfo:o,nonce:a,disablePKCE:this.settings.disablePKCE,omitScopeWhenRequesting:v});await this.clearStaleState();const T=k.state;return await this.settings.stateStore.set(T.id,T.toStorageString()),k}async readSigninResponseState(e,t=!1){const i=this._logger.create("readSigninResponseState"),n=new ae(dist_j.readParams(e,this.settings.response_mode));if(!n.state)throw i.throw(new Error("No state in response")),null;const s=await this.settings.stateStore[t?"remove":"get"](n.state);if(!s)throw i.throw(new Error("No matching state found in storage")),null;return{state:await se.fromStorageString(s),response:n}}async processSigninResponse(e,t,i=!0){const n=this._logger.create("processSigninResponse"),{state:s,response:r}=await this.readSigninResponseState(e,i);if(n.debug("received state from storage; validating response"),this.settings.dpop&&this.settings.dpop.store){const e=await this.getDpopProof(this.settings.dpop.store);t={...t,DPoP:e}}try{await this._validator.validateSigninResponse(r,s,t)}catch(e){if(!(e instanceof V&&this.settings.dpop))throw e;{const i=await this.getDpopProof(this.settings.dpop.store,e.nonce);t.DPoP=i,await this._validator.validateSigninResponse(r,s,t)}}return r}async getDpopProof(e,t){let i,n;return(await e.getAllKeys()).includes(this.settings.client_id)?(n=await e.get(this.settings.client_id),n.nonce!==t&&t&&(n.nonce=t,await e.set(this.settings.client_id,n))):(i=await dist_M.generateDPoPKeys(),n=new he(i,t),await e.set(this.settings.client_id,n)),await dist_M.generateDPoPProof({url:await this.metadataService.getTokenEndpoint(!1),httpMethod:"POST",keyPair:n.keys,nonce:n.nonce})}async processResourceOwnerPasswordCredentials({username:e,password:t,skipUserInfo:i=!1,extraTokenParams:n={}}){const s=await this._tokenClient.exchangeCredentials({username:e,password:t,...n}),r=new ae(new URLSearchParams);return Object.assign(r,s),await this._validator.validateCredentialsResponse(r,i),r}async useRefreshToken({state:e,redirect_uri:t,resource:i,timeoutInSeconds:n,extraHeaders:s,extraTokenParams:r}){var o;const a=this._logger.create("useRefreshToken");let c,d;if(void 0===this.settings.refreshTokenAllowedScope)c=e.scope;else{const t=this.settings.refreshTokenAllowedScope.split(" ");c=((null==(o=e.scope)?void 0:o.split(" "))||[]).filter(e=>t.includes(e)).join(" ")}if(this.settings.dpop&&this.settings.dpop.store){const e=await this.getDpopProof(this.settings.dpop.store);s={...s,DPoP:e}}try{d=await this._tokenClient.exchangeRefreshToken({refresh_token:e.refresh_token,scope:c,redirect_uri:t,resource:i,timeoutInSeconds:n,extraHeaders:s,...r})}catch(o){if(!(o instanceof V&&this.settings.dpop))throw o;s.DPoP=await this.getDpopProof(this.settings.dpop.store,o.nonce),d=await this._tokenClient.exchangeRefreshToken({refresh_token:e.refresh_token,scope:c,redirect_uri:t,resource:i,timeoutInSeconds:n,extraHeaders:s,...r})}const l=new ae(new URLSearchParams);return Object.assign(l,d),a.debug("validating response",l),await this._validator.validateRefreshResponse(l,{...e,scope:c}),l}async createSignoutRequest({state:e,id_token_hint:t,client_id:i,request_type:n,url_state:s,post_logout_redirect_uri:r=this.settings.post_logout_redirect_uri,extraQueryParams:o=this.settings.extraQueryParams}={}){const a=this._logger.create("createSignoutRequest"),c=await this.metadataService.getEndSessionEndpoint();if(!c)throw a.throw(new Error("No end session endpoint")),null;a.debug("Received end session endpoint",c),i||!r||t||(i=this.settings.client_id);const d=new ce({url:c,id_token_hint:t,client_id:i,post_logout_redirect_uri:r,state_data:e,extraQueryParams:o,request_type:n,url_state:s});await this.clearStaleState();const l=d.state;return l&&(a.debug("Signout request has state to persist"),await this.settings.stateStore.set(l.id,l.toStorageString())),d}async readSignoutResponseState(e,t=!1){const i=this._logger.create("readSignoutResponseState"),n=new de(dist_j.readParams(e,this.settings.response_mode));if(!n.state){if(i.debug("No state in response"),n.error)throw i.warn("Response was error:",n.error),new dist_W(n);return{state:void 0,response:n}}const s=await this.settings.stateStore[t?"remove":"get"](n.state);if(!s)throw i.throw(new Error("No matching state found in storage")),null;return{state:await ne.fromStorageString(s),response:n}}async processSignoutResponse(e){const t=this._logger.create("processSignoutResponse"),{state:i,response:n}=await this.readSignoutResponseState(e,!0);return i?(t.debug("Received state from storage; validating response"),this._validator.validateSignoutResponse(n,i)):t.debug("No state from storage; skipping response validation"),n}clearStaleState(){return this._logger.create("clearStaleState"),ne.clearStaleState(this.settings.stateStore,this.settings.staleStateAgeInSeconds)}async revokeToken(e,t){return this._logger.create("revokeToken"),await this._tokenClient.revoke({token:e,token_type_hint:t})}},dist_e=class{constructor(e){this._userManager=e,this._logger=new L("SessionMonitor"),this._start=async e=>{const t=e.session_state;if(!t)return;const i=this._logger.create("_start");if(e.profile?(this._sub=e.profile.sub,i.debug("session_state",t,", sub",this._sub)):(this._sub=void 0,i.debug("session_state",t,", anonymous user")),this._checkSessionIFrame)this._checkSessionIFrame.start(t);else try{const e=await this._userManager.metadataService.getCheckSessionIframe();if(e){i.debug("initializing check session iframe");const n=this._userManager.settings.client_id,s=this._userManager.settings.checkSessionIntervalInSeconds,r=this._userManager.settings.stopCheckSessionOnError,o=new K(this._callback,n,e,s,r);await o.load(),this._checkSessionIFrame=o,o.start(t)}else i.warn("no check session iframe found in the metadata")}catch(e){i.error("Error from getCheckSessionIframe:",e instanceof Error?e.message:e)}},this._stop=()=>{const e=this._logger.create("_stop");if(this._sub=void 0,this._checkSessionIFrame&&this._checkSessionIFrame.stop(),this._userManager.settings.monitorAnonymousSession){const t=setInterval(async()=>{clearInterval(t);try{const e=await this._userManager.querySessionStatus();if(e){const t={session_state:e.session_state,profile:e.sub?{sub:e.sub}:null};this._start(t)}}catch(t){e.error("error from querySessionStatus",t instanceof Error?t.message:t)}},1e3)}},this._callback=async()=>{const e=this._logger.create("_callback");try{const t=await this._userManager.querySessionStatus();let i=!0;t&&this._checkSessionIFrame?t.sub===this._sub?(i=!1,this._checkSessionIFrame.start(t.session_state),e.debug("same sub still logged in at OP, session state has changed, restarting check session iframe; session_state",t.session_state),await this._userManager.events._raiseUserSessionChanged()):e.debug("different subject signed into OP",t.sub):e.debug("subject no longer signed into OP"),i?this._sub?await this._userManager.events._raiseUserSignedOut():await this._userManager.events._raiseUserSignedIn():e.debug("no change in session detected, no event to raise")}catch(t){this._sub&&(e.debug("Error calling queryCurrentSigninSession; raising signed out event",t),await this._userManager.events._raiseUserSignedOut())}},e||this._logger.throw(new Error("No user manager passed")),this._userManager.events.addUserLoaded(this._start),this._userManager.events.addUserUnloaded(this._stop),this._init().catch(e=>{this._logger.error(e)})}async _init(){this._logger.create("_init");const e=await this._userManager.getUser();if(e)this._start(e);else if(this._userManager.settings.monitorAnonymousSession){const e=await this._userManager.querySessionStatus();if(e){const t={session_state:e.session_state,profile:e.sub?{sub:e.sub}:null};this._start(t)}}}},me=class e{constructor(e){var t;this.id_token=e.id_token,this.session_state=null!=(t=e.session_state)?t:null,this.access_token=e.access_token,this.refresh_token=e.refresh_token,this.token_type=e.token_type,this.scope=e.scope,this.profile=e.profile,this.expires_at=e.expires_at,this.state=e.userState,this.url_state=e.url_state}get expires_in(){if(void 0!==this.expires_at)return this.expires_at-G.getEpochTime()}set expires_in(e){void 0!==e&&(this.expires_at=Math.floor(e)+G.getEpochTime())}get expired(){const e=this.expires_in;if(void 0!==e)return e<=0}get scopes(){var e,t;return null!=(t=null==(e=this.scope)?void 0:e.split(" "))?t:[]}toStorageString(){return new L("User").create("toStorageString"),JSON.stringify({id_token:this.id_token,session_state:this.session_state,access_token:this.access_token,refresh_token:this.refresh_token,token_type:this.token_type,scope:this.scope,profile:this.profile,expires_at:this.expires_at})}static fromStorageString(t){return L.createStatic("User","fromStorageString"),new e(JSON.parse(t))}},dist_we="oidc-client",fe=class{constructor(){this._abort=new dist_$("Window navigation aborted"),this._disposeHandlers=new Set,this._window=null}async navigate(e){const t=this._logger.create("navigate");if(!this._window)throw new Error("Attempted to navigate on a disposed window");t.debug("setting URL in window"),this._window.location.replace(e.url);const{url:i,keepOpen:n}=await new Promise((i,n)=>{const s=s=>{var r;const o=s.data,a=null!=(r=e.scriptOrigin)?r:window.location.origin;if(s.origin===a&&(null==o?void 0:o.source)===dist_we){try{const i=dist_j.readParams(o.url,e.response_mode).get("state");if(i||t.warn("no state found in response url"),s.source!==this._window&&i!==e.state)return}catch{this._dispose(),n(new Error("Invalid response from window"))}i(o)}};window.addEventListener("message",s,!1),this._disposeHandlers.add(()=>window.removeEventListener("message",s,!1));const r=new BroadcastChannel(`oidc-client-popup-${e.state}`);r.addEventListener("message",s,!1),this._disposeHandlers.add(()=>r.close()),this._disposeHandlers.add(this._abort.addHandler(e=>{this._dispose(),n(e)}))});return t.debug("got response from window"),this._dispose(),n||this.close(),{url:i}}_dispose(){this._logger.create("_dispose");for(const e of this._disposeHandlers)e();this._disposeHandlers.clear()}static _notifyParent(e,t,i=!1,n=window.location.origin){const s={source:dist_we,url:t,keepOpen:i},r=new L("_notifyParent");if(e)r.debug("With parent. Using parent.postMessage."),e.postMessage(s,n);else{r.debug("No parent. Using BroadcastChannel.");const e=new URL(t).searchParams.get("state");if(!e)throw new Error("No parent and no state in URL. Can't complete notification.");const i=new BroadcastChannel(`oidc-client-popup-${e}`);i.postMessage(s),i.close()}}},ye={location:!1,toolbar:!1,height:640,closePopupWindowAfterInSeconds:-1},Se="_blank",dist_be=60,ve=2,Ie=class extends dist_Z{constructor(e){const{popup_redirect_uri:t=e.redirect_uri,popup_post_logout_redirect_uri:i=e.post_logout_redirect_uri,popupWindowFeatures:n=ye,popupWindowTarget:s=Se,redirectMethod:r="assign",redirectTarget:o="self",iframeNotifyParentOrigin:a=e.iframeNotifyParentOrigin,iframeScriptOrigin:c=e.iframeScriptOrigin,requestTimeoutInSeconds:d,silent_redirect_uri:l=e.redirect_uri,silentRequestTimeoutInSeconds:g,automaticSilentRenew:u=!0,validateSubOnSilentRenew:h=!0,includeIdTokenInSilentRenew:p=!1,monitorSession:_=!1,monitorAnonymousSession:m=!1,checkSessionIntervalInSeconds:w=ve,query_status_response_type:f="code",stopCheckSessionOnError:y=!0,revokeTokenTypes:S=["access_token","refresh_token"],revokeTokensOnSignout:b=!1,includeIdTokenInSilentSignout:v=!1,accessTokenExpiringNotificationTimeInSeconds:I=dist_be,userStore:E}=e;if(super(e),this.popup_redirect_uri=t,this.popup_post_logout_redirect_uri=i,this.popupWindowFeatures=n,this.popupWindowTarget=s,this.redirectMethod=r,this.redirectTarget=o,this.iframeNotifyParentOrigin=a,this.iframeScriptOrigin=c,this.silent_redirect_uri=l,this.silentRequestTimeoutInSeconds=g||d||10,this.automaticSilentRenew=u,this.validateSubOnSilentRenew=h,this.includeIdTokenInSilentRenew=p,this.monitorSession=_,this.monitorAnonymousSession=m,this.checkSessionIntervalInSeconds=w,this.stopCheckSessionOnError=y,this.query_status_response_type=f,this.revokeTokenTypes=S,this.revokeTokensOnSignout=b,this.includeIdTokenInSilentSignout=v,this.accessTokenExpiringNotificationTimeInSeconds=I,E)this.userStore=E;else{const e="undefined"!=typeof window?window.sessionStorage:new J;this.userStore=new dist_Y({store:e})}}},Ee=class e extends fe{constructor({silentRequestTimeoutInSeconds:t=10}){super(),this._logger=new L("IFrameWindow"),this._timeoutInSeconds=t,this._frame=e.createHiddenIframe(),this._window=this._frame.contentWindow}static createHiddenIframe(){const e=window.document.createElement("iframe");return e.style.visibility="hidden",e.style.position="fixed",e.style.left="-1000px",e.style.top="0",e.width="0",e.height="0",window.document.body.appendChild(e),e}async navigate(e){this._logger.debug("navigate: Using timeout of:",this._timeoutInSeconds);const t=setTimeout(()=>{this._abort.raise(new B("IFrame timed out without a response"))},1e3*this._timeoutInSeconds);return this._disposeHandlers.add(()=>clearTimeout(t)),await super.navigate(e)}close(){var e;this._frame&&(this._frame.parentNode&&(this._frame.addEventListener("load",e=>{var t;const i=e.target;null==(t=i.parentNode)||t.removeChild(i),this._abort.raise(new Error("IFrame removed from DOM"))},!0),null==(e=this._frame.contentWindow)||e.location.replace("about:blank")),this._frame=null),this._window=null}static notifyParent(e,t){return super._notifyParent(window.parent,e,!1,t)}},ke=class{constructor(e){this._settings=e,this._logger=new L("IFrameNavigator")}async prepare({silentRequestTimeoutInSeconds:e=this._settings.silentRequestTimeoutInSeconds}){return new Ee({silentRequestTimeoutInSeconds:e})}async callback(e){this._logger.create("callback"),Ee.notifyParent(e,this._settings.iframeNotifyParentOrigin)}},Te=class extends fe{constructor({popupWindowTarget:e=Se,popupWindowFeatures:t={},popupSignal:i,popupAbortOnClose:n}){super(),this._logger=new L("PopupWindow");const s=dist_H.center({...ye,...t});this._window=window.open(void 0,e,dist_H.serialize(s)),this.abortOnClose=Boolean(n),i&&i.addEventListener("abort",()=>{var e;this._abort.raise(new Error(null!=(e=i.reason)?e:"Popup aborted"))}),t.closePopupWindowAfterInSeconds&&t.closePopupWindowAfterInSeconds>0&&setTimeout(()=>{this._window&&"boolean"==typeof this._window.closed&&!this._window.closed?this.close():this._abort.raise(new Error("Popup blocked by user"))},1e3*t.closePopupWindowAfterInSeconds)}async navigate(e){var t;null==(t=this._window)||t.focus();const i=setInterval(()=>{this._window&&!this._window.closed||(this._logger.debug("Popup closed by user or isolated by redirect"),n(),this._disposeHandlers.delete(n),this.abortOnClose&&this._abort.raise(new Error("Popup closed by user")))},500),n=()=>clearInterval(i);return this._disposeHandlers.add(n),await super.navigate(e)}close(){this._window&&(this._window.closed||(this._window.close(),this._abort.raise(new Error("Popup closed")))),this._window=null}static notifyOpener(e,t){super._notifyParent(window.opener,e,t),t||window.opener||window.close()}},dist_Re=class{constructor(e){this._settings=e,this._logger=new L("PopupNavigator")}async prepare({popupWindowFeatures:e=this._settings.popupWindowFeatures,popupWindowTarget:t=this._settings.popupWindowTarget,popupSignal:i,popupAbortOnClose:n}){return new Te({popupWindowFeatures:e,popupWindowTarget:t,popupSignal:i,popupAbortOnClose:n})}async callback(e,{keepOpen:t=!1}){this._logger.create("callback"),Te.notifyOpener(e,t)}},Ae=class{constructor(e){this._settings=e,this._logger=new L("RedirectNavigator")}async prepare({redirectMethod:e=this._settings.redirectMethod,redirectTarget:t=this._settings.redirectTarget}){var i;this._logger.create("prepare");let n=window.self;"top"===t&&(n=null!=(i=window.top)?i:window.self);const s=n.location[e].bind(n.location);let r;return{navigate:async e=>{this._logger.create("navigate");const t=new Promise((t,i)=>{r=i,window.addEventListener("pageshow",()=>t(window.location.href)),s(e.url)});return await t},close:()=>{this._logger.create("close"),null==r||r(new Error("Redirect aborted")),n.stop()}}}async callback(){}},Ce=class extends dist_F{constructor(e){super({expiringNotificationTimeInSeconds:e.accessTokenExpiringNotificationTimeInSeconds}),this._logger=new L("UserManagerEvents"),this._userLoaded=new dist_$("User loaded"),this._userUnloaded=new dist_$("User unloaded"),this._silentRenewError=new dist_$("Silent renew error"),this._userSignedIn=new dist_$("User signed in"),this._userSignedOut=new dist_$("User signed out"),this._userSessionChanged=new dist_$("User session changed")}async load(e,t=!0){await super.load(e),t&&await this._userLoaded.raise(e)}async unload(){await super.unload(),await this._userUnloaded.raise()}addUserLoaded(e){return this._userLoaded.addHandler(e)}removeUserLoaded(e){return this._userLoaded.removeHandler(e)}addUserUnloaded(e){return this._userUnloaded.addHandler(e)}removeUserUnloaded(e){return this._userUnloaded.removeHandler(e)}addSilentRenewError(e){return this._silentRenewError.addHandler(e)}removeSilentRenewError(e){return this._silentRenewError.removeHandler(e)}async _raiseSilentRenewError(e){await this._silentRenewError.raise(e)}addUserSignedIn(e){return this._userSignedIn.addHandler(e)}removeUserSignedIn(e){this._userSignedIn.removeHandler(e)}async _raiseUserSignedIn(){await this._userSignedIn.raise()}addUserSignedOut(e){return this._userSignedOut.addHandler(e)}removeUserSignedOut(e){this._userSignedOut.removeHandler(e)}async _raiseUserSignedOut(){await this._userSignedOut.raise()}addUserSessionChanged(e){return this._userSessionChanged.addHandler(e)}removeUserSessionChanged(e){this._userSessionChanged.removeHandler(e)}async _raiseUserSessionChanged(){await this._userSessionChanged.raise()}},xe=class{constructor(e){this._userManager=e,this._logger=new L("SilentRenewService"),this._isStarted=!1,this._retryTimer=new G("Retry Silent Renew"),this._tokenExpiring=async()=>{const e=this._logger.create("_tokenExpiring");try{await this._userManager.signinSilent(),e.debug("silent token renewal successful")}catch(t){if(t instanceof B)return e.warn("ErrorTimeout from signinSilent:",t,"retry in 5s"),void this._retryTimer.init(5);e.error("Error from signinSilent:",t),await this._userManager.events._raiseSilentRenewError(t)}}}async start(){const e=this._logger.create("start");if(!this._isStarted){this._isStarted=!0,this._userManager.events.addAccessTokenExpiring(this._tokenExpiring),this._retryTimer.addHandler(this._tokenExpiring);try{await this._userManager.getUser()}catch(t){e.error("getUser error",t)}}}stop(){this._isStarted&&(this._retryTimer.cancel(),this._retryTimer.removeHandler(this._tokenExpiring),this._userManager.events.removeAccessTokenExpiring(this._tokenExpiring),this._isStarted=!1)}},Pe=class{constructor(e){this.refresh_token=e.refresh_token,this.id_token=e.id_token,this.session_state=e.session_state,this.scope=e.scope,this.profile=e.profile,this.data=e.state}},Oe=class{constructor(e,t,i,n){this._logger=new L("UserManager"),this.settings=new Ie(e),this._client=new pe(e),this._redirectNavigator=null!=t?t:new Ae(this.settings),this._popupNavigator=null!=i?i:new dist_Re(this.settings),this._iframeNavigator=null!=n?n:new ke(this.settings),this._events=new Ce(this.settings),this._silentRenewService=new xe(this),this.settings.automaticSilentRenew&&this.startSilentRenew(),this._sessionMonitor=null,this.settings.monitorSession&&(this._sessionMonitor=new dist_e(this))}get events(){return this._events}get metadataService(){return this._client.metadataService}async getUser(e=!1){const t=this._logger.create("getUser"),i=await this._loadUser();return i?(t.info("user loaded"),await this._events.load(i,e),i):(t.info("user not found in storage"),null)}async removeUser(){const e=this._logger.create("removeUser");await this.storeUser(null),e.info("user removed from storage"),await this._events.unload()}async signinRedirect(e={}){var t;this._logger.create("signinRedirect");const{redirectMethod:i,...n}=e;let s;(null==(t=this.settings.dpop)?void 0:t.bind_authorization_code)&&(s=await this.generateDPoPJkt(this.settings.dpop));const r=await this._redirectNavigator.prepare({redirectMethod:i});await this._signinStart({request_type:"si:r",dpopJkt:s,...n},r)}async signinRedirectCallback(e=window.location.href){const t=this._logger.create("signinRedirectCallback"),i=await this._signinEnd(e);return i.profile&&i.profile.sub?t.info("success, signed in subject",i.profile.sub):t.info("no subject"),i}async signinResourceOwnerCredentials({username:e,password:t,skipUserInfo:i=!1}){const n=this._logger.create("signinResourceOwnerCredential"),s=await this._client.processResourceOwnerPasswordCredentials({username:e,password:t,skipUserInfo:i,extraTokenParams:this.settings.extraTokenParams});n.debug("got signin response");const r=await this._buildUser(s);return r.profile&&r.profile.sub?n.info("success, signed in subject",r.profile.sub):n.info("no subject"),r}async signinPopup(e={}){var t;const i=this._logger.create("signinPopup");let n;(null==(t=this.settings.dpop)?void 0:t.bind_authorization_code)&&(n=await this.generateDPoPJkt(this.settings.dpop));const{popupWindowFeatures:s,popupWindowTarget:r,popupSignal:o,popupAbortOnClose:a,...c}=e,d=this.settings.popup_redirect_uri;d||i.throw(new Error("No popup_redirect_uri configured"));const l=await this._popupNavigator.prepare({popupWindowFeatures:s,popupWindowTarget:r,popupSignal:o,popupAbortOnClose:a}),g=await this._signin({request_type:"si:p",redirect_uri:d,display:"popup",dpopJkt:n,...c},l);return g&&(g.profile&&g.profile.sub?i.info("success, signed in subject",g.profile.sub):i.info("no subject")),g}async signinPopupCallback(e=window.location.href,t=!1){const i=this._logger.create("signinPopupCallback");await this._popupNavigator.callback(e,{keepOpen:t}),i.info("success")}async signinSilent(e={}){var t,i;const n=this._logger.create("signinSilent"),{silentRequestTimeoutInSeconds:s,...r}=e;let o,a=await this._loadUser();if(!e.forceIframeAuth&&(null==a?void 0:a.refresh_token)){n.debug("using refresh token");const e=new Pe(a);return await this._useRefreshToken({state:e,redirect_uri:r.redirect_uri,resource:r.resource,extraTokenParams:r.extraTokenParams,timeoutInSeconds:s})}(null==(t=this.settings.dpop)?void 0:t.bind_authorization_code)&&(o=await this.generateDPoPJkt(this.settings.dpop));const c=this.settings.silent_redirect_uri;let d;c||n.throw(new Error("No silent_redirect_uri configured")),a&&this.settings.validateSubOnSilentRenew&&(n.debug("subject prior to silent renew:",a.profile.sub),d=a.profile.sub);const l=await this._iframeNavigator.prepare({silentRequestTimeoutInSeconds:s});return a=await this._signin({request_type:"si:s",redirect_uri:c,prompt:"none",id_token_hint:this.settings.includeIdTokenInSilentRenew?null==a?void 0:a.id_token:void 0,dpopJkt:o,...r},l,d),a&&((null==(i=a.profile)?void 0:i.sub)?n.info("success, signed in subject",a.profile.sub):n.info("no subject")),a}async _useRefreshToken(e){const t=await this._client.useRefreshToken({timeoutInSeconds:this.settings.silentRequestTimeoutInSeconds,...e}),i=new me({...e.state,...t});return await this.storeUser(i),await this._events.load(i),i}async signinSilentCallback(e=window.location.href){const t=this._logger.create("signinSilentCallback");await this._iframeNavigator.callback(e),t.info("success")}async signinCallback(e=window.location.href){const{state:t}=await this._client.readSigninResponseState(e);switch(t.request_type){case"si:r":return await this.signinRedirectCallback(e);case"si:p":await this.signinPopupCallback(e);break;case"si:s":await this.signinSilentCallback(e);break;default:throw new Error("invalid response_type in state")}}async signoutCallback(e=window.location.href,t=!1){const{state:i}=await this._client.readSignoutResponseState(e);if(i)switch(i.request_type){case"so:r":return await this.signoutRedirectCallback(e);case"so:p":await this.signoutPopupCallback(e,t);break;case"so:s":await this.signoutSilentCallback(e);break;default:throw new Error("invalid response_type in state")}}async querySessionStatus(e={}){const t=this._logger.create("querySessionStatus"),{silentRequestTimeoutInSeconds:i,...n}=e,s=this.settings.silent_redirect_uri;s||t.throw(new Error("No silent_redirect_uri configured"));const r=await this._loadUser(),o=await this._iframeNavigator.prepare({silentRequestTimeoutInSeconds:i}),a=await this._signinStart({request_type:"si:s",redirect_uri:s,prompt:"none",id_token_hint:this.settings.includeIdTokenInSilentRenew?null==r?void 0:r.id_token:void 0,response_type:this.settings.query_status_response_type,scope:"openid",skipUserInfo:!0,...n},o);try{const e={},i=await this._client.processSigninResponse(a.url,e);return t.debug("got signin response"),i.session_state&&i.profile.sub?(t.info("success for subject",i.profile.sub),{session_state:i.session_state,sub:i.profile.sub}):(t.info("success, user not authenticated"),null)}catch(e){if(this.settings.monitorAnonymousSession&&e instanceof dist_W)switch(e.error){case"login_required":case"consent_required":case"interaction_required":case"account_selection_required":return t.info("success for anonymous user"),{session_state:e.session_state}}throw e}}async _signin(e,t,i){const n=await this._signinStart(e,t);return await this._signinEnd(n.url,i)}async _signinStart(e,t){const i=this._logger.create("_signinStart");try{const n=await this._client.createSigninRequest(e);return i.debug("got signin request"),await t.navigate({url:n.url,state:n.state.id,response_mode:n.state.response_mode,scriptOrigin:this.settings.iframeScriptOrigin})}catch(e){throw i.debug("error after preparing navigator, closing navigator window"),t.close(),e}}async _signinEnd(e,t){const i=this._logger.create("_signinEnd"),n=await this._client.processSigninResponse(e,{});return i.debug("got signin response"),await this._buildUser(n,t)}async _buildUser(e,t){const i=this._logger.create("_buildUser"),n=new me(e);if(t){if(t!==n.profile.sub)throw i.debug("current user does not match user returned from signin. sub from signin:",n.profile.sub),new dist_W({...e,error:"login_required"});i.debug("current user matches user returned from signin")}return await this.storeUser(n),i.debug("user stored"),await this._events.load(n),n}async signoutRedirect(e={}){const t=this._logger.create("signoutRedirect"),{redirectMethod:i,...n}=e,s=await this._redirectNavigator.prepare({redirectMethod:i});await this._signoutStart({request_type:"so:r",post_logout_redirect_uri:this.settings.post_logout_redirect_uri,...n},s),t.info("success")}async signoutRedirectCallback(e=window.location.href){const t=this._logger.create("signoutRedirectCallback"),i=await this._signoutEnd(e);return t.info("success"),i}async signoutPopup(e={}){const t=this._logger.create("signoutPopup"),{popupWindowFeatures:i,popupWindowTarget:n,popupSignal:s,...r}=e,o=this.settings.popup_post_logout_redirect_uri,a=await this._popupNavigator.prepare({popupWindowFeatures:i,popupWindowTarget:n,popupSignal:s});await this._signout({request_type:"so:p",post_logout_redirect_uri:o,state:null==o?void 0:{},...r},a),t.info("success")}async signoutPopupCallback(e=window.location.href,t=!1){const i=this._logger.create("signoutPopupCallback");await this._popupNavigator.callback(e,{keepOpen:t}),i.info("success")}async _signout(e,t){const i=await this._signoutStart(e,t);return await this._signoutEnd(i.url)}async _signoutStart(e={},t){var i;const n=this._logger.create("_signoutStart");try{const s=await this._loadUser();n.debug("loaded current user from storage"),this.settings.revokeTokensOnSignout&&await this._revokeInternal(s);const r=e.id_token_hint||s&&s.id_token;r&&(n.debug("setting id_token_hint in signout request"),e.id_token_hint=r),await this.removeUser(),n.debug("user removed, creating signout request");const o=await this._client.createSignoutRequest(e);return n.debug("got signout request"),await t.navigate({url:o.url,state:null==(i=o.state)?void 0:i.id,scriptOrigin:this.settings.iframeScriptOrigin})}catch(e){throw n.debug("error after preparing navigator, closing navigator window"),t.close(),e}}async _signoutEnd(e){const t=this._logger.create("_signoutEnd"),i=await this._client.processSignoutResponse(e);return t.debug("got signout response"),i}async signoutSilent(e={}){var t;const i=this._logger.create("signoutSilent"),{silentRequestTimeoutInSeconds:n,...s}=e,r=this.settings.includeIdTokenInSilentSignout?null==(t=await this._loadUser())?void 0:t.id_token:void 0,o=this.settings.popup_post_logout_redirect_uri,a=await this._iframeNavigator.prepare({silentRequestTimeoutInSeconds:n});await this._signout({request_type:"so:s",post_logout_redirect_uri:o,id_token_hint:r,...s},a),i.info("success")}async signoutSilentCallback(e=window.location.href){const t=this._logger.create("signoutSilentCallback");await this._iframeNavigator.callback(e),t.info("success")}async revokeTokens(e){const t=await this._loadUser();await this._revokeInternal(t,e)}async _revokeInternal(e,t=this.settings.revokeTokenTypes){const i=this._logger.create("_revokeInternal");if(!e)return;const n=t.filter(t=>"string"==typeof e[t]);if(n.length){for(const t of n)await this._client.revokeToken(e[t],t),i.info(`${t} revoked successfully`),"access_token"!==t&&(e[t]=null);await this.storeUser(e),i.debug("user stored"),await this._events.load(e)}else i.debug("no need to revoke due to no token(s)")}startSilentRenew(){this._logger.create("startSilentRenew"),this._silentRenewService.start()}stopSilentRenew(){this._silentRenewService.stop()}get _userStoreKey(){return`user:${this.settings.authority}:${this.settings.client_id}`}async _loadUser(){const e=this._logger.create("_loadUser"),t=await this.settings.userStore.get(this._userStoreKey);return t?(e.debug("user storageString loaded"),me.fromStorageString(t)):(e.debug("no user storageString"),null)}async storeUser(e){const t=this._logger.create("storeUser");if(e){t.debug("storing user");const i=e.toStorageString();await this.settings.userStore.set(this._userStoreKey,i)}else this._logger.debug("removing user"),await this.settings.userStore.remove(this._userStoreKey),this.settings.dpop&&await this.settings.dpop.store.remove(this.settings.client_id)}async clearStaleState(){await this._client.clearStaleState()}async dpopProof(e,t,i,n){var s,r;const o=await(null==(r=null==(s=this.settings.dpop)?void 0:s.store)?void 0:r.get(this.settings.client_id));if(o)return await dist_M.generateDPoPProof({url:e,accessToken:null==t?void 0:t.access_token,httpMethod:i,keyPair:o.keys,nonce:n})}async generateDPoPJkt(e){let t=await e.store.get(this.settings.client_id);if(!t){const i=await dist_M.generateDPoPKeys();t=new he(i),await e.store.set(this.settings.client_id,t)}return await dist_M.generateDPoPJkt(t.keys)}};const Ue="OAUTH2_LOGIN_FLOW_COMPLETE_EVENT",Le="OAUTH_GET_TOP_URL",De="OAUTH_REDIRECT_TOP_WINDOW",Ne="OAUTH_UPDATE_URL",qe="OAUTH2_CHECK_PENDING",Me="oauth2_top_origin",$e="oauth2_login_success",He="oauth2_state",Ge=60,je=Math.max(Ge-15,20),ze=dist_d("oidc-auth",{color:"green"}),dist_We=e=>ze.extend(e);dist_d("oidc-auth-utils");const Be=()=>"undefined"==typeof window?"":new URLSearchParams(window.location.search).get("origin")||"";class Fe{static instance=null;settings=null;constructor(){}static getInstance(){return Fe.instance||(Fe.instance=new Fe),Fe.instance}configure(e){this.settings=e}isConfigured(){return null!==this.settings}getSettings(){if(!this.settings)throw new Error("OidcAuthConfig not configured. Call configure() or pass settings to OidcAuthClient.initialize().");return this.settings}getAuthOrigin(){const{authOrigin:e,authEndpoint:t}=this.getSettings();return e||new URL(t).origin}isAccessTokenProactiveRefreshEnabled(){return this.settings?.accessTokenProactiveRefreshEnabled??!0}getOidcSettings(){const e="undefined"==typeof window?"":window.location.origin,{clientId:t,authEndpoint:i}=this.getSettings(),n=this.getAuthOrigin(),s="undefined"!=typeof window?new dist_Y({store:window.localStorage}):void 0,{accessTokenExpiringNotificationTimeInSeconds:r=Ge}=this.getSettings();return{client_id:t,authority:n,redirect_uri:`${e}/login/oauth-callback`,post_logout_redirect_uri:e,response_type:"code",scope:"openid offline_access",automaticSilentRenew:!1,accessTokenExpiringNotificationTimeInSeconds:r,stateStore:s,userStore:s,metadata:{issuer:n,authorization_endpoint:i,token_endpoint:`${n}/connect/api/v1/oauth2/token`,end_session_endpoint:`${n}/logout/`}}}getAccessTokenExpiringNotificationTimeInSeconds(){return this.getSettings().accessTokenExpiringNotificationTimeInSeconds??Ge}getAccessTokenFreshnessThresholdInSeconds(){return this.getSettings().accessTokenFreshnessThresholdInSeconds??je}getAllowedParentOrigins(){return this.settings?.allowedParentOrigins}}const Ke=Fe.getInstance(),Je=dist_We("oidc-auth:host-api"),Ve=async e=>new Promise((t,i)=>{const n=new MessageChannel;let s=!1;const r=()=>{s=!0,n.port1.close()},o=setTimeout(()=>{s||(r(),i(new Error(`Host message timeout: ${e.type}`)))},1e4);n.port1.onmessage=e=>{clearTimeout(o),r(),"success"!==e.data.status?i(e.data.payload):t(e.data.payload)};const a=new URLSearchParams(window.location.search).get("origin")||"";if(!function(e){if(!e.startsWith("http://")&&!e.startsWith("https://"))return!1;const t=Ke.getAllowedParentOrigins();return!t||0===t.length||t.includes(e)}(a))return clearTimeout(o),r(),void i(new Error("Origin not allowed"));Je.log("posting message to host",e),window.top.postMessage({type:e.type,payload:e.payload,...e.data||{}},a,[n.port2])}),Qe=dist_We("oidc-auth:OidcAuthTimer");class Xe{timerHandle=null;expiration=null;initialized=!1;callback=()=>{};constructor(){this.timerHandle=null}init(e,t,i){const n=e-this.getEpochTime(),s=Math.max(n-t,10);this.cancel(),this.expiration=s,this.callback=i,Qe.debug("OIDC: timer - using expiration",s,n,t,e,n-t),this.timerHandle=setTimeout(this.callback,1e3*s),this.initialized=!0}cancel(){this.timerHandle&&(clearTimeout(this.timerHandle),this.timerHandle=null),this.expiration=null}getEpochTime(){return Math.floor(Date.now()/1e3)}isInitialized(){return this.initialized}}const Ye=dist_We("oidc-auth:OidcAuthClient");class Ze{static instance=null;userManager=null;initialized=!1;accessTokenExpiringTimer=null;retryTimers=new Set;constructor(){}static getInstance(){return Ze.instance||(Ze.instance=new Ze),Ze.instance}isInitialized(){return this.initialized}ensureInitialized(){if(!this.userManager)throw new Error("OidcAuthClient not initialized. Call initialize() first.");return this.userManager}initialize(e){if(e&&(this.initialized=!1,Ke.configure(e)),this.initialized)Ye.info("OIDC: initialize() - already initialized, skipping");else if("undefined"!=typeof window)if(Ke.isConfigured())try{Ye.info("OIDC: initialize() - starting initialization");const e=Ke.getOidcSettings();this.userManager=new Oe(e),dist_U.setLogger(Ye),dist_U.setLevel(dist_U.ERROR),this.initAccessTokenExpiringTimer(),this.initialized=!0}catch(e){throw Ye.error("OIDC: initialize() - FAILED:",e),e}else Ye.warn("OIDC: initialize() - skipped, config not set");else Ye.warn("OidcAuthClient cannot initialize on server side")}async initAccessTokenExpiringTimer(){Ke.isAccessTokenProactiveRefreshEnabled()?this.getUser().then(e=>{const t=e?.expires_at;t&&(this.accessTokenExpiringTimer||(this.accessTokenExpiringTimer=new Xe),this.accessTokenExpiringTimer.init(t,Ke.getAccessTokenExpiringNotificationTimeInSeconds(),async()=>{Ye.info("OIDC: timer proactive refresh access token expiring timer fired",t),this.proactiveRefreshWithRetry()}))}).catch(e=>{Ye.error("OIDC: initAccessTokenExpiringTimer - FAILED:",e)}):Ye.warn("OIDC: timer - not starting, access token proactive refresh is disabled")}async getUser(){if(!this.userManager)return null;try{return await this.userManager.getUser()}catch(e){return Ye.error("OIDC: getUser - FAILED:",e),null}}async storeUser(e){const t=this.ensureInitialized();await t.storeUser(e)}async getAccessToken(){const e=await this.getUser();if(!e)return Ye.info("OIDC: getAccessToken - no user found"),null;if(e.expired)try{const e=await this.signinSilent();return e?.access_token||null}catch(e){return Ye.error("OIDC: getAccessToken - silent renew failed:",e),null}return this.isTokenFresh(e)||this.signinSilent().catch(e=>{Ye.error("OIDC: getAccessToken - background refresh failed:",e)}),e.access_token}getUserData(){if("undefined"==typeof window)return null;try{const e=Ke.getOidcSettings(),t=`oidc.user:${e.authority}:${e.client_id}`,i=localStorage.getItem(t);if(!i)return null;const n=JSON.parse(i),s=n?.profile;return s?.sub?(Ye.info("OIDC: USER:",{profile:s}),{id:s.sub,email:s.email||"",first_name:s.given_name,last_name:s.family_name}):null}catch(e){return Ye.error("OIDC: getUserData - FAILED:",e),null}}async isAuthenticated(){const e=await this.getUser();return null!==e&&!e.expired}async signinRedirect(e){const t=this.ensureInitialized();await t.signinRedirect({state:e?{data:e}:void 0,prompt:"login"})}async signinCallback(){const e=this.ensureInitialized(),t=await e.signinCallback();if(!t)throw Ye.error("OIDC: signinCallback - FAILED: no user returned"),new Error("Signin callback failed: no user returned");return t}async signinSilent(e){return this.ensureInitialized(),"undefined"!=typeof navigator&&navigator.locks?navigator.locks.request("oidc-token-refresh",async()=>{const t=await this.getUser();return t&&this.isTokenFresh(t,e)?t:this.doSigninSilent()}):(Ye.warn("OIDC: signinSilent - navigator.locks not available, proceeding without lock"),this.doSigninSilent())}isTokenFresh(e,t){if(!e.expires_at)return!1;const i=t??Ke.getAccessTokenFreshnessThresholdInSeconds(),n=Math.floor(Date.now()/1e3);return e.expires_at-n>i}async doSigninSilent(){const e=this.ensureInitialized();try{return await e.signinSilent()}catch(e){throw Ye.error("OIDC: doSigninSilent - FAILED:",e),e}}proactiveRefreshWithRetry(e=1){if("undefined"!=typeof document&&"hidden"===document.visibilityState){Ye.info("OIDC: tab is hidden, deferring proactive refresh until visible");const t=()=>{"visible"===document.visibilityState&&(document.removeEventListener("visibilitychange",t),this.proactiveRefreshWithRetry(e))};return void document.addEventListener("visibilitychange",t)}this.signinSilent(Ke.getAccessTokenExpiringNotificationTimeInSeconds()).then(()=>{this.initAccessTokenExpiringTimer()}).catch(t=>{if(Ye.error(`OIDC: proactive refresh failed (attempt ${e}/2):`,t),e<2){const t=setTimeout(()=>{this.retryTimers.delete(t),this.proactiveRefreshWithRetry(e+1)},3e3);this.retryTimers.add(t)}else Ye.error("OIDC: proactive refresh exhausted all retries")})}async removeUser(){const e=this.ensureInitialized();this.accessTokenExpiringTimer?.cancel(),this.retryTimers.forEach(clearTimeout),this.retryTimers.clear(),await e.removeUser()}onUserLoaded(e){this.ensureInitialized().events.addUserLoaded(e)}offUserLoaded(e){this.ensureInitialized().events.removeUserLoaded(e)}onUserUnloaded(e){this.ensureInitialized().events.addUserUnloaded(e)}offUserUnloaded(e){this.ensureInitialized().events.removeUserUnloaded(e)}onSilentRenewError(e){this.ensureInitialized().events.addSilentRenewError(e)}offSilentRenewError(e){this.ensureInitialized().events.removeSilentRenewError(e)}onAccessTokenExpiring(e){this.ensureInitialized().events.addAccessTokenExpiring(e)}offAccessTokenExpiring(e){this.ensureInitialized().events.removeAccessTokenExpiring(e)}onAccessTokenExpired(e){this.ensureInitialized().events.addAccessTokenExpired(e)}offAccessTokenExpired(e){this.ensureInitialized().events.removeAccessTokenExpired(e)}getLogoutUrl(e,t){const i=new URL(function(e){return`${Ke.getAuthOrigin()}${e.logoutPath}`}(e));return t&&i.searchParams.set("redirect_to",t),i.toString()}getWindowOriginParam(){const e=new URL(window.location.href).searchParams.get("origin");if(!e)throw new Error("iframe origin param is required");return e}async getTopUrl(){return(await Ve({type:Le})).topUrl}async isOAuthFlowPending(){try{return(await Ve({type:qe})).isPending}catch(e){return Ye.warn("OIDC: isOAuthFlowPending() - failed to check, assuming not pending:",e),!1}}async triggerLoginFlowViaParent({loginPath:e,windowPath:t}){Ye.info("OIDC: triggerLoginFlowViaParent() - starting");const i=await this.getTopUrl(),n=new URL(i).origin,s=`${n}${t}`,r=new URL(`${window.location.origin}${e}`);r.searchParams.set(Me,n),r.searchParams.set("oauth2_top_wp_url",s),Ye.info("OIDC: triggerLoginFlowViaParent() - redirecting parent to:",r.toString()),await Ve({type:De,payload:{url:r.toString()}})}async handleLoginFlowComplete(e,t){if(!t)throw new Error("oauthUserState is required");const i=this.getWindowOriginParam(),n=t.state,s=n?.data?.[Me];if(i!==s)throw Ye.error("OIDC: handleLoginFlowComplete - origin mismatch:",i,"!==",s),new Error("Invalid origin in OAuth state");try{const e=new me(t);await this.storeUser(e),this.initAccessTokenExpiringTimer(),window.dispatchEvent(new CustomEvent("oidc-auth-completed"))}catch(t){Ye.error("OIDC: handleLoginFlowComplete - FAILED to store user:",t),await this.triggerLoginFlowViaParent(e)}}async triggerLogoutViaParent(e,t=!0){const i=await this.getTopUrl(),n=new URL(i).origin,s=t?`${n}${e.windowPath}`:n;await this.removeUser();const r=this.getLogoutUrl(e,s);await Ve({type:De,payload:{url:r}})}async cleanOAuthParamsFromUrl(){try{const e=await this.getTopUrl(),t=new URL(e);t.searchParams.delete("oauth_code"),t.searchParams.delete("oauth_state"),t.searchParams.delete("start-oauth"),t.searchParams.delete($e),t.searchParams.delete(He),await Ve({type:Ne,payload:{url:t.toString()}})}catch(e){Ye.warn("Failed to clean OAuth params from URL:",e)}}setupLoginFlowMessageListener(e){let t=!1;const i=i=>{if(i.data?.type!==Ue)return;if(i.origin!==Be())return void Ye.error("OIDC: origin mismatch - expected:",Be(),"received:",i.origin);if(t)return void Ye.debug("OIDC: LOGIN_FLOW_COMPLETE already processed, ignoring duplicate");const n=i.data.payload;n?.oauthState?(t=!0,this.handleLoginFlowComplete(e,n.oauthState).catch(e=>{Ye.error("OIDC: Failed to handle login flow complete:",e),t=!1})):Ye.warn("OIDC: LOGIN_FLOW_COMPLETE but no oauthState in payload")};return window.addEventListener("message",i),()=>{window.removeEventListener("message",i)}}async getTokenExpirationInfo(){const e=await this.getUser();if(!e||!e.expires_at)return{expiresAt:null,expiresInSeconds:null,isExpired:!0};const t=new Date(1e3*e.expires_at),i=Date.now(),n=Math.floor((1e3*e.expires_at-i)/1e3);return{expiresAt:t,expiresInSeconds:n,isExpired:n<=0}}async forceTokenRefresh(){return Ye.info("OIDC: forceTokenRefresh() - manually triggering token refresh"),this.signinSilent()}}const et=Ze.getInstance();"undefined"!=typeof window&&(window.oidcAuthClient=et);const tt=dist_We("oidc-auth:oidc-auth-redirect");function dist_it(e,t){e.postMessage({status:"success",payload:t})}function nt(e,t){e.postMessage({status:"error",payload:t})}function dist_st({targets:e,onSuccess:t,attempt:i=1}){const n=new URLSearchParams(window.location.search);if(!n.get($e))return void tt.warn("OIDC: No login_success param found, skipping");const s=n.get(He);if(s){if(!e.window?.contentWindow||!e.windowURL)return tt.warn("Cannot forward OIDC state: iframe not available"),void(i<5?setTimeout(()=>{dist_st({targets:e,onSuccess:t,attempt:i+1})},500):tt.error("OIDC: Failed to forward login flow after",5,"attempts - iframe never became available"));try{const i=JSON.parse(s),n=i.state?.data?.[Me];if(n&&n!==window.location.origin)return void tt.error("Origin mismatch in OIDC state:",n,"vs",window.location.origin);!function(e,t){const i=t.window?.contentWindow,n=t.windowURL?.origin;i&&n?i.postMessage({type:Ue,payload:e},n):tt.warn("Cannot send OIDC state: window or origin not available")}({oauthState:i},e);const r=new URL(window.location.href);r.searchParams.delete($e),r.searchParams.delete(He),history.replaceState({},"",r.toString()),t?.()}catch(e){tt.error("Failed to parse or forward OIDC state:",e)}}else tt.warn("OIDC login complete but no state found in URL")}const rt=dist_g("iframe-utils");let ot=null;const dist_at=e=>!!e&&document.contains(e),ct=e=>{try{return new URL(e.src).origin}catch(e){return rt.error("Error parsing iframe URL:",e),null}},dist_dt=(e,t,i)=>!!e?.contentWindow&&(t?(e.contentWindow.postMessage(i,t),!0):(rt.error("Could not determine target origin for Angie iframe"),!1)),lt=e=>dist_at(e.iframe)?e.iframe:null,gt=(e,t)=>dist_dt(lt(e),(e=>{if(e.iframeUrlObject)return e.iframeUrlObject.origin;const t=lt(e);return t?ct(t):null})(e),t),ut=()=>lt(R)||(dist_at(ot)||(ot=document.querySelector('iframe[src*="angie/"]')),ot),ht=(e,t)=>(rt.log("postMessageToAngieIframe",e,t),dist_dt(ut(),t||(()=>{const e=ut();return e?ct(e):null})(),e)),pt=(e,t,i)=>{const n=document.getElementById(i??R.containerId);n&&n.setAttribute("aria-hidden",t?"false":"true"),t?e.removeAttribute("tabindex"):e.setAttribute("tabindex","-1")},angie_sdk_dist_t=(e,t)=>{const i=t?.contentWindow;return!i||!e.source||e.source===i},mt=(e,t,i)=>e.origin===t&&angie_sdk_dist_t(e,i),wt=()=>Math.random().toString(36).substring(2,8),ft=(e,t)=>{e.postMessage({status:"success",payload:t})},yt=(e,t)=>{e.postMessage({status:"error",payload:t})},St=()=>new Promise(e=>{"loading"===document.readyState?document.addEventListener("DOMContentLoaded",e):e(null)}),bt=dist_g("sidebar");let vt=!1;const dist_It="open",Et="closed",kt="angie_sidebar_state",Tt="angie_sidebar_width";function Rt(){if("undefined"==typeof window)return 370;try{const e=window.localStorage.getItem(Tt);if(e){const t=parseInt(e,10);if(t>=350&&t<=590)return t}}catch(e){bt.warn("localStorage not available")}return 370}function At(){return"undefined"==typeof window?null:localStorage.getItem(kt)}function Ct(e){try{localStorage.setItem(kt,e)}catch(e){bt.warn("localStorage not available")}}function xt(e){try{localStorage.setItem(Tt,e.toString())}catch(e){bt.warn("localStorage not available")}}function Pt(e){document.documentElement.style.setProperty("--angie-sidebar-width",`${e}px`)}function Ot(e=dist_It){!function(){if("undefined"==typeof window)return!1;const e=new URLSearchParams(window.location.search);return e.has($e)||e.has(He)||e.has(Me)}()?Ut(At()||e):function(){Ut(Et);try{localStorage.setItem(kt,Et)}catch(e){bt.warn("localStorage not available")}}()}function Ut(e){"undefined"!=typeof window&&window.toggleAngieSidebar&&window.toggleAngieSidebar(e===dist_It,!0)}function Lt(e=R){const t=document.getElementById(e.containerId);if(!t)return;let i=!1,n=0,s=0;t.addEventListener("mousedown",e=>{const r=t.getBoundingClientRect();("rtl"===document.documentElement.dir?e.clientX<=r.left+4:e.clientX>=r.right-4)&&(i=!0,n=e.clientX,s=r.width,t.classList.add("angie-resizing"),document.body.style.cursor="ew-resize",document.body.style.userSelect="none",e.preventDefault(),e.stopPropagation())}),document.addEventListener("mousemove",e=>{if(!i)return;let t;t="rtl"===document.documentElement.dir?n-e.clientX:e.clientX-n,Pt(Math.max(350,Math.min(590,s+t))),e.preventDefault(),e.stopPropagation()}),document.addEventListener("mouseup",n=>{if(i){i=!1,t.classList.remove("angie-resizing"),document.body.style.cursor="",document.body.style.userSelect="";const r=parseInt(getComputedStyle(document.documentElement).getPropertyValue("--angie-sidebar-width"),10);xt(r),gt(e,{type:dist_w.ANGIE_SIDEBAR_RESIZED,payload:{initialWidth:s,width:r}}),n.preventDefault(),n.stopPropagation()}}),Pt(Rt())}let Dt=!1;function Nt(e){e?.skipDefaultCss||function(){if("undefined"==typeof document||vt)return;const e="angie-sidebar-styles";if(document.getElementById(e))return void(vt=!0);const t=document.createElement("style");t.id=e,t.textContent="/* Angie Sidebar - CSS Variables */\n:root {\n    --angie-sidebar-z-index: 1200; /* below MUI popups, elementor popups and media library modal */\n    --angie-sidebar-width: 330px;\n    --angie-sidebar-transition: margin 0.3s ease-in-out, transform 0.3s ease-in-out;\n    /* Direction-aware transform values for sidebar positioning */\n    --angie-sidebar-hide-transform: translateX(-100%); /* LTR: hide to the left */\n    --angie-sidebar-show-transform: translateX(0);\n}\n\n/* RTL-specific transform values */\n[dir=\"rtl\"] {\n    --angie-sidebar-hide-transform: translateX(100%); /* RTL: hide to the right */\n}\n\n/* Respect user's motion preferences */\n@media (prefers-reduced-motion: reduce) {\n    :root {\n        --angie-sidebar-transition: none;\n    }\n}\n\n/* Apply transitions only when user is actively toggling */\nbody.angie-sidebar-transitioning {\n    transition: var(--angie-sidebar-transition) !important;\n}\n\nbody.angie-sidebar-transitioning #angie-sidebar-container {\n    transition: var(--angie-sidebar-transition) !important;\n}\n\n/* Layout (default) - Push content */\n@media (min-width: 768px) {\n    body.angie-sidebar-active {\n        padding-inline-start: var(--angie-sidebar-width) !important;\n    }\n\n    #angie-sidebar-container {\n        position: fixed;\n        top: 0;\n        inset-inline-start: 0;\n        width: var(--angie-sidebar-width);\n        height: 100vh;\n        z-index: var(--angie-sidebar-z-index) !important; /* below elementor popups and media library modal */\n        background: #FCFCFC;\n        transform: var(--angie-sidebar-hide-transform);\n        outline: none;\n        overflow: hidden;\n        /* No default transition - only when transitioning */\n    }\n\n    /* Resize handle */\n    #angie-sidebar-container::after {\n        content: '';\n        position: absolute;\n        top: 0;\n        inset-inline-end: 0;\n        width: 4px;\n        height: 100%;\n        cursor: ew-resize;\n        background: transparent;\n        z-index: 1000001;\n    }\n\n    /* Pink border during resize */\n    #angie-sidebar-container.angie-resizing {\n        border-inline-end-color: #ff69b4 !important;\n        border-inline-end-width: 2px !important;\n    }\n\n    /* Disable iframe pointer events during resize */\n    #angie-sidebar-container.angie-resizing iframe#angie-iframe {\n        pointer-events: none !important;\n    }\n}\n\n/* Active states */\nbody.angie-sidebar-active #angie-sidebar-container {\n    transform: var(--angie-sidebar-show-transform);\n}\n\n/* Studio mode - sidebar takes full width */\n@media (min-width: 768px) {\n    html.angie-studio-active body.angie-sidebar-active #angie-sidebar-container {\n        width: 100%;\n    }\n}\n\n/* High contrast mode support */\n@media (prefers-contrast: high) {\n    #angie-sidebar-container {\n        border-color: #000;\n        box-shadow: none;\n    }\n}\n\n/* Screen reader only class */\n.angie-sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    margin: -1px;\n    overflow: hidden;\n    clip: rect(0, 0, 0, 0);\n    white-space: nowrap;\n    border: 0;\n}\n\n/* Plugin conflict resolution */\nbody.angie-sidebar-active {\n    /* Reset common conflicting styles */\n    box-sizing: border-box !important;\n    position: relative !important;\n}\n\n#angie-sidebar-toggle {\n    z-index: 99999 !important;\n}\n";const i=document.head||document.getElementsByTagName("head")[0];i.insertBefore(t,i.firstChild),vt=!0}();const t=e?.instance??R;"undefined"!=typeof window&&(window.toggleAngieSidebar=function(e,t=R){return function(i,n){const s=document.body,r=document.getElementById(t.containerId);if(!r)return void bt.warn("Required elements not found!");const o=s.classList.contains("angie-sidebar-active"),a=void 0!==i?i:!o;n||(s.classList.add("angie-sidebar-transitioning"),setTimeout(function(){s.classList.remove("angie-sidebar-transitioning")},300)),a?s.classList.add("angie-sidebar-active"):s.classList.remove("angie-sidebar-active"),t.iframe&&pt(t.iframe,a,t.containerId),function(e,t,i=R){e&&setTimeout(function(){gt(i,{type:"focusInput"})},t)}(a,n?0:300,t),e&&e(a,r,n),Ct(a?dist_It:Et);const c=new CustomEvent("angieSidebarToggle",{detail:{isOpen:a,sidebar:r,skipTransition:n}});document.dispatchEvent(c),gt(t,{type:dist_w.ANGIE_SIDEBAR_TOGGLED,payload:{state:a?"opened":"closed"}})}}(e?.onToggle,t),function(e=R){Dt||(Dt=!0,window.addEventListener("message",function(t){if("toggleAngieSidebar"!==t.data?.type)return;const i=e.iframeUrlObject?.origin;if(!(i?mt(t,i,e.iframe):angie_sdk_dist_t(t,e.iframe)))return;const{force:n,skipTransition:s}=t.data.payload||{};window.toggleAngieSidebar&&window.toggleAngieSidebar(n,s);const r=t.ports?.[0];r&&ft(r)}))}(t))}const qt="angie_return_url",Mt=dist_g("referrer-redirect");function $t(e){try{return new URL(e,window.location.origin).origin===window.location.origin}catch{return!1}}function Ht(e,t){if(!$t(e))return Mt.warn("Invalid redirect URL rejected:",e),!1;try{const i={url:e};return t&&(i.prompt=t),localStorage.setItem(qt,JSON.stringify(i)),!0}catch(e){return Mt.warn("localStorage not available"),!1}}function Gt(){try{const e=localStorage.getItem(qt);if(!e)return null;let t;try{t=JSON.parse(e)}catch{return Mt.warn("Stored redirect data is not valid JSON, returning null"),null}return t.url&&"string"==typeof t.url?$t(t.url)?t:(Mt.warn("Stored redirect URL is invalid, returning null:",t.url),null):(Mt.warn("Stored redirect data missing url field, returning null"),null)}catch(e){return Mt.warn("localStorage not available"),null}}function jt(){try{localStorage.removeItem(qt)}catch(e){Mt.warn("localStorage not available")}}function zt(e,t){return t?`${e}#angie-prompt=${encodeURIComponent(t)}`:e}function Wt(){const e=Gt();return!!e&&(jt(),window.location.href=zt(e.url,e.prompt),!0)}const Bt=dist_g("oauth"),Ft=[];let Kt=!1,Jt=!1;const Vt=()=>{(()=>{try{const e=new URL(window.location.href,window.location.origin).searchParams;return e.has("start-oauth")&&"angie-app"===e.get("page")}catch{return!1}})()&&(Bt.log("Post-consent flow detected, checking for referrer redirect"),Wt())};function Qt(){const e=Gt();if(e)return jt(),void(window.location.href=zt(e.url,e.prompt));try{localStorage.setItem(kt,"open")}catch(e){Bt.warn("localStorage not available")}setTimeout(()=>{window.toggleAngieSidebar(!0)},500)}const Xt=e=>{Ft.includes(e)||Ft.push(e)},Yt=()=>{for(const e of Ft.flatMap(e=>e.iframe&&e.iframeUrlObject?[{window:e.iframe,windowURL:e.iframeUrlObject}]:[]))dist_st({targets:e,onSuccess:Qt})},Zt="sidebar",ei="floatingChat",ti=[],ii=()=>ti.length,ni=e=>ti.find(t=>t.instanceId===e)??null,si=()=>ti.some(e=>e.layout===Zt),ri=dist_g("sdk");var oi;(oi||(oi={})).POST_MESSAGE="postMessage";const ai=new Map,ci=[];let di=null;const li=new Map,gi=e=>{const t=li.get(e);t&&(t.port.close(),li.delete(e))},ui=()=>{0===ci.length||di||(di=e=>{const t=(e=>{if(e.origin===window.location.origin)return ci.find(t=>((e,t)=>!((!t||t!==e.instanceId)&&(t&&ni(t)||t&&null===ni(t)&&ii()>=1||(()=>{const e=ti.find(e=>null!==e.iframe);return e||(0===ti.length&&R.iframe?R:null)})()!==e)))(t,e?.data?.payload?.instanceId))??null;const t=ci.find(t=>t.iframe?.contentWindow===e.source);return t&&mt(e,t.iframeUrlObject?.origin,t.iframe)?t:null})(e);if(t)switch(e?.data?.type){case dist_w.SDK_ANGIE_ALL_SERVERS_REGISTERED:break;case dist_w.SDK_ANGIE_READY_PING:{const t=e.ports[0];ri.log("Angie is ready",e),ft(t,{message:"Angie is ready"});break}case dist_w.SDK_REQUEST_CLIENT_CREATION:{const i=e.data.payload,n=e.ports[0];((e,t)=>{if(e.iframe)return void t();let i=ai.get(e);i||(i=[],ai.set(e,i)),i.push(t)})(t,()=>{try{const s=new MessageChannel;s.port1.onmessage=e=>{n.postMessage({success:!0,data:e.data})};const r={type:dist_w.SDK_REQUEST_CLIENT_CREATION,payload:{success:!0,...i,clientId:`dynamic-client-${i.serverName}-${i.serverVersion}`,requestId:e.data.payload.requestId},timestamp:Date.now()};t.iframe?.contentWindow?.postMessage(r,t.iframeUrlObject?.origin||"",[s.port2])}catch(e){ri.error(`Failed to create client for SDK server "${i.serverName}":`,e)}});break}case dist_w.SDK_TRIGGER_ANGIE:ri.log("SDK Trigger Angie received",e.data);try{const{requestId:i,prompt:n,context:s,contextAttachment:r,suggestions:o,options:a}=e.data.payload;if(!t.iframe)throw new Error("Iframe not found");t.iframe.contentWindow?.postMessage({type:dist_w.SDK_TRIGGER_ANGIE,payload:{requestId:i,prompt:n,context:s,contextAttachment:r,suggestions:o,options:a}},t.iframeUrlObject?.origin||""),window.postMessage({type:dist_w.SDK_TRIGGER_ANGIE_RESPONSE,payload:{success:!0,requestId:i,response:"Angie triggered successfully"}},window.location.origin)}catch(t){ri.error("Failed to trigger Angie:",t),window.postMessage({type:dist_w.SDK_TRIGGER_ANGIE_RESPONSE,payload:{success:!1,requestId:e.data.payload?.requestId,error:t instanceof Error?t.message:"Unknown error"}},window.location.origin)}}},window.addEventListener("message",di))},hi=e=>{ci.includes(e)||ci.push(e)},pi=dist_g("iframe"),angie_sdk_dist_i=[];let mi=null;const wi=e=>{if(e.includes("://")||e.startsWith("//"))return!1;try{const t="https://test.com";return new URL(e,t).origin===t}catch{return!1}},fi=async(e=R)=>{if(e.iframe?.contentWindow&&e.iframeUrlObject)try{pi.log("Disabling navigation prevention in Angie iframe"),e.iframe.contentWindow.postMessage({type:dist_w.ANGIE_DISABLE_NAVIGATION_PREVENTION},e.iframeUrlObject.origin),await new Promise(e=>setTimeout(e,100))}catch(e){throw pi.error("Failed to disable navigation prevention:",e),e}else pi.warn("Cannot disable navigation prevention: iframe or origin not available")},yi=e=>{angie_sdk_dist_i.push(e),mi||(mi=e=>{const t=angie_sdk_dist_i.find(t=>angie_sdk_dist_t(e,t.instance.iframe));t&&t.trustedOrigins.includes(e.origin)&&(async(e,t)=>{if(e?.data?.type===dist_w.ANGIE_CHAT_TOGGLE)t.open=e.data.open,t.iframe&&pt(t.iframe,t.open,t.containerId);else if(e?.data?.type===dist_w.ANGIE_STUDIO_TOGGLE){const i=e.data.isStudioOpen;if(!t.iframe)return;if(i)document.documentElement.classList.add("angie-studio-active");else{const e=Rt();document.documentElement.style.setProperty("--angie-sidebar-width",`${e}px`),document.documentElement.classList.remove("angie-studio-active")}}else if(e?.data?.type===dist_w.ANGIE_NAVIGATE_TO_URL){const{url:i="",confirmed:n=!1}=e.data.payload||{};if(!n)return void pi.log("Navigation requires user confirmation");((e,t=[])=>{const i=0===t.length&&"undefined"!=typeof window?[window.location.origin]:t;if(!e.startsWith("http"))return!1;try{const t=new URL(e);return i.includes(t.origin)}catch{return!1}})(i)?(await fi(t),window.location.assign(i)):pi.error("Navigation blocked: Invalid or unsafe URL",{url:i})}else if(e?.data?.type===dist_w.ANGIE_PAGE_RELOAD){const{confirmed:i=!1}=e.data.payload||{};if(!i)return void pi.log("Page reload requires user confirmation");pi.log("Page reload confirmed - disabling navigation prevention and reloading"),await fi(t),setTimeout(()=>{window.location.reload()},50)}else e?.data?.type===dist_y.RESET_HASH&&(window.location.hash="",ft(e.ports[0],{message:"Hash reset successfully"}))})(e,t.instance)},window.addEventListener("message",mi))},Si=async(e,t=R)=>{if(window.screen.availWidth<=768)return void pi.log("Mobile detected, skipping iframe injection");const i=t.containerId;let n=document.getElementById(i);if(!n){const e=performance.now();if(pi.log("⏱️ Waiting for sidebar container..."),await new Promise(e=>{let t=0;const s=setInterval(()=>{n=document.getElementById(i),t++,(n||t>20)&&(clearInterval(s),n&&e())},100);setTimeout(()=>{if(clearInterval(s),n)return void e();const t=new MutationObserver(()=>{n=document.getElementById(i),n&&(t.disconnect(),e())});t.observe(document.body,{childList:!0,subtree:!0}),setTimeout(()=>{t.disconnect(),e()},8e3)},2e3)}),pi.log(`⏱️ Sidebar container detection took: ${(performance.now()-e).toFixed(2)}ms`),!n)return void pi.error("Sidebar container not found")}const{iframe:s,iframeUrlObject:r}=await(async e=>{const t=e.origin,i=new URL(e.path,t),n=e.instanceId||wt(),s=i.pathname.slice(1).replace(/\//,"--")+"-"+n;return new Promise(n=>{const r=new URL(t);r.pathname=i.pathname;const o=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(r.searchParams.append("colorScheme",e.uiTheme||o||"light"),r.searchParams.append("sdkVersion",e.sdkVersion),r.searchParams.append("instanceId",s),r.searchParams.append("origin",window.location.origin),e.isRTL&&r.searchParams.append("isRTL",e.isRTL?"true":"false"),e.appId&&r.searchParams.append("appId",e.appId),"localhost"===window.location.hostname&&window.location.search.includes("debug_error")){const e=new URLSearchParams(window.location.search).get("debug_error");e&&r.searchParams.append("debug_error",e)}i.searchParams.forEach((e,t)=>{r.searchParams.set(t,e)}),r.searchParams.set("ver",(new Date).getTime().toString());const a=e.parent||document,c=a.createElement("iframe"),d={"background-color":"transparent","color-scheme":"normal",...e.css};window.addEventListener("message",async t=>{if(mt(t,r.origin,c))switch(t.data.type){case dist_y.ANGIE_READY:n({iframe:c,iframeUrlObject:r});break;case dist_y.ANGIE_LOADED:c.contentWindow?.postMessage({type:dist_y.HOST_READY,instanceId:s,...e.embeddedConfig?{embedded:e.embeddedConfig}:{}},r.origin)}}),c.setAttribute("src",r.href),c.id=e.iframeElementId||"angie-iframe",c.setAttribute("frameborder","0"),c.setAttribute("scrolling","no"),c.setAttribute("style",Object.entries(d).map(([e,t])=>`${e}: ${t}`).join("; ")),c.setAttribute("allow","clipboard-write; clipboard-read"),e.insertCallback?e.insertCallback(c):a.body.appendChild(c)})})({origin:e.origin||"https://angie.elementor.com",path:e.path&&wi(e.path)?e.path:"angie/wp-admin",insertCallback:e=>{pi.log("Injecting Angie iframe into sidebar container"),e.setAttribute("title","Angie AI Assistant"),e.setAttribute("role","application"),e.setAttribute("aria-label","Angie AI Assistant Interface");const t=document.getElementById("angie-sidebar-loading");t&&(t.textContent=""),n?.appendChild(e)},embeddedConfig:e.embeddedConfig,css:{width:"100%",height:"100%",border:"none",outline:"none"},uiTheme:e.uiTheme,isRTL:e.isRTL,sdkVersion:"1.8.0",iframeElementId:t.iframeElementId,instanceId:t.instanceId,appId:t.appId});return t.iframe=s,t.iframeUrlObject=r,(e=>{const t=e.iframe,i=e.iframeUrlObject?.origin;if(!t?.contentWindow||!i)return null;const n=li.get(e);if(n?.iframe===t)return n.port;gi(e);const s=new MessageChannel;li.set(e,{iframe:t,port:s.port1});try{t.contentWindow.postMessage({type:dist_w.SDK_INIT_TRIGGER_ANGIE,payload:{instanceId:e.instanceId},timestamp:Date.now()},i,[s.port2])}catch(t){throw gi(e),t}s.port1})(t),(e=>{ui();const t=ai.get(e);t?.length&&(ai.delete(e),t.forEach(e=>e()))})(t),hi(t),ui(),((e=R)=>{Xt(e),Kt||(Kt=!0,function({trustedOrigin:e,onOAuthParamsCleared:t}){window.addEventListener("message",i=>{if(i.origin!==e)return;const n=i.ports?.[0];switch(i.data.type){case Le:if(!n)return;dist_it(n,{topUrl:window.location.href});break;case De:window.location.href=i.data.payload.url;break;case Ne:{if(!n)return;const e=i.data.payload.url;if(!history?.replaceState)return void nt(n,{message:"URL update not supported in this browser"});try{const i=window.location.href;history.replaceState({},"",e),function(e,t){const i=new URL(e).searchParams,n=new URL(t).searchParams,s=[$e,He,Me];return s.some(e=>i.has(e))&&!s.some(e=>n.has(e))}(i,e)&&t?.(),dist_it(n,{message:"URL updated successfully"})}catch(e){nt(n,{message:"URL update failed: "+(e instanceof Error?e.message:"Unknown error")})}break}case qe:if(!n)return;dist_it(n,{isPending:"true"===new URLSearchParams(window.location.search).get($e)})}})}({trustedOrigin:e.iframeUrlObject?.origin??"",onOAuthParamsCleared:Qt}))})(t),((e=R)=>{Xt(e),Yt(),Jt||(Jt=!0,window.addEventListener("load",()=>{Bt.log("OIDC: Window load event fired, forwarding OIDC state if present"),Yt()}))})(t),yi({instance:t,trustedOrigins:[window.location.origin,e.origin||"https://angie.elementor.com"]}),{iframe:s,iframeOrigin:r.origin}},bi=dist_g("registration-queue");class vi{queue=[];isProcessing=!1;add(e){const t={id:this.generateId(e),config:e,timestamp:Date.now(),status:"pending"};return this.queue.push(t),bi.log(`Added server "${e.name}" to queue`),t}getAll(){return[...this.queue]}getPending(){return this.queue.filter(e=>"pending"===e.status)}updateStatus(e,t,i){const n=this.queue.find(t=>t.id===e);n&&(n.status=t,i?n.error=i:"pending"!==t&&"registered"!==t||delete n.error,bi.log(`Updated server ${e} status to ${t}`))}async processQueue(e){if(this.isProcessing)return void bi.log("Already processing queue");this.isProcessing=!0;const t=this.getPending();bi.log(`Processing ${t.length} pending registrations`);try{for(const i of t)try{await e(i),this.updateStatus(i.id,"registered")}catch(e){const t=e instanceof Error?e.message:String(e);this.updateStatus(i.id,"failed",t),bi.error(`Failed to process registration ${i.id}:`,t)}}finally{this.isProcessing=!1}}clear(){this.queue=[],bi.log("Cleared all registrations")}resetAllToPending(){if(this.isProcessing)return bi.log("Cannot reset to pending - processing in progress"),!1;const e=this.queue.filter(e=>"registered"===e.status).length,t=this.queue.filter(e=>"failed"===e.status).length;return this.queue.forEach(e=>{"pending"!==e.status&&(e.status="pending",delete e.error)}),bi.log(`Reset ${e+t} registrations to pending`),!0}remove(e){const t=this.queue.findIndex(t=>t.id===e);return-1!==t&&(this.queue.splice(t,1),bi.log(`Removed registration ${e}`),!0)}generateId(e){return`reg_${e.name}_${e.version}_${Date.now()}`}}const Ii={layout:Zt,styleTheme:"",create:!0,skipDefaultCss:!1,persistOpenState:!0,resizable:!0,chatToggleButtonEnabled:!1},Ei="#angie-widget-toggle",ki={boot:{allowInIframe:!1},container:{layout:Ii.layout,styleTheme:Ii.styleTheme,create:Ii.create,skipDefaultCss:Ii.skipDefaultCss,persistOpenState:Ii.persistOpenState,resizable:Ii.resizable,chatToggleButtonSelector:Ei},iframe:{origin:"https://angie.elementor.com",path:"angie/embedded",uiTheme:"light"}},Ti=new Map;let Ri=!1;const Ai=async(e,t,i)=>{if(t)try{ft(e,{payload:await t()})}catch(t){yt(e,{message:t instanceof Error?t.message:String(t)})}else ft(e,i())},Ci=(e,t)=>e&&t?`${e}::__angie::${t}`:e,xi=(e,t)=>{const i=Ci(e,t);try{const t=window.localStorage.getItem(i);return null!==t?t:i===e?null:window.localStorage.getItem(e)}catch{return null}},Pi=async e=>{const t=(e=>{const t=[...Ti.values()].filter(t=>t.iframeOrigin===e.origin);return t.length<=1?t[0]??null:t.find(t=>t.instance.iframe?.contentWindow===e.source)??null})(e);if(!t)return;const i=e.data?.type,n=e.ports?.[0];switch(i){case"GET_EXTERNAL_HEADERS":if(!n)return;await(async(e,t)=>{try{const i=t?await t():{};ft(e,(e=>Object.fromEntries(Object.entries(e).filter(([,e])=>void 0!==e)))(i))}catch(t){yt(e,{message:t instanceof Error?t.message:String(t)})}})(n,t.getExternalHeaders);break;case"angie/context/get-website-context":if(!n)return;await Ai(n,t.getWebsiteContext,()=>{return e=t.host,{payload:{name:document.title,tagline:"",homeUrl:window.location.origin,siteLang:document.documentElement.lang,docTitle:document.title,platform:"frontend",timezone:Intl.DateTimeFormat().resolvedOptions().timeZone,today:(new Date).toISOString().split("T")[0],...e?.website}};// removed by dead control flow
+ var e; });break;case"angie/context/get-analytics-context":if(!n)return;await Ai(n,t.getAnalyticsContext,()=>{return e=t.host,{payload:{screenPath:window.location.pathname,...e?.analytics}};// removed by dead control flow
+ var e; });break;case dist_f.GET:if(!n)return;n.postMessage({value:xi(e.data.key,t.host?.instanceId)});break;case dist_f.SET:((e,t,i)=>{try{window.localStorage.setItem(Ci(e,i),t)}catch{}})(e.data.key,e.data.value,t.host?.instanceId)}},Oi="data-angie-toggle-wired",Ui=(e,t)=>{const i=document.querySelector(e);i&&(i.setAttribute("aria-expanded",t?"true":"false"),i.setAttribute("aria-label",t?"Close Angie":"Open Angie"))},Li=e=>{const t=document.querySelector(e.toggleButtonSelector);t&&"true"!==t.getAttribute(Oi)&&(t.setAttribute(Oi,"true"),t.addEventListener("click",e.onClick))},Di=new Set;let Ni=!1;const qi=e=>{for(const t of Di)t(e)},Mi="angie-widget-toggle",$i="angie-widget-hidden",Hi="angie-widget-fullscreen",Gi="angie-widget-container",ji="angie-chat-widget-styles",zi=/^#([^\s#.[:]+)$/,Wi=/^\[([^\]=]+)(?:="([^"]*)")?\]$/,Bi=e=>document.querySelector(e),Fi=new Map,Ki=e=>{const t=document.getElementById(e.containerId);t&&(e.isOpen?t.classList.remove($i):t.classList.add($i),e.instance.iframe&&pt(e.instance.iframe,e.isOpen,e.containerId),Ui(e.toggleButtonSelector,e.isOpen))},Ji=(e,t)=>{Ki({containerId:e.containerId,toggleButtonSelector:e.toggleButtonSelector,isOpen:t,instance:e.instance})},Vi=(e,t)=>{const i=t?.force;if(void 0!==i)return Ji(e,i),void(i||e.onClose?.());const n=(e=>{const t=document.getElementById(e);return!!t&&!t.classList.contains($i)})(e.containerId);Ji(e,!n),n&&e.onClose?.()},Qi=e=>{const{instance:t}=e;var i;Fi.get(t)?.(),Fi.set(t,(i=i=>{if(!mt(i,e.iframeOrigin,t.iframe))return;const n=i.ports?.[0],{type:s,payload:r}=i.data||{};switch(s){case dist_w.ANGIE_SIDEBAR_TOGGLED:case"toggleAngieSidebar":Vi(e,r),n&&ft(n);break;case dist_w.ANGIE_STUDIO_TOGGLE:{const t=!!i.data.isStudioOpen;((e,t)=>{const i=document.getElementById(e);i&&(t?i.classList.add(Hi):i.classList.remove(Hi))})(e.containerId,t),t&&Ji(e,!0),n&&ft(n);break}}},Di.add(i),Ni||(Ni=!0,window.addEventListener("message",qi)),()=>{Di.delete(i)}))},Xi=e=>{const t=(e=>e===dist_E?ji:`${ji}-${e}`)(e);if(document.getElementById(t))return;const i=document.createElement("style");i.id=t,i.textContent=(e=>`\n#${e}.${Gi} {\n\t--angie-widget-width: 400px;\n\t--angie-widget-height: 600px;\n\t--angie-widget-z-index: 99999;\n\n\tposition: fixed !important;\n\ttop: auto !important;\n\tbottom: 20px !important;\n\tinset-inline-start: auto !important;\n\tinset-inline-end: 20px !important;\n\twidth: var(--angie-widget-width) !important;\n\theight: var(--angie-widget-height) !important;\n\tmax-height: calc(100vh - 40px) !important;\n\tmax-width: calc(100vw - 40px) !important;\n\tz-index: var(--angie-widget-z-index) !important;\n\ttransform: none !important;\n\tborder-radius: 12px !important;\n\toverflow: hidden !important;\n\tbox-shadow: 0 4px 24px rgba(0, 0, 0, 0.15) !important;\n\ttransition: opacity 0.2s ease, transform 0.2s ease !important;\n}\n\n#${e}.${Gi}.${$i} {\n\tdisplay: none !important;\n}\n\n#${e}.${Gi} iframe {\n\twidth: 100% !important;\n\theight: 100% !important;\n\tborder: none !important;\n\tborder-radius: 12px !important;\n}\n\n\n.${Mi} {\n\t--angie-toggle-size: 56px;\n\t--angie-widget-z-index: 99999;\n\n\tposition: fixed;\n\tbottom: 20px;\n\tinset-inline-end: 20px;\n\twidth: var(--angie-toggle-size);\n\theight: var(--angie-toggle-size);\n\tborder-radius: 50%;\n\tborder: none;\n\tbackground: #EB8EFB;\n\tcolor: white;\n\tcursor: pointer;\n\tz-index: var(--angie-widget-z-index);\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tbox-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n\ttransition: background 0.2s ease, transform 0.15s ease;\n\tpadding: 0;\n}\n\n.${Mi}:hover {\n\tbackground: #E070F5;\n\ttransform: scale(1.05);\n}\n\n.${Mi}:active {\n\ttransform: scale(0.95);\n}\n\n.${Mi}[aria-expanded="true"] {\n\tdisplay: none;\n}\n\n\n#${e}.${Gi}.${Hi} {\n\tbottom: 0 !important;\n\tinset-inline-end: 0 !important;\n\twidth: 100vw !important;\n\theight: 100vh !important;\n\tmax-height: 100vh !important;\n\tmax-width: 100vw !important;\n\tborder-radius: 0 !important;\n}\n\n#${e}.${Gi}.${Hi} iframe {\n\tborder-radius: 0 !important;\n}\n\n@media (max-width: 480px) {\n\t#${e}.${Gi} {\n\t\tbottom: 0 !important;\n\t\tinset-inline-end: 0 !important;\n\t\twidth: 100vw !important;\n\t\theight: 100vh !important;\n\t\tmax-height: 100vh !important;\n\t\tmax-width: 100vw !important;\n\t\tborder-radius: 0 !important;\n\t}\n\n\t#${e}.${Gi} iframe {\n\t\tborder-radius: 0 !important;\n\t}\n}\n`)(e),document.head.appendChild(i)},Yi=e=>{const t=document.getElementById(e);t&&(t.classList.add(Gi,$i),t.setAttribute("role","complementary"),t.setAttribute("aria-label","Angie"),t.setAttribute("aria-hidden","true"),t.setAttribute("tabindex","-1"))};let Zi=!1;const en={initShell:({config:e,instance:t})=>{((e,t,i=R)=>{const n=e.chatToggleButton.enabled?e.chatToggleButton.selector:void 0;Nt({instance:i,skipDefaultCss:e.skipDefaultCss,onToggle:e=>{n&&Ui(n,e),t.onToggle?.(e),!e&&t.onClose&&t.onClose()}}),(e=>{if("wordpress"!==e||"undefined"==typeof document)return;const t="angie-sidebar-wordpress-styles";if(document.getElementById(t)||(Zi=!1),Zi)return;const i=document.createElement("style");i.id=t,i.textContent="body.admin-bar {\n    --angie-sidebar-z-index: 99999;\n}\n\n#angie-body-top-padding {\n    height: 0;\n    transition: height 0.3s ease-in-out;\n}\n\nbody.angie-sidebar-transitioning #wpadminbar {\n    transition: var(--angie-sidebar-transition) !important;\n}\n\n@media (min-width: 768px) {\n    body.angie-sidebar-active #angie-body-top-padding {\n        width: 100%;\n        height: 0;\n    }\n\n    body.angie-sidebar-active #wpadminbar {\n        inset-inline-start: var(--angie-sidebar-width) !important;\n        inset-inline-end: 0 !important;\n        width: calc(100% - var(--angie-sidebar-width)) !important;\n        margin-top: 0;\n    }\n}\n\n@media (max-width: 768px) {\n    body.angie-sidebar-active #wpadminbar {\n        inset-inline-start: 0 !important;\n        inset-inline-end: 0 !important;\n        width: 100% !important;\n    }\n}\n\nbody:not(.wp-admin) #angie-sidebar-container {\n    margin-top: 3px;\n}\n",(document.head||document.getElementsByTagName("head")[0]).appendChild(i),Zi=!0})(e.styleTheme),n&&Li({toggleButtonSelector:n,onClick:e=>{e.preventDefault(),window.toggleAngieSidebar?.()}})})(e.container,e.callbacks,t)},beforeOpenIframe:({config:e})=>{var t;(t=e.container).chatToggleButton.enabled&&(t.persistOpenState&&At()===dist_It||Ut(Et))},afterOpenIframe:({config:e,instance:t})=>{((e,t=R)=>{e.persistOpenState&&Ot(e.chatToggleButton.enabled?Et:dist_It),e.resizable&&Lt(t)})(e.container,t)}},tn={initShell:({config:e,instance:t})=>{const{chatToggleButton:i}=e.container;var n;n={containerId:e.container.id,iframeOrigin:e.iframe.origin,onClose:e.callbacks.onClose,toggleButtonSelector:i.selector,injectToggleButton:i.enabled,instance:t},Xi(n.containerId),Yi(n.containerId),n.injectToggleButton&&(e=>{if(Bi(e))return;const t=document.createElement("button");((e,t)=>{const i=t.match(zi);if(i)return void(e.id=i[1]);const n=t.match(Wi);n&&e.setAttribute(n[1],n[2]??"")})(t,e),t.className=Mi,t.setAttribute("aria-label","Open Angie"),t.setAttribute("aria-expanded","false"),t.type="button",t.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none">\n\t<path d="M15.0998 8.00414L14.622 8.18282C13.4991 8.60516 12.8142 9.50669 12.4001 10.6519L12.2249 11.1392L12.0497 10.6519C11.6356 9.50669 10.9109 8.60516 9.78801 8.18282L9.31018 8.00414L9.78801 7.82546C10.9109 7.40312 11.6356 6.50159 12.0497 5.3564L12.2249 4.86909L12.4001 5.3564C12.8142 6.50159 13.4991 7.40312 14.622 7.82546L15.0998 8.00414Z" fill="white"/>\n\t<path d="M2 8.42721C5.5608 8.42721 8.44479 11.3685 8.44479 15" stroke="white" stroke-width="2.05092" stroke-miterlimit="10"/>\n\t<path d="M2 7.57275C5.5608 7.57275 8.44479 4.6315 8.44479 0.999991" stroke="white" stroke-width="2.05092" stroke-miterlimit="10"/>\n</svg>',document.body.appendChild(t)})(n.toggleButtonSelector),(e=>{(e=>{Li({toggleButtonSelector:e.toggleButtonSelector,onClick:()=>{const t=Bi(e.toggleButtonSelector),i="true"===t?.getAttribute("aria-expanded");Ji(e,!i),i&&e.onClose?.()}})})(e),Qi(e),si()||(window.toggleAngieSidebar=t=>{Vi(e,{force:t})})})({containerId:n.containerId,iframeOrigin:n.iframeOrigin,onClose:n.onClose,toggleButtonSelector:n.toggleButtonSelector,instance:n.instance})},afterOpenIframe:({config:e})=>{Yi(e.container.id)}},nn={[Zt]:en,[ei]:tn},sn={layout:ei,styleTheme:"",create:!0,skipDefaultCss:!1,persistOpenState:!1,resizable:!1,chatToggleButtonEnabled:!0},rn={closeButton:"collapse"},dist_on=(e,t)=>e===ei?{closeButton:"close",...t}:t?{...rn,...t}:rn,dist_an=async e=>{Vt();const t={browserUiTheme:"undefined"!=typeof window&&"function"==typeof window.matchMedia?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":ki.iframe.uiTheme,isInIframe:"undefined"!=typeof window&&window!==window.top,isRTL:"undefined"!=typeof document&&"rtl"===document.documentElement.dir},i=((e,t)=>{const i=e.boot??{},n=e.container??{},s=e.iframe??{},r=e.callbacks??{},o=n.layout??ki.container.layout,a=(e=>e===ei?sn:Ii)(o),c=n.chatToggleButton?.enabled??a.chatToggleButtonEnabled;return{host:{appId:e.host.appId,instanceId:e.host.instanceId,aiContext:e.host.aiContext,website:e.host.website,analytics:e.host.analytics},boot:{allowInIframe:i.allowInIframe??ki.boot.allowInIframe},container:{id:n.id?.trim()||dist_E,layout:o,styleTheme:n.styleTheme??a.styleTheme,create:n.create??a.create,skipDefaultCss:n.skipDefaultCss??a.skipDefaultCss,persistOpenState:n.persistOpenState??a.persistOpenState,resizable:n.resizable??a.resizable,chatToggleButton:{enabled:c,selector:n.chatToggleButton?.selector?.trim()||ki.container.chatToggleButtonSelector}},iframe:{origin:s.origin?.trim()||ki.iframe.origin,path:s.path?.trim()||ki.iframe.path,uiTheme:s.uiTheme??t.browserUiTheme,isRTL:s.isRTL??t.isRTL},callbacks:{onClose:r.onClose,onToggle:r.onToggle,getExternalHeaders:r.getExternalHeaders,getWebsiteContext:r.getWebsiteContext,getAnalyticsContext:r.getAnalyticsContext},widgetConfig:dist_on(o,e.widgetConfig)}})(e,t);if(!((e,t)=>!(!e.boot.allowInIframe&&t.isInIframe))(i,t))return;if(i.container.layout===Zt&&si())throw new Error('Angie SDK: only one sidebar layout instance is supported on a page. Use container.layout "floatingChat" for the extra instance.');if(n=i.container.id,ti.find(e=>e.containerId===n))throw new Error(`Angie SDK: container id "${i.container.id}" is already used by another Angie instance. Give this instance its own container.id.`);var n;const s=i.host.instanceId||e.sdkInstanceId||wt();if(ni(s))throw new Error(`Angie SDK: instance id "${s}" is already used by another Angie instance. Give this instance its own host.instanceId.`);ti[0]&&i.container.chatToggleButton.selector===Ei&&(i.container.chatToggleButton.selector=`${Ei}-${s}`);const r=(e=>{const t=0===ti.length,i={...dist_T(),...e,iframeElementId:t?dist_k:`${dist_k}-${e.instanceId}`},n=t?Object.assign(R,i):i;return ti.push(n),n})({containerId:i.container.id,instanceId:s,appId:e.appId,layout:i.container.layout});var o;hi(r),ui(),o={iframeOrigin:i.iframe.origin,host:i.host,getExternalHeaders:i.callbacks.getExternalHeaders,getWebsiteContext:i.callbacks.getWebsiteContext,getAnalyticsContext:i.callbacks.getAnalyticsContext,instance:r},Ti.set(o.instance,o),Ri||(Ri=!0,window.addEventListener("message",e=>{Pi(e)})),i.container.create&&((e,t)=>{if(document.getElementById(e))return;const i=document.createElement("div");i.id=e,i.dir=t?"rtl":"ltr";const n=document.createElement("div");n.id="angie-sidebar-loading",n.setAttribute("aria-live","polite"),n.className="angie-sr-only",i.appendChild(n),document.body.appendChild(i)})(i.container.id,t.isRTL);const a=nn[i.container.layout],c={config:i,env:t,instance:r};a.initShell(c),a.beforeOpenIframe?.(c);const d={aiContext:(l=i.host).aiContext,appId:l.appId,configVersion:2,telemetry:{screenPath:window.location.pathname},website:{docTitle:document.title,homeUrl:window.location.origin,name:document.title,platform:"frontend",siteLang:document.documentElement.lang,tagline:"",...l.website}};var l;const g=await(async e=>{const t=e.instance??R;return!!await Si({isRTL:e.iframe.isRTL,origin:e.iframe.origin,path:e.iframe.path,uiTheme:e.iframe.uiTheme,embeddedConfig:e.embeddedConfig},t)&&(e.container.layout===ei&&e.container.chatToggleButton.enabled?(Ki({containerId:e.container.id,toggleButtonSelector:e.container.chatToggleButton.selector,isOpen:!1,instance:t}),!0):(t.iframe&&pt(t.iframe,!1,t.containerId),e.container.chatToggleButton.enabled&&Ui(e.container.chatToggleButton.selector,!1),!0))})({container:i.container,iframe:i.iframe,embeddedConfig:d,instance:r});a.afterOpenIframe?.(c),g&&(((e,t=R)=>{gt(t,{payload:e,type:"sdk-embedded-config"})})(d,r),i.widgetConfig&&((e,t=R)=>{gt(t,{payload:e,type:"sdk-widget-config"})})(i.widgetConfig,r))},cn="angie-prompt",dn=[],ln={origin:"https://angie.elementor.com",uiTheme:"light",isRTL:!1,containerId:dist_E,skipDefaultCss:!1,path:"angie/wp-admin"};class gn{appId;angieDetector;clientManager;logger;registrationQueue;isInitialized=!1;instanceId;sidebarV2BootPromise=null;promptHashListenerAttached=!1;constructor(e){this.appId=e?.appId?.trim()||void 0,this.instanceId=wt(),this.logger=dist_g({instanceId:this.instanceId}),this.logger.log("Constructor called - initializing SDK"),this.angieDetector=new dist_b(()=>this.instanceId),this.registrationQueue=new vi,this.clientManager=new I,this.logger.log("Setting up event handlers"),this.setupAngieReadyHandler(),this.setupServerInitHandler(),this.setupReRegistrationHandler(),this.logger.log("SDK initialization complete")}async loadSidebar(e){Vt();const{widgetConfig:t,...i}=e||{},n={...ln,...i};R.containerId=n.containerId,R.instanceId=this.instanceId,R.appId=this.appId,Nt({skipDefaultCss:n.skipDefaultCss});const s=await Si(n);s&&window.addEventListener("message",e=>{if(e.origin===R.iframeUrlObject?.origin)switch(e.data.type){case dist_f.SET:window.localStorage.setItem(e.data.key,e.data.value);break;case dist_f.GET:{const t=e.ports[0],i=window.localStorage.getItem(e.data.key);t.postMessage({value:i});break}}}),s&&t&&s.iframe.contentWindow?.postMessage({type:"sdk-widget-config",payload:t},s.iframeOrigin),this.setupPromptHashDetection()}loadSidebarV2(e){return e.host.instanceId&&(this.instanceId=e.host.instanceId),this.sidebarV2BootPromise=dist_an({...e,sdkInstanceId:this.instanceId,appId:this.appId}),this.setupPromptHashDetection(),this.sidebarV2BootPromise}isRefreshPingForThisInstance(e,t){const i=e.data?.payload?.instanceId;if(i)return i===this.instanceId;const n=t?.iframe?.contentWindow;return n&&e.source?e.source===n:ii()<2}setupReRegistrationHandler(){window.addEventListener("message",e=>{if(e.data?.type===dist_w.SDK_ANGIE_REFRESH_PING){const t=ni(this.instanceId),i=t?.iframeUrlObject?.origin;if(i&&e.origin!==i)return void this.logger.log(`Ignoring refresh ping from unexpected origin. Event origin: ${e.origin}, iframe origin: ${i}`);if(!this.isRefreshPingForThisInstance(e,t))return;if(this.logger.log("Angie refresh ping received"),this.registrationQueue.resetAllToPending()){const e=this.registrationQueue.getPending().length;this.logger.log(`Successfully reset ${e} registrations, processing queue`),this.handleAngieReady()}else this.logger.log("Skipping queue reset - processing already in progress")}})}setupAngieReadyHandler(){this.angieDetector.waitForReady().then(e=>{e.isReady?this.handleAngieReady():this.logger.warn("Angie not detected - servers will remain queued")}).catch(e=>{this.logger.error("Error waiting for Angie:",e)})}async handleAngieReady(){this.logger.log("Angie is ready, processing queued registrations");try{await this.registrationQueue.processQueue(async e=>{this.logger.log(`processQueue callback called for "${e.config.name}"`),await this.processRegistration(e)}),this.isInitialized=!0,this.logger.log("Initialization complete")}catch(e){this.logger.error("Error processing registration queue:",e)}}async processRegistration(e){this.logger.log(`Processing registration for server "${e.config.name}" (ID: ${e.id})`);try{this.logger.log(`Calling clientManager.requestClientCreation for "${e.config.name}"`);const t={...e,instanceId:this.instanceId};await this.clientManager.requestClientCreation(t),this.logger.log(`Successfully registered server "${e.config.name}"`)}catch(t){throw this.logger.error(`Failed to register server "${e.config.name}":`,t),t}}registerLocalServer(e){return e.type=dist_.LOCAL,e.transport=h.POST_MESSAGE,this.registerServer(e)}registerRemoteServer(e){return e.type=dist_.REMOTE,this.registerServer(e)}isLocalServerConfig(e){return e.type===dist_.LOCAL||!e.type&&"server"in e}isRemoteServerConfig(e){return e.type===dist_.REMOTE&&"url"in e}async registerServer(e){if(!e.type)return this.logger.warn("For a local server, please use registerLocalServer instead of registerServer"),void this.registerLocalServer(e);if(this.logger.log(`registerServer called for "${e.name}"`),!e.name)throw new Error("Server name is required");if(!e.description)throw new Error("Server description is required");if(this.isLocalServerConfig(e)&&!e.server)throw new Error("Server instance is required for local servers");this.logger.log(`Registering server "${e.name}"`);const t=this.registrationQueue.add(e);if(this.logger.log(`Added registration to queue: ${t.id}`),this.angieDetector.isReady())try{await this.processRegistration(t),this.registrationQueue.updateStatus(t.id,"registered"),this.logger.log(`Server "${e.name}" registered successfully`)}catch(e){const i=e instanceof Error?e.message:String(e);throw this.registrationQueue.updateStatus(t.id,"failed",i),e}else this.logger.log(`Server "${e.name}" queued until Angie is ready`)}getRegistrations(){return this.registrationQueue.getAll()}getPendingRegistrations(){return this.registrationQueue.getPending()}isAngieReady(){return this.angieDetector.isReady()}isReady(){return this.isInitialized}async waitForReady(){if(this.sidebarV2BootPromise)await this.sidebarV2BootPromise;else for(;!R.iframe;)await new Promise(e=>setTimeout(e,100));if(!(await this.angieDetector.waitForReady()).isReady)throw new Error("Angie is not available");for(;!this.isInitialized;)await new Promise(e=>setTimeout(e,100))}async triggerAngie(e){if(!this.isAngieReady())throw new Error("Angie is not ready. Please wait for Angie to be available before triggering.");const t=this.generateRequestId(),i=ni(this.instanceId)??R;return this.logger.log(`Triggering Angie on the private port (Request ID: ${t})`),((e,t)=>{const i=li.get(e)?.port;if(!i)return Promise.resolve({success:!1,requestId:t.requestId,error:"Iframe not found"});const n=t.options?.timeout??3e4;return new Promise((e,s)=>{const r=i.onmessage,o=n=>{n.data?.type===dist_w.SDK_TRIGGER_ANGIE_RESPONSE&&n.data?.payload?.requestId===t.requestId?(clearTimeout(a),i.onmessage===o&&(i.onmessage=r),e(n.data.payload)):r?.call(i,n)},a=setTimeout(()=>{i.onmessage===o&&(i.onmessage=r),s(new Error("Angie trigger request timed out"))},n);i.onmessage=o;try{i.postMessage({type:dist_w.SDK_TRIGGER_ANGIE,payload:t,timestamp:Date.now()})}catch(n){clearTimeout(a),i.onmessage===o&&(i.onmessage=r),ri.error("Failed to trigger Angie:",n),e({success:!1,requestId:t.requestId,error:n instanceof Error?n.message:"Unknown error"})}})})(i,{requestId:t,instanceId:this.instanceId,prompt:e.prompt,options:e.options,contextAttachment:e.contextAttachment,suggestions:e.suggestions,context:{pageUrl:window.location.href,pageTitle:document.title,...e.context}})}destroy(){this.registrationQueue.clear(),this.logger.log("SDK destroyed")}setupServerInitHandler(){window.addEventListener("message",e=>{e.data?.type===dist_w.SDK_REQUEST_INIT_SERVER&&(this.logger.log("Server init request received"),this.handleServerInitRequest(e))})}handleServerInitRequest(e){const{clientId:t,serverId:i,instanceId:n}=e.data.payload||{};if(t&&i)if(this.logger.log(`Server init request received - Request instanceId: ${n}, This instanceId: ${this.instanceId}`),n&&n!==this.instanceId)this.logger.log(`Ignoring server init request for different instance. Request instanceId: ${n}, this instanceId: ${this.instanceId}`);else{this.logger.log(`Handling server init request for clientId: ${t}, serverId: ${i}`);try{const t=this.registrationQueue.getAll().find(e=>e.id===i);if(!t)return void this.logger.log(`No registration found for serverId: ${i} (likely belongs to another instance)`);if("type"in t.config&&"remote"===t.config.type)return void this.logger.log("Remote server registration detected; skipping local connect");const n=e.ports[0];if(!n)return void this.logger.error("No port provided in server init request");const s=t.config.server;this.migrateInstructionsCompat(s);const r=new dist_v(n);s.connect(r),this.logger.log(`Server "${t.config.name}" initialized successfully`)}catch(e){this.logger.error(`Error initializing server for clientId ${t}:`,e)}}else this.logger.error("Invalid server init request - missing clientId or serverId")}migrateInstructionsCompat(e){try{const t="server"in e&&e.server?e.server:e,i=t._serverInfo,n=t._instructions;i?.instructions&&!n&&(t._instructions=i.instructions,this.logger.log("Migrated instructions from serverInfo to serverOptions (backward compat)"))}catch{}}generateRequestId(){return`${this.instanceId}-${Date.now()}-${Math.random().toString(36).substring(2,8)}`}parseHashParams(e){const t=e.startsWith("#")?e.substring(1):e;return new URLSearchParams(t)}shouldHandlePromptHash(e){const t=e.get("angie-instance");return t?t===this.instanceId:0===dn.length||dn[0]===this}async handlePromptHash(){const e=window.location.hash;if(e.includes(`${cn}=`))try{const t=this.parseHashParams(e);if(!this.shouldHandlePromptHash(t))return;const i=t.get(cn)||"";if(!i)return void this.logger.warn("Empty prompt detected in hash");const n="true"===t.get("angie-new-chat");this.logger.log("Detected prompt in hash:",{prompt:i,newChat:n}),await this.waitForReady();const s=await this.triggerAngie({prompt:i,context:{source:"hash-parameter",pageUrl:window.location.href,timestamp:(new Date).toISOString()},options:{newChat:n}});this.logger.log("Triggered successfully from hash:",s),window.location.hash=""}catch(e){this.logger.error("Failed to trigger from hash:",e)}}setupPromptHashDetection(){this.promptHashListenerAttached||(this.promptHashListenerAttached=!0,dn.push(this),window.addEventListener("hashchange",()=>this.handlePromptHash())),this.handlePromptHash()}}let un=null;const hn=e=>new Promise(t=>setTimeout(t,e)),pn=()=>(un||(un=new dist_b),un),angie_sdk_dist_n=()=>"undefined"!=typeof window&&!0===window.angiePlugin?.available,mn=()=>!!angie_sdk_dist_n()&&pn().isReady(),wn=async(e=3e3)=>"undefined"!=typeof window&&(async(e,t,i=50)=>{for(;Date.now()<e;){if(t())return!0;await hn(i)}return t()})(Date.now()+e,angie_sdk_dist_n),fn=async(e=3e3)=>{if("undefined"==typeof window)return!1;const t=Date.now();if(!await wn(e))return!1;const i=Math.max(0,e-(Date.now()-t));return(await pn().waitUntilReady(i)).isReady},yn=dist_g("navigation"),Sn=(e,t,i)=>{if(i?.iframe??ut()){t.isOpen&&window.toggleAngieSidebar&&window.toggleAngieSidebar(!0);const n={type:"angie-route-navigation",path:e,payload:t},s=i?gt(i,n):ht(n);return s||yn.error("Failed to post navigation message to Angie iframe"),s}return yn.error("Angie iframe not found"),!1},bn=dist_g("interaction-mode"),vn=e=>ut()?!!ht({type:dist_w.ANGIE_SET_INTERACTION_MODE,payload:{mode:e}})||(bn.error("Failed to post interaction mode message to Angie iframe"),!1):(bn.error("Angie iframe not found"),!1),dist_In="angie/requiredResources",En="angie/modelPreferences",kn="angie/extendedTimeout",Tn="readOnlyHint";var Rn;!function(e){e.Inline="inline",e.EndOfTurn="end-of-turn"}(Rn||(Rn={}));
 ;// ./node_modules/zod/v3/helpers/util.js
 var util_util;
 (function (util) {
@@ -18998,7 +19362,7 @@ const ZodMiniType = /*@__PURE__*/ $constructor("ZodMiniType", (inst, def) => {
         throw new Error("Uninitialized schema in ZodMiniType.");
     $ZodType.init(inst, def);
     inst.def = def;
-    inst.parse = (data, params) => parse(inst, data, params, { callee: inst.parse });
+    inst.parse = (data, params) => parse_parse(inst, data, params, { callee: inst.parse });
     inst.safeParse = (data, params) => safeParse(inst, data, params);
     inst.parseAsync = async (data, params) => parseAsync(inst, data, params, { callee: inst.parseAsync });
     inst.safeParseAsync = async (data, params) => safeParseAsync(inst, data, params);
@@ -19067,7 +19431,7 @@ const ZodMiniURL = /*@__PURE__*/ (/* unused pure expression or super */ null && 
     mini_schemas_core.$ZodURL.init(inst, def);
     ZodMiniStringFormat.init(inst, def);
 })));
-function schemas_url(params) {
+function mini_schemas_url(params) {
     return mini_schemas_core._url(ZodMiniURL, params);
 }
 const ZodMiniEmoji = /*@__PURE__*/ (/* unused pure expression or super */ null && (mini_schemas_core.$constructor("ZodMiniEmoji", (inst, def) => {
@@ -19206,7 +19570,7 @@ function schemas_float64(params) {
     return mini_schemas_core._float64(ZodMiniNumberFormat, params);
 }
 // int32
-function schemas_int32(params) {
+function mini_schemas_int32(params) {
     return mini_schemas_core._int32(ZodMiniNumberFormat, params);
 }
 // uint32
@@ -19232,7 +19596,7 @@ const ZodMiniBigIntFormat = /*@__PURE__*/ (/* unused pure expression or super */
     ZodMiniBigInt.init(inst, def);
 })));
 // int64
-function schemas_int64(params) {
+function mini_schemas_int64(params) {
     return mini_schemas_core._int64(ZodMiniBigIntFormat, params);
 }
 // uint64
@@ -19266,14 +19630,14 @@ const ZodMiniAny = /*@__PURE__*/ (/* unused pure expression or super */ null && 
     mini_schemas_core.$ZodAny.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_any() {
+function mini_schemas_any() {
     return mini_schemas_core._any(ZodMiniAny);
 }
 const ZodMiniUnknown = /*@__PURE__*/ (/* unused pure expression or super */ null && (mini_schemas_core.$constructor("ZodMiniUnknown", (inst, def) => {
     mini_schemas_core.$ZodUnknown.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_unknown() {
+function mini_schemas_unknown() {
     return mini_schemas_core._unknown(ZodMiniUnknown);
 }
 const ZodMiniNever = /*@__PURE__*/ (/* unused pure expression or super */ null && (mini_schemas_core.$constructor("ZodMiniNever", (inst, def) => {
@@ -19302,7 +19666,7 @@ const ZodMiniArray = /*@__PURE__*/ (/* unused pure expression or super */ null &
     mini_schemas_core.$ZodArray.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_array(element, params) {
+function mini_schemas_array(element, params) {
     return new ZodMiniArray({
         type: "array",
         element: element,
@@ -19312,14 +19676,14 @@ function schemas_array(element, params) {
 // .keyof
 function schemas_keyof(schema) {
     const shape = schema._zod.def.shape;
-    return schemas_literal(Object.keys(shape));
+    return mini_schemas_literal(Object.keys(shape));
 }
 const ZodMiniObject = /*@__PURE__*/ $constructor("ZodMiniObject", (inst, def) => {
     $ZodObject.init(inst, def);
     ZodMiniType.init(inst, def);
     defineLazy(inst, "shape", () => def.shape);
 });
-function schemas_object(shape, params) {
+function mini_schemas_object(shape, params) {
     const def = {
         type: "object",
         get shape() {
@@ -19355,7 +19719,7 @@ function schemas_looseObject(shape, params) {
         // get optional() {
         //   return util.optionalKeys(shape);
         // },
-        catchall: schemas_unknown(),
+        catchall: mini_schemas_unknown(),
         ...mini_schemas_util.normalizeParams(params),
     });
 }
@@ -19386,7 +19750,7 @@ const ZodMiniUnion = /*@__PURE__*/ (/* unused pure expression or super */ null &
     mini_schemas_core.$ZodUnion.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_union(options, params) {
+function mini_schemas_union(options, params) {
     return new ZodMiniUnion({
         type: "union",
         options: options,
@@ -19420,7 +19784,7 @@ const ZodMiniTuple = /*@__PURE__*/ (/* unused pure expression or super */ null &
     mini_schemas_core.$ZodTuple.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_tuple(items, _paramsOrRest, _params) {
+function mini_schemas_tuple(items, _paramsOrRest, _params) {
     const hasRest = _paramsOrRest instanceof mini_schemas_core.$ZodType;
     const params = hasRest ? _params : _paramsOrRest;
     const rest = hasRest ? _paramsOrRest : null;
@@ -19446,7 +19810,7 @@ function schemas_record(keyType, valueType, params) {
 function schemas_partialRecord(keyType, valueType, params) {
     return new ZodMiniRecord({
         type: "record",
-        keyType: schemas_union([keyType, schemas_never()]),
+        keyType: mini_schemas_union([keyType, schemas_never()]),
         valueType: valueType,
         ...mini_schemas_util.normalizeParams(params),
     });
@@ -19455,7 +19819,7 @@ const ZodMiniMap = /*@__PURE__*/ (/* unused pure expression or super */ null && 
     mini_schemas_core.$ZodMap.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_map(keyType, valueType, params) {
+function mini_schemas_map(keyType, valueType, params) {
     return new ZodMiniMap({
         type: "map",
         keyType: keyType,
@@ -19467,7 +19831,7 @@ const ZodMiniSet = /*@__PURE__*/ (/* unused pure expression or super */ null && 
     mini_schemas_core.$ZodSet.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_set(valueType, params) {
+function mini_schemas_set(valueType, params) {
     return new ZodMiniSet({
         type: "set",
         valueType: valueType,
@@ -19505,7 +19869,7 @@ const ZodMiniLiteral = /*@__PURE__*/ (/* unused pure expression or super */ null
     mini_schemas_core.$ZodLiteral.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_literal(value, params) {
+function mini_schemas_literal(value, params) {
     return new ZodMiniLiteral({
         type: "literal",
         values: Array.isArray(value) ? value : [value],
@@ -19533,7 +19897,7 @@ const ZodMiniOptional = /*@__PURE__*/ (/* unused pure expression or super */ nul
     mini_schemas_core.$ZodOptional.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_optional(innerType) {
+function mini_schemas_optional(innerType) {
     return new ZodMiniOptional({
         type: "optional",
         innerType: innerType,
@@ -19543,7 +19907,7 @@ const ZodMiniNullable = /*@__PURE__*/ (/* unused pure expression or super */ nul
     mini_schemas_core.$ZodNullable.init(inst, def);
     ZodMiniType.init(inst, def);
 })));
-function schemas_nullable(innerType) {
+function mini_schemas_nullable(innerType) {
     return new ZodMiniNullable({
         type: "nullable",
         innerType: innerType,
@@ -19551,7 +19915,7 @@ function schemas_nullable(innerType) {
 }
 // nullish
 function mini_schemas_nullish(innerType) {
-    return schemas_optional(schemas_nullable(innerType));
+    return mini_schemas_optional(mini_schemas_nullable(innerType));
 }
 const ZodMiniDefault = /*@__PURE__*/ (/* unused pure expression or super */ null && (mini_schemas_core.$constructor("ZodMiniDefault", (inst, def) => {
     mini_schemas_core.$ZodDefault.init(inst, def);
@@ -19680,7 +20044,7 @@ const ZodMiniCustom = /*@__PURE__*/ (/* unused pure expression or super */ null 
     ZodMiniType.init(inst, def);
 })));
 // custom checks
-function schemas_check(fn, params) {
+function mini_schemas_check(fn, params) {
     const ch = new mini_schemas_core.$ZodCheck({
         check: "custom",
         ...mini_schemas_util.normalizeParams(params),
@@ -19716,9 +20080,9 @@ const schemas_stringbool = (...args) => mini_schemas_core._stringbool({
     String: ZodMiniString,
     Transform: ZodMiniTransform,
 }, ...args);
-function schemas_json() {
+function mini_schemas_json() {
     const jsonSchema = schemas_lazy(() => {
-        return schemas_union([mini_schemas_string(), mini_schemas_number(), mini_schemas_boolean(), mini_schemas_null(), schemas_array(jsonSchema), schemas_record(mini_schemas_string(), jsonSchema)]);
+        return mini_schemas_union([mini_schemas_string(), mini_schemas_number(), mini_schemas_boolean(), mini_schemas_null(), mini_schemas_array(jsonSchema), schemas_record(mini_schemas_string(), jsonSchema)]);
     });
     return jsonSchema;
 }
@@ -19740,11 +20104,11 @@ function isZ4Schema(s) {
 function objectFromShape(shape) {
     const values = Object.values(shape);
     if (values.length === 0)
-        return schemas_object({}); // default to v4 Mini
+        return mini_schemas_object({}); // default to v4 Mini
     const allV4 = values.every(isZ4Schema);
     const allV3 = values.every(s => !isZ4Schema(s));
     if (allV4)
-        return schemas_object(shape);
+        return mini_schemas_object(shape);
     if (allV3)
         return objectType(shape);
     throw new Error('Mixed Zod versions detected in object shape.');
@@ -21262,10 +21626,10 @@ function parseStringDef(def, refs) {
                 case "email":
                     switch (refs.emailStrategy) {
                         case "format:email":
-                            addFormat(res, "email", check.message, refs);
+                            string_addFormat(res, "email", check.message, refs);
                             break;
                         case "format:idn-email":
-                            addFormat(res, "idn-email", check.message, refs);
+                            string_addFormat(res, "idn-email", check.message, refs);
                             break;
                         case "pattern:zod":
                             addPattern(res, zodPatterns.email, check.message, refs);
@@ -21273,10 +21637,10 @@ function parseStringDef(def, refs) {
                     }
                     break;
                 case "url":
-                    addFormat(res, "uri", check.message, refs);
+                    string_addFormat(res, "uri", check.message, refs);
                     break;
                 case "uuid":
-                    addFormat(res, "uuid", check.message, refs);
+                    string_addFormat(res, "uuid", check.message, refs);
                     break;
                 case "regex":
                     addPattern(res, check.regex, check.message, refs);
@@ -21294,16 +21658,16 @@ function parseStringDef(def, refs) {
                     addPattern(res, RegExp(`${escapeLiteralCheckValue(check.value, refs)}$`), check.message, refs);
                     break;
                 case "datetime":
-                    addFormat(res, "date-time", check.message, refs);
+                    string_addFormat(res, "date-time", check.message, refs);
                     break;
                 case "date":
-                    addFormat(res, "date", check.message, refs);
+                    string_addFormat(res, "date", check.message, refs);
                     break;
                 case "time":
-                    addFormat(res, "time", check.message, refs);
+                    string_addFormat(res, "time", check.message, refs);
                     break;
                 case "duration":
-                    addFormat(res, "duration", check.message, refs);
+                    string_addFormat(res, "duration", check.message, refs);
                     break;
                 case "length":
                     setResponseValueAndErrors(res, "minLength", typeof res.minLength === "number"
@@ -21319,10 +21683,10 @@ function parseStringDef(def, refs) {
                 }
                 case "ip": {
                     if (check.version !== "v6") {
-                        addFormat(res, "ipv4", check.message, refs);
+                        string_addFormat(res, "ipv4", check.message, refs);
                     }
                     if (check.version !== "v4") {
-                        addFormat(res, "ipv6", check.message, refs);
+                        string_addFormat(res, "ipv6", check.message, refs);
                     }
                     break;
                 }
@@ -21351,7 +21715,7 @@ function parseStringDef(def, refs) {
                 case "base64": {
                     switch (refs.base64Strategy) {
                         case "format:binary": {
-                            addFormat(res, "binary", check.message, refs);
+                            string_addFormat(res, "binary", check.message, refs);
                             break;
                         }
                         case "contentEncoding:base64": {
@@ -21396,7 +21760,7 @@ function escapeNonAlphaNumeric(source) {
     return result;
 }
 // Adds a "format" keyword to the schema. If a format exists, both formats will be joined in an allOf-node, along with subsequent ones.
-function addFormat(schema, value, message, refs) {
+function string_addFormat(schema, value, message, refs) {
     if (schema.format || schema.anyOf?.some((x) => x.format)) {
         if (!schema.anyOf) {
             schema.anyOf = [];
@@ -23539,10 +23903,9 @@ function mergeCapabilities(base, additional) {
     return result;
 }
 //# sourceMappingURL=protocol.js.map
-// EXTERNAL MODULE: ./node_modules/ajv/dist/ajv.js
-var dist_ajv = __webpack_require__(3282);
-// EXTERNAL MODULE: ./node_modules/@modelcontextprotocol/sdk/node_modules/ajv-formats/dist/index.js
-var dist = __webpack_require__(5143);
+;// ./node_modules/ajv-formats/dist/index.js
+dist_namespaceFn();
+
 ;// ./node_modules/@modelcontextprotocol/sdk/dist/esm/validation/ajv-provider.js
 /**
  * AJV-based JSON Schema validator provider
@@ -23550,13 +23913,13 @@ var dist = __webpack_require__(5143);
 
 
 function createDefaultAjvInstance() {
-    const ajv = new dist_ajv({
+    const ajv = new (ajv_namespaceFn())({
         strict: false,
         validateFormats: true,
         validateSchema: false,
         allErrors: true
     });
-    const addFormats = dist;
+    const addFormats = (dist_namespaceFn());
     addFormats(ajv);
     return ajv;
 }
@@ -25659,7 +26022,7 @@ const createServer = () => {
 };
 
 if ( angie_integration_config && angie_integration_config.ajaxUrl && angie_integration_config.nonce ) {
-	new dn()
+	new gn()
 		.registerLocalServer( {
 			name: 'addon-elements',
 			version: angie_integration_config.version,
